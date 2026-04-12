@@ -21,7 +21,7 @@ export default function NotionLayout({
         {/* Top bar */}
         <header
           style={{
-            height: 44,
+            height: 64,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -29,30 +29,80 @@ export default function NotionLayout({
             borderBottom: "1px solid var(--n-border)",
             backgroundColor: "var(--n-bg)",
             fontSize: 13,
+            gap: 14,
           }}
         >
+          {/* Left: breadcrumb */}
           <span
             style={{
-              fontSize: 11,
-              fontWeight: 500,
-              color: "var(--n-text-subtle)",
-              backgroundColor: "var(--n-yellow-bg)",
-              padding: "2px 8px",
-              borderRadius: 3,
+              fontSize: 13,
+              color: "var(--n-text-muted)",
+              whiteSpace: "nowrap",
             }}
           >
-            Prototype
+            대시보드
           </span>
-          <Link
-            href="/"
+
+          {/* Center: search placeholder */}
+          <div
             style={{
-              color: "var(--n-accent)",
-              textDecoration: "none",
+              flex: 1,
+              maxWidth: 360,
+              height: 30,
+              display: "flex",
+              alignItems: "center",
+              padding: "0 12px",
+              border: "1px solid var(--n-border)",
+              borderRadius: 3,
+              color: "var(--n-text-subtle)",
               fontSize: 13,
             }}
           >
-            변형 바꾸기
-          </Link>
+            검색...
+          </div>
+
+          {/* Right: avatar + prototype badge + variant link */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {/* User avatar placeholder */}
+            <div
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: "50%",
+                backgroundColor: "var(--n-bg-hover)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 11,
+                fontWeight: 600,
+                color: "var(--n-text-muted)",
+              }}
+            >
+              U
+            </div>
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 500,
+                color: "var(--n-text-subtle)",
+                backgroundColor: "var(--n-yellow-bg)",
+                padding: "2px 8px",
+                borderRadius: 3,
+              }}
+            >
+              Prototype
+            </span>
+            <Link
+              href="/"
+              style={{
+                color: "var(--n-accent)",
+                textDecoration: "none",
+                fontSize: 13,
+              }}
+            >
+              변형 바꾸기
+            </Link>
+          </div>
         </header>
         {/* Main content */}
         <main style={{ flex: 1, padding: 32 }}>{children}</main>
