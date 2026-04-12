@@ -1,0 +1,594 @@
+"use client";
+
+import { useState, useCallback } from "react";
+import type { Order, Account } from "@/lib/types";
+import {
+  accounts,
+  getAccountById,
+  getProductById,
+  getBalanceByAccount,
+  getRecentOrdersByAccount,
+} from "@/lib/mock-data";
+import Badge, { statusVariantMap } from "./Badge";
+import Button from "./Button";
+import Card from "./Card";
+import Toast from "./Toast";
+
+interface OrderFormProps {
+  order?: Order;
+  account?: Account;
+}
+
+const salesReps: Record<string, string> = {
+  "REP-01": "정민수",
+  "REP-02": "김하나",
+  "REP-03": "박서연",
+};
+
+function formatNumber(n: number): string {
+  return n.toLocaleString("ko-KR", { maximumFractionDigits: 2 });
+}
+
+function formatCurrency(amount: number, currency: string): string {
+  if (currency === "KRW") return `₩${formatNumber(amount)}`;
+  if (currency === "USD") return `$${formatNumber(amount)}`;
+  if (currency === "EUR") return `€${formatNumber(amount)}`;
+  if (currency === "RUB") return `₽${formatNumber(amount)}`;
+  return `${formatNumber(amount)} ${currency}`;
+}
+
+const monoStyle: React.CSSProperties = {
+  fontFamily: "var(--font-jetbrains-mono)",
+  fontVariantNumeric: "tabular-nums",
+};
+
+const labelStyle: React.CSSProperties = {
+  fontSize: 11,
+  fontWeight: 500,
+  color: "var(--s-text-muted)",
+  textTransform: "uppercase",
+  letterSpacing: "0.05em",
+  marginBottom: 4,
+};
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  height: 28,
+  padding: "0 8px",
+  fontSize: 13,
+  color: "var(--s-text)",
+  backgroundColor: "var(--s-bg-sub)",
+  border: "1px solid var(--s-border)",
+  borderRadius: 6,
+  outline: "none",
+  transition: "border-color 120ms ease-out",
+};
+
+export default function OrderForm({ order, account }: OrderFormProps) {
+  const isNew = !order;
+  const [selectedAccountId, setSelectedAccountId] = useState(
+    account?.id ?? accounts[0].id
+  );
+  const [toastVisible, setToastVisible] = useState(false);
+
+  const currentAccount = getAccountById(selectedAccountId) ?? accounts[0];
+  const balance = getBalanceByAccount(selectedAccountId);
+  const recentOrders = getRecentOrdersByAccount(selectedAccountId, 3);
+
+  const itemsSubtotal = order
+    ? order.items.reduce((sum, item) => sum + item.subtotal, 0)
+    : 0;
+  const orderTotal = order
+    ? itemsSubtotal + order.shippingFee + order.remittanceFee
+    : 0;
+
+  const handleSave = useCallback(() => {
+    setToastVisible(true);
+  }, []);
+
+  const handleToastClose = useCallback(() => {
+    setToastVisible(false);
+  }, []);
+
+  return (
+    <div style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
+      {/* Left 2/3 — Form */}
+      <div style={{ flex: 2, minWidth: 0, display: "flex", flexDirection: "column", gap: 20 }}>
+        {/* 주문 정보 */}
+        <Card title="주문 정보">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+            <div>
+              <div style={labelStyle}>주문번호</div>
+              <div
+                style={{
+                  ...inputStyle,
+                  ...monoStyle,
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "var(--s-bg-sub)",
+                  color: isNew ? "var(--s-text-subtle)" : "var(--s-text)",
+                }}
+              >
+                {isNew ? "자동 생성" : order.id}
+              </div>
+            </div>
+            <div>
+              <div style={labelStyle}>주문일</div>
+              <input
+                type="date"
+                defaultValue={order?.orderDate ?? new Date().toISOString().slice(0, 10)}
+                style={{ ...inputStyle, ...monoStyle }}
+                readOnly
+              />
+            </div>
+            <div>
+              <div style={labelStyle}>주문상태</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, height: 28 }}>
+                {order ? (
+                  <Badge variant={statusVariantMap[order.status] ?? "neutral"}>
+                    {order.status}
+                  </Badge>
+                ) : (
+                  <Badge variant="warning">주문대기</Badge>
+                )}
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* 거래처 선택 */}
+        <Card title="거래처 선택">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+            <div>
+              <div style={labelStyle}>거래처</div>
+              {isNew ? (
+                <select
+                  value={selectedAccountId}
+                  onChange={(e) => setSelectedAccountId(e.target.value)}
+                  style={inputStyle}
+                >
+                  {accounts.map((a) => (
+                    <option key={a.id} value={a.id}>
+                      {a.name}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <div
+                  style={{
+                    ...inputStyle,
+                    display: "flex",
+                    alignItems: "center",
+                    backgroundColor: "var(--s-bg-sub)",
+                  }}
+                >
+                  {currentAccount.name}
+                </div>
+              )}
+            </div>
+            <div>
+              <div style={labelStyle}>내부 담당자</div>
+              <select
+                defaultValue={order?.salesRepId ?? "REP-01"}
+                style={inputStyle}
+                disabled
+              >
+                {Object.entries(salesReps).map(([id, name]) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <div style={labelStyle}>거래 통화</div>
+              <div
+                style={{
+                  ...inputStyle,
+                  ...monoStyle,
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "var(--s-bg-sub)",
+                }}
+              >
+                {order?.currency ?? "USD"}
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* 품목 테이블 */}
+        <Card
+          title="품목"
+          actions={
+            <div style={{ display: "flex", gap: 8 }}>
+              <Button variant="secondary" size="sm">
+                + 품목 추가
+              </Button>
+              <div style={{ position: "relative" }}>
+                <Button variant="ghost" size="sm">
+                  + 수동 주문품목번호 생성
+                </Button>
+                <span
+                  style={{
+                    position: "absolute",
+                    bottom: -18,
+                    left: 0,
+                    fontSize: 10,
+                    color: "var(--s-text-subtle)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  기존 품목번호 체계 외 수동 부여
+                </span>
+              </div>
+            </div>
+          }
+        >
+          <div style={{ overflowX: "auto" }}>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                ...monoStyle,
+              }}
+            >
+              <thead>
+                <tr>
+                  {["품목명", "단가", "수량", "할인율", "소계"].map((h, i) => (
+                    <th
+                      key={h}
+                      style={{
+                        height: 32,
+                        padding: "0 12px",
+                        backgroundColor: "var(--s-bg-raise)",
+                        borderBottom: "1px solid var(--s-border)",
+                        fontSize: 11,
+                        fontWeight: 500,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        color: "var(--s-text-muted)",
+                        textAlign: i === 0 ? "left" : "right",
+                      }}
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {order && order.items.length > 0 ? (
+                  order.items.map((item) => {
+                    const product = getProductById(item.productId);
+                    return (
+                      <tr key={item.id}>
+                        <td
+                          style={{
+                            height: 36,
+                            padding: "0 12px",
+                            borderBottom: "1px solid var(--s-border)",
+                            fontSize: 13,
+                            color: "var(--s-text)",
+                            fontFamily: "inherit",
+                          }}
+                        >
+                          {product?.name ?? item.productId}
+                        </td>
+                        <td
+                          style={{
+                            height: 36,
+                            padding: "0 12px",
+                            borderBottom: "1px solid var(--s-border)",
+                            fontSize: 13,
+                            color: "var(--s-text)",
+                            textAlign: "right",
+                          }}
+                        >
+                          {formatNumber(item.unitPrice)}
+                        </td>
+                        <td
+                          style={{
+                            height: 36,
+                            padding: "0 12px",
+                            borderBottom: "1px solid var(--s-border)",
+                            fontSize: 13,
+                            color: "var(--s-text)",
+                            textAlign: "right",
+                          }}
+                        >
+                          {formatNumber(item.quantity)}
+                        </td>
+                        <td
+                          style={{
+                            height: 36,
+                            padding: "0 12px",
+                            borderBottom: "1px solid var(--s-border)",
+                            fontSize: 13,
+                            color: "var(--s-text)",
+                            textAlign: "right",
+                          }}
+                        >
+                          {(item.discountRate * 100).toFixed(0)}%
+                        </td>
+                        <td
+                          style={{
+                            height: 36,
+                            padding: "0 12px",
+                            borderBottom: "1px solid var(--s-border)",
+                            fontSize: 13,
+                            color: "var(--s-text)",
+                            textAlign: "right",
+                            fontWeight: 500,
+                          }}
+                        >
+                          {formatNumber(item.subtotal)}
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={5}
+                      style={{
+                        height: 48,
+                        padding: "0 12px",
+                        borderBottom: "1px solid var(--s-border)",
+                        fontSize: 13,
+                        color: "var(--s-text-subtle)",
+                        textAlign: "center",
+                        fontFamily: "inherit",
+                      }}
+                    >
+                      품목을 추가해 주세요
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+
+        {/* 금액 요약 */}
+        <Card title="금액 요약">
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, maxWidth: 320, marginLeft: "auto" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--s-text)" }}>
+              <span>품목 소계 합계</span>
+              <span style={monoStyle}>{formatNumber(itemsSubtotal)}</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 13, color: "var(--s-text)" }}>
+              <span>배송비</span>
+              <input
+                type="text"
+                defaultValue={order ? formatNumber(order.shippingFee) : "0"}
+                style={{ ...inputStyle, ...monoStyle, width: 120, textAlign: "right" }}
+                readOnly
+              />
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 13, color: "var(--s-text)" }}>
+              <span>송금수수료</span>
+              <input
+                type="text"
+                defaultValue={order ? formatNumber(order.remittanceFee) : "0"}
+                style={{ ...inputStyle, ...monoStyle, width: 120, textAlign: "right" }}
+                readOnly
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: 14,
+                fontWeight: 600,
+                color: "var(--s-text)",
+                borderTop: "1px solid var(--s-border-strong)",
+                paddingTop: 8,
+                marginTop: 4,
+              }}
+            >
+              <span>주문합계액</span>
+              <span style={monoStyle}>{formatNumber(orderTotal)}</span>
+            </div>
+          </div>
+        </Card>
+
+        {/* Footer buttons */}
+        <div style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
+          <Button variant="secondary">취소</Button>
+          <Button onClick={handleSave}>저장</Button>
+        </div>
+      </div>
+
+      {/* Right 1/3 — Sidebar Panel */}
+      <div
+        style={{
+          flex: 1,
+          minWidth: 280,
+          position: "sticky",
+          top: 24,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        {/* 선택된 거래처 잔액 */}
+        <Card title="선택된 거래처 잔액">
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, ...monoStyle }}>
+            {(["USD", "EUR", "RUB", "KRW"] as const).map((cur) => (
+              <div
+                key={cur}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  fontSize: 13,
+                  color: balance[cur] < 0 ? "var(--s-danger)" : balance[cur] > 0 ? "var(--s-brand)" : "var(--s-text)",
+                }}
+              >
+                <span style={{ color: "var(--s-text-muted)", minWidth: 36 }}>{cur}</span>
+                <span>{formatCurrency(balance[cur], cur)}</span>
+              </div>
+            ))}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: 14,
+                fontWeight: 600,
+                color: balance.totalKRW < 0 ? "var(--s-danger)" : balance.totalKRW > 0 ? "var(--s-brand)" : "var(--s-text)",
+                borderTop: "1px solid var(--s-border)",
+                paddingTop: 8,
+                marginTop: 4,
+              }}
+            >
+              <span>원화 환산 합계</span>
+              <span>{formatCurrency(balance.totalKRW, "KRW")}</span>
+            </div>
+            <p style={{ fontSize: 11, color: "var(--s-text-subtle)", marginTop: 4, fontFamily: "inherit" }}>
+              마이너스는 선주문/미수금입니다
+            </p>
+          </div>
+        </Card>
+
+        {/* 최근 주문 3건 */}
+        <Card title="최근 주문 3건">
+          {recentOrders.length > 0 ? (
+            <div style={{ overflowX: "auto" }}>
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  ...monoStyle,
+                }}
+              >
+                <thead>
+                  <tr>
+                    {["주문번호", "일자", "상태"].map((h, i) => (
+                      <th
+                        key={h}
+                        style={{
+                          height: 28,
+                          padding: "0 8px",
+                          backgroundColor: "var(--s-bg-raise)",
+                          borderBottom: "1px solid var(--s-border)",
+                          fontSize: 10,
+                          fontWeight: 500,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                          color: "var(--s-text-muted)",
+                          textAlign: i === 0 ? "left" : "right",
+                        }}
+                      >
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentOrders.map((o) => (
+                    <tr key={o.id}>
+                      <td
+                        style={{
+                          height: 30,
+                          padding: "0 8px",
+                          borderBottom: "1px solid var(--s-border)",
+                          fontSize: 12,
+                          color: "var(--s-text)",
+                        }}
+                      >
+                        {o.id}
+                      </td>
+                      <td
+                        style={{
+                          height: 30,
+                          padding: "0 8px",
+                          borderBottom: "1px solid var(--s-border)",
+                          fontSize: 12,
+                          color: "var(--s-text)",
+                          textAlign: "right",
+                        }}
+                      >
+                        {o.orderDate}
+                      </td>
+                      <td
+                        style={{
+                          height: 30,
+                          padding: "0 8px",
+                          borderBottom: "1px solid var(--s-border)",
+                          textAlign: "right",
+                        }}
+                      >
+                        <Badge variant={statusVariantMap[o.status] ?? "neutral"}>
+                          {o.status}
+                        </Badge>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p style={{ fontSize: 12, color: "var(--s-text-subtle)" }}>
+              이 거래처의 주문 내역이 없습니다
+            </p>
+          )}
+        </Card>
+
+        {/* 배송지 목록 */}
+        <Card title="배송지 목록">
+          {currentAccount.shippingAddresses.length > 0 ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {currentAccount.shippingAddresses.map((addr) => (
+                <div
+                  key={addr.id}
+                  style={{
+                    padding: "8px 10px",
+                    borderRadius: 6,
+                    backgroundColor: addr.isPrimary
+                      ? "var(--s-brand-dim)"
+                      : "var(--s-bg-raise)",
+                    border: "1px solid var(--s-border)",
+                    transition: "border-color 120ms ease-out",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      marginBottom: 2,
+                    }}
+                  >
+                    <span style={{ fontSize: 12, fontWeight: 500, color: "var(--s-text)" }}>
+                      {addr.label}
+                    </span>
+                    {addr.isPrimary && (
+                      <Badge variant="success">기본</Badge>
+                    )}
+                    {addr.defaultIncoterm && (
+                      <span style={{ fontSize: 10, color: "var(--s-text-muted)" }}>
+                        {addr.defaultIncoterm}
+                      </span>
+                    )}
+                  </div>
+                  <div style={{ fontSize: 11, color: "var(--s-text-muted)" }}>
+                    {addr.country} — {addr.fullAddress}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p style={{ fontSize: 12, color: "var(--s-text-subtle)" }}>
+              등록된 배송지가 없습니다
+            </p>
+          )}
+        </Card>
+      </div>
+
+      <Toast
+        message="프로토타입에서는 저장되지 않습니다"
+        visible={toastVisible}
+        onClose={handleToastClose}
+      />
+    </div>
+  );
+}
