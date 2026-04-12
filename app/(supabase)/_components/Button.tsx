@@ -1,0 +1,115 @@
+"use client";
+
+import type { ReactNode } from "react";
+
+type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
+type ButtonSize = "sm" | "md" | "lg";
+
+interface ButtonProps {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  children: ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+  icon?: ReactNode;
+}
+
+const sizeMap: Record<ButtonSize, { height: number; fontSize: number; padding: string }> = {
+  sm: { height: 28, fontSize: 12, padding: "0 8px" },
+  md: { height: 32, fontSize: 13, padding: "0 12px" },
+  lg: { height: 36, fontSize: 13, padding: "0 16px" },
+};
+
+const variantMap: Record<
+  ButtonVariant,
+  {
+    backgroundColor: string;
+    color: string;
+    border: string;
+    hoverBg: string;
+    hoverColor?: string;
+    hoverShadow?: string;
+  }
+> = {
+  primary: {
+    backgroundColor: "var(--s-brand)",
+    color: "var(--s-text-invert)",
+    border: "none",
+    hoverBg: "var(--s-brand-hover)",
+    hoverShadow: "0 0 0 1px var(--s-brand-glow)",
+  },
+  secondary: {
+    backgroundColor: "var(--s-bg-sub)",
+    color: "var(--s-text)",
+    border: "1px solid var(--s-border-strong)",
+    hoverBg: "var(--s-bg-raise)",
+  },
+  ghost: {
+    backgroundColor: "transparent",
+    color: "var(--s-text)",
+    border: "none",
+    hoverBg: "var(--s-bg-raise)",
+  },
+  danger: {
+    backgroundColor: "transparent",
+    color: "var(--s-danger)",
+    border: "1px solid var(--s-danger)",
+    hoverBg: "var(--s-danger)",
+    hoverColor: "var(--s-text-invert)",
+  },
+};
+
+export default function Button({
+  variant = "primary",
+  size = "md",
+  children,
+  onClick,
+  disabled = false,
+  icon,
+}: ButtonProps) {
+  const s = sizeMap[size];
+  const v = variantMap[variant];
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 6,
+        height: s.height,
+        padding: s.padding,
+        fontSize: s.fontSize,
+        fontWeight: 500,
+        borderRadius: 6,
+        border: v.border,
+        backgroundColor: v.backgroundColor,
+        color: v.color,
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.5 : 1,
+        transition: "all 120ms ease-out",
+        lineHeight: 1,
+        whiteSpace: "nowrap",
+      }}
+      onMouseEnter={(e) => {
+        if (!disabled) {
+          e.currentTarget.style.backgroundColor = v.hoverBg;
+          if (v.hoverColor) e.currentTarget.style.color = v.hoverColor;
+          if (v.hoverShadow) e.currentTarget.style.boxShadow = v.hoverShadow;
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!disabled) {
+          e.currentTarget.style.backgroundColor = v.backgroundColor;
+          e.currentTarget.style.color = v.color;
+          e.currentTarget.style.boxShadow = "none";
+        }
+      }}
+    >
+      {icon && <span style={{ display: "flex", alignItems: "center" }}>{icon}</span>}
+      {children}
+    </button>
+  );
+}
