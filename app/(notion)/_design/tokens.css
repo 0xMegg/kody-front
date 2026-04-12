@@ -12,6 +12,7 @@
   --n-text: #37352f;
   --n-text-muted: #787669;
   --n-text-subtle: #9b9a8f;
+  --n-text-on-accent: #ffffff;
 
   /* Accent — restrained, doc-like */
   --n-accent: #2383e2;
@@ -28,7 +29,20 @@
   --n-pink-bg: #f5e0e9;
   --n-gray-bg: #ebeced;
 
+  /* Semantic text colors (pair with *-bg tokens above) */
+  --n-purple: #6b21a8;
+  --n-green: #0f7b6c;
+  --n-red: #b91c1c;
+  --n-orange: #b45309;
+  --n-blue: #2383e2;
+  --n-yellow: #92710e;
+
   --n-success: #0f7b6c;
   --n-warning: #b45309;
   --n-danger: #b91c1c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
