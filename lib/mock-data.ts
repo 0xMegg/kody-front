@@ -652,12 +652,29 @@ export const activityEvents: ActivityEvent[] = [
 // Helper Functions
 // =============================================================================
 
+export const salesRepNames: Record<string, string> = {
+  'REP-01': '정영업',
+  'REP-02': '김수출',
+  'REP-03': '이물류',
+};
+
 export function getAccountById(id: string): Account | undefined {
   return accounts.find((a) => a.id === id);
 }
 
 export function getOrderById(id: string): Order | undefined {
   return orders.find((o) => o.id === id);
+}
+
+export function getProductById(id: string): Product | undefined {
+  return products.find((p) => p.id === id);
+}
+
+export function getRecentOrdersByAccount(accountId: string, limit: number): Order[] {
+  return orders
+    .filter((o) => o.accountId === accountId)
+    .sort((a, b) => b.orderDate.localeCompare(a.orderDate))
+    .slice(0, limit);
 }
 
 export function getBalanceByAccount(accountId: string): AccountBalance {
