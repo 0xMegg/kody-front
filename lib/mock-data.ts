@@ -44,49 +44,49 @@ export const artists: Artist[] = [
 
 export const products: Product[] = [
   // --- ATEZ (10) ---
-  { id: 'P-ATEZ-001', artistId: 'ART-001', category: '앨범', name: 'ATEZ 1st Album "DAWN" (Standard)', weightG: 450, priceKRW: 18000 },
-  { id: 'P-ATEZ-002', artistId: 'ART-001', category: '앨범', name: 'ATEZ 1st Album "DAWN" (Limited)', weightG: 520, priceKRW: 32000 },
-  { id: 'P-ATEZ-003', artistId: 'ART-001', category: '앨범', name: 'ATEZ 2nd Album "RISE" (Standard)', weightG: 400, priceKRW: 17000 },
-  { id: 'P-ATEZ-004', artistId: 'ART-001', category: '앨범', name: 'ATEZ 2nd Album "RISE" (Fan-club)', weightG: 600, priceKRW: 45000 },
-  { id: 'P-ATEZ-005', artistId: 'ART-001', category: '포토카드', name: 'ATEZ 민수 포토카드 세트', weightG: 15, priceKRW: 5000 },
-  { id: 'P-ATEZ-006', artistId: 'ART-001', category: '포토카드', name: 'ATEZ 재윤 포토카드 세트', weightG: 15, priceKRW: 5000 },
-  { id: 'P-ATEZ-007', artistId: 'ART-001', category: '포토카드', name: 'ATEZ 단체 포토카드 세트', weightG: 25, priceKRW: 8000 },
-  { id: 'P-ATEZ-008', artistId: 'ART-001', category: '굿즈', name: 'ATEZ 공식 라이트스틱', weightG: 350, priceKRW: 28000 },
-  { id: 'P-ATEZ-009', artistId: 'ART-001', category: '굿즈', name: 'ATEZ 키링 세트', weightG: 80, priceKRW: 12000 },
-  { id: 'P-ATEZ-010', artistId: 'ART-001', category: '굿즈', name: 'ATEZ 포스터 세트', weightG: 120, priceKRW: 15000 },
+  { id: 'P-ATEZ-001', artistId: 'ART-001', category: '앨범', name: 'ATEZ 1st Album "DAWN" (Standard)', weightG: 450, priceKRW: 18000, stockOnHand: 200 },
+  { id: 'P-ATEZ-002', artistId: 'ART-001', category: '앨범', name: 'ATEZ 1st Album "DAWN" (Limited)', weightG: 520, priceKRW: 32000, stockOnHand: 80 },
+  { id: 'P-ATEZ-003', artistId: 'ART-001', category: '앨범', name: 'ATEZ 2nd Album "RISE" (Standard)', weightG: 400, priceKRW: 17000, stockOnHand: 150 },
+  { id: 'P-ATEZ-004', artistId: 'ART-001', category: '앨범', name: 'ATEZ 2nd Album "RISE" (Fan-club)', weightG: 600, priceKRW: 45000, stockOnHand: 30 },
+  { id: 'P-ATEZ-005', artistId: 'ART-001', category: '포토카드', name: 'ATEZ 민수 포토카드 세트', weightG: 15, priceKRW: 5000, stockOnHand: 300 },
+  { id: 'P-ATEZ-006', artistId: 'ART-001', category: '포토카드', name: 'ATEZ 재윤 포토카드 세트', weightG: 15, priceKRW: 5000, stockOnHand: 250 },
+  { id: 'P-ATEZ-007', artistId: 'ART-001', category: '포토카드', name: 'ATEZ 단체 포토카드 세트', weightG: 25, priceKRW: 8000, stockOnHand: 150 },
+  { id: 'P-ATEZ-008', artistId: 'ART-001', category: '굿즈', name: 'ATEZ 공식 라이트스틱', weightG: 350, priceKRW: 28000, stockOnHand: 60 },
+  { id: 'P-ATEZ-009', artistId: 'ART-001', category: '굿즈', name: 'ATEZ 키링 세트', weightG: 80, priceKRW: 12000, stockOnHand: 120 },
+  { id: 'P-ATEZ-010', artistId: 'ART-001', category: '굿즈', name: 'ATEZ 포스터 세트', weightG: 120, priceKRW: 15000, stockOnHand: 100 },
   // --- LUVSTAR (10) ---
-  { id: 'P-LUVSTAR-001', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 1st Mini "SPARKLE" (Standard)', weightG: 380, priceKRW: 16000 },
-  { id: 'P-LUVSTAR-002', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 1st Mini "SPARKLE" (Limited)', weightG: 450, priceKRW: 28000 },
-  { id: 'P-LUVSTAR-003', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 2nd Mini "GLOW" (Standard)', weightG: 400, priceKRW: 17000 },
-  { id: 'P-LUVSTAR-004', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 2nd Mini "GLOW" (Fan-club)', weightG: 550, priceKRW: 42000 },
-  { id: 'P-LUVSTAR-005', artistId: 'ART-002', category: '포토카드', name: 'LUVSTAR 하은 포토카드 세트', weightG: 12, priceKRW: 4500 },
-  { id: 'P-LUVSTAR-006', artistId: 'ART-002', category: '포토카드', name: 'LUVSTAR 유진 포토카드 세트', weightG: 12, priceKRW: 4500 },
-  { id: 'P-LUVSTAR-007', artistId: 'ART-002', category: '포토카드', name: 'LUVSTAR 단체 포토카드 세트', weightG: 28, priceKRW: 7500 },
-  { id: 'P-LUVSTAR-008', artistId: 'ART-002', category: '굿즈', name: 'LUVSTAR 공식 라이트스틱', weightG: 320, priceKRW: 26000 },
-  { id: 'P-LUVSTAR-009', artistId: 'ART-002', category: '굿즈', name: 'LUVSTAR 슬로건 타올', weightG: 200, priceKRW: 18000 },
-  { id: 'P-LUVSTAR-010', artistId: 'ART-002', category: '굿즈', name: 'LUVSTAR 에코백', weightG: 150, priceKRW: 14000 },
+  { id: 'P-LUVSTAR-001', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 1st Mini "SPARKLE" (Standard)', weightG: 380, priceKRW: 16000, stockOnHand: 250 },
+  { id: 'P-LUVSTAR-002', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 1st Mini "SPARKLE" (Limited)', weightG: 450, priceKRW: 28000, stockOnHand: 70 },
+  { id: 'P-LUVSTAR-003', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 2nd Mini "GLOW" (Standard)', weightG: 400, priceKRW: 17000, stockOnHand: 180 },
+  { id: 'P-LUVSTAR-004', artistId: 'ART-002', category: '앨범', name: 'LUVSTAR 2nd Mini "GLOW" (Fan-club)', weightG: 550, priceKRW: 42000, stockOnHand: 50 },
+  { id: 'P-LUVSTAR-005', artistId: 'ART-002', category: '포토카드', name: 'LUVSTAR 하은 포토카드 세트', weightG: 12, priceKRW: 4500, stockOnHand: 280 },
+  { id: 'P-LUVSTAR-006', artistId: 'ART-002', category: '포토카드', name: 'LUVSTAR 유진 포토카드 세트', weightG: 12, priceKRW: 4500, stockOnHand: 200 },
+  { id: 'P-LUVSTAR-007', artistId: 'ART-002', category: '포토카드', name: 'LUVSTAR 단체 포토카드 세트', weightG: 28, priceKRW: 7500, stockOnHand: 120 },
+  { id: 'P-LUVSTAR-008', artistId: 'ART-002', category: '굿즈', name: 'LUVSTAR 공식 라이트스틱', weightG: 320, priceKRW: 26000, stockOnHand: 55 },
+  { id: 'P-LUVSTAR-009', artistId: 'ART-002', category: '굿즈', name: 'LUVSTAR 슬로건 타올', weightG: 200, priceKRW: 18000, stockOnHand: 90 },
+  { id: 'P-LUVSTAR-010', artistId: 'ART-002', category: '굿즈', name: 'LUVSTAR 에코백', weightG: 150, priceKRW: 14000, stockOnHand: 100 },
   // --- NOVA9 (10) ---
-  { id: 'P-NOVA9-001', artistId: 'ART-003', category: '앨범', name: 'NOVA9 1st Album "ORBIT" (Standard)', weightG: 480, priceKRW: 19000 },
-  { id: 'P-NOVA9-002', artistId: 'ART-003', category: '앨범', name: 'NOVA9 1st Album "ORBIT" (Limited)', weightG: 550, priceKRW: 35000 },
-  { id: 'P-NOVA9-003', artistId: 'ART-003', category: '앨범', name: 'NOVA9 2nd Album "COMET" (Standard)', weightG: 420, priceKRW: 18000 },
-  { id: 'P-NOVA9-004', artistId: 'ART-003', category: '앨범', name: 'NOVA9 2nd Album "COMET" (Fan-club)', weightG: 580, priceKRW: 43000 },
-  { id: 'P-NOVA9-005', artistId: 'ART-003', category: '포토카드', name: 'NOVA9 태현 포토카드 세트', weightG: 18, priceKRW: 5500 },
-  { id: 'P-NOVA9-006', artistId: 'ART-003', category: '포토카드', name: 'NOVA9 준호 포토카드 세트', weightG: 18, priceKRW: 5500 },
-  { id: 'P-NOVA9-007', artistId: 'ART-003', category: '포토카드', name: 'NOVA9 단체 포토카드 세트', weightG: 30, priceKRW: 8000 },
-  { id: 'P-NOVA9-008', artistId: 'ART-003', category: '굿즈', name: 'NOVA9 공식 라이트스틱', weightG: 380, priceKRW: 30000 },
-  { id: 'P-NOVA9-009', artistId: 'ART-003', category: '굿즈', name: 'NOVA9 포스터 세트', weightG: 130, priceKRW: 16000 },
-  { id: 'P-NOVA9-010', artistId: 'ART-003', category: '굿즈', name: 'NOVA9 머플러 타올', weightG: 250, priceKRW: 22000 },
+  { id: 'P-NOVA9-001', artistId: 'ART-003', category: '앨범', name: 'NOVA9 1st Album "ORBIT" (Standard)', weightG: 480, priceKRW: 19000, stockOnHand: 180 },
+  { id: 'P-NOVA9-002', artistId: 'ART-003', category: '앨범', name: 'NOVA9 1st Album "ORBIT" (Limited)', weightG: 550, priceKRW: 35000, stockOnHand: 75 },
+  { id: 'P-NOVA9-003', artistId: 'ART-003', category: '앨범', name: 'NOVA9 2nd Album "COMET" (Standard)', weightG: 420, priceKRW: 18000, stockOnHand: 160 },
+  { id: 'P-NOVA9-004', artistId: 'ART-003', category: '앨범', name: 'NOVA9 2nd Album "COMET" (Fan-club)', weightG: 580, priceKRW: 43000, stockOnHand: 35 },
+  { id: 'P-NOVA9-005', artistId: 'ART-003', category: '포토카드', name: 'NOVA9 태현 포토카드 세트', weightG: 18, priceKRW: 5500, stockOnHand: 220 },
+  { id: 'P-NOVA9-006', artistId: 'ART-003', category: '포토카드', name: 'NOVA9 준호 포토카드 세트', weightG: 18, priceKRW: 5500, stockOnHand: 200 },
+  { id: 'P-NOVA9-007', artistId: 'ART-003', category: '포토카드', name: 'NOVA9 단체 포토카드 세트', weightG: 30, priceKRW: 8000, stockOnHand: 180 },
+  { id: 'P-NOVA9-008', artistId: 'ART-003', category: '굿즈', name: 'NOVA9 공식 라이트스틱', weightG: 380, priceKRW: 30000, stockOnHand: 40 },
+  { id: 'P-NOVA9-009', artistId: 'ART-003', category: '굿즈', name: 'NOVA9 포스터 세트', weightG: 130, priceKRW: 16000, stockOnHand: 85 },
+  { id: 'P-NOVA9-010', artistId: 'ART-003', category: '굿즈', name: 'NOVA9 머플러 타올', weightG: 250, priceKRW: 22000, stockOnHand: 60 },
   // --- HALO (10) ---
-  { id: 'P-HALO-001', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Single "ECHO" (Standard)', weightG: 320, priceKRW: 15000 },
-  { id: 'P-HALO-002', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Single "ECHO" (Limited)', weightG: 400, priceKRW: 27000 },
-  { id: 'P-HALO-003', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Album "AURORA" (Standard)', weightG: 460, priceKRW: 18500 },
-  { id: 'P-HALO-004', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Album "AURORA" (Fan-club)', weightG: 530, priceKRW: 40000 },
-  { id: 'P-HALO-005', artistId: 'ART-004', category: '포토카드', name: 'HALO 서연 포토카드 세트', weightG: 10, priceKRW: 3500 },
-  { id: 'P-HALO-006', artistId: 'ART-004', category: '포토카드', name: 'HALO 지우 포토카드 세트', weightG: 10, priceKRW: 3500 },
-  { id: 'P-HALO-007', artistId: 'ART-004', category: '포토카드', name: 'HALO 단체 포토카드 세트', weightG: 20, priceKRW: 6000 },
-  { id: 'P-HALO-008', artistId: 'ART-004', category: '굿즈', name: 'HALO 공식 라이트스틱', weightG: 300, priceKRW: 25000 },
-  { id: 'P-HALO-009', artistId: 'ART-004', category: '굿즈', name: 'HALO 키링', weightG: 50, priceKRW: 10000 },
-  { id: 'P-HALO-010', artistId: 'ART-004', category: '굿즈', name: 'HALO 부채 세트', weightG: 70, priceKRW: 11000 },
+  { id: 'P-HALO-001', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Single "ECHO" (Standard)', weightG: 320, priceKRW: 15000, stockOnHand: 160 },
+  { id: 'P-HALO-002', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Single "ECHO" (Limited)', weightG: 400, priceKRW: 27000, stockOnHand: 25 },
+  { id: 'P-HALO-003', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Album "AURORA" (Standard)', weightG: 460, priceKRW: 18500, stockOnHand: 130 },
+  { id: 'P-HALO-004', artistId: 'ART-004', category: '앨범', name: 'HALO 1st Album "AURORA" (Fan-club)', weightG: 530, priceKRW: 40000, stockOnHand: 20 },
+  { id: 'P-HALO-005', artistId: 'ART-004', category: '포토카드', name: 'HALO 서연 포토카드 세트', weightG: 10, priceKRW: 3500, stockOnHand: 350 },
+  { id: 'P-HALO-006', artistId: 'ART-004', category: '포토카드', name: 'HALO 지우 포토카드 세트', weightG: 10, priceKRW: 3500, stockOnHand: 180 },
+  { id: 'P-HALO-007', artistId: 'ART-004', category: '포토카드', name: 'HALO 단체 포토카드 세트', weightG: 20, priceKRW: 6000, stockOnHand: 120 },
+  { id: 'P-HALO-008', artistId: 'ART-004', category: '굿즈', name: 'HALO 공식 라이트스틱', weightG: 300, priceKRW: 25000, stockOnHand: 50 },
+  { id: 'P-HALO-009', artistId: 'ART-004', category: '굿즈', name: 'HALO 키링', weightG: 50, priceKRW: 10000, stockOnHand: 100 },
+  { id: 'P-HALO-010', artistId: 'ART-004', category: '굿즈', name: 'HALO 부채 세트', weightG: 70, priceKRW: 11000, stockOnHand: 90 },
 ];
 
 // =============================================================================
@@ -666,6 +666,10 @@ export function getOrderById(id: string): Order | undefined {
   return orders.find((o) => o.id === id);
 }
 
+export function getShipmentById(id: string): Shipment | undefined {
+  return shipments.find((s) => s.id === id);
+}
+
 export function getProductById(id: string): Product | undefined {
   return products.find((p) => p.id === id);
 }
@@ -703,4 +707,41 @@ export function getBalanceByAccount(accountId: string): AccountBalance {
     balance.KRW * fxRates.KRW;
 
   return balance;
+}
+
+/** 출고기준 재고: stockOnHand minus total shipped qty (출고완료 shipment items) */
+export function getShipmentBasedStock(productId: string): number {
+  const product = products.find((p) => p.id === productId);
+  if (!product) return 0;
+
+  let shippedQty = 0;
+  for (const s of shipments) {
+    if (s.status === '출고완료') {
+      for (const item of s.items) {
+        if (item.productId === productId) {
+          shippedQty += item.quantity;
+        }
+      }
+    }
+  }
+
+  return product.stockOnHand - shippedQty;
+}
+
+/** 주문기준 재고: 출고기준 재고 minus committed-but-not-yet-shipped qty (주문완료/주문대기 order items where shipmentStatus !== '출고완료') */
+export function getOrderBasedStock(productId: string): number {
+  const shipmentBased = getShipmentBasedStock(productId);
+
+  let committedQty = 0;
+  for (const o of orders) {
+    if (o.status === '주문완료' || o.status === '주문대기') {
+      for (const item of o.items) {
+        if (item.productId === productId && item.shipmentStatus !== '출고완료') {
+          committedQty += item.quantity;
+        }
+      }
+    }
+  }
+
+  return shipmentBased - committedQty;
 }

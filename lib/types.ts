@@ -33,6 +33,7 @@ export interface Product {
   name: string;
   weightG: number;
   priceKRW: number;
+  stockOnHand: number;
 }
 
 export interface ShippingAddress {
