@@ -1,0 +1,33 @@
+:root,
+.linear-root {
+  /* Core */
+  --l-bg: #ffffff;
+  --l-bg-sub: #fafafb;
+  --l-bg-hover: #f4f4f5;
+  --l-surface: #ffffff;
+  --l-border: #e6e6e8;
+  --l-border-strong: #d4d4d8;
+
+  /* Text */
+  --l-text: #1a1a1a;
+  --l-text-muted: #6b6b70;
+  --l-text-subtle: #9898a0;
+  --l-text-invert: #ffffff;
+
+  /* Brand (Linear purple) */
+  --l-brand: #5e6ad2;
+  --l-brand-hover: #4f59b8;
+  --l-brand-subtle: #eef0fc;
+
+  /* Status */
+  --l-success: #00875a;
+  --l-warning: #d97706;
+  --l-danger: #e5484d;
+  --l-info: #5e6ad2;
+
+  /* Status backgrounds */
+  --l-success-bg: #dcfce7;
+  --l-warning-bg: #fef3c7;
+  --l-danger-bg: #fee2e2;
+  --l-info-bg: #eef0fc;
+}

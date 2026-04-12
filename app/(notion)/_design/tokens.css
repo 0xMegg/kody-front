@@ -1,0 +1,34 @@
+:root,
+.notion-root {
+  /* Warm neutral core */
+  --n-bg: #fbfbfa;
+  --n-bg-sub: #f7f6f3;
+  --n-bg-hover: #efeee9;
+  --n-surface: #ffffff;
+  --n-border: #ebeae4;
+  --n-border-strong: #d9d8d1;
+
+  /* Text — warm near-black */
+  --n-text: #37352f;
+  --n-text-muted: #787669;
+  --n-text-subtle: #9b9a8f;
+
+  /* Accent — restrained, doc-like */
+  --n-accent: #2383e2;
+  --n-accent-hover: #1967be;
+  --n-accent-subtle: #e7f2fd;
+
+  /* Semantic highlights — Notion's palette */
+  --n-yellow-bg: #fdecc8;
+  --n-orange-bg: #fadec9;
+  --n-red-bg: #ffe2dd;
+  --n-green-bg: #dbeddb;
+  --n-blue-bg: #d3e5ef;
+  --n-purple-bg: #e8deee;
+  --n-pink-bg: #f5e0e9;
+  --n-gray-bg: #ebeced;
+
+  --n-success: #0f7b6c;
+  --n-warning: #b45309;
+  --n-danger: #b91c1c;
+}

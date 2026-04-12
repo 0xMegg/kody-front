@@ -1,0 +1,34 @@
+:root,
+.supabase-root {
+  /* Dark neutrals */
+  --s-bg: #171717;
+  --s-bg-sub: #1f1f1f;
+  --s-bg-raise: #262626;
+  --s-bg-overlay: #0a0a0a;
+  --s-border: #2e2e2e;
+  --s-border-strong: #404040;
+
+  /* Text */
+  --s-text: #ededed;
+  --s-text-muted: #a1a1aa;
+  --s-text-subtle: #71717a;
+  --s-text-invert: #0a0a0a;
+
+  /* Brand — Supabase emerald */
+  --s-brand: #3ecf8e;
+  --s-brand-hover: #2fb177;
+  --s-brand-dim: #1a3b2e;
+  --s-brand-glow: rgba(62, 207, 142, 0.12);
+
+  /* Status */
+  --s-success: #3ecf8e;
+  --s-warning: #f5a524;
+  --s-danger: #f87171;
+  --s-info: #60a5fa;
+
+  /* Status subtle bg (at ~12% alpha equivalents) */
+  --s-success-bg: #103529;
+  --s-warning-bg: #3d2b10;
+  --s-danger-bg: #3d1515;
+  --s-info-bg: #0f2540;
+}
