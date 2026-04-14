@@ -1,45 +1,108 @@
 :root,
 .notion-root {
-  /* Warm neutral core */
-  --n-bg: #fbfbfa;
-  --n-bg-sub: #f7f6f3;
-  --n-bg-hover: #efeee9;
-  --n-surface: #ffffff;
-  --n-border: #ebeae4;
-  --n-border-strong: #d9d8d1;
+  /* ── Color: Core ── */
+  --k-bg: #fbfbfa;
+  --k-bg-sub: #f7f6f3;
+  --k-bg-hover: #efeee9;
+  --k-surface: #ffffff;
+  --k-border: #ebeae4;
+  --k-border-strong: #d9d8d1;
 
-  /* Text — warm near-black */
-  --n-text: #37352f;
-  --n-text-muted: #787669;
-  --n-text-subtle: #9b9a8f;
-  --n-text-on-accent: #ffffff;
+  /* Color: Text */
+  --k-text: #37352f;
+  --k-text-muted: #787669;
+  --k-text-subtle: #9b9a8f;
+  --k-text-invert: #ffffff;
 
-  /* Accent — restrained, doc-like */
-  --n-accent: #2383e2;
-  --n-accent-hover: #1967be;
-  --n-accent-subtle: #e7f2fd;
+  /* Color: Accent (Notion blue) */
+  --k-brand: #2383e2;
+  --k-brand-hover: #1967be;
+  --k-brand-subtle: #e7f2fd;
 
-  /* Semantic highlights — Notion's palette */
-  --n-yellow-bg: #fdecc8;
-  --n-orange-bg: #fadec9;
-  --n-red-bg: #ffe2dd;
-  --n-green-bg: #dbeddb;
-  --n-blue-bg: #d3e5ef;
-  --n-purple-bg: #e8deee;
-  --n-pink-bg: #f5e0e9;
-  --n-gray-bg: #ebeced;
+  /* Color: Status */
+  --k-success: #0f7b6c;
+  --k-warning: #b45309;
+  --k-danger: #b91c1c;
+  --k-info: #2383e2;
 
-  /* Semantic text colors (pair with *-bg tokens above) */
-  --n-purple: #6b21a8;
-  --n-green: #0f7b6c;
-  --n-red: #b91c1c;
-  --n-orange: #b45309;
-  --n-blue: #2383e2;
-  --n-yellow: #92710e;
+  /* Color: Status backgrounds */
+  --k-success-bg: #dbeddb;
+  --k-warning-bg: #fdecc8;
+  --k-danger-bg: #ffe2dd;
+  --k-info-bg: #e7f2fd;
 
-  --n-success: #0f7b6c;
-  --n-warning: #b45309;
-  --n-danger: #b91c1c;
+  /* Color: Notion-specific */
+  --k-text-on-accent: #ffffff;
+
+  /* Color: Semantic highlight backgrounds */
+  --k-highlight-yellow-bg: #fdecc8;
+  --k-highlight-orange-bg: #fadec9;
+  --k-highlight-red-bg: #ffe2dd;
+  --k-highlight-green-bg: #dbeddb;
+  --k-highlight-blue-bg: #d3e5ef;
+  --k-highlight-purple-bg: #e8deee;
+  --k-highlight-pink-bg: #f5e0e9;
+  --k-highlight-gray-bg: #ebeced;
+
+  /* Color: Semantic highlight text */
+  --k-highlight-purple: #6b21a8;
+  --k-highlight-green: #0f7b6c;
+  --k-highlight-red: #b91c1c;
+  --k-highlight-orange: #b45309;
+  --k-highlight-blue: #2383e2;
+  --k-highlight-yellow: #92710e;
+
+  /* Color: Variant-specific fallbacks */
+  --k-bg-raise: #efeee9;
+  --k-bg-overlay: rgba(0, 0, 0, 0.5);
+  --k-brand-dim: #e7f2fd;
+  --k-brand-glow: transparent;
+
+  /* ── Radius ── */
+  --k-radius-sm: 3px;
+  --k-radius-md: 3px;
+  --k-radius-lg: 6px;
+
+  /* ── Height ── */
+  --k-height-sm: 28px;
+  --k-height-md: 32px;
+  --k-height-lg: 36px;
+  --k-height-row: 44px;
+  --k-height-header-row: 40px;
+
+  /* ── Spacing ── */
+  --k-space-xs: 4px;
+  --k-space-sm: 8px;
+  --k-space-md: 16px;
+  --k-space-lg: 20px;
+  --k-space-xl: 24px;
+  --k-space-2xl: 32px;
+  --k-pad-cell-x: 16px;
+  --k-pad-card: 20px;
+
+  /* ── Typography ── */
+  --k-font-body: Inter, -apple-system, ui-sans-serif, sans-serif;
+  --k-font-heading: 'Source Serif 4', 'Iowan Old Style', ui-serif, Georgia, serif;
+  --k-font-mono: ui-monospace, 'SF Mono', monospace;
+  --k-font-size-xs: 12px;
+  --k-font-size-sm: 14px;
+  --k-font-size-md: 15px;
+  --k-font-size-lg: 17px;
+  --k-font-size-xl: 20px;
+  --k-font-size-2xl: 24px;
+  --k-line-height-tight: 1.33;
+  --k-line-height-normal: 1.6;
+  --k-letter-spacing-tight: -0.005em;
+  --k-letter-spacing-wide: 0em;
+
+  /* ── Motion ── */
+  --k-transition-fast: 180ms ease;
+  --k-transition-normal: 220ms ease;
+
+  /* ── Layout ── */
+  --k-sidebar-width: 240px;
+  --k-header-height: 64px;
+  --k-content-max-width: 960px;
 }
 
 @keyframes fadeIn {

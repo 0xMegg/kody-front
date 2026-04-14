@@ -1,33 +1,100 @@
 :root,
 .linear-root {
-  /* Core */
-  --l-bg: #ffffff;
-  --l-bg-sub: #fafafb;
-  --l-bg-hover: #f4f4f5;
-  --l-surface: #ffffff;
-  --l-border: #e6e6e8;
-  --l-border-strong: #d4d4d8;
+  /* ── Color: Core ── */
+  --k-bg: #ffffff;
+  --k-bg-sub: #fafafb;
+  --k-bg-hover: #f4f4f5;
+  --k-surface: #ffffff;
+  --k-border: #e6e6e8;
+  --k-border-strong: #d4d4d8;
 
-  /* Text */
-  --l-text: #1a1a1a;
-  --l-text-muted: #6b6b70;
-  --l-text-subtle: #9898a0;
-  --l-text-invert: #ffffff;
+  /* Color: Text */
+  --k-text: #1a1a1a;
+  --k-text-muted: #6b6b70;
+  --k-text-subtle: #9898a0;
+  --k-text-invert: #ffffff;
 
-  /* Brand (Linear purple) */
-  --l-brand: #5e6ad2;
-  --l-brand-hover: #4f59b8;
-  --l-brand-subtle: #eef0fc;
+  /* Color: Brand (Linear purple) */
+  --k-brand: #5e6ad2;
+  --k-brand-hover: #4f59b8;
+  --k-brand-subtle: #eef0fc;
 
-  /* Status */
-  --l-success: #00875a;
-  --l-warning: #d97706;
-  --l-danger: #e5484d;
-  --l-info: #5e6ad2;
+  /* Color: Status */
+  --k-success: #00875a;
+  --k-warning: #d97706;
+  --k-danger: #e5484d;
+  --k-info: #5e6ad2;
 
-  /* Status backgrounds */
-  --l-success-bg: #dcfce7;
-  --l-warning-bg: #fef3c7;
-  --l-danger-bg: #fee2e2;
-  --l-info-bg: #eef0fc;
+  /* Color: Status backgrounds */
+  --k-success-bg: #dcfce7;
+  --k-warning-bg: #fef3c7;
+  --k-danger-bg: #fee2e2;
+  --k-info-bg: #eef0fc;
+
+  /* Color: Variant-specific fallbacks */
+  --k-bg-raise: #f4f4f5;
+  --k-bg-overlay: rgba(0, 0, 0, 0.5);
+  --k-brand-dim: #eef0fc;
+  --k-brand-glow: transparent;
+  --k-text-on-accent: #ffffff;
+  --k-highlight-yellow-bg: #f4f4f5;
+  --k-highlight-orange-bg: #f4f4f5;
+  --k-highlight-red-bg: #f4f4f5;
+  --k-highlight-green-bg: #f4f4f5;
+  --k-highlight-blue-bg: #f4f4f5;
+  --k-highlight-purple-bg: #f4f4f5;
+  --k-highlight-pink-bg: #f4f4f5;
+  --k-highlight-gray-bg: #f4f4f5;
+  --k-highlight-purple: #5e6ad2;
+  --k-highlight-green: #00875a;
+  --k-highlight-red: #e5484d;
+  --k-highlight-orange: #d97706;
+  --k-highlight-blue: #5e6ad2;
+  --k-highlight-yellow: #d97706;
+
+  /* ── Radius ── */
+  --k-radius-sm: 6px;
+  --k-radius-md: 8px;
+  --k-radius-lg: 8px;
+
+  /* ── Height ── */
+  --k-height-sm: 24px;
+  --k-height-md: 28px;
+  --k-height-lg: 32px;
+  --k-height-row: 36px;
+  --k-height-header-row: 32px;
+
+  /* ── Spacing ── */
+  --k-space-xs: 4px;
+  --k-space-sm: 8px;
+  --k-space-md: 12px;
+  --k-space-lg: 16px;
+  --k-space-xl: 24px;
+  --k-space-2xl: 32px;
+  --k-pad-cell-x: 12px;
+  --k-pad-card: 16px;
+
+  /* ── Typography ── */
+  --k-font-body: Inter, -apple-system, system-ui, sans-serif;
+  --k-font-heading: Inter, -apple-system, system-ui, sans-serif;
+  --k-font-mono: ui-monospace, 'SF Mono', monospace;
+  --k-font-size-xs: 11px;
+  --k-font-size-sm: 12px;
+  --k-font-size-md: 13px;
+  --k-font-size-lg: 16px;
+  --k-font-size-xl: 20px;
+  --k-font-size-2xl: 24px;
+  --k-line-height-tight: 1.25;
+  --k-line-height-normal: 1.5;
+  --k-letter-spacing-tight: -0.01em;
+  --k-letter-spacing-wide: 0.05em;
+
+  /* ── Motion ── */
+  --k-transition-fast: 150ms ease-out;
+  --k-transition-normal: 200ms ease-out;
+
+  /* ── Layout ── */
+  --k-sidebar-width: 220px;
+  --k-header-height: 56px;
+  --k-content-max-width: 1280px;
 }

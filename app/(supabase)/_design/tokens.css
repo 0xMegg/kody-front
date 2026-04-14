@@ -1,34 +1,102 @@
 :root,
 .supabase-root {
-  /* Dark neutrals */
-  --s-bg: #171717;
-  --s-bg-sub: #1f1f1f;
-  --s-bg-raise: #262626;
-  --s-bg-overlay: #0a0a0a;
-  --s-border: #2e2e2e;
-  --s-border-strong: #404040;
+  /* ── Color: Core ── */
+  --k-bg: #171717;
+  --k-bg-sub: #1f1f1f;
+  --k-bg-hover: #262626;
+  --k-surface: #1f1f1f;
+  --k-border: #2e2e2e;
+  --k-border-strong: #404040;
 
-  /* Text */
-  --s-text: #ededed;
-  --s-text-muted: #a1a1aa;
-  --s-text-subtle: #71717a;
-  --s-text-invert: #0a0a0a;
+  /* Color: Text */
+  --k-text: #ededed;
+  --k-text-muted: #a1a1aa;
+  --k-text-subtle: #71717a;
+  --k-text-invert: #0a0a0a;
 
-  /* Brand — Supabase emerald */
-  --s-brand: #3ecf8e;
-  --s-brand-hover: #2fb177;
-  --s-brand-dim: #1a3b2e;
-  --s-brand-glow: rgba(62, 207, 142, 0.12);
+  /* Color: Brand (Supabase emerald) */
+  --k-brand: #3ecf8e;
+  --k-brand-hover: #2fb177;
+  --k-brand-subtle: #1a3b2e;
 
-  /* Status */
-  --s-success: #3ecf8e;
-  --s-warning: #f5a524;
-  --s-danger: #f87171;
-  --s-info: #60a5fa;
+  /* Color: Status */
+  --k-success: #3ecf8e;
+  --k-warning: #f5a524;
+  --k-danger: #f87171;
+  --k-info: #60a5fa;
 
-  /* Status subtle bg (at ~12% alpha equivalents) */
-  --s-success-bg: #103529;
-  --s-warning-bg: #3d2b10;
-  --s-danger-bg: #3d1515;
-  --s-info-bg: #0f2540;
+  /* Color: Status backgrounds */
+  --k-success-bg: #103529;
+  --k-warning-bg: #3d2b10;
+  --k-danger-bg: #3d1515;
+  --k-info-bg: #0f2540;
+
+  /* Color: Supabase-specific */
+  --k-bg-raise: #262626;
+  --k-bg-overlay: #0a0a0a;
+  --k-brand-dim: #1a3b2e;
+  --k-brand-glow: rgba(62, 207, 142, 0.12);
+
+  /* Color: Variant-specific fallbacks */
+  --k-text-on-accent: #0a0a0a;
+  --k-highlight-yellow-bg: #262626;
+  --k-highlight-orange-bg: #262626;
+  --k-highlight-red-bg: #262626;
+  --k-highlight-green-bg: #262626;
+  --k-highlight-blue-bg: #262626;
+  --k-highlight-purple-bg: #262626;
+  --k-highlight-pink-bg: #262626;
+  --k-highlight-gray-bg: #262626;
+  --k-highlight-purple: #60a5fa;
+  --k-highlight-green: #3ecf8e;
+  --k-highlight-red: #f87171;
+  --k-highlight-orange: #f5a524;
+  --k-highlight-blue: #60a5fa;
+  --k-highlight-yellow: #f5a524;
+
+  /* ── Radius ── */
+  --k-radius-sm: 6px;
+  --k-radius-md: 6px;
+  --k-radius-lg: 8px;
+
+  /* ── Height ── */
+  --k-height-sm: 28px;
+  --k-height-md: 32px;
+  --k-height-lg: 36px;
+  --k-height-row: 40px;
+  --k-height-header-row: 36px;
+
+  /* ── Spacing ── */
+  --k-space-xs: 4px;
+  --k-space-sm: 8px;
+  --k-space-md: 12px;
+  --k-space-lg: 16px;
+  --k-space-xl: 24px;
+  --k-space-2xl: 32px;
+  --k-pad-cell-x: 12px;
+  --k-pad-card: 16px;
+
+  /* ── Typography ── */
+  --k-font-body: Inter, -apple-system, ui-sans-serif, sans-serif;
+  --k-font-heading: Inter, -apple-system, ui-sans-serif, sans-serif;
+  --k-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  --k-font-size-xs: 11px;
+  --k-font-size-sm: 12px;
+  --k-font-size-md: 13px;
+  --k-font-size-lg: 16px;
+  --k-font-size-xl: 20px;
+  --k-font-size-2xl: 24px;
+  --k-line-height-tight: 1.25;
+  --k-line-height-normal: 1.5;
+  --k-letter-spacing-tight: -0.01em;
+  --k-letter-spacing-wide: 0.05em;
+
+  /* ── Motion ── */
+  --k-transition-fast: 120ms ease-out;
+  --k-transition-normal: 200ms ease-out;
+
+  /* ── Layout ── */
+  --k-sidebar-width: 256px;
+  --k-header-height: 60px;
+  --k-content-max-width: none;
 }
