@@ -32,30 +32,30 @@ const variantMap: Record<
   }
 > = {
   primary: {
-    backgroundColor: "var(--s-brand)",
-    color: "var(--s-text-invert)",
+    backgroundColor: "var(--k-brand)",
+    color: "var(--k-text-invert)",
     border: "none",
-    hoverBg: "var(--s-brand-hover)",
-    hoverShadow: "0 0 0 1px var(--s-brand-glow)",
+    hoverBg: "var(--k-brand-hover)",
+    hoverShadow: "0 0 0 1px var(--k-brand-glow)",
   },
   secondary: {
-    backgroundColor: "var(--s-bg-sub)",
-    color: "var(--s-text)",
-    border: "1px solid var(--s-border-strong)",
-    hoverBg: "var(--s-bg-raise)",
+    backgroundColor: "var(--k-bg-sub)",
+    color: "var(--k-text)",
+    border: "1px solid var(--k-border-strong)",
+    hoverBg: "var(--k-bg-raise)",
   },
   ghost: {
     backgroundColor: "transparent",
-    color: "var(--s-text)",
+    color: "var(--k-text)",
     border: "none",
-    hoverBg: "var(--s-bg-raise)",
+    hoverBg: "var(--k-bg-raise)",
   },
   danger: {
     backgroundColor: "transparent",
-    color: "var(--s-danger)",
-    border: "1px solid var(--s-danger)",
-    hoverBg: "var(--s-danger)",
-    hoverColor: "var(--s-text-invert)",
+    color: "var(--k-danger)",
+    border: "1px solid var(--k-danger)",
+    hoverBg: "var(--k-danger)",
+    hoverColor: "var(--k-text-invert)",
   },
 };
 

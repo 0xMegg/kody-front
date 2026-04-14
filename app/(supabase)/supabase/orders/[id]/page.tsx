@@ -19,7 +19,7 @@ export default async function OrderDetailPage({
           breadcrumb="주문"
           title="주문을 찾을 수 없습니다"
         />
-        <p style={{ fontSize: 13, color: "var(--s-text-muted)" }}>
+        <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
           주문번호 &quot;{id}&quot;에 해당하는 주문이 없습니다.
         </p>
       </div>
@@ -33,7 +33,7 @@ export default async function OrderDetailPage({
           <span>
             <Link
               href="/supabase/orders"
-              style={{ color: "var(--s-text-muted)", textDecoration: "none" }}
+              style={{ color: "var(--k-text-muted)", textDecoration: "none" }}
             >
               주문
             </Link>

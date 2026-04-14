@@ -10,9 +10,9 @@ interface StatCardProps {
 }
 
 const trendConfig: Record<TrendDirection, { color: string; arrow: string }> = {
-  up: { color: "var(--n-success)", arrow: "↑" },
-  down: { color: "var(--n-danger)", arrow: "↓" },
-  neutral: { color: "var(--n-text-muted)", arrow: "→" },
+  up: { color: "var(--k-success)", arrow: "↑" },
+  down: { color: "var(--k-danger)", arrow: "↓" },
+  neutral: { color: "var(--k-text-muted)", arrow: "→" },
 };
 
 export default function StatCard({ label, value, trend, trendLabel }: StatCardProps) {
@@ -30,7 +30,7 @@ export default function StatCard({ label, value, trend, trendLabel }: StatCardPr
           style={{
             fontSize: 14,
             fontWeight: 500,
-            color: "var(--n-text-muted)",
+            color: "var(--k-text-muted)",
           }}
         >
           {label}
@@ -39,7 +39,7 @@ export default function StatCard({ label, value, trend, trendLabel }: StatCardPr
           style={{
             fontSize: 26,
             fontWeight: 600,
-            color: "var(--n-text)",
+            color: "var(--k-text)",
             lineHeight: 1.2,
             fontVariantNumeric: "tabular-nums",
           }}
@@ -61,7 +61,7 @@ export default function StatCard({ label, value, trend, trendLabel }: StatCardPr
               <span
                 style={{
                   fontSize: 13,
-                  color: "var(--n-text-muted)",
+                  color: "var(--k-text-muted)",
                 }}
               >
                 {trendLabel}

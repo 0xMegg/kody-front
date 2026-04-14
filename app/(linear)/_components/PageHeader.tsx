@@ -22,7 +22,7 @@ export default function PageHeader({ breadcrumb, title, actions }: PageHeaderPro
           <span
             style={{
               fontSize: 12,
-              color: "var(--l-text-muted)",
+              color: "var(--k-text-muted)",
             }}
           >
             {breadcrumb}
@@ -32,7 +32,7 @@ export default function PageHeader({ breadcrumb, title, actions }: PageHeaderPro
           style={{
             fontSize: 20,
             fontWeight: 600,
-            color: "var(--l-text)",
+            color: "var(--k-text)",
             margin: 0,
             lineHeight: 1.3,
           }}

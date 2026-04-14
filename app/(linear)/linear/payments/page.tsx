@@ -96,10 +96,10 @@ function FilterBar({
     height: 28,
     padding: "0 8px",
     fontSize: 12,
-    border: "1px solid var(--l-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 6,
-    backgroundColor: "var(--l-bg)",
-    color: "var(--l-text)",
+    backgroundColor: "var(--k-bg)",
+    color: "var(--k-text)",
     outline: "none",
   };
 
@@ -119,7 +119,7 @@ function FilterBar({
         onChange={(e) => onDateFromChange(e.target.value)}
         style={inputStyle}
       />
-      <span style={{ fontSize: 12, color: "var(--l-text-muted)" }}>~</span>
+      <span style={{ fontSize: 12, color: "var(--k-text-muted)" }}>~</span>
       <input
         type="date"
         value={dateTo}
@@ -187,7 +187,7 @@ function Pagination({
         gap: 12,
         padding: "12px 0",
         fontSize: 12,
-        color: "var(--l-text-muted)",
+        color: "var(--k-text-muted)",
       }}
     >
       <span>
@@ -252,14 +252,14 @@ function BalanceSummaryPanel() {
               padding: "6px 0",
               borderBottom:
                 i < ranked.length - 1
-                  ? "1px solid var(--l-border)"
+                  ? "1px solid var(--k-border)"
                   : "none",
             }}
           >
             <span
               style={{
                 fontSize: 12,
-                color: "var(--l-text)",
+                color: "var(--k-text)",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
@@ -275,8 +275,8 @@ function BalanceSummaryPanel() {
                 fontVariantNumeric: "tabular-nums",
                 color:
                   item.totalKRW < 0
-                    ? "var(--l-danger)"
-                    : "var(--l-text)",
+                    ? "var(--k-danger)"
+                    : "var(--k-text)",
               }}
             >
               ₩{formatNumber(Math.round(item.totalKRW))}
@@ -399,7 +399,7 @@ export default function LinearPaymentsPage() {
                     fontWeight: 500,
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
-                    color: "var(--l-text-muted)",
+                    color: "var(--k-text-muted)",
                   }}
                 >
                   통화별 이번 달 합계
@@ -417,14 +417,14 @@ export default function LinearPaymentsPage() {
                           gap: 4,
                           padding: "4px 10px",
                           borderRadius: 12,
-                          backgroundColor: "var(--l-bg-sub)",
+                          backgroundColor: "var(--k-bg-sub)",
                           fontSize: 12,
                           fontWeight: 500,
                           fontVariantNumeric: "tabular-nums",
-                          color: "var(--l-text)",
+                          color: "var(--k-text)",
                         }}
                       >
-                        <span style={{ color: "var(--l-text-muted)" }}>{cur}</span>
+                        <span style={{ color: "var(--k-text-muted)" }}>{cur}</span>
                         {formatNumber(val)}
                       </span>
                     );

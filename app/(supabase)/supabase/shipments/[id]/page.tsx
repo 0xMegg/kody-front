@@ -29,7 +29,7 @@ export default async function SupabaseShipmentDetailPage({
     return (
       <div>
         <PageHeader breadcrumb="출고" title="출고를 찾을 수 없습니다" />
-        <p style={{ fontSize: 13, color: "var(--s-text-muted)" }}>
+        <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
           출고번호 &quot;{id}&quot;에 해당하는 출고가 없습니다.
         </p>
       </div>
@@ -49,7 +49,7 @@ export default async function SupabaseShipmentDetailPage({
           <span>
             <Link
               href="/supabase/shipments"
-              style={{ color: "var(--s-text-muted)", textDecoration: "none" }}
+              style={{ color: "var(--k-text-muted)", textDecoration: "none" }}
             >
               출고
             </Link>
@@ -133,13 +133,13 @@ export default async function SupabaseShipmentDetailPage({
                       style={{
                         height: 36,
                         padding: "0 12px",
-                        backgroundColor: "var(--s-bg-sub)",
-                        borderBottom: "1px solid var(--s-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        color: "var(--s-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                       }}
@@ -192,9 +192,9 @@ export default async function SupabaseShipmentDetailPage({
                           style={{
                             height: 40,
                             padding: "0 12px",
-                            borderBottom: "1px solid var(--s-border)",
+                            borderBottom: "1px solid var(--k-border)",
                             fontSize: 13,
-                            color: "var(--s-text)",
+                            color: "var(--k-text)",
                             textAlign: cell.align,
                             fontFamily: cell.mono
                               ? "var(--font-jetbrains-mono)"
@@ -216,7 +216,7 @@ export default async function SupabaseShipmentDetailPage({
                       padding: "0 12px",
                       fontSize: 13,
                       fontWeight: 600,
-                      color: "var(--s-text)",
+                      color: "var(--k-text)",
                       textAlign: "right",
                     }}
                   >
@@ -228,7 +228,7 @@ export default async function SupabaseShipmentDetailPage({
                       padding: "0 12px",
                       fontSize: 13,
                       fontWeight: 600,
-                      color: "var(--s-brand)",
+                      color: "var(--k-brand)",
                       textAlign: "right",
                       fontFamily: "var(--font-jetbrains-mono)",
                     }}
@@ -262,7 +262,7 @@ export default async function SupabaseShipmentDetailPage({
               <span
                 style={{
                   fontSize: 12,
-                  color: "var(--s-text-muted)",
+                  color: "var(--k-text-muted)",
                   minWidth: 80,
                 }}
               >
@@ -272,7 +272,7 @@ export default async function SupabaseShipmentDetailPage({
               <button
                 style={{
                   fontSize: 12,
-                  color: "var(--s-brand)",
+                  color: "var(--k-brand)",
                   background: "none",
                   border: "none",
                   cursor: "pointer",
@@ -289,7 +289,7 @@ export default async function SupabaseShipmentDetailPage({
               <span
                 style={{
                   fontSize: 12,
-                  color: "var(--s-text-muted)",
+                  color: "var(--k-text-muted)",
                   display: "block",
                   marginBottom: 8,
                 }}
@@ -303,16 +303,16 @@ export default async function SupabaseShipmentDetailPage({
                     alignItems: "center",
                     gap: 8,
                     padding: "10px 14px",
-                    border: "1px solid var(--s-border)",
+                    border: "1px solid var(--k-border)",
                     borderRadius: 6,
-                    backgroundColor: "var(--s-bg-sub)",
+                    backgroundColor: "var(--k-bg-sub)",
                   }}
                 >
                   <span style={{ fontSize: 14 }}>📄</span>
                   <span
                     style={{
                       fontSize: 13,
-                      color: "var(--s-text)",
+                      color: "var(--k-text)",
                       fontWeight: 500,
                       fontFamily: "var(--font-jetbrains-mono)",
                     }}
@@ -327,9 +327,9 @@ export default async function SupabaseShipmentDetailPage({
                     alignItems: "center",
                     justifyContent: "center",
                     padding: "24px 16px",
-                    border: "1px dashed var(--s-border-strong)",
+                    border: "1px dashed var(--k-border-strong)",
                     borderRadius: 6,
-                    backgroundColor: "var(--s-bg-sub)",
+                    backgroundColor: "var(--k-bg-sub)",
                     cursor: "pointer",
                     transition: "border-color 120ms ease-out",
                   }}
@@ -337,7 +337,7 @@ export default async function SupabaseShipmentDetailPage({
                   <span
                     style={{
                       fontSize: 13,
-                      color: "var(--s-text-muted)",
+                      color: "var(--k-text-muted)",
                     }}
                   >
                     파일 드래그 또는 클릭하여 업로드
@@ -361,7 +361,7 @@ export default async function SupabaseShipmentDetailPage({
               <label
                 style={{
                   fontSize: 12,
-                  color: "var(--s-text-muted)",
+                  color: "var(--k-text-muted)",
                   display: "block",
                   marginBottom: 6,
                 }}
@@ -380,12 +380,12 @@ export default async function SupabaseShipmentDetailPage({
                   padding: "0 10px",
                   fontSize: 13,
                   fontFamily: "var(--font-jetbrains-mono)",
-                  border: "1px solid var(--s-border)",
+                  border: "1px solid var(--k-border)",
                   borderRadius: 4,
                   backgroundColor: isCompleted
-                    ? "var(--s-bg-sub)"
-                    : "var(--s-bg)",
-                  color: "var(--s-text)",
+                    ? "var(--k-bg-sub)"
+                    : "var(--k-bg)",
+                  color: "var(--k-text)",
                   outline: "none",
                   boxSizing: "border-box",
                   transition: "border-color 120ms ease-out",
@@ -408,8 +408,8 @@ export default async function SupabaseShipmentDetailPage({
                   fontWeight: 500,
                   borderRadius: 6,
                   border: "none",
-                  backgroundColor: "var(--s-brand)",
-                  color: "var(--s-text-invert)",
+                  backgroundColor: "var(--k-brand)",
+                  color: "var(--k-text-invert)",
                   cursor: isCompleted ? "not-allowed" : "pointer",
                   opacity: isCompleted ? 0.5 : 1,
                   transition: "all 120ms ease-out",
@@ -421,7 +421,7 @@ export default async function SupabaseShipmentDetailPage({
             <p
               style={{
                 fontSize: 12,
-                color: "var(--s-text-muted)",
+                color: "var(--k-text-muted)",
                 margin: 0,
                 lineHeight: 1.5,
               }}
@@ -444,10 +444,10 @@ function InfoRow({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <span style={{ fontSize: 12, color: "var(--s-text-muted)" }}>
+      <span style={{ fontSize: 12, color: "var(--k-text-muted)" }}>
         {label}
       </span>
-      <span style={{ fontSize: 13, color: "var(--s-text)" }}>{value}</span>
+      <span style={{ fontSize: 13, color: "var(--k-text)" }}>{value}</span>
     </div>
   );
 }

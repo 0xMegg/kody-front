@@ -11,7 +11,7 @@ export default function NewOrderPage() {
             <Link
               href="/notion/orders"
               style={{
-                color: "var(--n-text-muted)",
+                color: "var(--k-text-muted)",
                 textDecoration: "none",
               }}
             >

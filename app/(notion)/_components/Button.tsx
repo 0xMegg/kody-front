@@ -25,28 +25,28 @@ const variantMap: Record<
   { backgroundColor: string; color: string; border: string; hoverBg: string }
 > = {
   primary: {
-    backgroundColor: "var(--n-accent)",
-    color: "var(--n-text-on-accent)",
+    backgroundColor: "var(--k-brand)",
+    color: "var(--k-text-invert)",
     border: "none",
-    hoverBg: "var(--n-accent-hover)",
+    hoverBg: "var(--k-brand-hover)",
   },
   secondary: {
-    backgroundColor: "var(--n-surface)",
-    color: "var(--n-text)",
-    border: "1px solid var(--n-border-strong)",
-    hoverBg: "var(--n-bg-hover)",
+    backgroundColor: "var(--k-surface)",
+    color: "var(--k-text)",
+    border: "1px solid var(--k-border-strong)",
+    hoverBg: "var(--k-bg-hover)",
   },
   ghost: {
     backgroundColor: "transparent",
-    color: "var(--n-text)",
+    color: "var(--k-text)",
     border: "none",
-    hoverBg: "var(--n-bg-hover)",
+    hoverBg: "var(--k-bg-hover)",
   },
   danger: {
-    backgroundColor: "var(--n-danger)",
-    color: "var(--n-text-on-accent)",
+    backgroundColor: "var(--k-danger)",
+    color: "var(--k-text-invert)",
     border: "none",
-    hoverBg: "var(--n-danger)",
+    hoverBg: "var(--k-danger)",
   },
 };
 

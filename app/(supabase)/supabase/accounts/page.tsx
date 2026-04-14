@@ -85,10 +85,10 @@ function FilterBar({
     height: 28,
     padding: "0 8px",
     fontSize: 12,
-    border: "1px solid var(--s-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 6,
-    backgroundColor: "var(--s-bg-sub)",
-    color: "var(--s-text)",
+    backgroundColor: "var(--k-bg-sub)",
+    color: "var(--k-text)",
     outline: "none",
     transition: "border-color 120ms ease-out",
   };
@@ -130,7 +130,7 @@ function FilterBar({
           alignItems: "center",
           gap: 4,
           fontSize: 12,
-          color: "var(--s-text-muted)",
+          color: "var(--k-text-muted)",
           cursor: "pointer",
         }}
       >
@@ -167,7 +167,7 @@ function Pagination({
         gap: 12,
         padding: "12px 0",
         fontSize: 12,
-        color: "var(--s-text-muted)",
+        color: "var(--k-text-muted)",
       }}
     >
       <span>
@@ -260,7 +260,7 @@ export default function SupabaseAccountsPage() {
             return (
               <span
                 style={{
-                  color: n < 0 ? "var(--s-danger)" : undefined,
+                  color: n < 0 ? "var(--k-danger)" : undefined,
                 }}
               >
                 {formatNumber(Math.round(n))}

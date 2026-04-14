@@ -19,8 +19,8 @@ export default function LinearLayout({
             alignItems: "center",
             justifyContent: "space-between",
             padding: "0 16px",
-            borderBottom: "1px solid var(--l-border)",
-            backgroundColor: "var(--l-bg)",
+            borderBottom: "1px solid var(--k-border)",
+            backgroundColor: "var(--k-bg)",
             fontSize: 12,
             gap: 12,
           }}
@@ -29,7 +29,7 @@ export default function LinearLayout({
           <span
             style={{
               fontSize: 12,
-              color: "var(--l-text-muted)",
+              color: "var(--k-text-muted)",
               whiteSpace: "nowrap",
             }}
           >
@@ -45,9 +45,9 @@ export default function LinearLayout({
               display: "flex",
               alignItems: "center",
               padding: "0 10px",
-              border: "1px solid var(--l-border)",
+              border: "1px solid var(--k-border)",
               borderRadius: 6,
-              color: "var(--l-text-subtle)",
+              color: "var(--k-text-subtle)",
               fontSize: 12,
             }}
           >
@@ -62,13 +62,13 @@ export default function LinearLayout({
                 width: 24,
                 height: 24,
                 borderRadius: "50%",
-                backgroundColor: "var(--l-bg-hover)",
+                backgroundColor: "var(--k-bg-hover)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontSize: 10,
                 fontWeight: 600,
-                color: "var(--l-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               U
@@ -79,8 +79,8 @@ export default function LinearLayout({
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
-                color: "var(--l-text-subtle)",
-                backgroundColor: "var(--l-warning-bg)",
+                color: "var(--k-text-subtle)",
+                backgroundColor: "var(--k-warning-bg)",
                 padding: "2px 8px",
                 borderRadius: 4,
               }}
@@ -90,7 +90,7 @@ export default function LinearLayout({
             <Link
               href="/"
               style={{
-                color: "var(--l-brand)",
+                color: "var(--k-brand)",
                 textDecoration: "none",
                 fontSize: 12,
               }}

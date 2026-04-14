@@ -103,9 +103,9 @@ export default function NotionShipmentsPage() {
         style={{
           display: "flex",
           flex: 1,
-          border: "1px solid var(--n-border)",
+          border: "1px solid var(--k-border)",
           borderRadius: 3,
-          backgroundColor: "var(--n-surface)",
+          backgroundColor: "var(--k-surface)",
           boxShadow: "rgba(15, 15, 15, 0.04) 0px 1px 2px",
           overflow: "hidden",
           minHeight: 0,
@@ -117,7 +117,7 @@ export default function NotionShipmentsPage() {
             flex: "0 0 55%",
             display: "flex",
             flexDirection: "column",
-            borderRight: "1px solid var(--n-border)",
+            borderRight: "1px solid var(--k-border)",
             overflow: "hidden",
           }}
         >
@@ -125,7 +125,7 @@ export default function NotionShipmentsPage() {
           <div
             style={{
               padding: "20px 20px 16px",
-              borderBottom: "1px solid var(--n-border)",
+              borderBottom: "1px solid var(--k-border)",
             }}
           >
             <div
@@ -142,7 +142,7 @@ export default function NotionShipmentsPage() {
                     fontFamily: "var(--font-source-serif)",
                     fontSize: 17,
                     fontWeight: 600,
-                    color: "var(--n-text)",
+                    color: "var(--k-text)",
                   }}
                 >
                   피킹 대기
@@ -161,10 +161,10 @@ export default function NotionShipmentsPage() {
                 height: 32,
                 padding: "0 12px",
                 fontSize: 15,
-                border: "1px solid var(--n-border)",
+                border: "1px solid var(--k-border)",
                 borderRadius: 3,
-                backgroundColor: "var(--n-bg)",
-                color: "var(--n-text)",
+                backgroundColor: "var(--k-bg)",
+                color: "var(--k-text)",
                 outline: "none",
                 boxSizing: "border-box",
                 transition: "border-color 180ms ease",
@@ -197,11 +197,11 @@ export default function NotionShipmentsPage() {
                       style={{
                         height: 40,
                         padding: "0 16px",
-                        backgroundColor: "var(--n-bg-sub)",
-                        borderBottom: "1px solid var(--n-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 13,
                         fontWeight: 500,
-                        color: "var(--n-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                         width: col.width,
@@ -233,23 +233,23 @@ export default function NotionShipmentsPage() {
                     key={item.orderItemId}
                     style={{
                       backgroundColor:
-                        rowIdx % 2 === 1 ? "var(--n-bg-sub)" : "transparent",
+                        rowIdx % 2 === 1 ? "var(--k-bg-sub)" : "transparent",
                       transition: "background-color 180ms ease",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor =
-                        "var(--n-bg-hover)";
+                        "var(--k-bg-hover)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor =
-                        rowIdx % 2 === 1 ? "var(--n-bg-sub)" : "transparent";
+                        rowIdx % 2 === 1 ? "var(--k-bg-sub)" : "transparent";
                     }}
                   >
                     <td
                       style={{
                         height: 44,
                         padding: "0 16px",
-                        borderBottom: "1px solid var(--n-border)",
+                        borderBottom: "1px solid var(--k-border)",
                         textAlign: "center",
                       }}
                     >
@@ -273,9 +273,9 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 15,
-                          color: "var(--n-text)",
+                          color: "var(--k-text)",
                           textAlign: cell.align,
                           whiteSpace: "nowrap",
                           overflow: "hidden",
@@ -296,7 +296,7 @@ export default function NotionShipmentsPage() {
           <div
             style={{
               padding: "14px 20px",
-              borderTop: "1px solid var(--n-border)",
+              borderTop: "1px solid var(--k-border)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -305,7 +305,7 @@ export default function NotionShipmentsPage() {
             <span
               style={{
                 fontSize: 14,
-                color: "var(--n-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               {selectedItems.size}개 선택됨
@@ -333,7 +333,7 @@ export default function NotionShipmentsPage() {
           <div
             style={{
               display: "flex",
-              borderBottom: "1px solid var(--n-border)",
+              borderBottom: "1px solid var(--k-border)",
               padding: "0 20px",
             }}
           >
@@ -352,11 +352,11 @@ export default function NotionShipmentsPage() {
                     padding: "0 16px",
                     fontSize: 15,
                     fontWeight: isActive ? 600 : 400,
-                    color: isActive ? "var(--n-accent)" : "var(--n-text-muted)",
+                    color: isActive ? "var(--k-brand)" : "var(--k-text-muted)",
                     backgroundColor: "transparent",
                     border: "none",
                     borderBottom: isActive
-                      ? "2px solid var(--n-accent)"
+                      ? "2px solid var(--k-brand)"
                       : "2px solid transparent",
                     cursor: "pointer",
                     transition: "all 180ms ease",
@@ -367,8 +367,8 @@ export default function NotionShipmentsPage() {
                     style={{
                       fontSize: 13,
                       color: isActive
-                        ? "var(--n-accent)"
-                        : "var(--n-text-muted)",
+                        ? "var(--k-brand)"
+                        : "var(--k-text-muted)",
                     }}
                   >
                     {count}
@@ -404,11 +404,11 @@ export default function NotionShipmentsPage() {
                       style={{
                         height: 40,
                         padding: "0 16px",
-                        backgroundColor: "var(--n-bg-sub)",
-                        borderBottom: "1px solid var(--n-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 13,
                         fontWeight: 500,
-                        color: "var(--n-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                         position: "sticky",
@@ -441,18 +441,18 @@ export default function NotionShipmentsPage() {
                         cursor: "pointer",
                         backgroundColor:
                           rowIdx % 2 === 1
-                            ? "var(--n-bg-sub)"
+                            ? "var(--k-bg-sub)"
                             : "transparent",
                         transition: "background-color 180ms ease",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor =
-                          "var(--n-bg-hover)";
+                          "var(--k-bg-hover)";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.backgroundColor =
                           rowIdx % 2 === 1
-                            ? "var(--n-bg-sub)"
+                            ? "var(--k-bg-sub)"
                             : "transparent";
                       }}
                     >
@@ -460,9 +460,9 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 15,
-                          color: "var(--n-accent)",
+                          color: "var(--k-brand)",
                           fontWeight: 500,
                         }}
                       >
@@ -472,9 +472,9 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 15,
-                          color: "var(--n-text)",
+                          color: "var(--k-text)",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -487,9 +487,9 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 15,
-                          color: "var(--n-text)",
+                          color: "var(--k-text)",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -504,9 +504,9 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 15,
-                          color: "var(--n-text)",
+                          color: "var(--k-text)",
                         }}
                       >
                         {shipment.shipDate ?? "-"}
@@ -515,9 +515,9 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 15,
-                          color: "var(--n-text)",
+                          color: "var(--k-text)",
                           textAlign: "right",
                         }}
                       >
@@ -527,9 +527,9 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 15,
-                          color: "var(--n-text)",
+                          color: "var(--k-text)",
                           textAlign: "right",
                         }}
                       >
@@ -539,7 +539,7 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           textAlign: "center",
                         }}
                       >
@@ -549,7 +549,7 @@ export default function NotionShipmentsPage() {
                         style={{
                           height: 44,
                           padding: "0 16px",
-                          borderBottom: "1px solid var(--n-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           textAlign: "center",
                         }}
                       >

@@ -26,8 +26,8 @@ export default function NotionLayout({
             alignItems: "center",
             justifyContent: "space-between",
             padding: "0 20px",
-            borderBottom: "1px solid var(--n-border)",
-            backgroundColor: "var(--n-bg)",
+            borderBottom: "1px solid var(--k-border)",
+            backgroundColor: "var(--k-bg)",
             fontSize: 13,
             gap: 14,
           }}
@@ -36,7 +36,7 @@ export default function NotionLayout({
           <span
             style={{
               fontSize: 13,
-              color: "var(--n-text-muted)",
+              color: "var(--k-text-muted)",
               whiteSpace: "nowrap",
             }}
           >
@@ -52,9 +52,9 @@ export default function NotionLayout({
               display: "flex",
               alignItems: "center",
               padding: "0 12px",
-              border: "1px solid var(--n-border)",
+              border: "1px solid var(--k-border)",
               borderRadius: 3,
-              color: "var(--n-text-subtle)",
+              color: "var(--k-text-subtle)",
               fontSize: 13,
             }}
           >
@@ -69,13 +69,13 @@ export default function NotionLayout({
                 width: 28,
                 height: 28,
                 borderRadius: "50%",
-                backgroundColor: "var(--n-bg-hover)",
+                backgroundColor: "var(--k-bg-hover)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontSize: 11,
                 fontWeight: 600,
-                color: "var(--n-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               U
@@ -84,8 +84,8 @@ export default function NotionLayout({
               style={{
                 fontSize: 11,
                 fontWeight: 500,
-                color: "var(--n-text-subtle)",
-                backgroundColor: "var(--n-yellow-bg)",
+                color: "var(--k-text-subtle)",
+                backgroundColor: "var(--k-highlight-yellow-bg)",
                 padding: "2px 8px",
                 borderRadius: 3,
               }}
@@ -95,7 +95,7 @@ export default function NotionLayout({
             <Link
               href="/"
               style={{
-                color: "var(--n-accent)",
+                color: "var(--k-brand)",
                 textDecoration: "none",
                 fontSize: 13,
               }}

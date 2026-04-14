@@ -10,7 +10,7 @@ export default function NewOrderPage() {
           <span>
             <Link
               href="/supabase/orders"
-              style={{ color: "var(--s-text-muted)", textDecoration: "none" }}
+              style={{ color: "var(--k-text-muted)", textDecoration: "none" }}
             >
               주문
             </Link>

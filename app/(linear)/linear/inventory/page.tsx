@@ -105,8 +105,8 @@ function ProductDrawer({
           right: 0,
           bottom: 0,
           width: 400,
-          backgroundColor: "var(--l-bg)",
-          borderLeft: "1px solid var(--l-border)",
+          backgroundColor: "var(--k-bg)",
+          borderLeft: "1px solid var(--k-border)",
           zIndex: 50,
           display: "flex",
           flexDirection: "column",
@@ -120,11 +120,11 @@ function ProductDrawer({
             alignItems: "center",
             justifyContent: "space-between",
             padding: "16px 20px",
-            borderBottom: "1px solid var(--l-border)",
+            borderBottom: "1px solid var(--k-border)",
           }}
         >
           <span
-            style={{ fontSize: 15, fontWeight: 600, color: "var(--l-text)" }}
+            style={{ fontSize: 15, fontWeight: 600, color: "var(--k-text)" }}
           >
             상품 상세
           </span>
@@ -136,10 +136,10 @@ function ProductDrawer({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid var(--l-border)",
+              border: "1px solid var(--k-border)",
               borderRadius: 6,
               backgroundColor: "transparent",
-              color: "var(--l-text-muted)",
+              color: "var(--k-text-muted)",
               cursor: "pointer",
               fontSize: 14,
             }}
@@ -173,7 +173,7 @@ function ProductDrawer({
             style={{
               padding: 16,
               borderRadius: 8,
-              backgroundColor: "var(--l-bg-sub)",
+              backgroundColor: "var(--k-bg-sub)",
               display: "flex",
               flexDirection: "column",
               gap: 10,
@@ -185,7 +185,7 @@ function ProductDrawer({
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
-                color: "var(--l-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               재고 현황
@@ -202,14 +202,14 @@ function ProductDrawer({
                 value={row.orderBasedStock}
                 color={
                   row.orderBasedStock < 0
-                    ? "var(--l-danger)"
-                    : "var(--l-text)"
+                    ? "var(--k-danger)"
+                    : "var(--k-text)"
                 }
               />
               <StockCell
                 label="출고기준"
                 value={row.shipmentBasedStock}
-                color="var(--l-text)"
+                color="var(--k-text)"
               />
             </div>
             <div
@@ -218,11 +218,11 @@ function ProductDrawer({
                 justifyContent: "space-between",
                 alignItems: "center",
                 paddingTop: 8,
-                borderTop: "1px solid var(--l-border)",
+                borderTop: "1px solid var(--k-border)",
               }}
             >
               <span
-                style={{ fontSize: 12, color: "var(--l-text-muted)" }}
+                style={{ fontSize: 12, color: "var(--k-text-muted)" }}
               >
                 차이
               </span>
@@ -233,10 +233,10 @@ function ProductDrawer({
                   fontVariantNumeric: "tabular-nums",
                   color:
                     row.diff > 0
-                      ? "var(--l-success)"
+                      ? "var(--k-success)"
                       : row.diff < 0
-                        ? "var(--l-danger)"
-                        : "var(--l-text)",
+                        ? "var(--k-danger)"
+                        : "var(--k-text)",
                 }}
               >
                 {row.diff > 0 ? "+" : ""}
@@ -253,7 +253,7 @@ function ProductDrawer({
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
-                color: "var(--l-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               관련 주문 {relatedOrders.length}건
@@ -264,14 +264,14 @@ function ProductDrawer({
                 style={{
                   padding: "8px 12px",
                   borderRadius: 6,
-                  border: "1px solid var(--l-border)",
+                  border: "1px solid var(--k-border)",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
                   fontSize: 12,
                 }}
               >
-                <span style={{ color: "var(--l-text)", fontVariantNumeric: "tabular-nums" }}>
+                <span style={{ color: "var(--k-text)", fontVariantNumeric: "tabular-nums" }}>
                   #{o.id}
                 </span>
                 <span
@@ -279,8 +279,8 @@ function ProductDrawer({
                     fontSize: 11,
                     color:
                       o.status === "주문완료"
-                        ? "var(--l-success)"
-                        : "var(--l-warning)",
+                        ? "var(--k-success)"
+                        : "var(--k-warning)",
                   }}
                 >
                   {o.status}
@@ -288,7 +288,7 @@ function ProductDrawer({
               </div>
             ))}
             {relatedOrders.length > 5 && (
-              <span style={{ fontSize: 11, color: "var(--l-text-muted)" }}>
+              <span style={{ fontSize: 11, color: "var(--k-text-muted)" }}>
                 외 {relatedOrders.length - 5}건
               </span>
             )}
@@ -308,10 +308,10 @@ function InfoRow({ label, value }: { label: string; value: string }) {
         alignItems: "center",
       }}
     >
-      <span style={{ fontSize: 12, color: "var(--l-text-muted)" }}>
+      <span style={{ fontSize: 12, color: "var(--k-text-muted)" }}>
         {label}
       </span>
-      <span style={{ fontSize: 13, color: "var(--l-text)", fontWeight: 500 }}>
+      <span style={{ fontSize: 13, color: "var(--k-text)", fontWeight: 500 }}>
         {value}
       </span>
     </div>
@@ -329,7 +329,7 @@ function StockCell({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-      <span style={{ fontSize: 11, color: "var(--l-text-muted)" }}>
+      <span style={{ fontSize: 11, color: "var(--k-text-muted)" }}>
         {label}
       </span>
       <span
@@ -384,10 +384,10 @@ export default function LinearInventoryPage() {
     height: 28,
     padding: "0 8px",
     fontSize: 12,
-    border: "1px solid var(--l-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 6,
-    backgroundColor: "var(--l-surface)",
-    color: "var(--l-text)",
+    backgroundColor: "var(--k-surface)",
+    color: "var(--k-text)",
     outline: "none",
   };
 
@@ -395,10 +395,10 @@ export default function LinearInventoryPage() {
     height: 28,
     padding: "0 10px",
     fontSize: 12,
-    border: "1px solid var(--l-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 6,
-    backgroundColor: "var(--l-surface)",
-    color: "var(--l-text)",
+    backgroundColor: "var(--k-surface)",
+    color: "var(--k-text)",
     outline: "none",
     width: 200,
   };
@@ -465,7 +465,7 @@ export default function LinearInventoryPage() {
         />
 
         <span
-          style={{ fontSize: 12, color: "var(--l-text-muted)", marginLeft: 4 }}
+          style={{ fontSize: 12, color: "var(--k-text-muted)", marginLeft: 4 }}
         >
           {filteredRows.length}건
         </span>
@@ -495,8 +495,8 @@ export default function LinearInventoryPage() {
                     style={{
                       fontVariantNumeric: "tabular-nums",
                       fontWeight: 500,
-                      color: v < 0 ? "var(--l-danger)" : "var(--l-text)",
-                      backgroundColor: "var(--l-bg-sub)",
+                      color: v < 0 ? "var(--k-danger)" : "var(--k-text)",
+                      backgroundColor: "var(--k-bg-sub)",
                       padding: "2px 8px",
                       borderRadius: 3,
                     }}
@@ -512,7 +512,7 @@ export default function LinearInventoryPage() {
                     style={{
                       fontVariantNumeric: "tabular-nums",
                       fontWeight: 500,
-                      backgroundColor: "var(--l-bg-sub)",
+                      backgroundColor: "var(--k-bg-sub)",
                       padding: "2px 8px",
                       borderRadius: 3,
                     }}
@@ -531,10 +531,10 @@ export default function LinearInventoryPage() {
                       fontWeight: 500,
                       color:
                         v > 0
-                          ? "var(--l-success)"
+                          ? "var(--k-success)"
                           : v < 0
-                            ? "var(--l-danger)"
-                            : "var(--l-text-muted)",
+                            ? "var(--k-danger)"
+                            : "var(--k-text-muted)",
                     }}
                   >
                     {v > 0 ? "+" : ""}

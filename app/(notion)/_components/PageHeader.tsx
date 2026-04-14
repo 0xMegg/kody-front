@@ -23,7 +23,7 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
           <span
             style={{
               fontSize: 13,
-              color: "var(--n-text-muted)",
+              color: "var(--k-text-muted)",
             }}
           >
             {breadcrumb}
@@ -34,7 +34,7 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
             fontFamily: "var(--font-source-serif)",
             fontSize: 30,
             fontWeight: 700,
-            color: "var(--n-text)",
+            color: "var(--k-text)",
             margin: 0,
             lineHeight: 1.3,
           }}
@@ -45,7 +45,7 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
           <p
             style={{
               fontSize: 15,
-              color: "var(--n-text-muted)",
+              color: "var(--k-text-muted)",
               margin: 0,
               marginTop: 4,
             }}

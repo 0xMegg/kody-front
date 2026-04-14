@@ -6,11 +6,11 @@ interface BadgeProps {
 }
 
 const colorMap: Record<BadgeVariant, { color: string; backgroundColor: string }> = {
-  pending: { color: "var(--l-warning)", backgroundColor: "var(--l-warning-bg)" },
-  confirmed: { color: "var(--l-success)", backgroundColor: "var(--l-success-bg)" },
-  cancelled: { color: "var(--l-danger)", backgroundColor: "var(--l-danger-bg)" },
-  shipped: { color: "var(--l-info)", backgroundColor: "var(--l-info-bg)" },
-  warning: { color: "var(--l-warning)", backgroundColor: "var(--l-warning-bg)" },
+  pending: { color: "var(--k-warning)", backgroundColor: "var(--k-warning-bg)" },
+  confirmed: { color: "var(--k-success)", backgroundColor: "var(--k-success-bg)" },
+  cancelled: { color: "var(--k-danger)", backgroundColor: "var(--k-danger-bg)" },
+  shipped: { color: "var(--k-info)", backgroundColor: "var(--k-info-bg)" },
+  warning: { color: "var(--k-warning)", backgroundColor: "var(--k-warning-bg)" },
 };
 
 export default function Badge({ variant, children }: BadgeProps) {

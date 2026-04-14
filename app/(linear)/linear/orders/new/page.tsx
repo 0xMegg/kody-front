@@ -10,7 +10,7 @@ export default function NewOrderPage() {
           <span>
             <Link
               href="/linear/orders"
-              style={{ color: "var(--l-text-muted)", textDecoration: "none" }}
+              style={{ color: "var(--k-text-muted)", textDecoration: "none" }}
             >
               주문
             </Link>

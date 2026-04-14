@@ -104,7 +104,7 @@ export default function SupabaseShipmentsPage() {
           style={{
             fontSize: 20,
             fontWeight: 600,
-            color: "var(--s-text)",
+            color: "var(--k-text)",
             margin: 0,
           }}
         >
@@ -117,9 +117,9 @@ export default function SupabaseShipmentsPage() {
         style={{
           display: "flex",
           flex: 1,
-          border: "1px solid var(--s-border)",
+          border: "1px solid var(--k-border)",
           borderRadius: 6,
-          backgroundColor: "var(--s-bg-sub)",
+          backgroundColor: "var(--k-bg-sub)",
           overflow: "hidden",
           minHeight: 0,
         }}
@@ -130,7 +130,7 @@ export default function SupabaseShipmentsPage() {
             flex: "0 0 55%",
             display: "flex",
             flexDirection: "column",
-            borderRight: "1px solid var(--s-border)",
+            borderRight: "1px solid var(--k-border)",
             overflow: "hidden",
           }}
         >
@@ -138,7 +138,7 @@ export default function SupabaseShipmentsPage() {
           <div
             style={{
               padding: "16px 16px 12px",
-              borderBottom: "1px solid var(--s-border)",
+              borderBottom: "1px solid var(--k-border)",
             }}
           >
             <div
@@ -154,7 +154,7 @@ export default function SupabaseShipmentsPage() {
                   style={{
                     fontSize: 13,
                     fontWeight: 600,
-                    color: "var(--s-text)",
+                    color: "var(--k-text)",
                   }}
                 >
                   피킹 대기
@@ -173,10 +173,10 @@ export default function SupabaseShipmentsPage() {
                 height: 28,
                 padding: "0 10px",
                 fontSize: 12,
-                border: "1px solid var(--s-border)",
+                border: "1px solid var(--k-border)",
                 borderRadius: 4,
-                backgroundColor: "var(--s-bg)",
-                color: "var(--s-text)",
+                backgroundColor: "var(--k-bg)",
+                color: "var(--k-text)",
                 outline: "none",
                 boxSizing: "border-box",
                 transition: "border-color 120ms ease-out",
@@ -209,13 +209,13 @@ export default function SupabaseShipmentsPage() {
                       style={{
                         height: 36,
                         padding: "0 12px",
-                        backgroundColor: "var(--s-bg-sub)",
-                        borderBottom: "1px solid var(--s-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        color: "var(--s-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                         width: col.width,
@@ -232,7 +232,7 @@ export default function SupabaseShipmentsPage() {
                             selectedItems.size === filteredPickingItems.length
                           }
                           onChange={toggleAll}
-                          style={{ cursor: "pointer", accentColor: "var(--s-brand)" }}
+                          style={{ cursor: "pointer", accentColor: "var(--k-brand)" }}
                         />
                       ) : (
                         col.label
@@ -247,9 +247,9 @@ export default function SupabaseShipmentsPage() {
                     key={item.orderItemId}
                     style={{ transition: "all 120ms ease-out" }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = "var(--s-bg-raise)";
+                      e.currentTarget.style.backgroundColor = "var(--k-bg-raise)";
                       e.currentTarget.style.boxShadow =
-                        "inset 2px 0 0 var(--s-brand)";
+                        "inset 2px 0 0 var(--k-brand)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = "transparent";
@@ -260,7 +260,7 @@ export default function SupabaseShipmentsPage() {
                       style={{
                         height: 40,
                         padding: "0 12px",
-                        borderBottom: "1px solid var(--s-border)",
+                        borderBottom: "1px solid var(--k-border)",
                         textAlign: "center",
                       }}
                     >
@@ -268,7 +268,7 @@ export default function SupabaseShipmentsPage() {
                         type="checkbox"
                         checked={selectedItems.has(item.orderItemId)}
                         onChange={() => toggleItem(item.orderItemId)}
-                        style={{ cursor: "pointer", accentColor: "var(--s-brand)" }}
+                        style={{ cursor: "pointer", accentColor: "var(--k-brand)" }}
                       />
                     </td>
                     {[
@@ -284,9 +284,9 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           textAlign: cell.align,
                           whiteSpace: "nowrap",
                           overflow: "hidden",
@@ -308,7 +308,7 @@ export default function SupabaseShipmentsPage() {
           <div
             style={{
               padding: "12px 16px",
-              borderTop: "1px solid var(--s-border)",
+              borderTop: "1px solid var(--k-border)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -317,7 +317,7 @@ export default function SupabaseShipmentsPage() {
             <span
               style={{
                 fontSize: 12,
-                color: "var(--s-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               {selectedItems.size}개 선택됨
@@ -347,7 +347,7 @@ export default function SupabaseShipmentsPage() {
               display: "flex",
               gap: 4,
               padding: "8px 12px",
-              borderBottom: "1px solid var(--s-border)",
+              borderBottom: "1px solid var(--k-border)",
             }}
           >
             {(["출고대기", "출고완료"] as const).map((tab) => {
@@ -366,9 +366,9 @@ export default function SupabaseShipmentsPage() {
                     gap: 6,
                     fontSize: 13,
                     fontWeight: isActive ? 600 : 400,
-                    color: isActive ? "var(--s-brand)" : "var(--s-text-muted)",
+                    color: isActive ? "var(--k-brand)" : "var(--k-text-muted)",
                     backgroundColor: isActive
-                      ? "var(--s-brand-dim)"
+                      ? "var(--k-brand-subtle)"
                       : "transparent",
                     border: "none",
                     borderRadius: 4,
@@ -383,9 +383,9 @@ export default function SupabaseShipmentsPage() {
                       padding: "1px 6px",
                       borderRadius: 10,
                       backgroundColor: isActive
-                        ? "var(--s-brand-glow)"
-                        : "var(--s-bg-raise)",
-                      color: isActive ? "var(--s-brand)" : "var(--s-text-muted)",
+                        ? "var(--k-brand-glow)"
+                        : "var(--k-bg-raise)",
+                      color: isActive ? "var(--k-brand)" : "var(--k-text-muted)",
                     }}
                   >
                     {count}
@@ -421,13 +421,13 @@ export default function SupabaseShipmentsPage() {
                       style={{
                         height: 36,
                         padding: "0 12px",
-                        backgroundColor: "var(--s-bg-sub)",
-                        borderBottom: "1px solid var(--s-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        color: "var(--s-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                         position: "sticky",
@@ -462,9 +462,9 @@ export default function SupabaseShipmentsPage() {
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor =
-                          "var(--s-bg-raise)";
+                          "var(--k-bg-raise)";
                         e.currentTarget.style.boxShadow =
-                          "inset 2px 0 0 var(--s-brand)";
+                          "inset 2px 0 0 var(--k-brand)";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.backgroundColor = "transparent";
@@ -475,9 +475,9 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--s-brand)",
+                          color: "var(--k-brand)",
                           fontWeight: 500,
                           fontFamily: "var(--font-jetbrains-mono)",
                         }}
@@ -488,9 +488,9 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -503,9 +503,9 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -520,9 +520,9 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           fontFamily: "var(--font-jetbrains-mono)",
                         }}
                       >
@@ -532,9 +532,9 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           textAlign: "right",
                           fontFamily: "var(--font-jetbrains-mono)",
                         }}
@@ -545,9 +545,9 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           textAlign: "right",
                           fontFamily: "var(--font-jetbrains-mono)",
                         }}
@@ -558,7 +558,7 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
                           textAlign: "center",
                         }}
@@ -569,7 +569,7 @@ export default function SupabaseShipmentsPage() {
                         style={{
                           height: 40,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           textAlign: "center",
                         }}
                       >

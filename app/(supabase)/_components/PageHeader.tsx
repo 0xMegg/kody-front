@@ -16,7 +16,7 @@ export default function PageHeader({ breadcrumb, title, actions }: PageHeaderPro
         minHeight: 60,
         marginBottom: 24,
         paddingBottom: 16,
-        borderBottom: "1px solid var(--s-border)",
+        borderBottom: "1px solid var(--k-border)",
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -24,7 +24,7 @@ export default function PageHeader({ breadcrumb, title, actions }: PageHeaderPro
           <span
             style={{
               fontSize: 12,
-              color: "var(--s-text-muted)",
+              color: "var(--k-text-muted)",
             }}
           >
             {breadcrumb}
@@ -34,7 +34,7 @@ export default function PageHeader({ breadcrumb, title, actions }: PageHeaderPro
           style={{
             fontSize: 20,
             fontWeight: 600,
-            color: "var(--s-text)",
+            color: "var(--k-text)",
             margin: 0,
             lineHeight: 1.3,
           }}

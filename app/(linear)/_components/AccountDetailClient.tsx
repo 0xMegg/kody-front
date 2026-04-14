@@ -147,7 +147,7 @@ function OverviewTab({
                   key={rid}
                   href={`/linear/accounts/${rid}`}
                   style={{
-                    color: "var(--l-brand)",
+                    color: "var(--k-brand)",
                     textDecoration: "none",
                     marginRight: 8,
                   }}
@@ -162,13 +162,13 @@ function OverviewTab({
 
   const cellLabelStyle: React.CSSProperties = {
     fontSize: 12,
-    color: "var(--l-text-muted)",
+    color: "var(--k-text-muted)",
     padding: "6px 0",
     width: 120,
   };
   const cellValueStyle: React.CSSProperties = {
     fontSize: 13,
-    color: "var(--l-text)",
+    color: "var(--k-text)",
     padding: "6px 0",
   };
 
@@ -199,8 +199,8 @@ function OverviewTab({
                     textAlign: "right",
                     color:
                       balance[c] < 0
-                        ? "var(--l-danger)"
-                        : "var(--l-text)",
+                        ? "var(--k-danger)"
+                        : "var(--k-text)",
                     fontVariantNumeric: "tabular-nums",
                   }}
                 >
@@ -210,7 +210,7 @@ function OverviewTab({
             ))}
             <tr
               style={{
-                borderTop: "1px solid var(--l-border)",
+                borderTop: "1px solid var(--k-border)",
               }}
             >
               <td style={{ ...cellLabelStyle, fontWeight: 600 }}>
@@ -223,8 +223,8 @@ function OverviewTab({
                   fontWeight: 600,
                   color:
                     balance.totalKRW < 0
-                      ? "var(--l-danger)"
-                      : "var(--l-text)",
+                      ? "var(--k-danger)"
+                      : "var(--k-text)",
                   fontVariantNumeric: "tabular-nums",
                 }}
               >
@@ -240,7 +240,7 @@ function OverviewTab({
           <p
             style={{
               fontSize: 13,
-              color: "var(--l-text)",
+              color: "var(--k-text)",
               lineHeight: 1.6,
               margin: 0,
               whiteSpace: "pre-wrap",
@@ -319,10 +319,10 @@ export default function AccountDetailClient({
     height: 32,
     fontSize: 13,
     fontWeight: active ? 600 : 400,
-    color: active ? "var(--l-brand)" : "var(--l-text-muted)",
+    color: active ? "var(--k-brand)" : "var(--k-text-muted)",
     background: "none",
     border: "none",
-    borderBottom: active ? "2px solid var(--l-brand)" : "2px solid transparent",
+    borderBottom: active ? "2px solid var(--k-brand)" : "2px solid transparent",
     cursor: "pointer",
     transition: "all 150ms",
   });
@@ -334,7 +334,7 @@ export default function AccountDetailClient({
         style={{
           display: "flex",
           gap: 0,
-          borderBottom: "1px solid var(--l-border)",
+          borderBottom: "1px solid var(--k-border)",
           marginBottom: 20,
         }}
       >
@@ -357,7 +357,7 @@ export default function AccountDetailClient({
       {activeTab === "orders" && (
         <div>
           {orderRows.length === 0 ? (
-            <p style={{ fontSize: 13, color: "var(--l-text-muted)" }}>
+            <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
               이 거래처의 주문 이력이 없습니다.
             </p>
           ) : (
@@ -389,7 +389,7 @@ export default function AccountDetailClient({
       {activeTab === "payments" && (
         <div>
           {paymentRows.length === 0 ? (
-            <p style={{ fontSize: 13, color: "var(--l-text-muted)" }}>
+            <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
               이 거래처의 수금 이력이 없습니다.
             </p>
           ) : (
@@ -412,7 +412,7 @@ export default function AccountDetailClient({
       {activeTab === "addresses" && (
         <div>
           {addressRows.length === 0 ? (
-            <p style={{ fontSize: 13, color: "var(--l-text-muted)" }}>
+            <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
               등록된 배송지가 없습니다.
             </p>
           ) : (

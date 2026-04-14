@@ -140,7 +140,7 @@ export default function LinearDashboardPage() {
                 style={{
                   fontSize: 11,
                   fontWeight: 500,
-                  color: 'var(--l-text)',
+                  color: 'var(--k-text)',
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
@@ -150,7 +150,7 @@ export default function LinearDashboardPage() {
                 style={{
                   width: '100%',
                   maxWidth: 40,
-                  backgroundColor: 'var(--l-bg-sub)',
+                  backgroundColor: 'var(--k-bg-sub)',
                   borderRadius: 4,
                   position: 'relative',
                   height: 80,
@@ -163,7 +163,7 @@ export default function LinearDashboardPage() {
                     left: 0,
                     right: 0,
                     height: `${(day.count / maxCount) * 100}%`,
-                    backgroundColor: 'var(--l-brand)',
+                    backgroundColor: 'var(--k-brand)',
                     borderRadius: 4,
                     transition: 'height 0.2s ease',
                   }}
@@ -172,7 +172,7 @@ export default function LinearDashboardPage() {
               <span
                 style={{
                   fontSize: 11,
-                  color: 'var(--l-text-muted)',
+                  color: 'var(--k-text-muted)',
                 }}
               >
                 {day.label}
@@ -209,7 +209,7 @@ export default function LinearDashboardPage() {
                   style={{
                     fontSize: 14,
                     fontWeight: 600,
-                    color: 'var(--l-text)',
+                    color: 'var(--k-text)',
                   }}
                 >
                   {p.name}
@@ -217,7 +217,7 @@ export default function LinearDashboardPage() {
                 <span
                   style={{
                     fontSize: 12,
-                    color: 'var(--l-text-muted)',
+                    color: 'var(--k-text-muted)',
                   }}
                 >
                   {p.desc}
@@ -244,14 +244,14 @@ export default function LinearDashboardPage() {
                   height: 36,
                   borderBottom:
                     i < activityEvents.length - 1
-                      ? '1px solid var(--l-border)'
+                      ? '1px solid var(--k-border)'
                       : 'none',
                   fontSize: 13,
                 }}
               >
                 <span
                   style={{
-                    color: 'var(--l-text-muted)',
+                    color: 'var(--k-text-muted)',
                     fontSize: 12,
                     fontVariantNumeric: 'tabular-nums',
                     flexShrink: 0,
@@ -263,7 +263,7 @@ export default function LinearDashboardPage() {
                 <span
                   style={{
                     fontWeight: 600,
-                    color: 'var(--l-text)',
+                    color: 'var(--k-text)',
                     flexShrink: 0,
                   }}
                 >
@@ -271,7 +271,7 @@ export default function LinearDashboardPage() {
                 </span>
                 <span
                   style={{
-                    color: 'var(--l-text-muted)',
+                    color: 'var(--k-text-muted)',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',

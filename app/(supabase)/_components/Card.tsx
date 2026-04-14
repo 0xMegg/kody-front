@@ -11,11 +11,11 @@ export default function Card({ title, actions, children, highlighted }: CardProp
   return (
     <div
       style={{
-        border: "1px solid var(--s-border)",
+        border: "1px solid var(--k-border)",
         borderRadius: 6,
-        backgroundColor: "var(--s-bg-sub)",
+        backgroundColor: "var(--k-bg-sub)",
         overflow: "hidden",
-        ...(highlighted ? { borderTop: "2px solid var(--s-brand)" } : {}),
+        ...(highlighted ? { borderTop: "2px solid var(--k-brand)" } : {}),
       }}
     >
       {title && (
@@ -25,14 +25,14 @@ export default function Card({ title, actions, children, highlighted }: CardProp
             alignItems: "center",
             justifyContent: "space-between",
             padding: 16,
-            borderBottom: "1px solid var(--s-border)",
+            borderBottom: "1px solid var(--k-border)",
           }}
         >
           <span
             style={{
               fontSize: 13,
               fontWeight: 600,
-              color: "var(--s-text)",
+              color: "var(--k-text)",
             }}
           >
             {title}

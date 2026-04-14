@@ -17,17 +17,17 @@ interface BadgeProps {
 }
 
 const colorMap: Record<BadgeVariant, { color: string; backgroundColor: string }> = {
-  pending: { color: "var(--n-warning)", backgroundColor: "var(--n-yellow-bg)" },
-  주문대기: { color: "var(--n-warning)", backgroundColor: "var(--n-yellow-bg)" },
-  confirmed: { color: "var(--n-success)", backgroundColor: "var(--n-green-bg)" },
-  주문완료: { color: "var(--n-success)", backgroundColor: "var(--n-green-bg)" },
-  cancelled: { color: "var(--n-text-muted)", backgroundColor: "var(--n-gray-bg)" },
-  주문중지: { color: "var(--n-text-muted)", backgroundColor: "var(--n-gray-bg)" },
-  shipped: { color: "var(--n-accent)", backgroundColor: "var(--n-blue-bg)" },
-  출고대기: { color: "var(--n-accent)", backgroundColor: "var(--n-blue-bg)" },
-  출고완료: { color: "var(--n-purple)", backgroundColor: "var(--n-purple-bg)" },
-  warning: { color: "var(--n-danger)", backgroundColor: "var(--n-red-bg)" },
-  음수재고: { color: "var(--n-danger)", backgroundColor: "var(--n-red-bg)" },
+  pending: { color: "var(--k-warning)", backgroundColor: "var(--k-highlight-yellow-bg)" },
+  주문대기: { color: "var(--k-warning)", backgroundColor: "var(--k-highlight-yellow-bg)" },
+  confirmed: { color: "var(--k-success)", backgroundColor: "var(--k-highlight-green-bg)" },
+  주문완료: { color: "var(--k-success)", backgroundColor: "var(--k-highlight-green-bg)" },
+  cancelled: { color: "var(--k-text-muted)", backgroundColor: "var(--k-highlight-gray-bg)" },
+  주문중지: { color: "var(--k-text-muted)", backgroundColor: "var(--k-highlight-gray-bg)" },
+  shipped: { color: "var(--k-brand)", backgroundColor: "var(--k-highlight-blue-bg)" },
+  출고대기: { color: "var(--k-brand)", backgroundColor: "var(--k-highlight-blue-bg)" },
+  출고완료: { color: "var(--k-highlight-purple)", backgroundColor: "var(--k-highlight-purple-bg)" },
+  warning: { color: "var(--k-danger)", backgroundColor: "var(--k-highlight-red-bg)" },
+  음수재고: { color: "var(--k-danger)", backgroundColor: "var(--k-highlight-red-bg)" },
 };
 
 export default function Badge({ variant, children }: BadgeProps) {

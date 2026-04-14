@@ -181,7 +181,7 @@ export default function SupabasePaymentsPage() {
             style={{
               width: "100%",
               height: 1,
-              backgroundColor: "var(--s-border)",
+              backgroundColor: "var(--k-border)",
               borderRadius: 1,
             }}
           >
@@ -189,7 +189,7 @@ export default function SupabasePaymentsPage() {
               style={{
                 width: `${barWidth}%`,
                 height: 1,
-                backgroundColor: "var(--s-brand)",
+                backgroundColor: "var(--k-brand)",
                 borderRadius: 1,
                 transition: "width 120ms ease-out",
               }}
@@ -216,10 +216,10 @@ export default function SupabasePaymentsPage() {
     height: 28,
     padding: "0 8px",
     fontSize: 12,
-    border: "1px solid var(--s-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 4,
-    backgroundColor: "var(--s-bg)",
-    color: "var(--s-text)",
+    backgroundColor: "var(--k-bg)",
+    color: "var(--k-text)",
     outline: "none",
     transition: "border-color 120ms ease-out",
   };
@@ -261,7 +261,7 @@ export default function SupabasePaymentsPage() {
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
-                color: "var(--s-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               통화별 이번 달 합계
@@ -281,11 +281,11 @@ export default function SupabasePaymentsPage() {
                       fontWeight: 500,
                       fontFamily: "var(--font-jetbrains-mono)",
                       fontFeatureSettings: "'tnum'",
-                      backgroundColor: "var(--s-bg-raise)",
-                      color: "var(--s-text)",
+                      backgroundColor: "var(--k-bg-raise)",
+                      color: "var(--k-text)",
                     }}
                   >
-                    <span style={{ color: "var(--s-text-muted)" }}>{cur}</span>
+                    <span style={{ color: "var(--k-text-muted)" }}>{cur}</span>
                     {fmtAmount(currencySums[cur], cur)}
                   </span>
                 ) : null
@@ -304,19 +304,19 @@ export default function SupabasePaymentsPage() {
           flexWrap: "wrap",
           padding: "10px 12px",
           borderRadius: 6,
-          border: "1px solid var(--s-border)",
-          backgroundColor: "var(--s-bg-sub)",
+          border: "1px solid var(--k-border)",
+          backgroundColor: "var(--k-bg-sub)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <label style={{ fontSize: 12, color: "var(--s-text-muted)", whiteSpace: "nowrap" }}>기간</label>
+          <label style={{ fontSize: 12, color: "var(--k-text-muted)", whiteSpace: "nowrap" }}>기간</label>
           <input
             type="date"
             value={dateFrom}
             onChange={(e) => setDateFrom(e.target.value)}
             style={inputStyle}
           />
-          <span style={{ fontSize: 12, color: "var(--s-text-muted)" }}>~</span>
+          <span style={{ fontSize: 12, color: "var(--k-text-muted)" }}>~</span>
           <input
             type="date"
             value={dateTo}
@@ -326,7 +326,7 @@ export default function SupabasePaymentsPage() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <label style={{ fontSize: 12, color: "var(--s-text-muted)", whiteSpace: "nowrap" }}>거래처</label>
+          <label style={{ fontSize: 12, color: "var(--k-text-muted)", whiteSpace: "nowrap" }}>거래처</label>
           <select
             value={accountFilter}
             onChange={(e) => setAccountFilter(e.target.value)}
@@ -339,7 +339,7 @@ export default function SupabasePaymentsPage() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <label style={{ fontSize: 12, color: "var(--s-text-muted)", whiteSpace: "nowrap" }}>입금처</label>
+          <label style={{ fontSize: 12, color: "var(--k-text-muted)", whiteSpace: "nowrap" }}>입금처</label>
           <select
             value={depositFilter}
             onChange={(e) => setDepositFilter(e.target.value)}
@@ -352,7 +352,7 @@ export default function SupabasePaymentsPage() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <label style={{ fontSize: 12, color: "var(--s-text-muted)", whiteSpace: "nowrap" }}>통화</label>
+          <label style={{ fontSize: 12, color: "var(--k-text-muted)", whiteSpace: "nowrap" }}>통화</label>
           <select
             value={currencyFilter}
             onChange={(e) => setCurrencyFilter(e.target.value)}
@@ -368,7 +368,7 @@ export default function SupabasePaymentsPage() {
           style={{
             marginLeft: "auto",
             fontSize: 12,
-            color: "var(--s-text-muted)",
+            color: "var(--k-text-muted)",
             fontFamily: "var(--font-jetbrains-mono)",
             fontFeatureSettings: "'tnum'",
           }}
@@ -383,9 +383,9 @@ export default function SupabasePaymentsPage() {
         <div
           style={{
             flex: "0 0 70%",
-            border: "1px solid var(--s-border)",
+            border: "1px solid var(--k-border)",
             borderRadius: 6,
-            backgroundColor: "var(--s-bg-sub)",
+            backgroundColor: "var(--k-bg-sub)",
             overflow: "hidden",
           }}
         >
@@ -412,7 +412,7 @@ export default function SupabasePaymentsPage() {
                       padding: "8px 0",
                       borderBottom:
                         i < rankedBalances.length - 1
-                          ? "1px solid var(--s-border)"
+                          ? "1px solid var(--k-border)"
                           : "none",
                       transition: "background-color 120ms ease-out",
                     }}
@@ -421,7 +421,7 @@ export default function SupabasePaymentsPage() {
                       <span
                         style={{
                           fontSize: 11,
-                          color: "var(--s-text-muted)",
+                          color: "var(--k-text-muted)",
                           fontFamily: "var(--font-jetbrains-mono)",
                           width: 18,
                           textAlign: "right",
@@ -432,7 +432,7 @@ export default function SupabasePaymentsPage() {
                       <span
                         style={{
                           fontSize: 13,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -448,7 +448,7 @@ export default function SupabasePaymentsPage() {
                         fontWeight: 500,
                         fontFamily: "var(--font-jetbrains-mono)",
                         fontFeatureSettings: "'tnum'",
-                        color: isNegative ? "var(--s-danger)" : "var(--s-brand)",
+                        color: isNegative ? "var(--k-danger)" : "var(--k-brand)",
                         whiteSpace: "nowrap",
                       }}
                     >

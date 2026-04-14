@@ -85,10 +85,10 @@ function FilterBar({
     height: 32,
     padding: "0 10px",
     fontSize: 15,
-    border: "1px solid var(--n-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 3,
-    backgroundColor: "var(--n-bg)",
-    color: "var(--n-text)",
+    backgroundColor: "var(--k-bg)",
+    color: "var(--k-text)",
     outline: "none",
     transition: "border-color 180ms ease",
   };
@@ -130,7 +130,7 @@ function FilterBar({
           alignItems: "center",
           gap: 6,
           fontSize: 15,
-          color: "var(--n-text-muted)",
+          color: "var(--k-text-muted)",
           cursor: "pointer",
         }}
       >
@@ -167,7 +167,7 @@ function Pagination({
         gap: 12,
         padding: "16px 0",
         fontSize: 15,
-        color: "var(--n-text-muted)",
+        color: "var(--k-text-muted)",
       }}
     >
       <span>
@@ -260,7 +260,7 @@ export default function NotionAccountsPage() {
             return (
               <span
                 style={{
-                  color: n < 0 ? "var(--n-danger)" : undefined,
+                  color: n < 0 ? "var(--k-danger)" : undefined,
                 }}
               >
                 {formatNumber(Math.round(n))}

@@ -107,8 +107,8 @@ function ProductDrawer({
           right: 0,
           bottom: 0,
           width: 420,
-          backgroundColor: "var(--n-surface)",
-          borderLeft: "1px solid var(--n-border)",
+          backgroundColor: "var(--k-surface)",
+          borderLeft: "1px solid var(--k-border)",
           borderRadius: "3px 0 0 3px",
           zIndex: 50,
           display: "flex",
@@ -124,7 +124,7 @@ function ProductDrawer({
             alignItems: "center",
             justifyContent: "space-between",
             padding: "16px 24px",
-            borderBottom: "1px solid var(--n-border)",
+            borderBottom: "1px solid var(--k-border)",
           }}
         >
           <span
@@ -132,7 +132,7 @@ function ProductDrawer({
               fontFamily: "var(--font-source-serif)",
               fontSize: 17,
               fontWeight: 600,
-              color: "var(--n-text)",
+              color: "var(--k-text)",
             }}
           >
             상품 상세
@@ -145,16 +145,16 @@ function ProductDrawer({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid var(--n-border)",
+              border: "1px solid var(--k-border)",
               borderRadius: 3,
               backgroundColor: "transparent",
-              color: "var(--n-text-muted)",
+              color: "var(--k-text-muted)",
               cursor: "pointer",
               fontSize: 14,
               transition: "background-color 180ms ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--n-bg-hover)";
+              e.currentTarget.style.backgroundColor = "var(--k-bg-hover)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = "transparent";
@@ -189,7 +189,7 @@ function ProductDrawer({
             style={{
               padding: 20,
               borderRadius: 3,
-              backgroundColor: "var(--n-bg-sub)",
+              backgroundColor: "var(--k-bg-sub)",
               display: "flex",
               flexDirection: "column",
               gap: 12,
@@ -200,7 +200,7 @@ function ProductDrawer({
                 fontFamily: "var(--font-source-serif)",
                 fontSize: 15,
                 fontWeight: 600,
-                color: "var(--n-text)",
+                color: "var(--k-text)",
               }}
             >
               재고 현황
@@ -217,14 +217,14 @@ function ProductDrawer({
                 value={row.orderBasedStock}
                 color={
                   row.orderBasedStock < 0
-                    ? "var(--n-danger)"
-                    : "var(--n-text)"
+                    ? "var(--k-danger)"
+                    : "var(--k-text)"
                 }
               />
               <StockCell
                 label="출고기준"
                 value={row.shipmentBasedStock}
-                color="var(--n-text)"
+                color="var(--k-text)"
               />
             </div>
             <div
@@ -233,11 +233,11 @@ function ProductDrawer({
                 justifyContent: "space-between",
                 alignItems: "center",
                 paddingTop: 10,
-                borderTop: "1px solid var(--n-border)",
+                borderTop: "1px solid var(--k-border)",
               }}
             >
               <span
-                style={{ fontSize: 13, color: "var(--n-text-muted)" }}
+                style={{ fontSize: 13, color: "var(--k-text-muted)" }}
               >
                 차이
               </span>
@@ -248,10 +248,10 @@ function ProductDrawer({
                   fontVariantNumeric: "tabular-nums",
                   color:
                     row.diff > 0
-                      ? "var(--n-success)"
+                      ? "var(--k-success)"
                       : row.diff < 0
-                        ? "var(--n-danger)"
-                        : "var(--n-text)",
+                        ? "var(--k-danger)"
+                        : "var(--k-text)",
                 }}
               >
                 {row.diff > 0 ? "+" : ""}
@@ -267,7 +267,7 @@ function ProductDrawer({
                 fontFamily: "var(--font-source-serif)",
                 fontSize: 15,
                 fontWeight: 600,
-                color: "var(--n-text)",
+                color: "var(--k-text)",
               }}
             >
               관련 주문 {relatedOrders.length}건
@@ -278,15 +278,15 @@ function ProductDrawer({
                 style={{
                   padding: "10px 14px",
                   borderRadius: 3,
-                  border: "1px solid var(--n-border)",
-                  backgroundColor: "var(--n-surface)",
+                  border: "1px solid var(--k-border)",
+                  backgroundColor: "var(--k-surface)",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
                   fontSize: 13,
                 }}
               >
-                <span style={{ color: "var(--n-text)", fontVariantNumeric: "tabular-nums" }}>
+                <span style={{ color: "var(--k-text)", fontVariantNumeric: "tabular-nums" }}>
                   #{o.id}
                 </span>
                 <span
@@ -294,8 +294,8 @@ function ProductDrawer({
                     fontSize: 12,
                     color:
                       o.status === "주문완료"
-                        ? "var(--n-success)"
-                        : "var(--n-warning)",
+                        ? "var(--k-success)"
+                        : "var(--k-warning)",
                   }}
                 >
                   {o.status}
@@ -303,7 +303,7 @@ function ProductDrawer({
               </div>
             ))}
             {relatedOrders.length > 5 && (
-              <span style={{ fontSize: 12, color: "var(--n-text-muted)" }}>
+              <span style={{ fontSize: 12, color: "var(--k-text-muted)" }}>
                 외 {relatedOrders.length - 5}건
               </span>
             )}
@@ -316,7 +316,7 @@ function ProductDrawer({
                 fontFamily: "var(--font-source-serif)",
                 fontSize: 15,
                 fontWeight: 600,
-                color: "var(--n-text)",
+                color: "var(--k-text)",
               }}
             >
               입/출고 이력
@@ -324,11 +324,11 @@ function ProductDrawer({
             <p
               style={{
                 fontSize: 14,
-                color: "var(--n-text-muted)",
+                color: "var(--k-text-muted)",
                 margin: 0,
                 padding: "12px 14px",
                 borderRadius: 3,
-                backgroundColor: "var(--n-bg-sub)",
+                backgroundColor: "var(--k-bg-sub)",
               }}
             >
               입/출고 이력 데이터는 프로토타입에서 제공하지 않습니다.
@@ -349,10 +349,10 @@ function InfoRow({ label, value }: { label: string; value: string }) {
         alignItems: "center",
       }}
     >
-      <span style={{ fontSize: 13, color: "var(--n-text-muted)" }}>
+      <span style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
         {label}
       </span>
-      <span style={{ fontSize: 14, color: "var(--n-text)", fontWeight: 500 }}>
+      <span style={{ fontSize: 14, color: "var(--k-text)", fontWeight: 500 }}>
         {value}
       </span>
     </div>
@@ -370,7 +370,7 @@ function StockCell({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <span style={{ fontSize: 12, color: "var(--n-text-muted)" }}>
+      <span style={{ fontSize: 12, color: "var(--k-text-muted)" }}>
         {label}
       </span>
       <span
@@ -425,10 +425,10 @@ export default function NotionInventoryPage() {
     height: 30,
     padding: "0 10px",
     fontSize: 14,
-    border: "1px solid var(--n-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 3,
-    backgroundColor: "var(--n-surface)",
-    color: "var(--n-text)",
+    backgroundColor: "var(--k-surface)",
+    color: "var(--k-text)",
     outline: "none",
   };
 
@@ -436,10 +436,10 @@ export default function NotionInventoryPage() {
     height: 30,
     padding: "0 12px",
     fontSize: 14,
-    border: "1px solid var(--n-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 3,
-    backgroundColor: "var(--n-surface)",
-    color: "var(--n-text)",
+    backgroundColor: "var(--k-surface)",
+    color: "var(--k-text)",
     outline: "none",
     width: 220,
   };
@@ -508,7 +508,7 @@ export default function NotionInventoryPage() {
         />
 
         <span
-          style={{ fontSize: 13, color: "var(--n-text-muted)", marginLeft: 4 }}
+          style={{ fontSize: 13, color: "var(--k-text-muted)", marginLeft: 4 }}
         >
           {filteredRows.length}건
         </span>
@@ -541,7 +541,7 @@ export default function NotionInventoryPage() {
                     style={{
                       fontVariantNumeric: "tabular-nums",
                       fontWeight: 500,
-                      backgroundColor: "color-mix(in srgb, var(--n-blue-bg) 30%, transparent)",
+                      backgroundColor: "color-mix(in srgb, var(--k-highlight-blue-bg) 30%, transparent)",
                       padding: "2px 8px",
                       borderRadius: 3,
                     }}
@@ -557,7 +557,7 @@ export default function NotionInventoryPage() {
                     style={{
                       fontVariantNumeric: "tabular-nums",
                       fontWeight: 500,
-                      backgroundColor: "color-mix(in srgb, var(--n-green-bg) 30%, transparent)",
+                      backgroundColor: "color-mix(in srgb, var(--k-highlight-green-bg) 30%, transparent)",
                       padding: "2px 8px",
                       borderRadius: 3,
                     }}
@@ -576,10 +576,10 @@ export default function NotionInventoryPage() {
                       fontWeight: 500,
                       color:
                         v > 0
-                          ? "var(--n-success)"
+                          ? "var(--k-success)"
                           : v < 0
-                            ? "var(--n-danger)"
-                            : "var(--n-text-muted)",
+                            ? "var(--k-danger)"
+                            : "var(--k-text-muted)",
                     }}
                   >
                     {v > 0 ? "+" : ""}

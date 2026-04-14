@@ -45,7 +45,7 @@ const monoStyle: React.CSSProperties = {
 const labelStyle: React.CSSProperties = {
   fontSize: 11,
   fontWeight: 500,
-  color: "var(--s-text-muted)",
+  color: "var(--k-text-muted)",
   textTransform: "uppercase",
   letterSpacing: "0.05em",
   marginBottom: 4,
@@ -56,9 +56,9 @@ const inputStyle: React.CSSProperties = {
   height: 28,
   padding: "0 8px",
   fontSize: 13,
-  color: "var(--s-text)",
-  backgroundColor: "var(--s-bg-sub)",
-  border: "1px solid var(--s-border)",
+  color: "var(--k-text)",
+  backgroundColor: "var(--k-bg-sub)",
+  border: "1px solid var(--k-border)",
   borderRadius: 6,
   outline: "none",
   transition: "border-color 120ms ease-out",
@@ -105,8 +105,8 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                   ...monoStyle,
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: "var(--s-bg-sub)",
-                  color: isNew ? "var(--s-text-subtle)" : "var(--s-text)",
+                  backgroundColor: "var(--k-bg-sub)",
+                  color: isNew ? "var(--k-text-subtle)" : "var(--k-text)",
                 }}
               >
                 {isNew ? "자동 생성" : order.id}
@@ -159,7 +159,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                     ...inputStyle,
                     display: "flex",
                     alignItems: "center",
-                    backgroundColor: "var(--s-bg-sub)",
+                    backgroundColor: "var(--k-bg-sub)",
                   }}
                 >
                   {currentAccount.name}
@@ -188,7 +188,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                   ...monoStyle,
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: "var(--s-bg-sub)",
+                  backgroundColor: "var(--k-bg-sub)",
                 }}
               >
                 {order?.currency ?? "USD"}
@@ -215,7 +215,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                     bottom: -18,
                     left: 0,
                     fontSize: 10,
-                    color: "var(--s-text-subtle)",
+                    color: "var(--k-text-subtle)",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -241,13 +241,13 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                       style={{
                         height: 32,
                         padding: "0 12px",
-                        backgroundColor: "var(--s-bg-raise)",
-                        borderBottom: "1px solid var(--s-border)",
+                        backgroundColor: "var(--k-bg-raise)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        color: "var(--s-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: i === 0 ? "left" : "right",
                       }}
                     >
@@ -266,9 +266,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                           style={{
                             height: 36,
                             padding: "0 12px",
-                            borderBottom: "1px solid var(--s-border)",
+                            borderBottom: "1px solid var(--k-border)",
                             fontSize: 13,
-                            color: "var(--s-text)",
+                            color: "var(--k-text)",
                             fontFamily: "inherit",
                           }}
                         >
@@ -278,9 +278,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                           style={{
                             height: 36,
                             padding: "0 12px",
-                            borderBottom: "1px solid var(--s-border)",
+                            borderBottom: "1px solid var(--k-border)",
                             fontSize: 13,
-                            color: "var(--s-text)",
+                            color: "var(--k-text)",
                             textAlign: "right",
                           }}
                         >
@@ -290,9 +290,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                           style={{
                             height: 36,
                             padding: "0 12px",
-                            borderBottom: "1px solid var(--s-border)",
+                            borderBottom: "1px solid var(--k-border)",
                             fontSize: 13,
-                            color: "var(--s-text)",
+                            color: "var(--k-text)",
                             textAlign: "right",
                           }}
                         >
@@ -302,9 +302,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                           style={{
                             height: 36,
                             padding: "0 12px",
-                            borderBottom: "1px solid var(--s-border)",
+                            borderBottom: "1px solid var(--k-border)",
                             fontSize: 13,
-                            color: "var(--s-text)",
+                            color: "var(--k-text)",
                             textAlign: "right",
                           }}
                         >
@@ -314,9 +314,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                           style={{
                             height: 36,
                             padding: "0 12px",
-                            borderBottom: "1px solid var(--s-border)",
+                            borderBottom: "1px solid var(--k-border)",
                             fontSize: 13,
-                            color: "var(--s-text)",
+                            color: "var(--k-text)",
                             textAlign: "right",
                             fontWeight: 500,
                           }}
@@ -333,9 +333,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                       style={{
                         height: 48,
                         padding: "0 12px",
-                        borderBottom: "1px solid var(--s-border)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 13,
-                        color: "var(--s-text-subtle)",
+                        color: "var(--k-text-subtle)",
                         textAlign: "center",
                         fontFamily: "inherit",
                       }}
@@ -352,11 +352,11 @@ export default function OrderForm({ order, account }: OrderFormProps) {
         {/* 금액 요약 */}
         <Card title="금액 요약">
           <div style={{ display: "flex", flexDirection: "column", gap: 8, maxWidth: 320, marginLeft: "auto" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--s-text)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--k-text)" }}>
               <span>품목 소계 합계</span>
               <span style={monoStyle}>{formatNumber(itemsSubtotal)}</span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 13, color: "var(--s-text)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 13, color: "var(--k-text)" }}>
               <span>배송비</span>
               <input
                 type="text"
@@ -365,7 +365,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                 readOnly
               />
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 13, color: "var(--s-text)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 13, color: "var(--k-text)" }}>
               <span>송금수수료</span>
               <input
                 type="text"
@@ -380,8 +380,8 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                 justifyContent: "space-between",
                 fontSize: 14,
                 fontWeight: 600,
-                color: "var(--s-text)",
-                borderTop: "1px solid var(--s-border-strong)",
+                color: "var(--k-text)",
+                borderTop: "1px solid var(--k-border-strong)",
                 paddingTop: 8,
                 marginTop: 4,
               }}
@@ -421,10 +421,10 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                   display: "flex",
                   justifyContent: "space-between",
                   fontSize: 13,
-                  color: balance[cur] < 0 ? "var(--s-danger)" : balance[cur] > 0 ? "var(--s-brand)" : "var(--s-text)",
+                  color: balance[cur] < 0 ? "var(--k-danger)" : balance[cur] > 0 ? "var(--k-brand)" : "var(--k-text)",
                 }}
               >
-                <span style={{ color: "var(--s-text-muted)", minWidth: 36 }}>{cur}</span>
+                <span style={{ color: "var(--k-text-muted)", minWidth: 36 }}>{cur}</span>
                 <span>{formatCurrency(balance[cur], cur)}</span>
               </div>
             ))}
@@ -434,8 +434,8 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                 justifyContent: "space-between",
                 fontSize: 14,
                 fontWeight: 600,
-                color: balance.totalKRW < 0 ? "var(--s-danger)" : balance.totalKRW > 0 ? "var(--s-brand)" : "var(--s-text)",
-                borderTop: "1px solid var(--s-border)",
+                color: balance.totalKRW < 0 ? "var(--k-danger)" : balance.totalKRW > 0 ? "var(--k-brand)" : "var(--k-text)",
+                borderTop: "1px solid var(--k-border)",
                 paddingTop: 8,
                 marginTop: 4,
               }}
@@ -443,7 +443,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
               <span>원화 환산 합계</span>
               <span>{formatCurrency(balance.totalKRW, "KRW")}</span>
             </div>
-            <p style={{ fontSize: 11, color: "var(--s-text-subtle)", marginTop: 4, fontFamily: "inherit" }}>
+            <p style={{ fontSize: 11, color: "var(--k-text-subtle)", marginTop: 4, fontFamily: "inherit" }}>
               마이너스는 선주문/미수금입니다
             </p>
           </div>
@@ -468,13 +468,13 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                         style={{
                           height: 28,
                           padding: "0 8px",
-                          backgroundColor: "var(--s-bg-raise)",
-                          borderBottom: "1px solid var(--s-border)",
+                          backgroundColor: "var(--k-bg-raise)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 10,
                           fontWeight: 500,
                           textTransform: "uppercase",
                           letterSpacing: "0.05em",
-                          color: "var(--s-text-muted)",
+                          color: "var(--k-text-muted)",
                           textAlign: i === 0 ? "left" : "right",
                         }}
                       >
@@ -490,9 +490,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                         style={{
                           height: 30,
                           padding: "0 8px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 12,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                         }}
                       >
                         {o.id}
@@ -501,9 +501,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                         style={{
                           height: 30,
                           padding: "0 8px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 12,
-                          color: "var(--s-text)",
+                          color: "var(--k-text)",
                           textAlign: "right",
                         }}
                       >
@@ -513,7 +513,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                         style={{
                           height: 30,
                           padding: "0 8px",
-                          borderBottom: "1px solid var(--s-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           textAlign: "right",
                         }}
                       >
@@ -527,7 +527,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
               </table>
             </div>
           ) : (
-            <p style={{ fontSize: 12, color: "var(--s-text-subtle)" }}>
+            <p style={{ fontSize: 12, color: "var(--k-text-subtle)" }}>
               이 거래처의 주문 내역이 없습니다
             </p>
           )}
@@ -544,9 +544,9 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                     padding: "8px 10px",
                     borderRadius: 6,
                     backgroundColor: addr.isPrimary
-                      ? "var(--s-brand-dim)"
-                      : "var(--s-bg-raise)",
-                    border: "1px solid var(--s-border)",
+                      ? "var(--k-brand-subtle)"
+                      : "var(--k-bg-raise)",
+                    border: "1px solid var(--k-border)",
                     transition: "border-color 120ms ease-out",
                   }}
                 >
@@ -558,26 +558,26 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                       marginBottom: 2,
                     }}
                   >
-                    <span style={{ fontSize: 12, fontWeight: 500, color: "var(--s-text)" }}>
+                    <span style={{ fontSize: 12, fontWeight: 500, color: "var(--k-text)" }}>
                       {addr.label}
                     </span>
                     {addr.isPrimary && (
                       <Badge variant="success">기본</Badge>
                     )}
                     {addr.defaultIncoterm && (
-                      <span style={{ fontSize: 10, color: "var(--s-text-muted)" }}>
+                      <span style={{ fontSize: 10, color: "var(--k-text-muted)" }}>
                         {addr.defaultIncoterm}
                       </span>
                     )}
                   </div>
-                  <div style={{ fontSize: 11, color: "var(--s-text-muted)" }}>
+                  <div style={{ fontSize: 11, color: "var(--k-text-muted)" }}>
                     {addr.country} — {addr.fullAddress}
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <p style={{ fontSize: 12, color: "var(--s-text-subtle)" }}>
+            <p style={{ fontSize: 12, color: "var(--k-text-subtle)" }}>
               등록된 배송지가 없습니다
             </p>
           )}

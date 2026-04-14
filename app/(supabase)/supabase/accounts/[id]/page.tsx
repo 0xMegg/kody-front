@@ -18,7 +18,7 @@ export default async function AccountDetailPage({
           breadcrumb="거래처"
           title="거래처를 찾을 수 없습니다"
         />
-        <p style={{ fontSize: 13, color: "var(--s-text-muted)" }}>
+        <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
           거래처 ID &quot;{id}&quot;에 해당하는 거래처가 없습니다.
         </p>
       </div>
@@ -34,7 +34,7 @@ export default async function AccountDetailPage({
           <span>
             <Link
               href="/supabase/accounts"
-              style={{ color: "var(--s-text-muted)", textDecoration: "none" }}
+              style={{ color: "var(--k-text-muted)", textDecoration: "none" }}
             >
               거래처
             </Link>

@@ -21,7 +21,7 @@ export default async function OrderDetailPage({
               <Link
                 href="/notion/orders"
                 style={{
-                  color: "var(--n-text-muted)",
+                  color: "var(--k-text-muted)",
                   textDecoration: "none",
                 }}
               >
@@ -33,7 +33,7 @@ export default async function OrderDetailPage({
           }
           title="주문을 찾을 수 없습니다"
         />
-        <p style={{ fontSize: 15, color: "var(--n-text-muted)" }}>
+        <p style={{ fontSize: 15, color: "var(--k-text-muted)" }}>
           주문번호 &quot;{id}&quot;에 해당하는 주문이 없습니다.
         </p>
         <Link
@@ -44,7 +44,7 @@ export default async function OrderDetailPage({
             gap: 4,
             marginTop: 12,
             fontSize: 15,
-            color: "var(--n-accent)",
+            color: "var(--k-brand)",
             textDecoration: "none",
           }}
         >
@@ -62,7 +62,7 @@ export default async function OrderDetailPage({
             <Link
               href="/notion/orders"
               style={{
-                color: "var(--n-text-muted)",
+                color: "var(--k-text-muted)",
                 textDecoration: "none",
               }}
             >

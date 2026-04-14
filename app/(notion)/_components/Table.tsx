@@ -63,11 +63,11 @@ export default function Table<T extends Record<string, unknown>>({
                 style={{
                   height: 40,
                   padding: "0 16px",
-                  backgroundColor: "var(--n-bg-sub)",
-                  borderBottom: "1px solid var(--n-border)",
+                  backgroundColor: "var(--k-bg-sub)",
+                  borderBottom: "1px solid var(--k-border)",
                   fontSize: 13,
                   fontWeight: 500,
-                  color: "var(--n-text-muted)",
+                  color: "var(--k-text-muted)",
                   textAlign: col.align ?? "left",
                   cursor: col.sortable ? "pointer" : "default",
                   userSelect: "none",
@@ -92,15 +92,15 @@ export default function Table<T extends Record<string, unknown>>({
               onClick={onRowClick ? () => onRowClick(row) : undefined}
               style={{
                 cursor: onRowClick ? "pointer" : "default",
-                backgroundColor: i % 2 === 1 ? "var(--n-bg-sub)" : "transparent",
+                backgroundColor: i % 2 === 1 ? "var(--k-bg-sub)" : "transparent",
                 transition: "background-color 180ms ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--n-bg-hover)";
+                e.currentTarget.style.backgroundColor = "var(--k-bg-hover)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor =
-                  i % 2 === 1 ? "var(--n-bg-sub)" : "transparent";
+                  i % 2 === 1 ? "var(--k-bg-sub)" : "transparent";
               }}
             >
               {columns.map((col) => (
@@ -109,9 +109,9 @@ export default function Table<T extends Record<string, unknown>>({
                   style={{
                     height: 44,
                     padding: "0 16px",
-                    borderBottom: "1px solid var(--n-border)",
+                    borderBottom: "1px solid var(--k-border)",
                     fontSize: 15,
-                    color: "var(--n-text)",
+                    color: "var(--k-text)",
                     textAlign: col.align ?? "left",
                   }}
                 >

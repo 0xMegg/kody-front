@@ -73,8 +73,8 @@ export default function Sidebar() {
         width: 220,
         minWidth: 220,
         height: "100vh",
-        backgroundColor: "var(--l-bg-sub)",
-        borderRight: "1px solid var(--l-border)",
+        backgroundColor: "var(--k-bg-sub)",
+        borderRight: "1px solid var(--k-border)",
         display: "flex",
         flexDirection: "column",
         position: "sticky",
@@ -89,14 +89,14 @@ export default function Sidebar() {
           alignItems: "center",
           gap: 8,
           padding: "0 16px",
-          borderBottom: "1px solid var(--l-border)",
+          borderBottom: "1px solid var(--k-border)",
         }}
       >
         <span
           style={{
             fontSize: 13,
             fontWeight: 600,
-            color: "var(--l-text)",
+            color: "var(--k-text)",
           }}
         >
           KODY OMS
@@ -107,8 +107,8 @@ export default function Sidebar() {
             fontWeight: 500,
             textTransform: "uppercase",
             letterSpacing: "0.05em",
-            color: "var(--l-brand)",
-            backgroundColor: "var(--l-brand-subtle)",
+            color: "var(--k-brand)",
+            backgroundColor: "var(--k-brand-subtle)",
             padding: "2px 6px",
             borderRadius: 4,
           }}
@@ -137,9 +137,9 @@ export default function Sidebar() {
                 borderRadius: 6,
                 fontSize: 13,
                 fontWeight: isActive ? 500 : 400,
-                color: isActive ? "var(--l-brand)" : "var(--l-text)",
+                color: isActive ? "var(--k-brand)" : "var(--k-text)",
                 backgroundColor: isActive
-                  ? "var(--l-brand-subtle)"
+                  ? "var(--k-brand-subtle)"
                   : "transparent",
                 textDecoration: "none",
                 transition: "background-color 150ms ease-out",

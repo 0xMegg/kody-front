@@ -121,7 +121,7 @@ export default function SupabaseDashboardPage() {
             gap: 8,
             height: 120,
             padding: '8px 0',
-            backgroundColor: 'var(--s-bg-overlay)',
+            backgroundColor: 'var(--k-bg-overlay)',
             borderRadius: 4,
           }}
         >
@@ -140,7 +140,7 @@ export default function SupabaseDashboardPage() {
                 style={{
                   fontSize: 11,
                   fontWeight: 500,
-                  color: 'var(--s-text)',
+                  color: 'var(--k-text)',
                   fontFamily: 'var(--font-jetbrains-mono)',
                   fontVariantNumeric: 'tabular-nums',
                 }}
@@ -163,7 +163,7 @@ export default function SupabaseDashboardPage() {
                     left: 0,
                     right: 0,
                     height: `${(day.count / maxCount) * 100}%`,
-                    backgroundColor: 'var(--s-brand)',
+                    backgroundColor: 'var(--k-brand)',
                     borderRadius: 3,
                     transition: 'height 0.3s ease',
                   }}
@@ -172,7 +172,7 @@ export default function SupabaseDashboardPage() {
               <span
                 style={{
                   fontSize: 11,
-                  color: 'var(--s-text-muted)',
+                  color: 'var(--k-text-muted)',
                 }}
               >
                 {day.label}
@@ -209,7 +209,7 @@ export default function SupabaseDashboardPage() {
                   style={{
                     fontSize: 14,
                     fontWeight: 600,
-                    color: 'var(--s-text)',
+                    color: 'var(--k-text)',
                   }}
                 >
                   {p.name}
@@ -217,7 +217,7 @@ export default function SupabaseDashboardPage() {
                 <span
                   style={{
                     fontSize: 12,
-                    color: 'var(--s-text-muted)',
+                    color: 'var(--k-text-muted)',
                   }}
                 >
                   {p.desc}
@@ -244,14 +244,14 @@ export default function SupabaseDashboardPage() {
                   height: 36,
                   borderBottom:
                     i < activityEvents.length - 1
-                      ? '1px solid var(--s-border)'
+                      ? '1px solid var(--k-border)'
                       : 'none',
                   fontSize: 13,
                 }}
               >
                 <span
                   style={{
-                    color: 'var(--s-text-muted)',
+                    color: 'var(--k-text-muted)',
                     fontSize: 12,
                     fontFamily: 'var(--font-jetbrains-mono)',
                     fontVariantNumeric: 'tabular-nums',
@@ -264,7 +264,7 @@ export default function SupabaseDashboardPage() {
                 <span
                   style={{
                     fontWeight: 600,
-                    color: 'var(--s-text)',
+                    color: 'var(--k-text)',
                     flexShrink: 0,
                   }}
                 >
@@ -272,7 +272,7 @@ export default function SupabaseDashboardPage() {
                 </span>
                 <span
                   style={{
-                    color: 'var(--s-text-muted)',
+                    color: 'var(--k-text-muted)',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',

@@ -63,13 +63,13 @@ export default function Table<T extends Record<string, unknown>>({
                 style={{
                   height: 36,
                   padding: "0 12px",
-                  backgroundColor: "var(--s-bg-sub)",
-                  borderBottom: "1px solid var(--s-border-strong)",
+                  backgroundColor: "var(--k-bg-sub)",
+                  borderBottom: "1px solid var(--k-border-strong)",
                   fontSize: 11,
                   fontWeight: 500,
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
-                  color: "var(--s-text-muted)",
+                  color: "var(--k-text-muted)",
                   textAlign: col.align ?? "left",
                   cursor: col.sortable ? "pointer" : "default",
                   userSelect: "none",
@@ -97,8 +97,8 @@ export default function Table<T extends Record<string, unknown>>({
                 transition: "background-color 120ms ease-out, box-shadow 120ms ease-out",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--s-bg-raise)";
-                e.currentTarget.style.boxShadow = "inset 2px 0 0 var(--s-brand)";
+                e.currentTarget.style.backgroundColor = "var(--k-bg-raise)";
+                e.currentTarget.style.boxShadow = "inset 2px 0 0 var(--k-brand)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent";
@@ -111,9 +111,9 @@ export default function Table<T extends Record<string, unknown>>({
                   style={{
                     height: 40,
                     padding: "0 12px",
-                    borderBottom: "1px solid var(--s-border)",
+                    borderBottom: "1px solid var(--k-border)",
                     fontSize: 13,
-                    color: "var(--s-text)",
+                    color: "var(--k-text)",
                     textAlign: col.mono ? "right" : col.align ?? "left",
                     fontFamily: col.mono ? "var(--font-jetbrains-mono)" : undefined,
                   }}

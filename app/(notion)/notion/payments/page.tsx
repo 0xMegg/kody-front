@@ -173,10 +173,10 @@ export default function NotionPaymentsPage() {
     height: 32,
     padding: "0 10px",
     fontSize: 14,
-    border: "1px solid var(--n-border-strong)",
+    border: "1px solid var(--k-border-strong)",
     borderRadius: 3,
-    backgroundColor: "var(--n-surface)",
-    color: "var(--n-text)",
+    backgroundColor: "var(--k-surface)",
+    color: "var(--k-text)",
     outline: "none",
   };
 
@@ -248,7 +248,7 @@ export default function NotionPaymentsPage() {
                   style={{
                     fontSize: 13,
                     fontWeight: 500,
-                    color: "var(--n-text-muted)",
+                    color: "var(--k-text-muted)",
                   }}
                 >
                   기간
@@ -259,7 +259,7 @@ export default function NotionPaymentsPage() {
                   onChange={(e) => setDateFrom(e.target.value)}
                   style={inputStyle}
                 />
-                <span style={{ color: "var(--n-text-muted)", fontSize: 13 }}>~</span>
+                <span style={{ color: "var(--k-text-muted)", fontSize: 13 }}>~</span>
                 <input
                   type="date"
                   value={dateTo}
@@ -316,7 +316,7 @@ export default function NotionPaymentsPage() {
           <div
             style={{
               fontSize: 13,
-              color: "var(--n-text-muted)",
+              color: "var(--k-text-muted)",
               paddingLeft: 4,
             }}
           >
@@ -348,7 +348,7 @@ export default function NotionPaymentsPage() {
                     style={{
                       fontSize: 12,
                       fontWeight: 500,
-                      color: "var(--n-text-muted)",
+                      color: "var(--k-text-muted)",
                     }}
                   >
                     {String(value)}
@@ -373,7 +373,7 @@ export default function NotionPaymentsPage() {
                   padding: "10px 0",
                   borderBottom:
                     i < top10Balances.length - 1
-                      ? "1px solid var(--n-border)"
+                      ? "1px solid var(--k-border)"
                       : "none",
                 }}
               >
@@ -382,7 +382,7 @@ export default function NotionPaymentsPage() {
                     style={{
                       fontSize: 12,
                       fontWeight: 500,
-                      color: "var(--n-text-muted)",
+                      color: "var(--k-text-muted)",
                       width: 20,
                       textAlign: "right",
                     }}
@@ -392,7 +392,7 @@ export default function NotionPaymentsPage() {
                   <span
                     style={{
                       fontSize: 14,
-                      color: "var(--n-text)",
+                      color: "var(--k-text)",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
@@ -409,8 +409,8 @@ export default function NotionPaymentsPage() {
                     fontVariantNumeric: "tabular-nums",
                     color:
                       item.totalKRW < 0
-                        ? "var(--n-danger)"
-                        : "var(--n-text)",
+                        ? "var(--k-danger)"
+                        : "var(--k-text)",
                   }}
                 >
                   {item.totalKRW < 0 ? "−" : ""}₩

@@ -149,8 +149,8 @@ function FilterBar({
     fontWeight: 500,
     border: "none",
     cursor: "pointer",
-    backgroundColor: active ? "var(--s-brand-dim)" : "transparent",
-    color: active ? "var(--s-brand)" : "var(--s-text-muted)",
+    backgroundColor: active ? "var(--k-brand-subtle)" : "transparent",
+    color: active ? "var(--k-brand)" : "var(--k-text-muted)",
     transition: "all 120ms ease-out",
     borderRadius: 4,
   });
@@ -159,10 +159,10 @@ function FilterBar({
     height: 28,
     padding: "0 8px",
     fontSize: 12,
-    border: "1px solid var(--s-border)",
+    border: "1px solid var(--k-border)",
     borderRadius: 6,
-    backgroundColor: "var(--s-bg-sub)",
-    color: "var(--s-text)",
+    backgroundColor: "var(--k-bg-sub)",
+    color: "var(--k-text)",
     outline: "none",
   };
 
@@ -183,8 +183,8 @@ function FilterBar({
           gap: 2,
           padding: 2,
           borderRadius: 6,
-          backgroundColor: "var(--s-bg-sub)",
-          border: "1px solid var(--s-border)",
+          backgroundColor: "var(--k-bg-sub)",
+          border: "1px solid var(--k-border)",
         }}
       >
         <button
@@ -233,7 +233,7 @@ function FilterBar({
         onChange={(e) => onDateFromChange(e.target.value)}
         style={inputStyle}
       />
-      <span style={{ fontSize: 12, color: "var(--s-text-muted)" }}>~</span>
+      <span style={{ fontSize: 12, color: "var(--k-text-muted)" }}>~</span>
       <input
         type="date"
         value={dateTo}
@@ -275,7 +275,7 @@ function Pagination({
         gap: 12,
         padding: "12px 0",
         fontSize: 12,
-        color: "var(--s-text-muted)",
+        color: "var(--k-text-muted)",
       }}
     >
       <span>

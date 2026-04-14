@@ -138,7 +138,7 @@ function OverviewTab({
                   key={rid}
                   href={`/supabase/accounts/${rid}`}
                   style={{
-                    color: "var(--s-brand)",
+                    color: "var(--k-brand)",
                     textDecoration: "none",
                     marginRight: 8,
                     transition: "opacity 120ms ease-out",
@@ -154,13 +154,13 @@ function OverviewTab({
 
   const cellLabelStyle: React.CSSProperties = {
     fontSize: 12,
-    color: "var(--s-text-muted)",
+    color: "var(--k-text-muted)",
     padding: "6px 0",
     width: 120,
   };
   const cellValueStyle: React.CSSProperties = {
     fontSize: 13,
-    color: "var(--s-text)",
+    color: "var(--k-text)",
     padding: "6px 0",
   };
 
@@ -191,10 +191,10 @@ function OverviewTab({
                     textAlign: "right",
                     color:
                       balance[c] < 0
-                        ? "var(--s-danger)"
+                        ? "var(--k-danger)"
                         : balance[c] > 0
-                          ? "var(--s-brand)"
-                          : "var(--s-text)",
+                          ? "var(--k-brand)"
+                          : "var(--k-text)",
                     fontFamily: "var(--font-jetbrains-mono)",
                     fontVariantNumeric: "tabular-nums",
                   }}
@@ -205,7 +205,7 @@ function OverviewTab({
             ))}
             <tr
               style={{
-                borderTop: "1px solid var(--s-border)",
+                borderTop: "1px solid var(--k-border)",
               }}
             >
               <td style={{ ...cellLabelStyle, fontWeight: 600 }}>
@@ -218,10 +218,10 @@ function OverviewTab({
                   fontWeight: 600,
                   color:
                     balance.totalKRW < 0
-                      ? "var(--s-danger)"
+                      ? "var(--k-danger)"
                       : balance.totalKRW > 0
-                        ? "var(--s-brand)"
-                        : "var(--s-text)",
+                        ? "var(--k-brand)"
+                        : "var(--k-text)",
                   fontFamily: "var(--font-jetbrains-mono)",
                   fontVariantNumeric: "tabular-nums",
                 }}
@@ -238,7 +238,7 @@ function OverviewTab({
           <p
             style={{
               fontSize: 13,
-              color: "var(--s-text)",
+              color: "var(--k-text)",
               lineHeight: 1.6,
               margin: 0,
               whiteSpace: "pre-wrap",
@@ -317,10 +317,10 @@ export default function AccountDetailClient({
     height: 32,
     fontSize: 13,
     fontWeight: active ? 600 : 400,
-    color: active ? "var(--s-brand)" : "var(--s-text-muted)",
+    color: active ? "var(--k-brand)" : "var(--k-text-muted)",
     background: "none",
     border: "none",
-    borderBottom: active ? "2px solid var(--s-brand)" : "2px solid transparent",
+    borderBottom: active ? "2px solid var(--k-brand)" : "2px solid transparent",
     cursor: "pointer",
     transition: "all 120ms ease-out",
   });
@@ -332,7 +332,7 @@ export default function AccountDetailClient({
         style={{
           display: "flex",
           gap: 0,
-          borderBottom: "1px solid var(--s-border)",
+          borderBottom: "1px solid var(--k-border)",
           marginBottom: 20,
         }}
       >
@@ -355,7 +355,7 @@ export default function AccountDetailClient({
       {activeTab === "orders" && (
         <div>
           {orderRows.length === 0 ? (
-            <p style={{ fontSize: 13, color: "var(--s-text-muted)" }}>
+            <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
               이 거래처의 주문 이력이 없습니다.
             </p>
           ) : (
@@ -383,7 +383,7 @@ export default function AccountDetailClient({
       {activeTab === "payments" && (
         <div>
           {paymentRows.length === 0 ? (
-            <p style={{ fontSize: 13, color: "var(--s-text-muted)" }}>
+            <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
               이 거래처의 수금 이력이 없습니다.
             </p>
           ) : (
@@ -406,7 +406,7 @@ export default function AccountDetailClient({
       {activeTab === "addresses" && (
         <div>
           {addressRows.length === 0 ? (
-            <p style={{ fontSize: 13, color: "var(--s-text-muted)" }}>
+            <p style={{ fontSize: 13, color: "var(--k-text-muted)" }}>
               등록된 배송지가 없습니다.
             </p>
           ) : (

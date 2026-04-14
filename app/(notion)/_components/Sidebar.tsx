@@ -21,8 +21,8 @@ export default function Sidebar() {
         width: 240,
         minWidth: 240,
         height: "100vh",
-        backgroundColor: "var(--n-bg-sub)",
-        borderRight: "1px solid var(--n-border)",
+        backgroundColor: "var(--k-bg-sub)",
+        borderRight: "1px solid var(--k-border)",
         display: "flex",
         flexDirection: "column",
         position: "sticky",
@@ -43,7 +43,7 @@ export default function Sidebar() {
           style={{
             fontSize: 15,
             fontWeight: 600,
-            color: "var(--n-text)",
+            color: "var(--k-text)",
             fontFamily:
               "'Source Serif 4', 'Iowan Old Style', ui-serif, Georgia, serif",
           }}
@@ -54,8 +54,8 @@ export default function Sidebar() {
           style={{
             fontSize: 11,
             fontWeight: 500,
-            color: "var(--n-text-subtle)",
-            backgroundColor: "var(--n-bg-hover)",
+            color: "var(--k-text-subtle)",
+            backgroundColor: "var(--k-bg-hover)",
             padding: "2px 6px",
             borderRadius: 3,
           }}
@@ -84,9 +84,9 @@ export default function Sidebar() {
                 borderRadius: 3,
                 fontSize: 14,
                 fontWeight: isActive ? 500 : 400,
-                color: isActive ? "var(--n-text)" : "var(--n-text-muted)",
+                color: isActive ? "var(--k-text)" : "var(--k-text-muted)",
                 backgroundColor: isActive
-                  ? "var(--n-bg-hover)"
+                  ? "var(--k-bg-hover)"
                   : "transparent",
                 textDecoration: "none",
                 transition: "background-color 180ms ease",

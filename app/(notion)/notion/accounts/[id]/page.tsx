@@ -18,7 +18,7 @@ export default async function NotionAccountDetailPage({
           breadcrumb="거래처"
           title="거래처를 찾을 수 없습니다"
         />
-        <p style={{ fontSize: 15, color: "var(--n-text-muted)" }}>
+        <p style={{ fontSize: 15, color: "var(--k-text-muted)" }}>
           거래처 ID &quot;{id}&quot;에 해당하는 거래처가 없습니다.
         </p>
       </div>
@@ -34,7 +34,7 @@ export default async function NotionAccountDetailPage({
           <span>
             <Link
               href="/notion/accounts"
-              style={{ color: "var(--n-text-muted)", textDecoration: "none" }}
+              style={{ color: "var(--k-text-muted)", textDecoration: "none" }}
             >
               거래처
             </Link>

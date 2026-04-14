@@ -6,11 +6,11 @@ interface BadgeProps {
 }
 
 const colorMap: Record<BadgeVariant, { color: string; backgroundColor: string }> = {
-  success: { color: "var(--s-success)", backgroundColor: "var(--s-success-bg)" },
-  warning: { color: "var(--s-warning)", backgroundColor: "var(--s-warning-bg)" },
-  danger: { color: "var(--s-danger)", backgroundColor: "var(--s-danger-bg)" },
-  info: { color: "var(--s-info)", backgroundColor: "var(--s-info-bg)" },
-  neutral: { color: "var(--s-text-muted)", backgroundColor: "var(--s-bg-raise)" },
+  success: { color: "var(--k-success)", backgroundColor: "var(--k-success-bg)" },
+  warning: { color: "var(--k-warning)", backgroundColor: "var(--k-warning-bg)" },
+  danger: { color: "var(--k-danger)", backgroundColor: "var(--k-danger-bg)" },
+  info: { color: "var(--k-info)", backgroundColor: "var(--k-info-bg)" },
+  neutral: { color: "var(--k-text-muted)", backgroundColor: "var(--k-bg-raise)" },
 };
 
 export const statusVariantMap: Record<string, BadgeVariant> = {

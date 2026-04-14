@@ -30,28 +30,28 @@ const variantMap: Record<
   }
 > = {
   primary: {
-    backgroundColor: "var(--l-brand)",
-    color: "var(--l-text-invert)",
+    backgroundColor: "var(--k-brand)",
+    color: "var(--k-text-invert)",
     border: "none",
-    hoverBg: "var(--l-brand-hover)",
+    hoverBg: "var(--k-brand-hover)",
   },
   secondary: {
     backgroundColor: "transparent",
-    color: "var(--l-text)",
-    border: "1px solid var(--l-border-strong)",
-    hoverBg: "var(--l-bg-hover)",
+    color: "var(--k-text)",
+    border: "1px solid var(--k-border-strong)",
+    hoverBg: "var(--k-bg-hover)",
   },
   ghost: {
     backgroundColor: "transparent",
-    color: "var(--l-text)",
+    color: "var(--k-text)",
     border: "none",
-    hoverBg: "var(--l-bg-hover)",
+    hoverBg: "var(--k-bg-hover)",
   },
   danger: {
-    backgroundColor: "var(--l-danger)",
-    color: "var(--l-text-invert)",
+    backgroundColor: "var(--k-danger)",
+    color: "var(--k-text-invert)",
     border: "none",
-    hoverBg: "var(--l-danger)",
+    hoverBg: "var(--k-danger)",
   },
 };
 

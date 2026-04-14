@@ -12,9 +12,9 @@ export default function Card({ title, actions, children, className }: CardProps)
     <div
       className={className}
       style={{
-        border: "1px solid var(--l-border)",
+        border: "1px solid var(--k-border)",
         borderRadius: 8,
-        backgroundColor: "var(--l-surface)",
+        backgroundColor: "var(--k-surface)",
         overflow: "hidden",
       }}
     >
@@ -25,14 +25,14 @@ export default function Card({ title, actions, children, className }: CardProps)
             alignItems: "center",
             justifyContent: "space-between",
             padding: 16,
-            borderBottom: "1px solid var(--l-border)",
+            borderBottom: "1px solid var(--k-border)",
           }}
         >
           <span
             style={{
               fontSize: 13,
               fontWeight: 600,
-              color: "var(--l-text)",
+              color: "var(--k-text)",
             }}
           >
             {title}

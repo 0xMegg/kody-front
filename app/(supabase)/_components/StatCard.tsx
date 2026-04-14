@@ -13,9 +13,9 @@ interface StatCardProps {
 }
 
 const trendConfig: Record<TrendDirection, { color: string; arrow: string }> = {
-  up: { color: "var(--s-success)", arrow: "↑" },
-  down: { color: "var(--s-danger)", arrow: "↓" },
-  neutral: { color: "var(--s-text-muted)", arrow: "→" },
+  up: { color: "var(--k-success)", arrow: "↑" },
+  down: { color: "var(--k-danger)", arrow: "↓" },
+  neutral: { color: "var(--k-text-muted)", arrow: "→" },
 };
 
 export default function StatCard({
@@ -32,7 +32,7 @@ export default function StatCard({
         borderRadius: 6,
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 0 0 1px var(--s-brand-glow)";
+        e.currentTarget.style.boxShadow = "0 0 0 1px var(--k-brand-glow)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = "none";
@@ -53,7 +53,7 @@ export default function StatCard({
               fontWeight: 500,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
-              color: "var(--s-text-muted)",
+              color: "var(--k-text-muted)",
             }}
           >
             {label}
@@ -62,7 +62,7 @@ export default function StatCard({
             style={{
               fontSize: 30,
               fontWeight: 600,
-              color: "var(--s-text)",
+              color: "var(--k-text)",
               lineHeight: 1.2,
               fontFamily: "var(--font-jetbrains-mono)",
               fontFeatureSettings: "'tnum'",
@@ -85,7 +85,7 @@ export default function StatCard({
                 <span
                   style={{
                     fontSize: 12,
-                    color: "var(--s-text-muted)",
+                    color: "var(--k-text-muted)",
                   }}
                 >
                   {trendLabel}

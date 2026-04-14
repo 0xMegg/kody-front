@@ -70,8 +70,8 @@ export default function Sidebar() {
         width: 256,
         minWidth: 256,
         height: "100vh",
-        backgroundColor: "var(--s-bg-sub)",
-        borderRight: "1px solid var(--s-border)",
+        backgroundColor: "var(--k-bg-sub)",
+        borderRight: "1px solid var(--k-border)",
         display: "flex",
         flexDirection: "column",
         position: "sticky",
@@ -86,7 +86,7 @@ export default function Sidebar() {
           alignItems: "center",
           gap: 8,
           padding: "0 16px",
-          borderBottom: "1px solid var(--s-border)",
+          borderBottom: "1px solid var(--k-border)",
         }}
       >
         <span
@@ -94,7 +94,7 @@ export default function Sidebar() {
             width: 8,
             height: 8,
             borderRadius: "50%",
-            backgroundColor: "var(--s-brand)",
+            backgroundColor: "var(--k-brand)",
             flexShrink: 0,
           }}
         />
@@ -102,7 +102,7 @@ export default function Sidebar() {
           style={{
             fontSize: 14,
             fontWeight: 600,
-            color: "var(--s-text)",
+            color: "var(--k-text)",
           }}
         >
           KODY OMS
@@ -110,7 +110,7 @@ export default function Sidebar() {
         <span
           style={{
             fontSize: 10,
-            color: "var(--s-text-subtle)",
+            color: "var(--k-text-subtle)",
             letterSpacing: "0.05em",
           }}
         >
@@ -126,7 +126,7 @@ export default function Sidebar() {
           fontWeight: 500,
           textTransform: "uppercase",
           letterSpacing: "0.1em",
-          color: "var(--s-text-subtle)",
+          color: "var(--k-text-subtle)",
         }}
       >
         메뉴
@@ -152,12 +152,12 @@ export default function Sidebar() {
                 borderRadius: 6,
                 fontSize: 13,
                 fontWeight: isActive ? 500 : 400,
-                color: isActive ? "var(--s-brand)" : "var(--s-text-muted)",
-                backgroundColor: isActive ? "var(--s-bg-raise)" : "transparent",
+                color: isActive ? "var(--k-brand)" : "var(--k-text-muted)",
+                backgroundColor: isActive ? "var(--k-bg-raise)" : "transparent",
                 textDecoration: "none",
                 transition: "background-color 120ms ease-out",
                 boxShadow: isActive
-                  ? "inset 2px 0 0 var(--s-brand)"
+                  ? "inset 2px 0 0 var(--k-brand)"
                   : "none",
               }}
             >

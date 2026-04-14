@@ -26,13 +26,13 @@ export default function Toast({ message, visible, onClose }: ToastProps) {
         right: 24,
         padding: "12px 20px",
         borderRadius: 6,
-        border: "1px solid var(--s-border-strong)",
-        backgroundColor: "var(--s-bg-raise)",
-        color: "var(--s-text)",
+        border: "1px solid var(--k-border-strong)",
+        backgroundColor: "var(--k-bg-raise)",
+        color: "var(--k-text)",
         fontSize: 13,
         fontWeight: 500,
         zIndex: 1000,
-        boxShadow: "0 0 0 1px var(--s-brand-glow)",
+        boxShadow: "0 0 0 1px var(--k-brand-glow)",
         animation: "fadeIn 150ms ease-out",
       }}
     >

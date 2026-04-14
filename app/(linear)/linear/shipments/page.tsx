@@ -106,7 +106,7 @@ export default function LinearShipmentsPage() {
           style={{
             fontSize: 20,
             fontWeight: 600,
-            color: "var(--l-text)",
+            color: "var(--k-text)",
             margin: 0,
           }}
         >
@@ -119,9 +119,9 @@ export default function LinearShipmentsPage() {
         style={{
           display: "flex",
           flex: 1,
-          border: "1px solid var(--l-border)",
+          border: "1px solid var(--k-border)",
           borderRadius: 8,
-          backgroundColor: "var(--l-surface)",
+          backgroundColor: "var(--k-surface)",
           overflow: "hidden",
           minHeight: 0,
         }}
@@ -132,7 +132,7 @@ export default function LinearShipmentsPage() {
             flex: "0 0 55%",
             display: "flex",
             flexDirection: "column",
-            borderRight: "1px solid var(--l-border)",
+            borderRight: "1px solid var(--k-border)",
             overflow: "hidden",
           }}
         >
@@ -140,7 +140,7 @@ export default function LinearShipmentsPage() {
           <div
             style={{
               padding: "16px 16px 12px",
-              borderBottom: "1px solid var(--l-border)",
+              borderBottom: "1px solid var(--k-border)",
             }}
           >
             <div
@@ -156,7 +156,7 @@ export default function LinearShipmentsPage() {
                   style={{
                     fontSize: 13,
                     fontWeight: 600,
-                    color: "var(--l-text)",
+                    color: "var(--k-text)",
                   }}
                 >
                   피킹 대기
@@ -175,10 +175,10 @@ export default function LinearShipmentsPage() {
                 height: 28,
                 padding: "0 10px",
                 fontSize: 12,
-                border: "1px solid var(--l-border)",
+                border: "1px solid var(--k-border)",
                 borderRadius: 6,
-                backgroundColor: "var(--l-bg)",
-                color: "var(--l-text)",
+                backgroundColor: "var(--k-bg)",
+                color: "var(--k-text)",
                 outline: "none",
                 boxSizing: "border-box",
               }}
@@ -210,13 +210,13 @@ export default function LinearShipmentsPage() {
                       style={{
                         height: 32,
                         padding: "0 12px",
-                        backgroundColor: "var(--l-bg-sub)",
-                        borderBottom: "1px solid var(--l-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        color: "var(--l-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                         width: col.width,
@@ -249,7 +249,7 @@ export default function LinearShipmentsPage() {
                     style={{ transition: "background-color 100ms ease-out" }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor =
-                        "var(--l-bg-hover)";
+                        "var(--k-bg-hover)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = "transparent";
@@ -259,7 +259,7 @@ export default function LinearShipmentsPage() {
                       style={{
                         height: 36,
                         padding: "0 12px",
-                        borderBottom: "1px solid var(--l-border)",
+                        borderBottom: "1px solid var(--k-border)",
                         textAlign: "center",
                       }}
                     >
@@ -283,9 +283,9 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--l-text)",
+                          color: "var(--k-text)",
                           textAlign: cell.align,
                           whiteSpace: "nowrap",
                           overflow: "hidden",
@@ -306,7 +306,7 @@ export default function LinearShipmentsPage() {
           <div
             style={{
               padding: "12px 16px",
-              borderTop: "1px solid var(--l-border)",
+              borderTop: "1px solid var(--k-border)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -315,7 +315,7 @@ export default function LinearShipmentsPage() {
             <span
               style={{
                 fontSize: 12,
-                color: "var(--l-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               {selectedItems.size}개 선택됨
@@ -343,7 +343,7 @@ export default function LinearShipmentsPage() {
           <div
             style={{
               display: "flex",
-              borderBottom: "1px solid var(--l-border)",
+              borderBottom: "1px solid var(--k-border)",
             }}
           >
             {(["출고대기", "출고완료"] as const).map((tab) => {
@@ -362,11 +362,11 @@ export default function LinearShipmentsPage() {
                     gap: 6,
                     fontSize: 13,
                     fontWeight: isActive ? 600 : 400,
-                    color: isActive ? "var(--l-brand)" : "var(--l-text-muted)",
+                    color: isActive ? "var(--k-brand)" : "var(--k-text-muted)",
                     backgroundColor: "transparent",
                     border: "none",
                     borderBottom: isActive
-                      ? "2px solid var(--l-brand)"
+                      ? "2px solid var(--k-brand)"
                       : "2px solid transparent",
                     cursor: "pointer",
                     transition: "all 150ms ease-out",
@@ -379,9 +379,9 @@ export default function LinearShipmentsPage() {
                       padding: "1px 6px",
                       borderRadius: 10,
                       backgroundColor: isActive
-                        ? "var(--l-brand-bg)"
-                        : "var(--l-bg-sub)",
-                      color: isActive ? "var(--l-brand)" : "var(--l-text-muted)",
+                        ? "var(--k-brand-bg)"
+                        : "var(--k-bg-sub)",
+                      color: isActive ? "var(--k-brand)" : "var(--k-text-muted)",
                     }}
                   >
                     {count}
@@ -417,13 +417,13 @@ export default function LinearShipmentsPage() {
                       style={{
                         height: 32,
                         padding: "0 12px",
-                        backgroundColor: "var(--l-bg-sub)",
-                        borderBottom: "1px solid var(--l-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        color: "var(--l-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                         position: "sticky",
@@ -458,7 +458,7 @@ export default function LinearShipmentsPage() {
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor =
-                          "var(--l-bg-hover)";
+                          "var(--k-bg-hover)";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.backgroundColor = "transparent";
@@ -468,9 +468,9 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--l-brand)",
+                          color: "var(--k-brand)",
                           fontWeight: 500,
                         }}
                       >
@@ -480,9 +480,9 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--l-text)",
+                          color: "var(--k-text)",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -495,9 +495,9 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--l-text)",
+                          color: "var(--k-text)",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -512,9 +512,9 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--l-text)",
+                          color: "var(--k-text)",
                         }}
                       >
                         {shipment.shipDate ?? "-"}
@@ -523,9 +523,9 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--l-text)",
+                          color: "var(--k-text)",
                           textAlign: "right",
                         }}
                       >
@@ -535,9 +535,9 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
-                          color: "var(--l-text)",
+                          color: "var(--k-text)",
                           textAlign: "right",
                         }}
                       >
@@ -547,7 +547,7 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           fontSize: 13,
                           textAlign: "center",
                         }}
@@ -558,7 +558,7 @@ export default function LinearShipmentsPage() {
                         style={{
                           height: 36,
                           padding: "0 12px",
-                          borderBottom: "1px solid var(--l-border)",
+                          borderBottom: "1px solid var(--k-border)",
                           textAlign: "center",
                         }}
                       >

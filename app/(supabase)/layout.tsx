@@ -20,8 +20,8 @@ export default function SupabaseLayout({
       style={{
         display: "flex",
         minHeight: "100vh",
-        backgroundColor: "var(--s-bg)",
-        color: "var(--s-text)",
+        backgroundColor: "var(--k-bg)",
+        color: "var(--k-text)",
       }}
     >
       <Sidebar />
@@ -34,8 +34,8 @@ export default function SupabaseLayout({
             alignItems: "center",
             justifyContent: "space-between",
             padding: "0 16px",
-            borderBottom: "1px solid var(--s-border)",
-            backgroundColor: "var(--s-bg)",
+            borderBottom: "1px solid var(--k-border)",
+            backgroundColor: "var(--k-bg)",
             fontSize: 12,
             gap: 12,
           }}
@@ -44,7 +44,7 @@ export default function SupabaseLayout({
           <span
             style={{
               fontSize: 12,
-              color: "var(--s-text-muted)",
+              color: "var(--k-text-muted)",
               whiteSpace: "nowrap",
             }}
           >
@@ -60,9 +60,9 @@ export default function SupabaseLayout({
               display: "flex",
               alignItems: "center",
               padding: "0 10px",
-              border: "1px solid var(--s-border)",
+              border: "1px solid var(--k-border)",
               borderRadius: 6,
-              color: "var(--s-text-subtle)",
+              color: "var(--k-text-subtle)",
               fontSize: 12,
             }}
           >
@@ -77,13 +77,13 @@ export default function SupabaseLayout({
                 width: 24,
                 height: 24,
                 borderRadius: "50%",
-                backgroundColor: "var(--s-bg-raise)",
+                backgroundColor: "var(--k-bg-raise)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontSize: 10,
                 fontWeight: 600,
-                color: "var(--s-text-muted)",
+                color: "var(--k-text-muted)",
               }}
             >
               U
@@ -94,8 +94,8 @@ export default function SupabaseLayout({
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
-                color: "var(--s-warning)",
-                backgroundColor: "var(--s-warning-bg)",
+                color: "var(--k-warning)",
+                backgroundColor: "var(--k-warning-bg)",
                 padding: "2px 8px",
                 borderRadius: 4,
               }}
@@ -105,7 +105,7 @@ export default function SupabaseLayout({
             <Link
               href="/"
               style={{
-                color: "var(--s-brand)",
+                color: "var(--k-brand)",
                 textDecoration: "none",
                 fontSize: 12,
               }}

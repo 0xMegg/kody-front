@@ -32,14 +32,14 @@ export default async function NotionShipmentDetailPage({
           breadcrumb={
             <Link
               href="/notion/shipments"
-              style={{ color: "var(--n-accent)", textDecoration: "none" }}
+              style={{ color: "var(--k-brand)", textDecoration: "none" }}
             >
               출고
             </Link>
           }
           title="출고를 찾을 수 없습니다"
         />
-        <p style={{ fontSize: 15, color: "var(--n-text-muted)" }}>
+        <p style={{ fontSize: 15, color: "var(--k-text-muted)" }}>
           출고번호 &quot;{id}&quot;에 해당하는 출고가 없습니다.
         </p>
       </div>
@@ -59,7 +59,7 @@ export default async function NotionShipmentDetailPage({
           <span>
             <Link
               href="/notion/shipments"
-              style={{ color: "var(--n-accent)", textDecoration: "none" }}
+              style={{ color: "var(--k-brand)", textDecoration: "none" }}
             >
               출고
             </Link>
@@ -136,11 +136,11 @@ export default async function NotionShipmentDetailPage({
                       style={{
                         height: 40,
                         padding: "0 16px",
-                        backgroundColor: "var(--n-bg-sub)",
-                        borderBottom: "1px solid var(--n-border)",
+                        backgroundColor: "var(--k-bg-sub)",
+                        borderBottom: "1px solid var(--k-border)",
                         fontSize: 13,
                         fontWeight: 500,
-                        color: "var(--n-text-muted)",
+                        color: "var(--k-text-muted)",
                         textAlign: col.align,
                         whiteSpace: "nowrap",
                       }}
@@ -188,9 +188,9 @@ export default async function NotionShipmentDetailPage({
                           style={{
                             height: 44,
                             padding: "0 16px",
-                            borderBottom: "1px solid var(--n-border)",
+                            borderBottom: "1px solid var(--k-border)",
                             fontSize: 15,
-                            color: "var(--n-text)",
+                            color: "var(--k-text)",
                             textAlign: cell.align,
                           }}
                         >
@@ -209,7 +209,7 @@ export default async function NotionShipmentDetailPage({
                       padding: "0 16px",
                       fontSize: 15,
                       fontWeight: 600,
-                      color: "var(--n-text)",
+                      color: "var(--k-text)",
                       textAlign: "right",
                       fontFamily: "var(--font-source-serif)",
                     }}
@@ -222,7 +222,7 @@ export default async function NotionShipmentDetailPage({
                       padding: "0 16px",
                       fontSize: 15,
                       fontWeight: 600,
-                      color: "var(--n-text)",
+                      color: "var(--k-text)",
                       textAlign: "right",
                     }}
                   >
@@ -255,7 +255,7 @@ export default async function NotionShipmentDetailPage({
               <span
                 style={{
                   fontSize: 14,
-                  color: "var(--n-text-muted)",
+                  color: "var(--k-text-muted)",
                   minWidth: 80,
                 }}
               >
@@ -265,7 +265,7 @@ export default async function NotionShipmentDetailPage({
               <button
                 style={{
                   fontSize: 14,
-                  color: "var(--n-accent)",
+                  color: "var(--k-brand)",
                   background: "none",
                   border: "none",
                   cursor: "pointer",
@@ -282,7 +282,7 @@ export default async function NotionShipmentDetailPage({
               <span
                 style={{
                   fontSize: 14,
-                  color: "var(--n-text-muted)",
+                  color: "var(--k-text-muted)",
                   display: "block",
                   marginBottom: 8,
                 }}
@@ -296,15 +296,15 @@ export default async function NotionShipmentDetailPage({
                     alignItems: "center",
                     gap: 10,
                     padding: "12px 16px",
-                    border: "1px solid var(--n-border)",
+                    border: "1px solid var(--k-border)",
                     borderRadius: 3,
-                    backgroundColor: "var(--n-bg-sub)",
+                    backgroundColor: "var(--k-bg-sub)",
                   }}
                 >
                   <span
                     style={{
                       fontSize: 15,
-                      color: "var(--n-text)",
+                      color: "var(--k-text)",
                       fontWeight: 500,
                     }}
                   >
@@ -318,9 +318,9 @@ export default async function NotionShipmentDetailPage({
                     alignItems: "center",
                     justifyContent: "center",
                     padding: "28px 16px",
-                    border: "1px dashed var(--n-border-strong)",
+                    border: "1px dashed var(--k-border-strong)",
                     borderRadius: 3,
-                    backgroundColor: "var(--n-bg-sub)",
+                    backgroundColor: "var(--k-bg-sub)",
                     cursor: "pointer",
                     transition: "border-color 180ms ease",
                   }}
@@ -328,7 +328,7 @@ export default async function NotionShipmentDetailPage({
                   <span
                     style={{
                       fontSize: 15,
-                      color: "var(--n-text-muted)",
+                      color: "var(--k-text-muted)",
                     }}
                   >
                     파일 드래그 또는 클릭하여 업로드
@@ -352,7 +352,7 @@ export default async function NotionShipmentDetailPage({
               <label
                 style={{
                   fontSize: 14,
-                  color: "var(--n-text-muted)",
+                  color: "var(--k-text-muted)",
                   display: "block",
                   marginBottom: 8,
                 }}
@@ -370,12 +370,12 @@ export default async function NotionShipmentDetailPage({
                   height: 36,
                   padding: "0 12px",
                   fontSize: 15,
-                  border: "1px solid var(--n-border)",
+                  border: "1px solid var(--k-border)",
                   borderRadius: 3,
                   backgroundColor: isCompleted
-                    ? "var(--n-bg-sub)"
-                    : "var(--n-bg)",
-                  color: "var(--n-text)",
+                    ? "var(--k-bg-sub)"
+                    : "var(--k-bg)",
+                  color: "var(--k-text)",
                   outline: "none",
                   boxSizing: "border-box",
                   transition: "border-color 180ms ease",
@@ -398,8 +398,8 @@ export default async function NotionShipmentDetailPage({
                   fontWeight: 500,
                   borderRadius: 3,
                   border: "none",
-                  backgroundColor: "var(--n-accent)",
-                  color: "var(--n-text-on-accent)",
+                  backgroundColor: "var(--k-brand)",
+                  color: "var(--k-text-invert)",
                   cursor: isCompleted ? "not-allowed" : "pointer",
                   opacity: isCompleted ? 0.5 : 1,
                   transition: "background-color 180ms ease",
@@ -411,7 +411,7 @@ export default async function NotionShipmentDetailPage({
             <p
               style={{
                 fontSize: 14,
-                color: "var(--n-text-muted)",
+                color: "var(--k-text-muted)",
                 margin: 0,
                 lineHeight: 1.6,
               }}
@@ -437,12 +437,12 @@ function InfoRow({
       <span
         style={{
           fontSize: 13,
-          color: "var(--n-text-muted)",
+          color: "var(--k-text-muted)",
         }}
       >
         {label}
       </span>
-      <span style={{ fontSize: 15, color: "var(--n-text)" }}>{value}</span>
+      <span style={{ fontSize: 15, color: "var(--k-text)" }}>{value}</span>
     </div>
   );
 }

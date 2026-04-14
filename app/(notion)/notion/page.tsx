@@ -141,7 +141,7 @@ export default function NotionDashboardPage() {
                 style={{
                   fontSize: 11,
                   fontWeight: 500,
-                  color: 'var(--n-text)',
+                  color: 'var(--k-text)',
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
@@ -151,7 +151,7 @@ export default function NotionDashboardPage() {
                 style={{
                   width: '100%',
                   maxWidth: 40,
-                  backgroundColor: 'var(--n-bg-sub)',
+                  backgroundColor: 'var(--k-bg-sub)',
                   borderRadius: 3,
                   position: 'relative',
                   height: 80,
@@ -164,7 +164,7 @@ export default function NotionDashboardPage() {
                     left: 0,
                     right: 0,
                     height: `${(day.count / maxCount) * 100}%`,
-                    backgroundColor: 'var(--n-accent)',
+                    backgroundColor: 'var(--k-brand)',
                     borderRadius: 3,
                     transition: 'height 180ms ease',
                   }}
@@ -173,7 +173,7 @@ export default function NotionDashboardPage() {
               <span
                 style={{
                   fontSize: 11,
-                  color: 'var(--n-text-muted)',
+                  color: 'var(--k-text-muted)',
                 }}
               >
                 {day.label}
@@ -211,7 +211,7 @@ export default function NotionDashboardPage() {
                   style={{
                     fontSize: 15,
                     fontWeight: 600,
-                    color: 'var(--n-text)',
+                    color: 'var(--k-text)',
                   }}
                 >
                   {p.name}
@@ -219,7 +219,7 @@ export default function NotionDashboardPage() {
                 <span
                   style={{
                     fontSize: 13,
-                    color: 'var(--n-text-muted)',
+                    color: 'var(--k-text-muted)',
                   }}
                 >
                   {p.desc}
@@ -246,14 +246,14 @@ export default function NotionDashboardPage() {
                   height: 44,
                   borderBottom:
                     i < 9
-                      ? '1px solid var(--n-border)'
+                      ? '1px solid var(--k-border)'
                       : 'none',
                   fontSize: 15,
                 }}
               >
                 <span
                   style={{
-                    color: 'var(--n-text-muted)',
+                    color: 'var(--k-text-muted)',
                     fontSize: 13,
                     fontVariantNumeric: 'tabular-nums',
                     flexShrink: 0,
@@ -265,7 +265,7 @@ export default function NotionDashboardPage() {
                 <span
                   style={{
                     fontWeight: 600,
-                    color: 'var(--n-text)',
+                    color: 'var(--k-text)',
                     flexShrink: 0,
                   }}
                 >
@@ -273,7 +273,7 @@ export default function NotionDashboardPage() {
                 </span>
                 <span
                   style={{
-                    color: 'var(--n-text-muted)',
+                    color: 'var(--k-text-muted)',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
