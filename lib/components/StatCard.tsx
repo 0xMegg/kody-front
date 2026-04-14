@@ -1,6 +1,6 @@
 "use client";
 
-import Card from "./Card";
+import Card from "@/lib/components/Card";
 
 type TrendDirection = "up" | "down" | "neutral";
 
@@ -13,9 +13,9 @@ interface StatCardProps {
 }
 
 const trendConfig: Record<TrendDirection, { color: string; arrow: string }> = {
-  up: { color: "var(--k-success)", arrow: "↑" },
-  down: { color: "var(--k-danger)", arrow: "↓" },
-  neutral: { color: "var(--k-text-muted)", arrow: "→" },
+  up: { color: "var(--k-success)", arrow: "\u2191" },
+  down: { color: "var(--k-danger)", arrow: "\u2193" },
+  neutral: { color: "var(--k-text-muted)", arrow: "\u2192" },
 };
 
 export default function StatCard({
@@ -28,8 +28,8 @@ export default function StatCard({
   return (
     <div
       style={{
-        transition: "box-shadow 120ms ease-out",
-        borderRadius: 6,
+        transition: `box-shadow var(--k-transition-fast)`,
+        borderRadius: "var(--k-radius-md)",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = "0 0 0 1px var(--k-brand-glow)";
@@ -49,10 +49,10 @@ export default function StatCard({
         >
           <span
             style={{
-              fontSize: 11,
+              fontSize: "var(--k-stat-label-size)",
               fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
+              textTransform: "var(--k-stat-label-transform)" as React.CSSProperties["textTransform"],
+              letterSpacing: "var(--k-stat-label-tracking)",
               color: "var(--k-text-muted)",
             }}
           >
@@ -60,12 +60,12 @@ export default function StatCard({
           </span>
           <span
             style={{
-              fontSize: 30,
+              fontSize: "var(--k-stat-value-size)",
               fontWeight: 600,
               color: "var(--k-text)",
               lineHeight: 1.2,
-              fontFamily: "var(--font-jetbrains-mono)",
-              fontFeatureSettings: "'tnum'",
+              fontFamily: "var(--k-stat-value-font)",
+              fontVariantNumeric: "tabular-nums",
             }}
           >
             {value}
@@ -74,7 +74,7 @@ export default function StatCard({
             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
               <span
                 style={{
-                  fontSize: 12,
+                  fontSize: "var(--k-font-size-sm)",
                   fontWeight: 500,
                   color: trendConfig[trend].color,
                 }}
@@ -84,7 +84,7 @@ export default function StatCard({
               {trendLabel && (
                 <span
                   style={{
-                    fontSize: 12,
+                    fontSize: "var(--k-font-size-sm)",
                     color: "var(--k-text-muted)",
                   }}
                 >

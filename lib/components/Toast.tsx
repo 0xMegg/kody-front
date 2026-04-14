@@ -25,15 +25,15 @@ export default function Toast({ message, visible, onClose }: ToastProps) {
         bottom: 24,
         right: 24,
         padding: "12px 20px",
-        borderRadius: 6,
+        borderRadius: "var(--k-radius-md)",
         border: "1px solid var(--k-border-strong)",
-        backgroundColor: "var(--k-bg-raise)",
+        backgroundColor: "var(--k-toast-bg)",
         color: "var(--k-text)",
-        fontSize: 13,
+        fontSize: "var(--k-font-size-md)",
         fontWeight: 500,
+        boxShadow: "var(--k-toast-shadow)",
         zIndex: 1000,
-        boxShadow: "0 0 0 1px var(--k-brand-glow)",
-        animation: "fadeIn 150ms ease-out",
+        animation: "fadeIn var(--k-transition-fast)",
       }}
     >
       {message}

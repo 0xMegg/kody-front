@@ -2,10 +2,10 @@
 
 import { useState, useMemo } from "react";
 import PageHeader from "../../_components/PageHeader";
-import StatCard from "../../_components/StatCard";
-import Button from "../../_components/Button";
-import Card from "../../_components/Card";
-import Table, { type TableColumn } from "../../_components/Table";
+import StatCard from "@/lib/components/StatCard";
+import Button from "@/lib/components/Button";
+import Card from "@/lib/components/Card";
+import Table, { type TableColumn } from "@/lib/components/Table";
 import {
   products,
   artists,

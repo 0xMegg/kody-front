@@ -8,9 +8,9 @@ import {
   getAccountById,
   getProductById,
 } from "@/lib/mock-data";
-import Badge from "@/app/(linear)/_components/Badge";
-import Button from "@/app/(linear)/_components/Button";
-import Toast from "@/app/(linear)/_components/Toast";
+import Badge from "@/lib/components/Badge";
+import Button from "@/lib/components/Button";
+import Toast from "@/lib/components/Toast";
 
 interface PickingItem {
   orderItemId: string;

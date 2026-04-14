@@ -8,10 +8,10 @@ import {
   getAccountById,
   getProductById,
 } from "@/lib/mock-data";
-import Badge from "@/app/(notion)/_components/Badge";
-import Button from "@/app/(notion)/_components/Button";
+import Badge from "@/lib/components/Badge";
+import Button from "@/lib/components/Button";
 import PageHeader from "@/app/(notion)/_components/PageHeader";
-import Toast from "@/app/(notion)/_components/Toast";
+import Toast from "@/lib/components/Toast";
 
 interface PickingItem {
   orderItemId: string;

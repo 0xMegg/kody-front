@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import PageHeader from '@/app/(linear)/_components/PageHeader';
-import StatCard from '@/app/(linear)/_components/StatCard';
-import Card from '@/app/(linear)/_components/Card';
+import StatCard from '@/lib/components/StatCard';
+import Card from '@/lib/components/Card';
 import {
   orders,
   shipments,

@@ -2,10 +2,10 @@
 
 import { useState, useMemo } from "react";
 import PageHeader from "@/app/(notion)/_components/PageHeader";
-import Button from "@/app/(notion)/_components/Button";
-import StatCard from "@/app/(notion)/_components/StatCard";
-import Card from "@/app/(notion)/_components/Card";
-import Table, { type TableColumn } from "@/app/(notion)/_components/Table";
+import Button from "@/lib/components/Button";
+import StatCard from "@/lib/components/StatCard";
+import Card from "@/lib/components/Card";
+import Table, { type TableColumn } from "@/lib/components/Table";
 import {
   payments,
   accounts,

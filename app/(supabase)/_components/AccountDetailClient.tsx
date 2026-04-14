@@ -2,9 +2,10 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import Card from "./Card";
-import Table, { type TableColumn } from "./Table";
-import Badge, { statusVariantMap } from "./Badge";
+import Card from "@/lib/components/Card";
+import Table, { type TableColumn } from "@/lib/components/Table";
+import Badge from "@/lib/components/Badge";
+import { statusVariantMap } from "@/lib/constants";
 import {
   orders,
   payments,

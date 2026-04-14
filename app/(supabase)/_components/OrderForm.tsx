@@ -10,10 +10,11 @@ import {
   getBalanceByAccount,
   getRecentOrdersByAccount,
 } from "@/lib/mock-data";
-import Badge, { statusVariantMap } from "./Badge";
-import Button from "./Button";
-import Card from "./Card";
-import Toast from "./Toast";
+import Badge from "@/lib/components/Badge";
+import { statusVariantMap } from "@/lib/constants";
+import Button from "@/lib/components/Button";
+import Card from "@/lib/components/Card";
+import Toast from "@/lib/components/Toast";
 
 interface OrderFormProps {
   order?: Order;

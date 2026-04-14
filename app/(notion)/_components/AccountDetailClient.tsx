@@ -2,9 +2,9 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import Card from "./Card";
-import Table, { type TableColumn } from "./Table";
-import Badge from "./Badge";
+import Card from "@/lib/components/Card";
+import Table, { type TableColumn } from "@/lib/components/Table";
+import Badge from "@/lib/components/Badge";
 import {
   orders,
   payments,

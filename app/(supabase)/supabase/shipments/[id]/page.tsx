@@ -6,8 +6,9 @@ import {
   salesRepNames,
 } from "@/lib/mock-data";
 import PageHeader from "@/app/(supabase)/_components/PageHeader";
-import Card from "@/app/(supabase)/_components/Card";
-import Badge, { statusVariantMap } from "@/app/(supabase)/_components/Badge";
+import Card from "@/lib/components/Card";
+import Badge from "@/lib/components/Badge";
+import { statusVariantMap } from "@/lib/constants";
 
 function fmt(n: number): string {
   return n.toLocaleString("ko-KR");

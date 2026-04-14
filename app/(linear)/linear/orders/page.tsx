@@ -3,9 +3,9 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import PageHeader from "@/app/(linear)/_components/PageHeader";
-import Button from "@/app/(linear)/_components/Button";
-import Table, { type TableColumn } from "@/app/(linear)/_components/Table";
-import Badge from "@/app/(linear)/_components/Badge";
+import Button from "@/lib/components/Button";
+import Table, { type TableColumn } from "@/lib/components/Table";
+import Badge from "@/lib/components/Badge";
 import {
   orders,
   getAccountById,

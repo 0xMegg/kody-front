@@ -93,8 +93,62 @@
   --k-transition-fast: 150ms ease-out;
   --k-transition-normal: 200ms ease-out;
 
+  /* ── Button ── */
+  --k-btn-secondary-bg: transparent;
+  --k-btn-ghost-hover: var(--k-bg-hover);
+  --k-btn-danger-bg: var(--k-danger);
+  --k-btn-danger-text: var(--k-text-invert);
+  --k-btn-danger-border: none;
+  --k-btn-danger-hover-bg: var(--k-danger);
+  --k-btn-danger-hover-text: var(--k-text-invert);
+
+  /* ── Card ── */
+  --k-card-bg: var(--k-surface);
+  --k-shadow-card: none;
+  --k-card-title-size: var(--k-font-size-md);
+
+  /* ── StatCard ── */
+  --k-stat-label-size: var(--k-font-size-xs);
+  --k-stat-label-transform: uppercase;
+  --k-stat-label-tracking: 0.05em;
+  --k-stat-value-size: 28px;
+  --k-stat-value-font: var(--k-font-body);
+
+  /* ── Toast ── */
+  --k-toast-bg: var(--k-surface);
+  --k-toast-shadow: none;
+
+  /* ── Badge ── */
+  --k-badge-height: 20px;
+  --k-badge-padding: 8px;
+  --k-badge-radius: 4px;
+  --k-badge-font-size: 11px;
+  --k-badge-text-transform: none;
+  --k-badge-letter-spacing: 0;
+  --k-badge-info: var(--k-info);
+  --k-badge-info-bg: var(--k-info-bg);
+  --k-badge-neutral-bg: var(--k-bg-raise);
+  --k-badge-accent: var(--k-highlight-purple);
+  --k-badge-accent-bg: var(--k-highlight-purple-bg);
+
+  /* ── Table ── */
+  --k-table-head-height: 32px;
+  --k-table-head-padding: 12px;
+  --k-table-head-font-size: 11px;
+  --k-table-head-text-transform: uppercase;
+  --k-table-head-letter-spacing: 0.05em;
+  --k-table-head-border-color: var(--k-border);
+  --k-table-row-bg-alt: transparent;
+  --k-table-hover-bg: var(--k-bg-hover);
+  --k-table-hover-shadow: none;
+
   /* ── Layout ── */
   --k-sidebar-width: 220px;
   --k-header-height: 56px;
   --k-content-max-width: 1280px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -52,6 +52,7 @@ export default function Table<T extends Record<string, unknown>>({
         style={{
           width: "100%",
           borderCollapse: "collapse",
+          fontVariantNumeric: "tabular-nums",
         }}
       >
         <thead>
@@ -61,14 +62,14 @@ export default function Table<T extends Record<string, unknown>>({
                 key={col.key}
                 onClick={col.sortable ? () => handleSort(col.key) : undefined}
                 style={{
-                  height: 36,
-                  padding: "0 12px",
+                  height: "var(--k-table-head-height)",
+                  padding: "0 var(--k-table-head-padding)",
                   backgroundColor: "var(--k-bg-sub)",
-                  borderBottom: "1px solid var(--k-border-strong)",
-                  fontSize: 11,
+                  borderBottom: "1px solid var(--k-table-head-border-color)",
+                  fontSize: "var(--k-table-head-font-size)",
                   fontWeight: 500,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
+                  textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
+                  letterSpacing: "var(--k-table-head-letter-spacing)",
                   color: "var(--k-text-muted)",
                   textAlign: col.align ?? "left",
                   cursor: col.sortable ? "pointer" : "default",
@@ -94,14 +95,17 @@ export default function Table<T extends Record<string, unknown>>({
               onClick={onRowClick ? () => onRowClick(row) : undefined}
               style={{
                 cursor: onRowClick ? "pointer" : "default",
-                transition: "background-color 120ms ease-out, box-shadow 120ms ease-out",
+                backgroundColor: i % 2 === 1 ? "var(--k-table-row-bg-alt)" : "transparent",
+                transition: "var(--k-transition-fast)",
+                transitionProperty: "background-color, box-shadow",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--k-bg-raise)";
-                e.currentTarget.style.boxShadow = "inset 2px 0 0 var(--k-brand)";
+                e.currentTarget.style.backgroundColor = "var(--k-table-hover-bg)";
+                e.currentTarget.style.boxShadow = "var(--k-table-hover-shadow)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.backgroundColor =
+                  i % 2 === 1 ? "var(--k-table-row-bg-alt)" : "transparent";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -109,13 +113,13 @@ export default function Table<T extends Record<string, unknown>>({
                 <td
                   key={col.key}
                   style={{
-                    height: 40,
-                    padding: "0 12px",
+                    height: "var(--k-height-row)",
+                    padding: "0 var(--k-table-head-padding)",
                     borderBottom: "1px solid var(--k-border)",
-                    fontSize: 13,
+                    fontSize: "var(--k-font-size-md)",
                     color: "var(--k-text)",
                     textAlign: col.mono ? "right" : col.align ?? "left",
-                    fontFamily: col.mono ? "var(--font-jetbrains-mono)" : undefined,
+                    fontFamily: col.mono ? "var(--k-font-mono)" : undefined,
                   }}
                 >
                   {renderCell

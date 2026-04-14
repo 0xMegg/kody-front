@@ -54,6 +54,31 @@
   --k-highlight-blue: #60a5fa;
   --k-highlight-yellow: #f5a524;
 
+  /* ── Button ── */
+  --k-btn-secondary-bg: var(--k-bg-sub);
+  --k-btn-ghost-hover: var(--k-bg-raise);
+  --k-btn-danger-bg: transparent;
+  --k-btn-danger-text: var(--k-danger);
+  --k-btn-danger-border: 1px solid var(--k-danger);
+  --k-btn-danger-hover-bg: var(--k-danger);
+  --k-btn-danger-hover-text: var(--k-text-invert);
+
+  /* ── Card ── */
+  --k-card-bg: var(--k-bg-sub);
+  --k-shadow-card: none;
+  --k-card-title-size: var(--k-font-size-md);
+
+  /* ── StatCard ── */
+  --k-stat-label-size: var(--k-font-size-xs);
+  --k-stat-label-transform: uppercase;
+  --k-stat-label-tracking: 0.05em;
+  --k-stat-value-size: 30px;
+  --k-stat-value-font: var(--k-font-mono);
+
+  /* ── Toast ── */
+  --k-toast-bg: var(--k-bg-raise);
+  --k-toast-shadow: 0 0 0 1px var(--k-brand-glow);
+
   /* ── Radius ── */
   --k-radius-sm: 6px;
   --k-radius-md: 6px;
@@ -95,8 +120,37 @@
   --k-transition-fast: 120ms ease-out;
   --k-transition-normal: 200ms ease-out;
 
+  /* ── Badge ── */
+  --k-badge-height: 22px;
+  --k-badge-padding: 8px;
+  --k-badge-radius: 4px;
+  --k-badge-font-size: 11px;
+  --k-badge-text-transform: uppercase;
+  --k-badge-letter-spacing: 0.05em;
+  --k-badge-info: var(--k-info);
+  --k-badge-info-bg: var(--k-info-bg);
+  --k-badge-neutral-bg: var(--k-bg-raise);
+  --k-badge-accent: var(--k-highlight-purple);
+  --k-badge-accent-bg: var(--k-highlight-purple-bg);
+
+  /* ── Table ── */
+  --k-table-head-height: 36px;
+  --k-table-head-padding: 12px;
+  --k-table-head-font-size: 11px;
+  --k-table-head-text-transform: uppercase;
+  --k-table-head-letter-spacing: 0.05em;
+  --k-table-head-border-color: var(--k-border-strong);
+  --k-table-row-bg-alt: transparent;
+  --k-table-hover-bg: var(--k-bg-raise);
+  --k-table-hover-shadow: inset 2px 0 0 var(--k-brand);
+
   /* ── Layout ── */
   --k-sidebar-width: 256px;
   --k-header-height: 60px;
   --k-content-max-width: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }

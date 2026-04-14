@@ -11,11 +11,11 @@ import type { Currency } from "@/lib/types";
 import { formatNumber, formatCurrency } from "@/lib/utils";
 import { CURRENCIES, DEPOSIT_SOURCES } from "@/lib/constants";
 import PageHeader from "@/app/(supabase)/_components/PageHeader";
-import StatCard from "@/app/(supabase)/_components/StatCard";
-import Card from "@/app/(supabase)/_components/Card";
-import Table, { type TableColumn } from "@/app/(supabase)/_components/Table";
-import Badge from "@/app/(supabase)/_components/Badge";
-import Button from "@/app/(supabase)/_components/Button";
+import StatCard from "@/lib/components/StatCard";
+import Card from "@/lib/components/Card";
+import Table, { type TableColumn } from "@/lib/components/Table";
+import Badge from "@/lib/components/Badge";
+import Button from "@/lib/components/Button";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 

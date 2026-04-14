@@ -8,9 +8,10 @@ import {
   getAccountById,
   getProductById,
 } from "@/lib/mock-data";
-import Badge, { statusVariantMap } from "@/app/(supabase)/_components/Badge";
-import Button from "@/app/(supabase)/_components/Button";
-import Toast from "@/app/(supabase)/_components/Toast";
+import Badge from "@/lib/components/Badge";
+import { statusVariantMap } from "@/lib/constants";
+import Button from "@/lib/components/Button";
+import Toast from "@/lib/components/Toast";
 
 interface PickingItem {
   orderItemId: string;

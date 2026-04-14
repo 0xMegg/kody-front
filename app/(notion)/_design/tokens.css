@@ -99,6 +99,55 @@
   --k-transition-fast: 180ms ease;
   --k-transition-normal: 220ms ease;
 
+  /* ── Button ── */
+  --k-btn-secondary-bg: var(--k-surface);
+  --k-btn-ghost-hover: var(--k-bg-hover);
+  --k-btn-danger-bg: var(--k-danger);
+  --k-btn-danger-text: var(--k-text-invert);
+  --k-btn-danger-border: none;
+  --k-btn-danger-hover-bg: var(--k-danger);
+  --k-btn-danger-hover-text: var(--k-text-invert);
+
+  /* ── Card ── */
+  --k-card-bg: var(--k-surface);
+  --k-shadow-card: rgba(15, 15, 15, 0.04) 0px 1px 2px;
+  --k-card-title-size: var(--k-font-size-lg);
+
+  /* ── StatCard ── */
+  --k-stat-label-size: var(--k-font-size-sm);
+  --k-stat-label-transform: none;
+  --k-stat-label-tracking: normal;
+  --k-stat-value-size: 26px;
+  --k-stat-value-font: var(--k-font-body);
+
+  /* ── Toast ── */
+  --k-toast-bg: var(--k-surface);
+  --k-toast-shadow: rgba(15, 15, 15, 0.04) 0px 1px 2px;
+
+  /* ── Badge ── */
+  --k-badge-height: 22px;
+  --k-badge-padding: 10px;
+  --k-badge-radius: 3px;
+  --k-badge-font-size: 13px;
+  --k-badge-text-transform: none;
+  --k-badge-letter-spacing: 0;
+  --k-badge-info: var(--k-brand);
+  --k-badge-info-bg: var(--k-highlight-blue-bg);
+  --k-badge-neutral-bg: var(--k-highlight-gray-bg);
+  --k-badge-accent: var(--k-highlight-purple);
+  --k-badge-accent-bg: var(--k-highlight-purple-bg);
+
+  /* ── Table ── */
+  --k-table-head-height: 40px;
+  --k-table-head-padding: 16px;
+  --k-table-head-font-size: 13px;
+  --k-table-head-text-transform: none;
+  --k-table-head-letter-spacing: 0;
+  --k-table-head-border-color: var(--k-border);
+  --k-table-row-bg-alt: var(--k-bg-sub);
+  --k-table-hover-bg: var(--k-bg-hover);
+  --k-table-hover-shadow: none;
+
   /* ── Layout ── */
   --k-sidebar-width: 240px;
   --k-header-height: 64px;

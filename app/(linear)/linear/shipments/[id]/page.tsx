@@ -6,8 +6,8 @@ import {
   salesRepNames,
 } from "@/lib/mock-data";
 import PageHeader from "@/app/(linear)/_components/PageHeader";
-import Card from "@/app/(linear)/_components/Card";
-import Badge from "@/app/(linear)/_components/Badge";
+import Card from "@/lib/components/Card";
+import Badge from "@/lib/components/Badge";
 
 function fmt(n: number): string {
   return n.toLocaleString("ko-KR");

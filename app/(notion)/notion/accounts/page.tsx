@@ -3,8 +3,8 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import PageHeader from "@/app/(notion)/_components/PageHeader";
-import Button from "@/app/(notion)/_components/Button";
-import Table, { type TableColumn } from "@/app/(notion)/_components/Table";
+import Button from "@/lib/components/Button";
+import Table, { type TableColumn } from "@/lib/components/Table";
 import {
   accounts,
   getBalanceByAccount,
