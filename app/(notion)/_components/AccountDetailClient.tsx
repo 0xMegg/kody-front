@@ -17,6 +17,8 @@ import type {
   Currency,
   OrderStatus,
 } from "@/lib/types";
+import { formatNumber } from "@/lib/utils";
+import { CURRENCIES } from "@/lib/constants";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -33,13 +35,6 @@ const TABS: { id: TabId; label: string }[] = [
 interface AccountDetailClientProps {
   account: Account;
   balance: AccountBalance;
-}
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-function formatNumber(n: number): string {
-  return n.toLocaleString("ko-KR", { maximumFractionDigits: 2 });
 }
 
 // ---------------------------------------------------------------------------
@@ -121,8 +116,6 @@ function OverviewTab({
   account: Account;
   balance: AccountBalance;
 }) {
-  const currencies: Currency[] = ["USD", "EUR", "RUB", "KRW"];
-
   const infoRows: { label: string; value: React.ReactNode }[] = [
     { label: "거래처명", value: account.name },
     { label: "대표자", value: account.representative },
@@ -190,7 +183,7 @@ function OverviewTab({
       <Card title="통화별 잔액">
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <tbody>
-            {currencies.map((c) => (
+            {CURRENCIES.map((c) => (
               <tr key={c}>
                 <td style={cellLabelStyle}>{c}</td>
                 <td

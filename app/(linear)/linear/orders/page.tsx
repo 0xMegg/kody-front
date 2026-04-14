@@ -13,6 +13,7 @@ import {
   salesRepNames,
 } from "@/lib/mock-data";
 import type { Order, OrderItem, Currency, OrderStatus } from "@/lib/types";
+import { formatNumber } from "@/lib/utils";
 
 const PAGE_SIZE = 20;
 
@@ -46,10 +47,6 @@ type OrderItemRow = Record<string, unknown> & {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-function formatNumber(n: number): string {
-  return n.toLocaleString("ko-KR", { maximumFractionDigits: 2 });
-}
-
 function buildOrderRow(o: Order): OrderRow {
   const itemsTotal = o.items.reduce((s, i) => s + i.subtotal, 0);
   const total = itemsTotal + o.shippingFee + o.remittanceFee;

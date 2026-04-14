@@ -8,6 +8,8 @@ import {
   getBalanceByAccount,
 } from "@/lib/mock-data";
 import type { Currency } from "@/lib/types";
+import { formatNumber, formatCurrency } from "@/lib/utils";
+import { CURRENCIES, DEPOSIT_SOURCES } from "@/lib/constants";
 import PageHeader from "@/app/(supabase)/_components/PageHeader";
 import StatCard from "@/app/(supabase)/_components/StatCard";
 import Card from "@/app/(supabase)/_components/Card";
@@ -17,25 +19,11 @@ import Button from "@/app/(supabase)/_components/Button";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
-const fmt = (n: number) =>
-  n.toLocaleString("ko-KR", { maximumFractionDigits: 0 });
-
-const fmtAmount = (n: number, currency: Currency) => {
-  const prefix: Record<Currency, string> = {
-    KRW: "₩",
-    USD: "$",
-    EUR: "€",
-    RUB: "₽",
-  };
-  return `${prefix[currency]}${n.toLocaleString("ko-KR", { maximumFractionDigits: 2 })}`;
-};
-
 const TODAY = "2026-04-12";
 const THIS_MONTH = "2026-04";
 
-// unique deposit sources and currencies from mock data
-const DEPOSIT_SOURCES = ["전체", "농협외환", "하나외환", "Paypal", "Payoneer"] as const;
-const CURRENCIES = ["전체", "KRW", "USD", "EUR", "RUB"] as const;
+const DEPOSIT_SOURCE_OPTIONS = ["전체", ...DEPOSIT_SOURCES] as const;
+const CURRENCY_OPTIONS = ["전체", ...CURRENCIES] as const;
 
 // ── row type for the Table primitive ─────────────────────────────────────────
 
@@ -170,13 +158,13 @@ export default function SupabasePaymentsPage() {
     row: PaymentRow
   ): React.ReactNode => {
     if (key === "amount") {
-      return fmtAmount(row.amount, row.currency);
+      return formatCurrency(row.amount, row.currency);
     }
     if (key === "krwEquivalent") {
       const barWidth = (row.krwEquivalent / maxKrw) * 100;
       return (
         <div style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "flex-end" }}>
-          <span>₩{fmt(row.krwEquivalent)}</span>
+          <span>₩{formatNumber(row.krwEquivalent, 0)}</span>
           <div
             style={{
               width: "100%",
@@ -243,13 +231,13 @@ export default function SupabasePaymentsPage() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
         <StatCard
           label="오늘 수금"
-          value={`₩${fmt(todayTotal)}`}
+          value={`₩${formatNumber(todayTotal, 0)}`}
           trend="neutral"
           trendLabel={todayTotal === 0 ? "해당 없음" : undefined}
         />
         <StatCard
           label="이번 달 수금"
-          value={`₩${fmt(monthTotal)}`}
+          value={`₩${formatNumber(monthTotal, 0)}`}
           trend={monthTotal > 0 ? "up" : "neutral"}
           trendLabel={`${THIS_MONTH}`}
         />
@@ -286,7 +274,7 @@ export default function SupabasePaymentsPage() {
                     }}
                   >
                     <span style={{ color: "var(--k-text-muted)" }}>{cur}</span>
-                    {fmtAmount(currencySums[cur], cur)}
+                    {formatCurrency(currencySums[cur], cur)}
                   </span>
                 ) : null
               )}
@@ -345,7 +333,7 @@ export default function SupabasePaymentsPage() {
             onChange={(e) => setDepositFilter(e.target.value)}
             style={selectStyle}
           >
-            {DEPOSIT_SOURCES.map((src) => (
+            {DEPOSIT_SOURCE_OPTIONS.map((src) => (
               <option key={src} value={src}>{src}</option>
             ))}
           </select>
@@ -358,7 +346,7 @@ export default function SupabasePaymentsPage() {
             onChange={(e) => setCurrencyFilter(e.target.value)}
             style={selectStyle}
           >
-            {CURRENCIES.map((cur) => (
+            {CURRENCY_OPTIONS.map((cur) => (
               <option key={cur} value={cur}>{cur}</option>
             ))}
           </select>
@@ -452,7 +440,7 @@ export default function SupabasePaymentsPage() {
                         whiteSpace: "nowrap",
                       }}
                     >
-                      ₩{fmt(Math.round(item.totalKRW))}
+                      ₩{formatNumber(Math.round(item.totalKRW), 0)}
                     </span>
                   </div>
                 );

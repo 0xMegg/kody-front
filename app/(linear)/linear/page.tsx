@@ -11,6 +11,7 @@ import {
   activityEvents,
   getBalanceByAccount,
 } from '@/lib/mock-data';
+import { formatCurrencyShort } from '@/lib/utils';
 
 // ---------------------------------------------------------------------------
 // KPI computation
@@ -35,13 +36,6 @@ const receivables = (() => {
   }
   return { totalKRW, byCurrency };
 })();
-
-function formatKRW(n: number): string {
-  const abs = Math.abs(Math.round(n));
-  if (abs >= 1_000_000) return `₩${(abs / 1_000_000).toFixed(1)}M`;
-  if (abs >= 1_000) return `₩${(abs / 1_000).toFixed(0)}K`;
-  return `₩${abs}`;
-}
 
 // 금주 입고: hardcoded — mock data has no inbound inventory entity
 const weeklyInboundCount = 12;
@@ -103,7 +97,7 @@ export default function LinearDashboardPage() {
         />
         <StatCard
           label="미수금 합계"
-          value={formatKRW(receivables.totalKRW)}
+          value={formatCurrencyShort(receivables.totalKRW)}
           trend="up"
           trendLabel="전주 대비 증가"
         />

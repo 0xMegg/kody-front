@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import type { Order, Account } from "@/lib/types";
+import { formatNumber, formatCurrency } from "@/lib/utils";
 import {
   accounts,
   getAccountById,
@@ -24,18 +25,6 @@ const salesReps: Record<string, string> = {
   "REP-02": "김하나",
   "REP-03": "박서연",
 };
-
-function formatNumber(n: number): string {
-  return n.toLocaleString("ko-KR", { maximumFractionDigits: 2 });
-}
-
-function formatCurrency(amount: number, currency: string): string {
-  if (currency === "KRW") return `₩${formatNumber(amount)}`;
-  if (currency === "USD") return `$${formatNumber(amount)}`;
-  if (currency === "EUR") return `€${formatNumber(amount)}`;
-  if (currency === "RUB") return `₽${formatNumber(amount)}`;
-  return `${formatNumber(amount)} ${currency}`;
-}
 
 const monoStyle: React.CSSProperties = {
   fontFamily: "var(--font-jetbrains-mono)",

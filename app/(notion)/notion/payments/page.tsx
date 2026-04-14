@@ -12,19 +12,13 @@ import {
   getAccountById,
   getBalanceByAccount,
 } from "@/lib/mock-data";
-import type { Currency, DepositSource } from "@/lib/types";
+import type { Currency } from "@/lib/types";
+import { formatNumber, formatCurrency } from "@/lib/utils";
+import { CURRENCIES, DEPOSIT_SOURCES } from "@/lib/constants";
 
 // Mock "today" — last payment date in mock data
 const MOCK_TODAY = "2026-04-10";
 const MOCK_MONTH = "2026-04";
-
-const DEPOSIT_SOURCES: DepositSource[] = [
-  "농협외환",
-  "하나외환",
-  "Paypal",
-  "Payoneer",
-];
-const CURRENCIES: Currency[] = ["KRW", "USD", "EUR", "RUB"];
 
 // ---------------------------------------------------------------------------
 // Row type for Table<T>
@@ -39,23 +33,6 @@ type PaymentRow = Record<string, unknown> & {
   krwEquivalent: number;
   memo: string;
 };
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-function formatNumber(n: number): string {
-  return n.toLocaleString("ko-KR", { maximumFractionDigits: 0 });
-}
-
-function formatCurrency(n: number, currency: Currency): string {
-  const symbols: Record<Currency, string> = {
-    KRW: "₩",
-    USD: "$",
-    EUR: "€",
-    RUB: "₽",
-  };
-  return `${symbols[currency]}${formatNumber(n)}`;
-}
 
 function defaultDateFrom(): string {
   // 30 days before MOCK_TODAY
@@ -188,7 +165,7 @@ export default function NotionPaymentsPage() {
   // Currency chips for the third stat card
   const currencyChips = (["USD", "EUR", "RUB", "KRW"] as Currency[])
     .filter((c) => monthlyCurrencyTotals[c] > 0)
-    .map((c) => `${c} ${formatNumber(monthlyCurrencyTotals[c])}`)
+    .map((c) => `${c} ${formatNumber(monthlyCurrencyTotals[c], 0)}`)
     .join("  ·  ");
 
   return (
@@ -209,11 +186,11 @@ export default function NotionPaymentsPage() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
         <StatCard
           label="오늘 수금 (원화)"
-          value={`₩${formatNumber(todayTotal)}`}
+          value={`₩${formatNumber(todayTotal, 0)}`}
         />
         <StatCard
           label="이번 달 수금 (원화)"
-          value={`₩${formatNumber(monthlyTotal)}`}
+          value={`₩${formatNumber(monthlyTotal, 0)}`}
         />
         <StatCard
           label="통화별 이번 달 합계"
@@ -338,7 +315,7 @@ export default function NotionPaymentsPage() {
               if (key === "krwEquivalent") {
                 return (
                   <span style={{ fontVariantNumeric: "tabular-nums" }}>
-                    ₩{formatNumber(value as number)}
+                    ₩{formatNumber(value as number, 0)}
                   </span>
                 );
               }
@@ -414,7 +391,7 @@ export default function NotionPaymentsPage() {
                   }}
                 >
                   {item.totalKRW < 0 ? "−" : ""}₩
-                  {formatNumber(Math.abs(item.totalKRW))}
+                  {formatNumber(Math.abs(item.totalKRW), 0)}
                 </span>
               </div>
             ))}

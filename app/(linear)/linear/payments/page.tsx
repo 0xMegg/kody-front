@@ -12,6 +12,7 @@ import {
   getBalanceByAccount,
 } from "@/lib/mock-data";
 import type { Currency, DepositSource } from "@/lib/types";
+import { formatNumber } from "@/lib/utils";
 
 const PAGE_SIZE = 20;
 const TODAY = "2026-04-12";
@@ -35,10 +36,6 @@ interface PaymentRow {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-function formatNumber(n: number): string {
-  return n.toLocaleString("ko-KR");
-}
-
 function buildPaymentRow(p: (typeof payments)[number]): PaymentRow {
   const account = getAccountById(p.accountId);
   return {

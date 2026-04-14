@@ -11,6 +11,7 @@ import {
   activityEvents,
   getBalanceByAccount,
 } from '@/lib/mock-data';
+import { formatCurrencyShort } from '@/lib/utils';
 
 // ---------------------------------------------------------------------------
 // KPI computation
@@ -29,13 +30,6 @@ const receivables = (() => {
   }
   return totalKRW;
 })();
-
-function formatKRW(n: number): string {
-  const abs = Math.abs(Math.round(n));
-  if (abs >= 1_000_000) return `₩${(abs / 1_000_000).toFixed(1)}M`;
-  if (abs >= 1_000) return `₩${(abs / 1_000).toFixed(0)}K`;
-  return `₩${abs}`;
-}
 
 const weeklyInboundCount = 12;
 
@@ -98,7 +92,7 @@ export default function SupabaseDashboardPage() {
         />
         <StatCard
           label="미수금 합계"
-          value={formatKRW(receivables)}
+          value={formatCurrencyShort(receivables)}
           trend="up"
           trendLabel="전주 대비 증가"
           highlighted
