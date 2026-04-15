@@ -117,3 +117,70 @@ All variants share the same `--k-*` variable names. Each variant defines its own
 | `--k-sidebar-width` | 220px | 240px | 256px |
 | `--k-header-height` | 56px | 64px | 60px |
 | `--k-content-max-width` | 1280px | 960px | none |
+
+## Category 8 — Button
+
+| Token | Purpose | Linear | Notion | Supabase |
+|---|---|---|---|---|
+| `--k-btn-secondary-bg` | Secondary button background | `transparent` | `var(--k-surface)` | `var(--k-bg-sub)` |
+| `--k-btn-ghost-hover` | Ghost button hover background | `var(--k-bg-hover)` | `var(--k-bg-hover)` | `var(--k-bg-raise)` |
+| `--k-btn-danger-bg` | Danger button background | `var(--k-danger)` | `var(--k-danger)` | `transparent` |
+| `--k-btn-danger-text` | Danger button text color | `var(--k-text-invert)` | `var(--k-text-invert)` | `var(--k-danger)` |
+| `--k-btn-danger-border` | Danger button border | `none` | `none` | `1px solid var(--k-danger)` |
+| `--k-btn-danger-hover-bg` | Danger button hover background | `var(--k-danger)` | `var(--k-danger)` | `var(--k-danger)` |
+| `--k-btn-danger-hover-text` | Danger button hover text | `var(--k-text-invert)` | `var(--k-text-invert)` | `var(--k-text-invert)` |
+
+## Category 9 — Card
+
+| Token | Purpose | Linear | Notion | Supabase |
+|---|---|---|---|---|
+| `--k-card-bg` | Card background | `var(--k-surface)` | `var(--k-surface)` | `var(--k-bg-sub)` |
+| `--k-shadow-card` | Card box-shadow | `none` | `rgba(15,15,15,0.04) 0px 1px 2px` | `none` |
+| `--k-card-title-size` | Card title font size | `var(--k-font-size-md)` | `var(--k-font-size-lg)` | `var(--k-font-size-md)` |
+
+## Category 10 — StatCard
+
+| Token | Purpose | Linear | Notion | Supabase |
+|---|---|---|---|---|
+| `--k-stat-label-size` | Stat label font size | `var(--k-font-size-xs)` | `var(--k-font-size-sm)` | `var(--k-font-size-xs)` |
+| `--k-stat-label-transform` | Stat label text-transform | `uppercase` | `none` | `uppercase` |
+| `--k-stat-label-tracking` | Stat label letter-spacing | `0.05em` | `normal` | `0.05em` |
+| `--k-stat-value-size` | Stat value font size | `28px` | `26px` | `30px` |
+| `--k-stat-value-font` | Stat value font family | `var(--k-font-body)` | `var(--k-font-body)` | `var(--k-font-mono)` |
+
+## Category 11 — Toast
+
+| Token | Purpose | Linear | Notion | Supabase |
+|---|---|---|---|---|
+| `--k-toast-bg` | Toast background | `var(--k-surface)` | `var(--k-surface)` | `var(--k-bg-raise)` |
+| `--k-toast-shadow` | Toast box-shadow | `none` | `rgba(15,15,15,0.04) 0px 1px 2px` | `0 0 0 1px var(--k-brand-glow)` |
+
+## Category 12 — Badge
+
+| Token | Purpose | Linear | Notion | Supabase |
+|---|---|---|---|---|
+| `--k-badge-height` | Badge height | `20px` | `22px` | `22px` |
+| `--k-badge-padding` | Badge horizontal padding | `8px` | `10px` | `8px` |
+| `--k-badge-radius` | Badge border-radius | `4px` | `3px` | `4px` |
+| `--k-badge-font-size` | Badge font size | `11px` | `13px` | `11px` |
+| `--k-badge-text-transform` | Badge text-transform | `none` | `none` | `uppercase` |
+| `--k-badge-letter-spacing` | Badge letter-spacing | `0` | `0` | `0.05em` |
+| `--k-badge-info` | Badge info color | `var(--k-info)` | `var(--k-brand)` | `var(--k-info)` |
+| `--k-badge-info-bg` | Badge info background | `var(--k-info-bg)` | `var(--k-highlight-blue-bg)` | `var(--k-info-bg)` |
+| `--k-badge-neutral-bg` | Badge neutral background | `var(--k-bg-raise)` | `var(--k-highlight-gray-bg)` | `var(--k-bg-raise)` |
+| `--k-badge-accent` | Badge accent text color | `var(--k-highlight-purple)` | `var(--k-highlight-purple)` | `var(--k-highlight-purple)` |
+| `--k-badge-accent-bg` | Badge accent background | `var(--k-highlight-purple-bg)` | `var(--k-highlight-purple-bg)` | `var(--k-highlight-purple-bg)` |
+
+## Category 13 — Table
+
+| Token | Purpose | Linear | Notion | Supabase |
+|---|---|---|---|---|
+| `--k-table-head-height` | Table header row height | `32px` | `40px` | `36px` |
+| `--k-table-head-padding` | Table header cell padding | `12px` | `16px` | `12px` |
+| `--k-table-head-font-size` | Table header font size | `11px` | `13px` | `11px` |
+| `--k-table-head-text-transform` | Table header text-transform | `uppercase` | `none` | `uppercase` |
+| `--k-table-head-letter-spacing` | Table header letter-spacing | `0.05em` | `0` | `0.05em` |
+| `--k-table-head-border-color` | Table header bottom border | `var(--k-border)` | `var(--k-border)` | `var(--k-border-strong)` |
+| `--k-table-row-bg-alt` | Alternating row background | `transparent` | `var(--k-bg-sub)` | `transparent` |
+| `--k-table-hover-bg` | Row hover background | `var(--k-bg-hover)` | `var(--k-bg-hover)` | `var(--k-bg-raise)` |
+| `--k-table-hover-shadow` | Row hover shadow accent | `none` | `none` | `inset 2px 0 0 var(--k-brand)` |
