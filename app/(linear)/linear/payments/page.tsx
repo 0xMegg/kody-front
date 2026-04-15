@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import PageHeader from "../../_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import StatCard from "@/lib/components/StatCard";
 import Button from "@/lib/components/Button";
 import Card from "@/lib/components/Card";

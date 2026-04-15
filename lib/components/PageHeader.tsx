@@ -12,17 +12,19 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
     <div
       style={{
         display: "flex",
-        alignItems: "flex-start",
+        alignItems: helperText ? "flex-start" : "center",
         justifyContent: "space-between",
-        minHeight: 64,
-        marginBottom: 24,
+        minHeight: "var(--k-header-height)",
+        marginBottom: "var(--k-space-xl)",
+        paddingBottom: "var(--k-page-header-pad-bottom)",
+        borderBottom: "var(--k-page-header-border)",
       }}
     >
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--k-space-xs)" }}>
         {breadcrumb && (
           <span
             style={{
-              fontSize: 13,
+              fontSize: "var(--k-font-size-sm)",
               color: "var(--k-text-muted)",
             }}
           >
@@ -31,9 +33,9 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
         )}
         <h1
           style={{
-            fontFamily: "var(--font-source-serif)",
-            fontSize: 30,
-            fontWeight: 700,
+            fontFamily: "var(--k-font-heading)",
+            fontSize: "var(--k-page-title-size)",
+            fontWeight: "var(--k-page-title-weight)" as React.CSSProperties["fontWeight"],
             color: "var(--k-text)",
             margin: 0,
             lineHeight: 1.3,
@@ -44,10 +46,10 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
         {helperText && (
           <p
             style={{
-              fontSize: 15,
+              fontSize: "var(--k-font-size-md)",
               color: "var(--k-text-muted)",
               margin: 0,
-              marginTop: 4,
+              marginTop: "var(--k-space-xs)",
             }}
           >
             {helperText}
@@ -55,7 +57,7 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
         )}
       </div>
       {actions && (
-        <div style={{ display: "flex", alignItems: "center", gap: 8, paddingTop: 8 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--k-space-sm)", paddingTop: helperText ? "var(--k-space-sm)" : 0 }}>
           {actions}
         </div>
       )}

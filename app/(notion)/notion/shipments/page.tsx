@@ -10,7 +10,7 @@ import {
 } from "@/lib/mock-data";
 import Badge from "@/lib/components/Badge";
 import Button from "@/lib/components/Button";
-import PageHeader from "@/app/(notion)/_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import Toast from "@/lib/components/Toast";
 
 interface PickingItem {

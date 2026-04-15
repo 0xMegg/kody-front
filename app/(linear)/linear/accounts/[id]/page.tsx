@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAccountById, getBalanceByAccount } from "@/lib/mock-data";
-import PageHeader from "@/app/(linear)/_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import AccountDetailClient from "@/app/(linear)/_components/AccountDetailClient";
 
 export default async function AccountDetailPage({

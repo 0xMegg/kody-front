@@ -5,7 +5,7 @@ import {
   getProductById,
   salesRepNames,
 } from "@/lib/mock-data";
-import PageHeader from "@/app/(supabase)/_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import Card from "@/lib/components/Card";
 import Badge from "@/lib/components/Badge";
 import { statusVariantMap } from "@/lib/constants";

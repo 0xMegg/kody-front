@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PageHeader from "@/app/(notion)/_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import OrderForm from "@/app/(notion)/_components/OrderForm";
 
 export default function NewOrderPage() {

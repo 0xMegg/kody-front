@@ -10,7 +10,7 @@ import {
 import type { Currency } from "@/lib/types";
 import { formatNumber, formatCurrency } from "@/lib/utils";
 import { CURRENCIES, DEPOSIT_SOURCES } from "@/lib/constants";
-import PageHeader from "@/app/(supabase)/_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import StatCard from "@/lib/components/StatCard";
 import Card from "@/lib/components/Card";
 import Table, { type TableColumn } from "@/lib/components/Table";

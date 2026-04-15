@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getOrderById, getAccountById } from "@/lib/mock-data";
-import PageHeader from "@/app/(linear)/_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import OrderForm from "@/app/(linear)/_components/OrderForm";
 
 export default async function OrderDetailPage({

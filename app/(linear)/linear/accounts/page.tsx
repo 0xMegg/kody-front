@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import PageHeader from "@/app/(linear)/_components/PageHeader";
+import PageHeader from "@/lib/components/PageHeader";
 import Button from "@/lib/components/Button";
 import Table, { type TableColumn } from "@/lib/components/Table";
 import {
