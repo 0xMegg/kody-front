@@ -24,6 +24,7 @@
   --k-warning: #d97706;
   --k-danger: #e5484d;
   --k-info: #5e6ad2;
+  --k-positive-color: var(--k-text);
 
   /* Color: Status backgrounds */
   --k-success-bg: #dcfce7;
@@ -101,6 +102,10 @@
   --k-btn-danger-border: none;
   --k-btn-danger-hover-bg: var(--k-danger);
   --k-btn-danger-hover-text: var(--k-text-invert);
+
+  /* ── Form ── */
+  --k-form-input-height: 28px;
+  --k-form-input-bg: var(--k-bg-sub);
 
   /* ── Card ── */
   --k-card-bg: var(--k-surface);

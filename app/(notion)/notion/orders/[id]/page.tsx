@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getOrderById, getAccountById } from "@/lib/mock-data";
 import PageHeader from "@/lib/components/PageHeader";
-import OrderForm from "@/app/(notion)/_components/OrderForm";
+import OrderForm from "@/lib/components/OrderForm";
 
 export default async function OrderDetailPage({
   params,

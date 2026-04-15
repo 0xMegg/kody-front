@@ -17,6 +17,12 @@ export const DEPOSIT_SOURCES: DepositSource[] = [
   "Payoneer",
 ];
 
+export const salesReps: Record<string, string> = {
+  "REP-01": "정민수",
+  "REP-02": "김하나",
+  "REP-03": "박서연",
+};
+
 export const statusVariantMap: Record<string, BadgeVariant> = {
   주문대기: "warning",
   주문완료: "success",

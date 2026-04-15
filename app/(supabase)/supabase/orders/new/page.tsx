@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PageHeader from "@/lib/components/PageHeader";
-import OrderForm from "@/app/(supabase)/_components/OrderForm";
+import OrderForm from "@/lib/components/OrderForm";
 
 export default function NewOrderPage() {
   return (
