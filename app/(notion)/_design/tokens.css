@@ -148,8 +148,34 @@
   --k-table-hover-bg: var(--k-bg-hover);
   --k-table-hover-shadow: none;
 
+  /* ── PageHeader ── */
+  --k-page-title-size: 30px;
+  --k-page-title-weight: 700;
+  --k-page-header-border: none;
+  --k-page-header-pad-bottom: 0px;
+
+  /* ── TopBar ── */
+  --k-topbar-search-width: 360px;
+  --k-topbar-search-height: 30px;
+  --k-topbar-avatar-size: 28px;
+  --k-topbar-avatar-bg: var(--k-bg-hover);
+  --k-topbar-badge-bg: var(--k-highlight-yellow-bg);
+  --k-topbar-badge-text: var(--k-text-subtle);
+  --k-topbar-badge-transform: none;
+  --k-topbar-badge-size: 11px;
+
   /* ── Layout ── */
   --k-sidebar-width: 240px;
+  --k-sidebar-logo-height: 52px;
+  --k-sidebar-logo-border: none;
+  --k-sidebar-nav-item-height: 32px;
+  --k-sidebar-nav-font-size: 14px;
+  --k-sidebar-nav-padding: 4px 8px;
+  --k-sidebar-active-bg: var(--k-bg-hover);
+  --k-sidebar-active-color: var(--k-text);
+  --k-sidebar-active-weight: 500;
+  --k-sidebar-inactive-color: var(--k-text-muted);
+  --k-sidebar-active-shadow: none;
   --k-header-height: 64px;
   --k-content-max-width: 960px;
 }

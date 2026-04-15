@@ -1,13 +1,103 @@
-import Link from "next/link";
 import { JetBrains_Mono } from "next/font/google";
 import "./_design/tokens.css";
-import Sidebar from "./_components/Sidebar";
+import Sidebar from "@/lib/components/Sidebar";
+import TopBar from "@/lib/components/TopBar";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   weight: ["400", "500", "600"],
 });
+
+const navIcons: Record<string, React.ReactNode> = {
+  대시보드: (
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <rect x="2" y="2" width="5" height="5" rx="1" />
+      <rect x="9" y="2" width="5" height="5" rx="1" />
+      <rect x="2" y="9" width="5" height="5" rx="1" />
+      <rect x="9" y="9" width="5" height="5" rx="1" />
+    </svg>
+  ),
+  주문: (
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <rect x="3" y="1.5" width="10" height="13" rx="1.5" />
+      <line x1="5.5" y1="5" x2="10.5" y2="5" />
+      <line x1="5.5" y1="7.5" x2="10.5" y2="7.5" />
+      <line x1="5.5" y1="10" x2="8.5" y2="10" />
+    </svg>
+  ),
+  거래처: (
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <circle cx="6" cy="5" r="2.5" />
+      <path d="M1.5 14c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5" />
+      <circle cx="11.5" cy="5.5" r="1.8" />
+      <path d="M14.5 14c0-2 -1.3-3.5-3-3.5" />
+    </svg>
+  ),
+  출고: (
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <rect x="1" y="4" width="10" height="8" rx="1" />
+      <path d="M11 7h2.5l1.5 2.5V12h-4" />
+      <circle cx="4" cy="13" r="1.5" />
+      <circle cx="12.5" cy="13" r="1.5" />
+    </svg>
+  ),
+  재고: (
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <path d="M8 1.5L14 5v6l-6 3.5L2 11V5l6-3.5z" />
+      <path d="M8 8.5V15" />
+      <path d="M2 5l6 3.5L14 5" />
+    </svg>
+  ),
+  수금: (
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
+      <path d="M1.5 7h13" />
+      <rect x="3.5" y="9" width="3" height="1.5" rx="0.5" />
+    </svg>
+  ),
+};
+
+const navItems = [
+  { label: "대시보드", href: "/supabase", icon: navIcons["대시보드"] },
+  { label: "주문", href: "/supabase/orders", icon: navIcons["주문"] },
+  { label: "거래처", href: "/supabase/accounts", icon: navIcons["거래처"] },
+  { label: "출고", href: "/supabase/shipments", icon: navIcons["출고"] },
+  { label: "재고", href: "/supabase/inventory", icon: navIcons["재고"] },
+  { label: "수금", href: "/supabase/payments", icon: navIcons["수금"] },
+];
+
+const supabaseHeader = (
+  <>
+    <span
+      style={{
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        backgroundColor: "var(--k-brand)",
+        flexShrink: 0,
+      }}
+    />
+    <span
+      style={{
+        fontSize: 14,
+        fontWeight: 600,
+        color: "var(--k-text)",
+      }}
+    >
+      KODY OMS
+    </span>
+    <span
+      style={{
+        fontSize: 10,
+        color: "var(--k-text-subtle)",
+        letterSpacing: "0.05em",
+      }}
+    >
+      supabase
+    </span>
+  </>
+);
 
 export default function SupabaseLayout({
   children,
@@ -24,96 +114,14 @@ export default function SupabaseLayout({
         color: "var(--k-text)",
       }}
     >
-      <Sidebar />
+      <Sidebar
+        navItems={navItems}
+        header={supabaseHeader}
+        basePath="/supabase"
+        sectionLabel="메뉴"
+      />
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        {/* Top bar */}
-        <header
-          style={{
-            height: 60,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 16px",
-            borderBottom: "1px solid var(--k-border)",
-            backgroundColor: "var(--k-bg)",
-            fontSize: 12,
-            gap: 12,
-          }}
-        >
-          {/* Left: breadcrumb */}
-          <span
-            style={{
-              fontSize: 12,
-              color: "var(--k-text-muted)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            대시보드
-          </span>
-
-          {/* Center: search placeholder */}
-          <div
-            style={{
-              flex: 1,
-              maxWidth: 320,
-              height: 28,
-              display: "flex",
-              alignItems: "center",
-              padding: "0 10px",
-              border: "1px solid var(--k-border)",
-              borderRadius: 6,
-              color: "var(--k-text-subtle)",
-              fontSize: 12,
-            }}
-          >
-            검색...
-          </div>
-
-          {/* Right: avatar + prototype badge + variant link */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {/* User avatar placeholder */}
-            <div
-              style={{
-                width: 24,
-                height: 24,
-                borderRadius: "50%",
-                backgroundColor: "var(--k-bg-raise)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 10,
-                fontWeight: 600,
-                color: "var(--k-text-muted)",
-              }}
-            >
-              U
-            </div>
-            <span
-              style={{
-                fontSize: 10,
-                fontWeight: 500,
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                color: "var(--k-warning)",
-                backgroundColor: "var(--k-warning-bg)",
-                padding: "2px 8px",
-                borderRadius: 4,
-              }}
-            >
-              Prototype
-            </span>
-            <Link
-              href="/"
-              style={{
-                color: "var(--k-brand)",
-                textDecoration: "none",
-                fontSize: 12,
-              }}
-            >
-              변형 바꾸기
-            </Link>
-          </div>
-        </header>
+        <TopBar />
         {/* Main content */}
         <main style={{ flex: 1, padding: 24 }}>{children}</main>
       </div>
