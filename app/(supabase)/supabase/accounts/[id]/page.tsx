@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getAccountById, getBalanceByAccount } from "@/lib/mock-data";
 import PageHeader from "@/lib/components/PageHeader";
-import AccountDetailClient from "@/app/(supabase)/_components/AccountDetailClient";
+import AccountDetailClient from "@/lib/components/AccountDetailClient";
 
 export default async function AccountDetailPage({
   params,

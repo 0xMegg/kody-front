@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Card from "@/lib/components/Card";
 import Table, { type TableColumn } from "@/lib/components/Table";
 import Badge from "@/lib/components/Badge";
+import { statusVariantMap, CURRENCIES } from "@/lib/constants";
 import {
   orders,
   payments,
@@ -18,7 +20,6 @@ import type {
   OrderStatus,
 } from "@/lib/types";
 import { formatNumber } from "@/lib/utils";
-import { CURRENCIES } from "@/lib/constants";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -75,7 +76,7 @@ const orderColumns: TableColumn<OrderRow>[] = [
   { key: "id", label: "주문번호", sortable: true },
   { key: "orderDate", label: "주문일", sortable: true },
   { key: "currency", label: "통화" },
-  { key: "total", label: "주문합계액", align: "right", sortable: true },
+  { key: "total", label: "주문합계액", align: "right", sortable: true, mono: true },
   { key: "status", label: "주문상태" },
   { key: "itemCount", label: "품목 수", align: "center" },
 ];
@@ -84,8 +85,8 @@ const paymentColumns: TableColumn<PaymentRow>[] = [
   { key: "date", label: "입금일", sortable: true },
   { key: "depositSource", label: "입금처" },
   { key: "currency", label: "통화" },
-  { key: "amount", label: "수금액", align: "right", sortable: true },
-  { key: "krwEquivalent", label: "원화 환산", align: "right", sortable: true },
+  { key: "amount", label: "수금액", align: "right", sortable: true, mono: true },
+  { key: "krwEquivalent", label: "원화 환산", align: "right", sortable: true, mono: true },
   { key: "memo", label: "비고" },
 ];
 
@@ -98,12 +99,11 @@ const addressColumns: TableColumn<AddressRow>[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Badge helpers
+// Helpers
 // ---------------------------------------------------------------------------
-function statusBadgeVariant(s: OrderStatus) {
-  if (s === "주문대기") return "주문대기" as const;
-  if (s === "주문완료") return "주문완료" as const;
-  return "주문중지" as const;
+function extractVariantPrefix(pathname: string): string {
+  const match = pathname.match(/^\/(linear|notion|supabase)\//);
+  return match ? `/${match[1]}` : "/linear";
 }
 
 // ---------------------------------------------------------------------------
@@ -112,9 +112,11 @@ function statusBadgeVariant(s: OrderStatus) {
 function OverviewTab({
   account,
   balance,
+  variantPrefix,
 }: {
   account: Account;
   balance: AccountBalance;
+  variantPrefix: string;
 }) {
   const infoRows: { label: string; value: React.ReactNode }[] = [
     { label: "거래처명", value: account.name },
@@ -138,7 +140,7 @@ function OverviewTab({
               return (
                 <Link
                   key={rid}
-                  href={`/notion/accounts/${rid}`}
+                  href={`${variantPrefix}/accounts/${rid}`}
                   style={{
                     color: "var(--k-brand)",
                     textDecoration: "none",
@@ -154,19 +156,19 @@ function OverviewTab({
   ];
 
   const cellLabelStyle: React.CSSProperties = {
-    fontSize: 13,
+    fontSize: "var(--k-font-size-sm)",
     color: "var(--k-text-muted)",
-    padding: "8px 0",
-    width: 130,
+    padding: "var(--k-space-sm) 0",
+    width: 120,
   };
   const cellValueStyle: React.CSSProperties = {
-    fontSize: 15,
+    fontSize: "var(--k-font-size-md)",
     color: "var(--k-text)",
-    padding: "8px 0",
+    padding: "var(--k-space-sm) 0",
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--k-space-lg)" }}>
       <Card title="기본 정보">
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <tbody>
@@ -193,7 +195,10 @@ function OverviewTab({
                     color:
                       balance[c] < 0
                         ? "var(--k-danger)"
-                        : "var(--k-text)",
+                        : balance[c] > 0
+                          ? "var(--k-positive-color)"
+                          : "var(--k-text)",
+                    fontFamily: "var(--k-font-mono)",
                     fontVariantNumeric: "tabular-nums",
                   }}
                 >
@@ -217,7 +222,10 @@ function OverviewTab({
                   color:
                     balance.totalKRW < 0
                       ? "var(--k-danger)"
-                      : "var(--k-text)",
+                      : balance.totalKRW > 0
+                        ? "var(--k-positive-color)"
+                        : "var(--k-text)",
+                  fontFamily: "var(--k-font-mono)",
                   fontVariantNumeric: "tabular-nums",
                 }}
               >
@@ -232,7 +240,7 @@ function OverviewTab({
         <Card title="메모 / 비고">
           <p
             style={{
-              fontSize: 15,
+              fontSize: "var(--k-font-size-md)",
               color: "var(--k-text)",
               lineHeight: 1.6,
               margin: 0,
@@ -255,6 +263,8 @@ export default function AccountDetailClient({
   balance,
 }: AccountDetailClientProps) {
   const [activeTab, setActiveTab] = useState<TabId>("overview");
+  const pathname = usePathname();
+  const variantPrefix = extractVariantPrefix(pathname);
 
   // Order rows for this account
   const orderRows = useMemo(() => {
@@ -308,16 +318,16 @@ export default function AccountDetailClient({
   }, [account.shippingAddresses]);
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
-    padding: "0 14px",
-    height: 36,
-    fontSize: 15,
+    padding: `0 var(--k-space-md)`,
+    height: "var(--k-height-lg)",
+    fontSize: "var(--k-font-size-md)",
     fontWeight: active ? 600 : 400,
     color: active ? "var(--k-brand)" : "var(--k-text-muted)",
     background: "none",
     border: "none",
     borderBottom: active ? "2px solid var(--k-brand)" : "2px solid transparent",
     cursor: "pointer",
-    transition: "all 180ms ease",
+    transition: `all var(--k-transition-fast)`,
   });
 
   return (
@@ -328,7 +338,7 @@ export default function AccountDetailClient({
           display: "flex",
           gap: 0,
           borderBottom: "1px solid var(--k-border)",
-          marginBottom: 24,
+          marginBottom: "var(--k-space-xl)",
         }}
       >
         {TABS.map((tab) => (
@@ -344,13 +354,13 @@ export default function AccountDetailClient({
 
       {/* Tab content */}
       {activeTab === "overview" && (
-        <OverviewTab account={account} balance={balance} />
+        <OverviewTab account={account} balance={balance} variantPrefix={variantPrefix} />
       )}
 
       {activeTab === "orders" && (
         <div>
           {orderRows.length === 0 ? (
-            <p style={{ fontSize: 15, color: "var(--k-text-muted)" }}>
+            <p style={{ fontSize: "var(--k-font-size-md)", color: "var(--k-text-muted)" }}>
               이 거래처의 주문 이력이 없습니다.
             </p>
           ) : (
@@ -364,14 +374,10 @@ export default function AccountDetailClient({
               ) => {
                 if (key === "total")
                   return `${row.currency} ${formatNumber(value as number)}`;
-                if (key === "status")
-                  return (
-                    <Badge
-                      variant={statusBadgeVariant(value as OrderStatus)}
-                    >
-                      {value as string}
-                    </Badge>
-                  );
+                if (key === "status") {
+                  const variant = statusVariantMap[value as string] ?? "neutral";
+                  return <Badge variant={variant}>{value as string}</Badge>;
+                }
                 return String(value ?? "");
               }}
             />
@@ -382,7 +388,7 @@ export default function AccountDetailClient({
       {activeTab === "payments" && (
         <div>
           {paymentRows.length === 0 ? (
-            <p style={{ fontSize: 15, color: "var(--k-text-muted)" }}>
+            <p style={{ fontSize: "var(--k-font-size-md)", color: "var(--k-text-muted)" }}>
               이 거래처의 수금 이력이 없습니다.
             </p>
           ) : (
@@ -405,7 +411,7 @@ export default function AccountDetailClient({
       {activeTab === "addresses" && (
         <div>
           {addressRows.length === 0 ? (
-            <p style={{ fontSize: 15, color: "var(--k-text-muted)" }}>
+            <p style={{ fontSize: "var(--k-font-size-md)", color: "var(--k-text-muted)" }}>
               등록된 배송지가 없습니다.
             </p>
           ) : (
@@ -418,14 +424,14 @@ export default function AccountDetailClient({
               ) => {
                 if (key === "isPrimary") {
                   return value ? (
-                    <Badge variant="confirmed">주요</Badge>
+                    <Badge variant="success">주요</Badge>
                   ) : (
                     ""
                   );
                 }
                 if (key === "defaultIncoterm") {
                   const v = value as string;
-                  return v ? <Badge variant="pending">{v}</Badge> : "—";
+                  return v ? <Badge variant="info">{v}</Badge> : "—";
                 }
                 return String(value ?? "");
               }}
