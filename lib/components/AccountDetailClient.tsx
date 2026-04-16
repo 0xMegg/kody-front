@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Card from "@/lib/components/Card";
 import Table, { type TableColumn } from "@/lib/components/Table";
@@ -99,24 +98,14 @@ const addressColumns: TableColumn<AddressRow>[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-function extractVariantPrefix(pathname: string): string {
-  const match = pathname.match(/^\/(linear|notion|supabase)\//);
-  return match ? `/${match[1]}` : "/linear";
-}
-
-// ---------------------------------------------------------------------------
 // Tab contents
 // ---------------------------------------------------------------------------
 function OverviewTab({
   account,
   balance,
-  variantPrefix,
 }: {
   account: Account;
   balance: AccountBalance;
-  variantPrefix: string;
 }) {
   const infoRows: { label: string; value: React.ReactNode }[] = [
     { label: "거래처명", value: account.name },
@@ -140,7 +129,7 @@ function OverviewTab({
               return (
                 <Link
                   key={rid}
-                  href={`${variantPrefix}/accounts/${rid}`}
+                  href={`/accounts/${rid}`}
                   style={{
                     color: "var(--k-brand)",
                     textDecoration: "none",
@@ -263,8 +252,6 @@ export default function AccountDetailClient({
   balance,
 }: AccountDetailClientProps) {
   const [activeTab, setActiveTab] = useState<TabId>("overview");
-  const pathname = usePathname();
-  const variantPrefix = extractVariantPrefix(pathname);
 
   // Order rows for this account
   const orderRows = useMemo(() => {
@@ -354,7 +341,7 @@ export default function AccountDetailClient({
 
       {/* Tab content */}
       {activeTab === "overview" && (
-        <OverviewTab account={account} balance={balance} variantPrefix={variantPrefix} />
+        <OverviewTab account={account} balance={balance} />
       )}
 
       {activeTab === "orders" && (
