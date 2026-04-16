@@ -12,7 +12,7 @@ interface NavItem {
 interface SidebarProps {
   navItems: NavItem[];
   header: React.ReactNode;
-  basePath: string;
+  basePath?: string;
   sectionLabel?: string;
 }
 
@@ -71,9 +71,10 @@ export default function Sidebar({
       {/* Navigation */}
       <nav style={{ flex: 1, padding: "var(--k-sidebar-nav-padding)" }}>
         {navItems.map((item) => {
+          const dashboardHref = basePath ?? "/";
           const isActive =
             pathname === item.href ||
-            (item.href !== basePath && pathname.startsWith(item.href));
+            (item.href !== dashboardHref && pathname.startsWith(item.href));
 
           return (
             <Link

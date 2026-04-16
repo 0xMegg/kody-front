@@ -1,6 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { useThemeOptional } from "@/lib/theme/ThemeContext";
+import type { ThemeName } from "@/lib/theme/types";
+
+const themeOptions: { name: ThemeName; label: string }[] = [
+  { name: "linear", label: "Linear" },
+  { name: "notion", label: "Notion" },
+  { name: "supabase", label: "Supabase" },
+];
 
 export default function TopBar() {
+  const themeCtx = useThemeOptional();
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <header
       style={{
@@ -44,7 +59,7 @@ export default function TopBar() {
         검색...
       </div>
 
-      {/* Right: avatar + prototype badge + variant link */}
+      {/* Right: avatar + prototype badge + theme switcher or variant link */}
       <div style={{ display: "flex", alignItems: "center", gap: "var(--k-space-md)" }}>
         {/* User avatar placeholder */}
         <div
@@ -77,16 +92,85 @@ export default function TopBar() {
         >
           Prototype
         </span>
-        <Link
-          href="/"
-          style={{
-            color: "var(--k-brand)",
-            textDecoration: "none",
-            fontSize: "var(--k-font-size-sm)",
-          }}
-        >
-          변형 바꾸기
-        </Link>
+
+        {/* Theme switcher (when inside ThemeProvider) or fallback link */}
+        {themeCtx ? (
+          <div style={{ position: "relative" }}>
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              style={{
+                background: "none",
+                border: "1px solid var(--k-border)",
+                borderRadius: "var(--k-radius-sm)",
+                padding: "4px 10px",
+                fontSize: "var(--k-font-size-sm)",
+                color: "var(--k-brand)",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: 4,
+              }}
+            >
+              {themeCtx.theme.charAt(0).toUpperCase() + themeCtx.theme.slice(1)}
+              <span style={{ fontSize: 10 }}>{dropdownOpen ? "\u25B2" : "\u25BC"}</span>
+            </button>
+            {dropdownOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "calc(100% + 4px)",
+                  right: 0,
+                  minWidth: 120,
+                  backgroundColor: "var(--k-surface)",
+                  border: "1px solid var(--k-border)",
+                  borderRadius: "var(--k-radius-md)",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  zIndex: 100,
+                  overflow: "hidden",
+                }}
+              >
+                {themeOptions.map((opt) => (
+                  <button
+                    key={opt.name}
+                    onClick={() => {
+                      themeCtx.setTheme(opt.name);
+                      setDropdownOpen(false);
+                    }}
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      padding: "8px 12px",
+                      background: themeCtx.theme === opt.name
+                        ? "var(--k-bg-hover)"
+                        : "transparent",
+                      border: "none",
+                      textAlign: "left",
+                      fontSize: "var(--k-font-size-sm)",
+                      color: themeCtx.theme === opt.name
+                        ? "var(--k-brand)"
+                        : "var(--k-text)",
+                      fontWeight: themeCtx.theme === opt.name ? 600 : 400,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link
+            href="/"
+            style={{
+              color: "var(--k-brand)",
+              textDecoration: "none",
+              fontSize: "var(--k-font-size-sm)",
+            }}
+          >
+            변형 바꾸기
+          </Link>
+        )}
       </div>
     </header>
   );
