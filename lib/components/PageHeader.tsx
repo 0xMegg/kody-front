@@ -46,7 +46,7 @@ export default function PageHeader({ breadcrumb, title, helperText, actions }: P
         {helperText && (
           <p
             style={{
-              fontSize: "var(--k-font-size-md)",
+              fontSize: "var(--k-font-size-sm)",
               color: "var(--k-text-muted)",
               margin: 0,
               marginTop: "var(--k-space-xs)",
