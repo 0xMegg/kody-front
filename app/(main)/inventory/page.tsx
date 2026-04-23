@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTheme } from "@/lib/theme";
 import PageHeader from "@/lib/components/PageHeader";
 import StatCard from "@/lib/components/StatCard";
 import Button from "@/lib/components/Button";
@@ -350,6 +351,10 @@ function StockCell({
 // Main Page
 // ---------------------------------------------------------------------------
 export default function InventoryPage() {
+  const { theme } = useTheme();
+  const isNotion = theme === "notion";
+  const isSupabase = theme === "supabase";
+
   const allRows = useMemo(() => buildRows(), []);
 
   // Filters
@@ -408,6 +413,7 @@ export default function InventoryPage() {
       {/* Header */}
       <PageHeader
         title="재고 현황"
+        helperText="이 화면에서는 주문기준·출고기준 재고와 오늘 입고를 확인합니다."
         actions={<Button disabled>신규 입고 등록</Button>}
       />
 
@@ -479,6 +485,16 @@ export default function InventoryPage() {
             data={filteredRows}
             onRowClick={(row) => setSelectedRow(row)}
             renderCell={(key, value, row) => {
+              const cellBleedStyle = (bg: string): React.CSSProperties => ({
+                margin: "0 calc(var(--k-pad-cell-x) * -1)",
+                padding: "0 var(--k-pad-cell-x)",
+                height: "var(--k-height-row)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                backgroundColor: bg,
+                boxSizing: "border-box",
+              });
 
               if (key === "weightG") {
                 return (
@@ -490,35 +506,46 @@ export default function InventoryPage() {
 
               if (key === "orderBasedStock") {
                 const v = value as number;
+                const isNeg = v < 0;
+
+                const wrapperBg =
+                  isNeg && isSupabase
+                    ? "var(--k-danger-bg)"
+                    : "var(--k-inventory-col1-bg)";
+
+                const negStyle: React.CSSProperties = isNeg
+                  ? isNotion
+                    ? {
+                        backgroundColor: "var(--k-highlight-red-bg)",
+                        color: "var(--k-highlight-red)",
+                        padding: "2px 10px",
+                        borderRadius: "var(--k-radius-sm)",
+                      }
+                    : { color: "var(--k-danger)" }
+                  : {};
+
                 return (
-                  <span
-                    style={{
-                      fontVariantNumeric: "tabular-nums",
-                      fontWeight: 500,
-                      color: v < 0 ? "var(--k-danger)" : "var(--k-text)",
-                      backgroundColor: "var(--k-bg-sub)",
-                      padding: "2px 8px",
-                      borderRadius: 3,
-                    }}
-                  >
-                    {v.toLocaleString()}
-                  </span>
+                  <div style={cellBleedStyle(wrapperBg)}>
+                    <span
+                      style={{
+                        fontVariantNumeric: "tabular-nums",
+                        fontWeight: 500,
+                        ...negStyle,
+                      }}
+                    >
+                      {v.toLocaleString()}
+                    </span>
+                  </div>
                 );
               }
 
               if (key === "shipmentBasedStock") {
                 return (
-                  <span
-                    style={{
-                      fontVariantNumeric: "tabular-nums",
-                      fontWeight: 500,
-                      backgroundColor: "var(--k-bg-sub)",
-                      padding: "2px 8px",
-                      borderRadius: 3,
-                    }}
-                  >
-                    {(value as number).toLocaleString()}
-                  </span>
+                  <div style={cellBleedStyle("var(--k-inventory-col2-bg)")}>
+                    <span style={{ fontVariantNumeric: "tabular-nums", fontWeight: 500 }}>
+                      {(value as number).toLocaleString()}
+                    </span>
+                  </div>
                 );
               }
 
