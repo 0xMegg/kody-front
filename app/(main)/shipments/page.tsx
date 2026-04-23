@@ -11,6 +11,7 @@ import {
 import Badge from "@/lib/components/Badge";
 import Button from "@/lib/components/Button";
 import Toast from "@/lib/components/Toast";
+import PageHeader from "@/lib/components/PageHeader";
 
 interface PickingItem {
   orderItemId: string;
@@ -100,19 +101,10 @@ export default function ShipmentsPage() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      {/* Page title */}
-      <div style={{ marginBottom: 16 }}>
-        <h1
-          style={{
-            fontSize: 20,
-            fontWeight: 600,
-            color: "var(--k-text)",
-            margin: 0,
-          }}
-        >
-          출고
-        </h1>
-      </div>
+      <PageHeader
+        title="출고"
+        helperText="이 화면에서는 피킹 대기 품목을 모아 출고리스트를 만들고 진행 상태를 관리합니다."
+      />
 
       {/* Split pane */}
       <div

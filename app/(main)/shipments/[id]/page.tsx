@@ -57,6 +57,7 @@ export default async function ShipmentDetailPage({
           </span>
         }
         title={shipment.id}
+        helperText="이 화면에서는 선택한 출고의 품목·수출 서류·송장번호를 확인하고 완료 처리합니다."
         actions={
           <Badge
             variant={shipment.status === "출고대기" ? "pending" : "confirmed"}
