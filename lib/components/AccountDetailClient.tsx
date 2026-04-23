@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTheme } from "@/lib/theme/ThemeContext";
 import Link from "next/link";
 import Card from "@/lib/components/Card";
 import Table, { type TableColumn } from "@/lib/components/Table";
@@ -98,14 +99,217 @@ const addressColumns: TableColumn<AddressRow>[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Balance card helpers
+// ---------------------------------------------------------------------------
+function LinearCurrencyBalanceCard({ balance }: { balance: AccountBalance }) {
+  const cellLabelStyle: React.CSSProperties = {
+    fontSize: "var(--k-font-size-sm)",
+    color: "var(--k-text-muted)",
+    padding: "var(--k-space-sm) 0",
+    width: 120,
+  };
+  const cellValueStyle: React.CSSProperties = {
+    fontSize: "var(--k-font-size-md)",
+    color: "var(--k-text)",
+    padding: "var(--k-space-sm) 0",
+  };
+  return (
+    <Card title="통화별 잔액">
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <tbody>
+          {CURRENCIES.map((c) => (
+            <tr key={c}>
+              <td style={cellLabelStyle}>{c}</td>
+              <td
+                style={{
+                  ...cellValueStyle,
+                  textAlign: "right",
+                  color:
+                    balance[c] < 0
+                      ? "var(--k-danger)"
+                      : balance[c] > 0
+                        ? "var(--k-positive-color)"
+                        : "var(--k-text)",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                {formatNumber(balance[c])}
+              </td>
+            </tr>
+          ))}
+          <tr style={{ borderTop: "1px solid var(--k-border)" }}>
+            <td style={{ ...cellLabelStyle, fontWeight: 600 }}>원화 환산 총합</td>
+            <td
+              style={{
+                ...cellValueStyle,
+                textAlign: "right",
+                fontWeight: 600,
+                color:
+                  balance.totalKRW < 0
+                    ? "var(--k-danger)"
+                    : balance.totalKRW > 0
+                      ? "var(--k-positive-color)"
+                      : "var(--k-text)",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {formatNumber(Math.round(balance.totalKRW))} KRW
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </Card>
+  );
+}
+
+function NotionCurrencyBalanceCallout({ balance }: { balance: AccountBalance }) {
+  const cellLabelStyle: React.CSSProperties = {
+    fontSize: "var(--k-font-size-sm)",
+    color: "var(--k-text-muted)",
+    padding: "var(--k-space-sm) 0",
+    width: 120,
+  };
+  const cellValueStyle: React.CSSProperties = {
+    fontSize: "var(--k-font-size-md)",
+    color: "var(--k-text)",
+    padding: "var(--k-space-sm) 0",
+  };
+  return (
+    <div
+      style={{
+        backgroundColor: "var(--k-bg-sub)",
+        borderLeft: "3px solid var(--k-brand)",
+        borderRadius: "var(--k-radius-sm)",
+        padding: "var(--k-pad-card)",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: "var(--k-font-heading)",
+          fontSize: "var(--k-card-title-size)",
+          fontWeight: 600,
+          color: "var(--k-text)",
+          marginBottom: 12,
+        }}
+      >
+        통화별 잔액
+      </div>
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <tbody>
+          {CURRENCIES.map((c) => (
+            <tr key={c}>
+              <td style={cellLabelStyle}>{c}</td>
+              <td
+                style={{
+                  ...cellValueStyle,
+                  textAlign: "right",
+                  color:
+                    balance[c] < 0
+                      ? "var(--k-danger)"
+                      : balance[c] > 0
+                        ? "var(--k-positive-color)"
+                        : "var(--k-text)",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                {formatNumber(balance[c])}
+              </td>
+            </tr>
+          ))}
+          <tr style={{ borderTop: "1px solid var(--k-border)" }}>
+            <td style={{ ...cellLabelStyle, fontWeight: 600 }}>원화 환산 총합</td>
+            <td
+              style={{
+                ...cellValueStyle,
+                textAlign: "right",
+                fontWeight: 600,
+                color:
+                  balance.totalKRW < 0
+                    ? "var(--k-danger)"
+                    : balance.totalKRW > 0
+                      ? "var(--k-positive-color)"
+                      : "var(--k-text)",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {formatNumber(Math.round(balance.totalKRW))} KRW
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function SupabaseCurrencyBalanceCard({ balance }: { balance: AccountBalance }) {
+  return (
+    <Card title="통화별 잔액">
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        {CURRENCIES.map((c) => (
+          <div
+            key={c}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "auto 1fr",
+              alignItems: "baseline",
+              gap: 12,
+              fontSize: "var(--k-font-size-md)",
+              fontFamily: "var(--k-font-mono)",
+              fontVariantNumeric: "tabular-nums",
+              color:
+                balance[c] < 0
+                  ? "var(--k-danger)"
+                  : balance[c] > 0
+                    ? "var(--k-positive-color)"
+                    : "var(--k-text)",
+            }}
+          >
+            <span style={{ color: "var(--k-text-muted)", minWidth: 40 }}>{c}</span>
+            <span style={{ textAlign: "right" }}>{formatNumber(balance[c])}</span>
+          </div>
+        ))}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "auto 1fr",
+            alignItems: "baseline",
+            gap: 12,
+            fontSize: 14,
+            fontWeight: 600,
+            fontFamily: "var(--k-font-mono)",
+            fontVariantNumeric: "tabular-nums",
+            color:
+              balance.totalKRW < 0
+                ? "var(--k-danger)"
+                : balance.totalKRW > 0
+                  ? "var(--k-positive-color)"
+                  : "var(--k-text)",
+            borderTop: "1px solid var(--k-border)",
+            paddingTop: 8,
+            marginTop: 4,
+          }}
+        >
+          <span style={{ color: "var(--k-text-muted)", minWidth: 60 }}>KRW 합계</span>
+          <span style={{ textAlign: "right" }}>{formatNumber(Math.round(balance.totalKRW))}</span>
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Tab contents
 // ---------------------------------------------------------------------------
 function OverviewTab({
   account,
   balance,
+  isNotion,
+  isSupabase,
 }: {
   account: Account;
   balance: AccountBalance;
+  isNotion: boolean;
+  isSupabase: boolean;
 }) {
   const infoRows: { label: string; value: React.ReactNode }[] = [
     { label: "거래처명", value: account.name },
@@ -171,59 +375,13 @@ function OverviewTab({
         </table>
       </Card>
 
-      <Card title="통화별 잔액">
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <tbody>
-            {CURRENCIES.map((c) => (
-              <tr key={c}>
-                <td style={cellLabelStyle}>{c}</td>
-                <td
-                  style={{
-                    ...cellValueStyle,
-                    textAlign: "right",
-                    color:
-                      balance[c] < 0
-                        ? "var(--k-danger)"
-                        : balance[c] > 0
-                          ? "var(--k-positive-color)"
-                          : "var(--k-text)",
-                    fontFamily: "var(--k-font-mono)",
-                    fontVariantNumeric: "tabular-nums",
-                  }}
-                >
-                  {formatNumber(balance[c])}
-                </td>
-              </tr>
-            ))}
-            <tr
-              style={{
-                borderTop: "1px solid var(--k-border)",
-              }}
-            >
-              <td style={{ ...cellLabelStyle, fontWeight: 600 }}>
-                원화 환산 총합
-              </td>
-              <td
-                style={{
-                  ...cellValueStyle,
-                  textAlign: "right",
-                  fontWeight: 600,
-                  color:
-                    balance.totalKRW < 0
-                      ? "var(--k-danger)"
-                      : balance.totalKRW > 0
-                        ? "var(--k-positive-color)"
-                        : "var(--k-text)",
-                  fontFamily: "var(--k-font-mono)",
-                  fontVariantNumeric: "tabular-nums",
-                }}
-              >
-                {formatNumber(Math.round(balance.totalKRW))} KRW
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </Card>
+      {isNotion ? (
+        <NotionCurrencyBalanceCallout balance={balance} />
+      ) : isSupabase ? (
+        <SupabaseCurrencyBalanceCard balance={balance} />
+      ) : (
+        <LinearCurrencyBalanceCard balance={balance} />
+      )}
 
       {account.memo && (
         <Card title="메모 / 비고">
@@ -251,6 +409,9 @@ export default function AccountDetailClient({
   account,
   balance,
 }: AccountDetailClientProps) {
+  const { theme } = useTheme();
+  const isNotion = theme === "notion";
+  const isSupabase = theme === "supabase";
   const [activeTab, setActiveTab] = useState<TabId>("overview");
 
   // Order rows for this account
@@ -341,7 +502,7 @@ export default function AccountDetailClient({
 
       {/* Tab content */}
       {activeTab === "overview" && (
-        <OverviewTab account={account} balance={balance} />
+        <OverviewTab account={account} balance={balance} isNotion={isNotion} isSupabase={isSupabase} />
       )}
 
       {activeTab === "orders" && (

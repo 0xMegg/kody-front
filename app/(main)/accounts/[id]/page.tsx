@@ -43,6 +43,7 @@ export default async function AccountDetailPage({
           </span>
         }
         title={account.name}
+        helperText="이 화면에서는 선택한 거래처의 기본 정보·통화별 잔액·이력을 확인합니다."
       />
       <AccountDetailClient account={account} balance={balance} />
     </div>

@@ -225,6 +225,7 @@ export default function AccountsPage() {
       <PageHeader
         breadcrumb="거래처"
         title="거래처"
+        helperText="이 화면에서는 거래처 목록과 잔액·담당자 정보를 함께 확인합니다."
         actions={
           <Button variant="secondary" onClick={() => {}}>
             새 거래처
