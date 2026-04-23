@@ -1,0 +1,798 @@
+/* ══════════════════════════════════════════
+   Unified Theme Tokens
+   Each variant's tokens under [data-theme] selector.
+   :root fallback = Linear (default theme).
+   ══════════════════════════════════════════ */
+
+/* ── Default (Linear fallback) ── */
+:root {
+  /* Color: Core */
+  --k-bg: #ffffff;
+  --k-bg-sub: #fafafb;
+  --k-bg-hover: #f4f4f5;
+  --k-surface: #ffffff;
+  --k-border: #e6e6e8;
+  --k-border-strong: #d4d4d8;
+
+  /* Color: Text */
+  --k-text: #1a1a1a;
+  --k-text-muted: #6b6b70;
+  --k-text-subtle: #9898a0;
+  --k-text-invert: #ffffff;
+
+  /* Color: Brand (Linear purple) */
+  --k-brand: #5e6ad2;
+  --k-brand-hover: #4f59b8;
+  --k-brand-subtle: #eef0fc;
+
+  /* Color: Status */
+  --k-success: #00875a;
+  --k-warning: #d97706;
+  --k-danger: #e5484d;
+  --k-info: #5e6ad2;
+  --k-positive-color: var(--k-text);
+
+  /* Color: Status backgrounds */
+  --k-success-bg: #dcfce7;
+  --k-warning-bg: #fef3c7;
+  --k-danger-bg: #fee2e2;
+  --k-info-bg: #eef0fc;
+
+  /* Color: Variant-specific fallbacks */
+  --k-bg-raise: #f4f4f5;
+  --k-bg-overlay: rgba(0, 0, 0, 0.5);
+  --k-brand-dim: #eef0fc;
+  --k-brand-glow: transparent;
+  --k-text-on-accent: #ffffff;
+  --k-highlight-yellow-bg: #f4f4f5;
+  --k-highlight-orange-bg: #f4f4f5;
+  --k-highlight-red-bg: #f4f4f5;
+  --k-highlight-green-bg: #f4f4f5;
+  --k-highlight-blue-bg: #f4f4f5;
+  --k-highlight-purple-bg: #f4f4f5;
+  --k-highlight-pink-bg: #f4f4f5;
+  --k-highlight-gray-bg: #f4f4f5;
+  --k-highlight-purple: #5e6ad2;
+  --k-highlight-green: #00875a;
+  --k-highlight-red: #e5484d;
+  --k-highlight-orange: #d97706;
+  --k-highlight-blue: #5e6ad2;
+  --k-highlight-yellow: #d97706;
+
+  /* Radius */
+  --k-radius-sm: 6px;
+  --k-radius-md: 8px;
+  --k-radius-lg: 8px;
+
+  /* Height */
+  --k-height-sm: 24px;
+  --k-height-md: 28px;
+  --k-height-lg: 32px;
+  --k-height-row: 36px;
+  --k-height-header-row: 32px;
+
+  /* Spacing */
+  --k-space-xs: 4px;
+  --k-space-sm: 8px;
+  --k-space-md: 12px;
+  --k-space-lg: 16px;
+  --k-space-xl: 24px;
+  --k-space-2xl: 32px;
+  --k-pad-cell-x: 12px;
+  --k-pad-card: 16px;
+
+  /* Typography */
+  --k-font-body: Inter, -apple-system, system-ui, sans-serif;
+  --k-font-heading: Inter, -apple-system, system-ui, sans-serif;
+  --k-font-mono: ui-monospace, 'SF Mono', monospace;
+  --k-font-size-xs: 11px;
+  --k-font-size-sm: 12px;
+  --k-font-size-md: 13px;
+  --k-font-size-lg: 16px;
+  --k-font-size-xl: 20px;
+  --k-font-size-2xl: 24px;
+  --k-line-height-tight: 1.25;
+  --k-line-height-normal: 1.5;
+  --k-letter-spacing-tight: -0.01em;
+  --k-letter-spacing-wide: 0.05em;
+
+  /* Motion */
+  --k-transition-fast: 150ms ease-out;
+  --k-transition-normal: 200ms ease-out;
+
+  /* Button */
+  --k-btn-secondary-bg: transparent;
+  --k-btn-ghost-hover: var(--k-bg-hover);
+  --k-btn-danger-bg: var(--k-danger);
+  --k-btn-danger-text: var(--k-text-invert);
+  --k-btn-danger-border: none;
+  --k-btn-danger-hover-bg: var(--k-danger);
+  --k-btn-danger-hover-text: var(--k-text-invert);
+  --k-btn-primary-hover-shadow: none;
+
+  /* Form */
+  --k-form-input-height: 28px;
+  --k-form-input-bg: var(--k-bg-sub);
+
+  /* Card */
+  --k-card-bg: var(--k-surface);
+  --k-shadow-card: none;
+  --k-card-title-size: var(--k-font-size-md);
+  --k-card-highlight-border-width: 1px;
+
+  /* StatCard */
+  --k-stat-label-size: var(--k-font-size-xs);
+  --k-stat-label-transform: uppercase;
+  --k-stat-label-tracking: 0.05em;
+  --k-stat-value-size: 28px;
+  --k-stat-value-font: var(--k-font-body);
+  --k-statcard-hover-shadow: none;
+
+  /* KPI */
+  --k-kpi-grid-gap: 12px;
+  --k-kpi-accent-height: 0px;
+
+  /* Toast */
+  --k-toast-bg: var(--k-surface);
+  --k-toast-shadow: none;
+
+  /* View Toggle */
+  --k-view-toggle-style: buttons;
+
+  /* Badge */
+  --k-badge-height: 20px;
+  --k-badge-padding: 8px;
+  --k-badge-radius: 4px;
+  --k-badge-font-size: 11px;
+  --k-badge-text-transform: none;
+  --k-badge-letter-spacing: 0;
+  --k-badge-info: var(--k-info);
+  --k-badge-info-bg: var(--k-info-bg);
+  --k-badge-neutral-bg: var(--k-bg-raise);
+  --k-badge-accent: var(--k-highlight-purple);
+  --k-badge-accent-bg: var(--k-highlight-purple-bg);
+
+  /* Table */
+  --k-table-head-height: 32px;
+  --k-table-head-padding: 12px;
+  --k-table-head-font-size: 11px;
+  --k-table-head-text-transform: uppercase;
+  --k-table-head-letter-spacing: 0.05em;
+  --k-table-head-border-color: var(--k-border);
+  --k-table-row-bg-alt: transparent;
+  --k-table-hover-bg: var(--k-bg-hover);
+  --k-table-hover-shadow: none;
+
+  /* Inventory */
+  --k-inventory-col1-bg: transparent;
+  --k-inventory-col2-bg: var(--k-bg-sub);
+
+  /* PageHeader */
+  --k-page-title-size: var(--k-font-size-xl);
+  --k-page-title-weight: 600;
+  --k-page-header-border: none;
+  --k-page-header-pad-bottom: 0px;
+
+  /* TopBar */
+  --k-topbar-search-width: 320px;
+  --k-topbar-search-height: 28px;
+  --k-topbar-avatar-size: 24px;
+  --k-topbar-avatar-bg: var(--k-bg-hover);
+  --k-topbar-badge-bg: var(--k-warning-bg);
+  --k-topbar-badge-text: var(--k-text-subtle);
+  --k-topbar-badge-transform: uppercase;
+  --k-topbar-badge-size: 10px;
+
+  /* Layout */
+  --k-sidebar-width: 220px;
+  --k-sidebar-logo-height: 48px;
+  --k-sidebar-logo-border: 1px solid var(--k-border);
+  --k-sidebar-nav-item-height: 32px;
+  --k-sidebar-nav-font-size: 13px;
+  --k-sidebar-nav-padding: 8px 8px;
+  --k-sidebar-active-bg: var(--k-brand-subtle);
+  --k-sidebar-active-color: var(--k-brand);
+  --k-sidebar-active-weight: 500;
+  --k-sidebar-inactive-color: var(--k-text);
+  --k-sidebar-active-shadow: none;
+  --k-header-height: 56px;
+  --k-content-max-width: 1280px;
+}
+
+/* ── Linear ── */
+[data-theme="linear"] {
+  /* Color: Core */
+  --k-bg: #ffffff;
+  --k-bg-sub: #fafafb;
+  --k-bg-hover: #f4f4f5;
+  --k-surface: #ffffff;
+  --k-border: #e6e6e8;
+  --k-border-strong: #d4d4d8;
+
+  /* Color: Text */
+  --k-text: #1a1a1a;
+  --k-text-muted: #6b6b70;
+  --k-text-subtle: #9898a0;
+  --k-text-invert: #ffffff;
+
+  /* Color: Brand (Linear purple) */
+  --k-brand: #5e6ad2;
+  --k-brand-hover: #4f59b8;
+  --k-brand-subtle: #eef0fc;
+
+  /* Color: Status */
+  --k-success: #00875a;
+  --k-warning: #d97706;
+  --k-danger: #e5484d;
+  --k-info: #5e6ad2;
+  --k-positive-color: var(--k-text);
+
+  /* Color: Status backgrounds */
+  --k-success-bg: #dcfce7;
+  --k-warning-bg: #fef3c7;
+  --k-danger-bg: #fee2e2;
+  --k-info-bg: #eef0fc;
+
+  /* Color: Variant-specific fallbacks */
+  --k-bg-raise: #f4f4f5;
+  --k-bg-overlay: rgba(0, 0, 0, 0.5);
+  --k-brand-dim: #eef0fc;
+  --k-brand-glow: transparent;
+  --k-text-on-accent: #ffffff;
+  --k-highlight-yellow-bg: #f4f4f5;
+  --k-highlight-orange-bg: #f4f4f5;
+  --k-highlight-red-bg: #f4f4f5;
+  --k-highlight-green-bg: #f4f4f5;
+  --k-highlight-blue-bg: #f4f4f5;
+  --k-highlight-purple-bg: #f4f4f5;
+  --k-highlight-pink-bg: #f4f4f5;
+  --k-highlight-gray-bg: #f4f4f5;
+  --k-highlight-purple: #5e6ad2;
+  --k-highlight-green: #00875a;
+  --k-highlight-red: #e5484d;
+  --k-highlight-orange: #d97706;
+  --k-highlight-blue: #5e6ad2;
+  --k-highlight-yellow: #d97706;
+
+  /* Radius */
+  --k-radius-sm: 6px;
+  --k-radius-md: 8px;
+  --k-radius-lg: 8px;
+
+  /* Height */
+  --k-height-sm: 24px;
+  --k-height-md: 28px;
+  --k-height-lg: 32px;
+  --k-height-row: 36px;
+  --k-height-header-row: 32px;
+
+  /* Spacing */
+  --k-space-xs: 4px;
+  --k-space-sm: 8px;
+  --k-space-md: 12px;
+  --k-space-lg: 16px;
+  --k-space-xl: 24px;
+  --k-space-2xl: 32px;
+  --k-pad-cell-x: 12px;
+  --k-pad-card: 16px;
+
+  /* Typography */
+  --k-font-body: Inter, -apple-system, system-ui, sans-serif;
+  --k-font-heading: Inter, -apple-system, system-ui, sans-serif;
+  --k-font-mono: ui-monospace, 'SF Mono', monospace;
+  --k-font-size-xs: 11px;
+  --k-font-size-sm: 12px;
+  --k-font-size-md: 13px;
+  --k-font-size-lg: 16px;
+  --k-font-size-xl: 20px;
+  --k-font-size-2xl: 24px;
+  --k-line-height-tight: 1.25;
+  --k-line-height-normal: 1.5;
+  --k-letter-spacing-tight: -0.01em;
+  --k-letter-spacing-wide: 0.05em;
+
+  /* Motion */
+  --k-transition-fast: 150ms ease-out;
+  --k-transition-normal: 200ms ease-out;
+
+  /* Button */
+  --k-btn-secondary-bg: transparent;
+  --k-btn-ghost-hover: var(--k-bg-hover);
+  --k-btn-danger-bg: var(--k-danger);
+  --k-btn-danger-text: var(--k-text-invert);
+  --k-btn-danger-border: none;
+  --k-btn-danger-hover-bg: var(--k-danger);
+  --k-btn-danger-hover-text: var(--k-text-invert);
+  --k-btn-primary-hover-shadow: none;
+
+  /* Form */
+  --k-form-input-height: 28px;
+  --k-form-input-bg: var(--k-bg-sub);
+
+  /* Card */
+  --k-card-bg: var(--k-surface);
+  --k-shadow-card: none;
+  --k-card-title-size: var(--k-font-size-md);
+  --k-card-highlight-border-width: 1px;
+
+  /* StatCard */
+  --k-stat-label-size: var(--k-font-size-xs);
+  --k-stat-label-transform: uppercase;
+  --k-stat-label-tracking: 0.05em;
+  --k-stat-value-size: 28px;
+  --k-stat-value-font: var(--k-font-body);
+  --k-statcard-hover-shadow: none;
+
+  /* KPI */
+  --k-kpi-grid-gap: 12px;
+  --k-kpi-accent-height: 0px;
+
+  /* Toast */
+  --k-toast-bg: var(--k-surface);
+  --k-toast-shadow: none;
+
+  /* View Toggle */
+  --k-view-toggle-style: buttons;
+
+  /* Badge */
+  --k-badge-height: 20px;
+  --k-badge-padding: 8px;
+  --k-badge-radius: 4px;
+  --k-badge-font-size: 11px;
+  --k-badge-text-transform: none;
+  --k-badge-letter-spacing: 0;
+  --k-badge-info: var(--k-info);
+  --k-badge-info-bg: var(--k-info-bg);
+  --k-badge-neutral-bg: var(--k-bg-raise);
+  --k-badge-accent: var(--k-highlight-purple);
+  --k-badge-accent-bg: var(--k-highlight-purple-bg);
+
+  /* Table */
+  --k-table-head-height: 32px;
+  --k-table-head-padding: 12px;
+  --k-table-head-font-size: 11px;
+  --k-table-head-text-transform: uppercase;
+  --k-table-head-letter-spacing: 0.05em;
+  --k-table-head-border-color: var(--k-border);
+  --k-table-row-bg-alt: transparent;
+  --k-table-hover-bg: var(--k-bg-hover);
+  --k-table-hover-shadow: none;
+
+  /* Inventory */
+  --k-inventory-col1-bg: transparent;
+  --k-inventory-col2-bg: var(--k-bg-sub);
+
+  /* PageHeader */
+  --k-page-title-size: var(--k-font-size-xl);
+  --k-page-title-weight: 600;
+  --k-page-header-border: none;
+  --k-page-header-pad-bottom: 0px;
+
+  /* TopBar */
+  --k-topbar-search-width: 320px;
+  --k-topbar-search-height: 28px;
+  --k-topbar-avatar-size: 24px;
+  --k-topbar-avatar-bg: var(--k-bg-hover);
+  --k-topbar-badge-bg: var(--k-warning-bg);
+  --k-topbar-badge-text: var(--k-text-subtle);
+  --k-topbar-badge-transform: uppercase;
+  --k-topbar-badge-size: 10px;
+
+  /* Layout */
+  --k-sidebar-width: 220px;
+  --k-sidebar-logo-height: 48px;
+  --k-sidebar-logo-border: 1px solid var(--k-border);
+  --k-sidebar-nav-item-height: 32px;
+  --k-sidebar-nav-font-size: 13px;
+  --k-sidebar-nav-padding: 8px 8px;
+  --k-sidebar-active-bg: var(--k-brand-subtle);
+  --k-sidebar-active-color: var(--k-brand);
+  --k-sidebar-active-weight: 500;
+  --k-sidebar-inactive-color: var(--k-text);
+  --k-sidebar-active-shadow: none;
+  --k-header-height: 56px;
+  --k-content-max-width: 1280px;
+}
+
+/* ── Notion ── */
+[data-theme="notion"] {
+  /* Color: Core */
+  --k-bg: #fbfbfa;
+  --k-bg-sub: #f7f6f3;
+  --k-bg-hover: #efeee9;
+  --k-surface: #ffffff;
+  --k-border: #ebeae4;
+  --k-border-strong: #d9d8d1;
+
+  /* Color: Text */
+  --k-text: #37352f;
+  --k-text-muted: #787669;
+  --k-text-subtle: #9b9a8f;
+  --k-text-invert: #ffffff;
+
+  /* Color: Accent (Notion blue) */
+  --k-brand: #2383e2;
+  --k-brand-hover: #1967be;
+  --k-brand-subtle: #e7f2fd;
+
+  /* Color: Status */
+  --k-success: #0f7b6c;
+  --k-warning: #b45309;
+  --k-danger: #b91c1c;
+  --k-info: #2383e2;
+  --k-positive-color: var(--k-text);
+
+  /* Color: Status backgrounds */
+  --k-success-bg: #dbeddb;
+  --k-warning-bg: #fdecc8;
+  --k-danger-bg: #ffe2dd;
+  --k-info-bg: #e7f2fd;
+
+  /* Color: Notion-specific */
+  --k-text-on-accent: #ffffff;
+
+  /* Color: Semantic highlight backgrounds */
+  --k-highlight-yellow-bg: #fdecc8;
+  --k-highlight-orange-bg: #fadec9;
+  --k-highlight-red-bg: #ffe2dd;
+  --k-highlight-green-bg: #dbeddb;
+  --k-highlight-blue-bg: #d3e5ef;
+  --k-highlight-purple-bg: #e8deee;
+  --k-highlight-pink-bg: #f5e0e9;
+  --k-highlight-gray-bg: #ebeced;
+
+  /* Color: Semantic highlight text */
+  --k-highlight-purple: #6b21a8;
+  --k-highlight-green: #0f7b6c;
+  --k-highlight-red: #b91c1c;
+  --k-highlight-orange: #b45309;
+  --k-highlight-blue: #2383e2;
+  --k-highlight-yellow: #92710e;
+
+  /* Color: Variant-specific fallbacks */
+  --k-bg-raise: #efeee9;
+  --k-bg-overlay: rgba(0, 0, 0, 0.5);
+  --k-brand-dim: #e7f2fd;
+  --k-brand-glow: transparent;
+
+  /* Radius */
+  --k-radius-sm: 3px;
+  --k-radius-md: 3px;
+  --k-radius-lg: 6px;
+
+  /* Height */
+  --k-height-sm: 28px;
+  --k-height-md: 32px;
+  --k-height-lg: 36px;
+  --k-height-row: 44px;
+  --k-height-header-row: 40px;
+
+  /* Spacing */
+  --k-space-xs: 4px;
+  --k-space-sm: 8px;
+  --k-space-md: 16px;
+  --k-space-lg: 20px;
+  --k-space-xl: 24px;
+  --k-space-2xl: 32px;
+  --k-pad-cell-x: 16px;
+  --k-pad-card: 20px;
+
+  /* Typography */
+  --k-font-body: Inter, -apple-system, ui-sans-serif, sans-serif;
+  --k-font-heading: 'Source Serif 4', 'Iowan Old Style', ui-serif, Georgia, serif;
+  --k-font-mono: ui-monospace, 'SF Mono', monospace;
+  --k-font-size-xs: 12px;
+  --k-font-size-sm: 14px;
+  --k-font-size-md: 15px;
+  --k-font-size-lg: 17px;
+  --k-font-size-xl: 20px;
+  --k-font-size-2xl: 24px;
+  --k-line-height-tight: 1.33;
+  --k-line-height-normal: 1.6;
+  --k-letter-spacing-tight: -0.005em;
+  --k-letter-spacing-wide: 0em;
+
+  /* Motion */
+  --k-transition-fast: 180ms ease;
+  --k-transition-normal: 220ms ease;
+
+  /* Button */
+  --k-btn-secondary-bg: var(--k-surface);
+  --k-btn-ghost-hover: var(--k-bg-hover);
+  --k-btn-danger-bg: var(--k-danger);
+  --k-btn-danger-text: var(--k-text-invert);
+  --k-btn-danger-border: none;
+  --k-btn-danger-hover-bg: var(--k-danger);
+  --k-btn-danger-hover-text: var(--k-text-invert);
+  --k-btn-primary-hover-shadow: none;
+
+  /* Form */
+  --k-form-input-height: 36px;
+  --k-form-input-bg: var(--k-surface);
+
+  /* Card */
+  --k-card-bg: var(--k-surface);
+  --k-shadow-card: rgba(15, 15, 15, 0.04) 0px 1px 2px;
+  --k-card-title-size: var(--k-font-size-lg);
+  --k-card-highlight-border-width: 1px;
+
+  /* StatCard */
+  --k-stat-label-size: var(--k-font-size-sm);
+  --k-stat-label-transform: none;
+  --k-stat-label-tracking: normal;
+  --k-stat-value-size: 26px;
+  --k-stat-value-font: var(--k-font-body);
+  --k-statcard-hover-shadow: none;
+
+  /* KPI */
+  --k-kpi-grid-gap: 24px;
+  --k-kpi-accent-height: 0px;
+
+  /* Toast */
+  --k-toast-bg: var(--k-surface);
+  --k-toast-shadow: rgba(15, 15, 15, 0.04) 0px 1px 2px;
+
+  /* View Toggle */
+  --k-view-toggle-style: inline-tab;
+
+  /* Badge */
+  --k-badge-height: 22px;
+  --k-badge-padding: 10px;
+  --k-badge-radius: 3px;
+  --k-badge-font-size: 13px;
+  --k-badge-text-transform: none;
+  --k-badge-letter-spacing: 0;
+  --k-badge-info: var(--k-brand);
+  --k-badge-info-bg: var(--k-highlight-blue-bg);
+  --k-badge-neutral-bg: var(--k-highlight-gray-bg);
+  --k-badge-accent: var(--k-highlight-purple);
+  --k-badge-accent-bg: var(--k-highlight-purple-bg);
+
+  /* Table */
+  --k-table-head-height: 40px;
+  --k-table-head-padding: 16px;
+  --k-table-head-font-size: 15px;
+  --k-table-head-text-transform: none;
+  --k-table-head-letter-spacing: 0;
+  --k-table-head-border-color: var(--k-border);
+  --k-table-row-bg-alt: var(--k-bg-sub);
+  --k-table-hover-bg: var(--k-bg-hover);
+  --k-table-hover-shadow: none;
+
+  /* Inventory */
+  --k-inventory-col1-bg: rgba(211, 229, 239, 0.3); /* #D3E5EF at 30% */
+  --k-inventory-col2-bg: rgba(219, 237, 219, 0.3); /* #DBEDDB at 30% */
+
+  /* PageHeader */
+  --k-page-title-size: 30px;
+  --k-page-title-weight: 700;
+  --k-page-header-border: none;
+  --k-page-header-pad-bottom: 0px;
+
+  /* TopBar */
+  --k-topbar-search-width: 360px;
+  --k-topbar-search-height: 30px;
+  --k-topbar-avatar-size: 28px;
+  --k-topbar-avatar-bg: var(--k-bg-hover);
+  --k-topbar-badge-bg: var(--k-highlight-yellow-bg);
+  --k-topbar-badge-text: var(--k-text-subtle);
+  --k-topbar-badge-transform: none;
+  --k-topbar-badge-size: 11px;
+
+  /* Layout */
+  --k-sidebar-width: 240px;
+  --k-sidebar-logo-height: 52px;
+  --k-sidebar-logo-border: none;
+  --k-sidebar-nav-item-height: 32px;
+  --k-sidebar-nav-font-size: 14px;
+  --k-sidebar-nav-padding: 4px 8px;
+  --k-sidebar-active-bg: var(--k-bg-hover);
+  --k-sidebar-active-color: var(--k-text);
+  --k-sidebar-active-weight: 500;
+  --k-sidebar-inactive-color: var(--k-text-muted);
+  --k-sidebar-active-shadow: none;
+  --k-header-height: 64px;
+  --k-content-max-width: 960px;
+}
+
+/* ── Supabase ── */
+[data-theme="supabase"] {
+  /* Color: Core */
+  --k-bg: #171717;
+  --k-bg-sub: #1f1f1f;
+  --k-bg-hover: #262626;
+  --k-surface: #1f1f1f;
+  --k-border: #2e2e2e;
+  --k-border-strong: #404040;
+
+  /* Color: Text */
+  --k-text: #ededed;
+  --k-text-muted: #a1a1aa;
+  --k-text-subtle: #71717a;
+  --k-text-invert: #0a0a0a;
+
+  /* Color: Brand (Supabase emerald) */
+  --k-brand: #3ecf8e;
+  --k-brand-hover: #2fb177;
+  --k-brand-subtle: #1a3b2e;
+
+  /* Color: Status */
+  --k-success: #3ecf8e;
+  --k-warning: #f5a524;
+  --k-danger: #f87171;
+  --k-info: #60a5fa;
+  --k-positive-color: var(--k-brand);
+
+  /* Color: Status backgrounds */
+  --k-success-bg: #103529;
+  --k-warning-bg: #3d2b10;
+  --k-danger-bg: #3d1515;
+  --k-info-bg: #0f2540;
+
+  /* Color: Supabase-specific */
+  --k-bg-raise: #262626;
+  --k-bg-overlay: #0a0a0a;
+  --k-brand-dim: #1a3b2e;
+  --k-brand-glow: rgba(62, 207, 142, 0.12);
+
+  /* Color: Variant-specific fallbacks */
+  --k-text-on-accent: #0a0a0a;
+  --k-highlight-yellow-bg: #262626;
+  --k-highlight-orange-bg: #262626;
+  --k-highlight-red-bg: #262626;
+  --k-highlight-green-bg: #262626;
+  --k-highlight-blue-bg: #262626;
+  --k-highlight-purple-bg: #262626;
+  --k-highlight-pink-bg: #262626;
+  --k-highlight-gray-bg: #262626;
+  --k-highlight-purple: #60a5fa;
+  --k-highlight-green: #3ecf8e;
+  --k-highlight-red: #f87171;
+  --k-highlight-orange: #f5a524;
+  --k-highlight-blue: #60a5fa;
+  --k-highlight-yellow: #f5a524;
+
+  /* Button */
+  --k-btn-secondary-bg: var(--k-bg-sub);
+  --k-btn-ghost-hover: var(--k-bg-raise);
+  --k-btn-danger-bg: transparent;
+  --k-btn-danger-text: var(--k-danger);
+  --k-btn-danger-border: 1px solid var(--k-danger);
+  --k-btn-danger-hover-bg: var(--k-danger);
+  --k-btn-danger-hover-text: var(--k-text-invert);
+  --k-btn-primary-hover-shadow: 0 0 0 1px var(--k-brand-glow);
+
+  /* Form */
+  --k-form-input-height: 28px;
+  --k-form-input-bg: var(--k-bg-sub);
+
+  /* Card */
+  --k-card-bg: var(--k-bg-sub);
+  --k-shadow-card: none;
+  --k-card-title-size: var(--k-font-size-md);
+  --k-card-highlight-border-width: 2px;
+
+  /* StatCard */
+  --k-stat-label-size: var(--k-font-size-xs);
+  --k-stat-label-transform: uppercase;
+  --k-stat-label-tracking: 0.05em;
+  --k-stat-value-size: 30px;
+  --k-stat-value-font: var(--k-font-mono);
+  --k-statcard-hover-shadow: 0 0 0 1px var(--k-brand-glow);
+
+  /* KPI */
+  --k-kpi-grid-gap: 12px;
+  --k-kpi-accent-height: 2px;
+
+  /* Toast */
+  --k-toast-bg: var(--k-bg-raise);
+  --k-toast-shadow: 0 0 0 1px var(--k-brand-glow);
+
+  /* View Toggle */
+  --k-view-toggle-style: segmented;
+
+  /* Radius */
+  --k-radius-sm: 6px;
+  --k-radius-md: 6px;
+  --k-radius-lg: 8px;
+
+  /* Height */
+  --k-height-sm: 28px;
+  --k-height-md: 32px;
+  --k-height-lg: 36px;
+  --k-height-row: 40px;
+  --k-height-header-row: 36px;
+
+  /* Spacing */
+  --k-space-xs: 4px;
+  --k-space-sm: 8px;
+  --k-space-md: 12px;
+  --k-space-lg: 16px;
+  --k-space-xl: 24px;
+  --k-space-2xl: 32px;
+  --k-pad-cell-x: 12px;
+  --k-pad-card: 16px;
+
+  /* Typography */
+  --k-font-body: Inter, -apple-system, ui-sans-serif, sans-serif;
+  --k-font-heading: Inter, -apple-system, ui-sans-serif, sans-serif;
+  --k-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  --k-font-size-xs: 11px;
+  --k-font-size-sm: 12px;
+  --k-font-size-md: 13px;
+  --k-font-size-lg: 16px;
+  --k-font-size-xl: 20px;
+  --k-font-size-2xl: 24px;
+  --k-line-height-tight: 1.25;
+  --k-line-height-normal: 1.5;
+  --k-letter-spacing-tight: -0.01em;
+  --k-letter-spacing-wide: 0.05em;
+
+  /* Motion */
+  --k-transition-fast: 120ms ease-out;
+  --k-transition-normal: 200ms ease-out;
+
+  /* Badge */
+  --k-badge-height: 22px;
+  --k-badge-padding: 8px;
+  --k-badge-radius: 4px;
+  --k-badge-font-size: 11px;
+  --k-badge-text-transform: uppercase;
+  --k-badge-letter-spacing: 0.05em;
+  --k-badge-info: var(--k-info);
+  --k-badge-info-bg: var(--k-info-bg);
+  --k-badge-neutral-bg: var(--k-bg-raise);
+  --k-badge-accent: var(--k-highlight-purple);
+  --k-badge-accent-bg: var(--k-highlight-purple-bg);
+
+  /* Table */
+  --k-table-head-height: 36px;
+  --k-table-head-padding: 12px;
+  --k-table-head-font-size: 11px;
+  --k-table-head-text-transform: uppercase;
+  --k-table-head-letter-spacing: 0.05em;
+  --k-table-head-border-color: var(--k-border-strong);
+  --k-table-row-bg-alt: transparent;
+  --k-table-hover-bg: var(--k-bg-raise);
+  --k-table-hover-shadow: inset 2px 0 0 var(--k-brand);
+
+  /* Inventory */
+  --k-inventory-col1-bg: var(--k-brand-dim);
+  --k-inventory-col2-bg: var(--k-info-bg);
+
+  /* PageHeader */
+  --k-page-title-size: var(--k-font-size-xl);
+  --k-page-title-weight: 600;
+  --k-page-header-border: 1px solid var(--k-border);
+  --k-page-header-pad-bottom: 16px;
+
+  /* TopBar */
+  --k-topbar-search-width: 320px;
+  --k-topbar-search-height: 28px;
+  --k-topbar-avatar-size: 24px;
+  --k-topbar-avatar-bg: var(--k-bg-raise);
+  --k-topbar-badge-bg: var(--k-warning-bg);
+  --k-topbar-badge-text: var(--k-warning);
+  --k-topbar-badge-transform: uppercase;
+  --k-topbar-badge-size: 10px;
+
+  /* Layout */
+  --k-sidebar-width: 256px;
+  --k-sidebar-logo-height: 48px;
+  --k-sidebar-logo-border: 1px solid var(--k-border);
+  --k-sidebar-nav-item-height: 34px;
+  --k-sidebar-nav-font-size: 13px;
+  --k-sidebar-nav-padding: 0 8px;
+  --k-sidebar-active-bg: var(--k-bg-raise);
+  --k-sidebar-active-color: var(--k-brand);
+  --k-sidebar-active-weight: 500;
+  --k-sidebar-inactive-color: var(--k-text-muted);
+  --k-sidebar-active-shadow: inset 2px 0 0 var(--k-brand);
+  --k-header-height: 60px;
+  --k-content-max-width: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

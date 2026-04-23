@@ -30,6 +30,7 @@ const notionTheme: ThemeConfig = {
   displayName: "Notion",
   fontImports: ["Source_Serif_4"],
   fontVariables: ["--font-source-serif"],
+  sectionLabel: "",
   mainPadding: 32,
   header: {
     logoStyle: {
