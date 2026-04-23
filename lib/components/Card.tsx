@@ -18,7 +18,7 @@ export default function Card({ title, actions, children, className, highlighted 
         backgroundColor: "var(--k-card-bg)",
         boxShadow: "var(--k-shadow-card)",
         overflow: "hidden",
-        ...(highlighted ? { borderTop: "2px solid var(--k-brand)" } : {}),
+        ...(highlighted ? { borderTopWidth: "var(--k-card-highlight-border-width)", borderTopStyle: "solid", borderTopColor: "var(--k-brand)" } : {}),
       }}
     >
       {title && (

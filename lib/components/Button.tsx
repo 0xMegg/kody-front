@@ -36,7 +36,7 @@ const variantMap: Record<
     color: "var(--k-text-invert)",
     border: "none",
     hoverBg: "var(--k-brand-hover)",
-    hoverShadow: "0 0 0 1px var(--k-brand-glow)",
+    hoverShadow: "var(--k-btn-primary-hover-shadow)",
   },
   secondary: {
     backgroundColor: "var(--k-btn-secondary-bg)",

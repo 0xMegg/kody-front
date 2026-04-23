@@ -32,7 +32,7 @@ export default function StatCard({
         borderRadius: "var(--k-radius-md)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 0 0 1px var(--k-brand-glow)";
+        e.currentTarget.style.boxShadow = "var(--k-statcard-hover-shadow)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = "none";
