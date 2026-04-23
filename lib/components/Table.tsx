@@ -9,6 +9,7 @@ export interface TableColumn<T> {
   sortable?: boolean;
   width?: number | string;
   mono?: boolean;
+  iconLeft?: React.ReactNode;
 }
 
 interface TableProps<T extends Record<string, unknown>> {
@@ -78,11 +79,25 @@ export default function Table<T extends Record<string, unknown>>({
                   width: col.width,
                 }}
               >
-                {col.label}
-                {col.sortable && sortKey === col.key && (
-                  <span style={{ marginLeft: 4, fontSize: 10 }}>
-                    {sortDir === "asc" ? "▲" : "▼"}
+                {col.iconLeft ? (
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                    {col.iconLeft}
+                    {col.label}
+                    {col.sortable && sortKey === col.key && (
+                      <span style={{ marginLeft: 4, fontSize: 10 }}>
+                        {sortDir === "asc" ? "▲" : "▼"}
+                      </span>
+                    )}
                   </span>
+                ) : (
+                  <>
+                    {col.label}
+                    {col.sortable && sortKey === col.key && (
+                      <span style={{ marginLeft: 4, fontSize: 10 }}>
+                        {sortDir === "asc" ? "▲" : "▼"}
+                      </span>
+                    )}
+                  </>
                 )}
               </th>
             ))}
@@ -94,6 +109,7 @@ export default function Table<T extends Record<string, unknown>>({
               key={i}
               onClick={onRowClick ? () => onRowClick(row) : undefined}
               style={{
+                height: "var(--k-height-row)",
                 cursor: onRowClick ? "pointer" : "default",
                 backgroundColor: i % 2 === 1 ? "var(--k-table-row-bg-alt)" : "transparent",
                 transition: "var(--k-transition-fast)",
@@ -113,13 +129,13 @@ export default function Table<T extends Record<string, unknown>>({
                 <td
                   key={col.key}
                   style={{
-                    height: "var(--k-height-row)",
                     padding: "0 var(--k-table-head-padding)",
                     borderBottom: "1px solid var(--k-border)",
                     fontSize: "var(--k-font-size-md)",
                     color: "var(--k-text)",
                     textAlign: col.mono ? "right" : col.align ?? "left",
                     fontFamily: col.mono ? "var(--k-font-mono)" : undefined,
+                    fontVariantNumeric: col.mono ? "tabular-nums" : undefined,
                   }}
                 >
                   {renderCell
