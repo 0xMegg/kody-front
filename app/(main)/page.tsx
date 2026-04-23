@@ -1,0 +1,363 @@
+'use client';
+
+import Link from 'next/link';
+import PageHeader from '@/lib/components/PageHeader';
+import StatCard from '@/lib/components/StatCard';
+import Card from '@/lib/components/Card';
+import {
+  orders,
+  shipments,
+  accounts,
+  activityEvents,
+  getBalanceByAccount,
+} from '@/lib/mock-data';
+import { formatCurrencyShort } from '@/lib/utils';
+import { useTheme } from '@/lib/theme';
+
+// ---------------------------------------------------------------------------
+// KPI computation
+// ---------------------------------------------------------------------------
+
+const pendingOrderCount = orders.filter((o) => o.status === '주문대기').length;
+const pendingShipmentCount = shipments.filter((s) => s.status === '출고대기').length;
+
+// 미수금: sum negative balances across all accounts
+const receivables = (() => {
+  let totalKRW = 0;
+  const byCurrency: Record<string, number> = { USD: 0, EUR: 0, RUB: 0, KRW: 0 };
+  for (const acc of accounts) {
+    const bal = getBalanceByAccount(acc.id);
+    if (bal.totalKRW < 0) {
+      totalKRW += bal.totalKRW;
+      byCurrency.USD += bal.USD;
+      byCurrency.EUR += bal.EUR;
+      byCurrency.RUB += bal.RUB;
+      byCurrency.KRW += bal.KRW;
+    }
+  }
+  return { totalKRW, byCurrency };
+})();
+
+// 금주 입고: hardcoded — mock data has no inbound inventory entity
+const weeklyInboundCount = 12;
+
+// ---------------------------------------------------------------------------
+// Weekly trend chart data (hardcoded plausible values)
+// ---------------------------------------------------------------------------
+
+const weeklyTrend = [
+  { label: '월', count: 5 },
+  { label: '화', count: 8 },
+  { label: '수', count: 6 },
+  { label: '목', count: 9 },
+  { label: '금', count: 7 },
+  { label: '토', count: 3 },
+  { label: '일', count: 2 },
+];
+const maxCount = Math.max(...weeklyTrend.map((d) => d.count));
+
+// ---------------------------------------------------------------------------
+// Persona shortcuts
+// ---------------------------------------------------------------------------
+
+const personas = [
+  { name: '영업', desc: '주문 등록 · 거래처 관리', href: '/orders' },
+  { name: '출고', desc: '출고 준비 · 서류 관리', href: '/shipments' },
+  { name: '물류', desc: '피킹 · 배송 추적', href: '/shipments' },
+  { name: '경영관리', desc: '수금 확인 · 미수금 관리', href: '/payments' },
+];
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+
+export default function DashboardPage() {
+  const { theme } = useTheme();
+  const isNotion = theme === 'notion';
+  const isSupabase = theme === 'supabase';
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <PageHeader
+        title={isNotion ? '오늘의 업무' : '대시보드'}
+        helperText={
+          isNotion
+            ? '이 화면에서는 오늘 처리해야 할 업무를 한눈에 봅니다.'
+            : undefined
+        }
+      />
+
+      {/* Section 1: KPI Row */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 'var(--k-kpi-grid-gap)',
+        }}
+      >
+        <div style={{ position: 'relative' }}>
+          <div
+            aria-hidden
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 'var(--k-kpi-accent-height)',
+              backgroundColor: 'var(--k-brand-dim)',
+              borderTopLeftRadius: 'var(--k-radius-md)',
+              borderTopRightRadius: 'var(--k-radius-md)',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          />
+          <StatCard
+            label="주문대기"
+            value={String(pendingOrderCount)}
+            trend="up"
+            trendLabel="전주 대비 +2"
+          />
+        </div>
+        <div style={{ position: 'relative' }}>
+          <div
+            aria-hidden
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 'var(--k-kpi-accent-height)',
+              backgroundColor: 'var(--k-brand-dim)',
+              borderTopLeftRadius: 'var(--k-radius-md)',
+              borderTopRightRadius: 'var(--k-radius-md)',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          />
+          <StatCard
+            label="출고대기"
+            value={String(pendingShipmentCount)}
+            trend="down"
+            trendLabel="전주 대비 −1"
+          />
+        </div>
+        <div style={{ position: 'relative' }}>
+          <div
+            aria-hidden
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 'var(--k-kpi-accent-height)',
+              backgroundColor: 'var(--k-brand-dim)',
+              borderTopLeftRadius: 'var(--k-radius-md)',
+              borderTopRightRadius: 'var(--k-radius-md)',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          />
+          <StatCard
+            label="미수금 합계"
+            value={formatCurrencyShort(receivables.totalKRW)}
+            trend="up"
+            trendLabel="전주 대비 증가"
+          />
+        </div>
+        <div style={{ position: 'relative' }}>
+          <div
+            aria-hidden
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 'var(--k-kpi-accent-height)',
+              backgroundColor: 'var(--k-brand-dim)',
+              borderTopLeftRadius: 'var(--k-radius-md)',
+              borderTopRightRadius: 'var(--k-radius-md)',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          />
+          <StatCard
+            label="금주 입고"
+            value={String(weeklyInboundCount)}
+            trend="neutral"
+            trendLabel="전주와 동일"
+          />
+        </div>
+      </div>
+
+      {/* Section 2: Weekly Trend Chart */}
+      <Card title={isNotion ? '이번 주 흐름' : '주간 주문 추이'}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            gap: 8,
+            height: 120,
+          }}
+        >
+          {weeklyTrend.map((day) => (
+            <div
+              key={day.label}
+              style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 500,
+                  color: 'var(--k-text)',
+                  fontVariantNumeric: 'tabular-nums',
+                }}
+              >
+                {day.count}
+              </span>
+              <div
+                style={{
+                  width: '100%',
+                  maxWidth: 40,
+                  backgroundColor: isSupabase ? 'var(--k-bg-overlay)' : 'var(--k-bg-sub)',
+                  borderRadius: 4,
+                  position: 'relative',
+                  height: 80,
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: `${(day.count / maxCount) * 100}%`,
+                    backgroundColor: 'var(--k-brand)',
+                    borderRadius: 4,
+                    transition: 'height 0.2s ease',
+                  }}
+                />
+              </div>
+              <span
+                style={{
+                  fontSize: 11,
+                  color: 'var(--k-text-muted)',
+                }}
+              >
+                {day.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Section 3: Persona Shortcuts */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 12,
+        }}
+      >
+        {personas.map((p) => (
+          <Link
+            key={p.name}
+            href={p.href}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <Card>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 6,
+                  cursor: 'pointer',
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: 'var(--k-text)',
+                  }}
+                >
+                  {p.name}
+                </span>
+                <span
+                  style={{
+                    fontSize: 12,
+                    color: 'var(--k-text-muted)',
+                  }}
+                >
+                  {p.desc}
+                </span>
+              </div>
+            </Card>
+          </Link>
+        ))}
+      </div>
+
+      {/* Section 4: Recent Activity Stream */}
+      <Card title="최근 활동">
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {activityEvents.map((evt, i) => {
+            const ts = new Date(evt.timestamp);
+            const formatted = `${String(ts.getMonth() + 1).padStart(2, '0')}/${String(ts.getDate()).padStart(2, '0')} ${String(ts.getHours()).padStart(2, '0')}:${String(ts.getMinutes()).padStart(2, '0')}`;
+            return (
+              <div
+                key={evt.id}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  height: 36,
+                  borderBottom:
+                    i < activityEvents.length - 1
+                      ? '1px solid var(--k-border)'
+                      : 'none',
+                  fontSize: 13,
+                }}
+              >
+                <span
+                  style={{
+                    color: 'var(--k-text-muted)',
+                    fontSize: 12,
+                    fontVariantNumeric: 'tabular-nums',
+                    flexShrink: 0,
+                    width: 80,
+                  }}
+                >
+                  {formatted}
+                </span>
+                <span
+                  style={{
+                    fontWeight: 600,
+                    color: 'var(--k-text)',
+                    flexShrink: 0,
+                  }}
+                >
+                  {evt.persona}
+                </span>
+                <span
+                  style={{
+                    color: 'var(--k-text-muted)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {evt.description}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </Card>
+    </div>
+  );
+}
