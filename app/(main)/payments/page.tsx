@@ -15,6 +15,7 @@ import {
 import type { Currency } from "@/lib/types";
 import { formatNumber, formatCurrency } from "@/lib/utils";
 import { CURRENCIES, DEPOSIT_SOURCES } from "@/lib/constants";
+import { useTheme } from "@/lib/theme";
 
 // Mock "today" — aligned with mock data
 const TODAY = "2026-04-12";
@@ -45,6 +46,9 @@ function defaultDateFrom(): string {
 // Component
 // ---------------------------------------------------------------------------
 export default function PaymentsPage() {
+  const { theme } = useTheme();
+  const isSupabase = theme === "supabase";
+
   // Filter state
   const [dateFrom, setDateFrom] = useState(defaultDateFrom);
   const [dateTo, setDateTo] = useState(TODAY);
@@ -79,6 +83,16 @@ export default function PaymentsPage() {
       }
     }
     return totals;
+  }, []);
+
+  const monthMaxKrw = useMemo(() => {
+    let max = 0;
+    for (const p of payments) {
+      if (p.date.startsWith(THIS_MONTH) && p.krwEquivalent > max) {
+        max = p.krwEquivalent;
+      }
+    }
+    return max;
   }, []);
 
   // ---------------------------------------------------------------------------
@@ -172,6 +186,7 @@ export default function PaymentsPage() {
       {/* Page Header */}
       <PageHeader
         title="수금 내역"
+        helperText="이 화면에서는 거래처별 수금 내역과 통화별 합계를 확인합니다."
         actions={
           <Button disabled>수금 업로드</Button>
         }
@@ -308,10 +323,39 @@ export default function PaymentsPage() {
                 );
               }
               if (key === "krwEquivalent") {
-                return (
+                const krw = value as number;
+                const numberSpan = (
                   <span style={{ fontVariantNumeric: "tabular-nums" }}>
-                    ₩{formatNumber(value as number, 0)}
+                    ₩{formatNumber(krw, 0)}
                   </span>
+                );
+
+                if (!isSupabase) return numberSpan;
+
+                const ratio =
+                  monthMaxKrw > 0
+                    ? Math.min(Math.max(krw / monthMaxKrw, 0), 1)
+                    : 0;
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 4,
+                      alignItems: "stretch",
+                    }}
+                  >
+                    {numberSpan}
+                    <div
+                      aria-hidden
+                      style={{
+                        height: 1,
+                        width: `${ratio * 100}%`,
+                        backgroundColor: "var(--k-brand)",
+                        alignSelf: "flex-start",
+                      }}
+                    />
+                  </div>
                 );
               }
               if (key === "currency") {
