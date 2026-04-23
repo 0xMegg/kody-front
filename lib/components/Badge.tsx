@@ -1,3 +1,8 @@
+"use client";
+
+import { useThemeOptional } from "@/lib/theme/ThemeContext";
+import type { ThemeName } from "@/lib/theme/types";
+
 export type BadgeVariant = "success" | "warning" | "danger" | "info" | "neutral" | "accent";
 
 type BadgeAlias =
@@ -26,25 +31,54 @@ const colorMap: Record<BadgeVariant, { color: string; backgroundColor: string }>
   accent: { color: "var(--k-badge-accent)", backgroundColor: "var(--k-badge-accent-bg)" },
 };
 
-const variantAliases: Record<BadgeAlias, BadgeVariant> = {
-  pending: "warning",
-  confirmed: "success",
-  cancelled: "neutral",
-  shipped: "info",
-  주문대기: "warning",
-  주문완료: "success",
-  주문중지: "neutral",
-  출고대기: "info",
-  출고완료: "accent",
-  음수재고: "danger",
+const themeAliases: Record<ThemeName, Record<BadgeAlias, BadgeVariant>> = {
+  linear: {
+    pending: "warning",
+    confirmed: "success",
+    cancelled: "neutral",
+    shipped: "info",
+    주문대기: "warning",
+    주문완료: "success",
+    주문중지: "neutral",
+    출고대기: "info",
+    출고완료: "success",
+    음수재고: "danger",
+  },
+  notion: {
+    pending: "warning",
+    confirmed: "success",
+    cancelled: "neutral",
+    shipped: "info",
+    주문대기: "warning",
+    주문완료: "success",
+    주문중지: "neutral",
+    출고대기: "info",
+    출고완료: "accent",
+    음수재고: "danger",
+  },
+  supabase: {
+    pending: "warning",
+    confirmed: "success",
+    cancelled: "neutral",
+    shipped: "info",
+    주문대기: "warning",
+    주문완료: "success",
+    주문중지: "neutral",
+    출고대기: "info",
+    출고완료: "success",
+    음수재고: "danger",
+  },
 };
 
-function resolveVariant(variant: BadgeVariant | BadgeAlias): BadgeVariant {
-  return (variantAliases as Record<string, BadgeVariant>)[variant] ?? (variant as BadgeVariant);
+function resolveVariant(variant: BadgeVariant | BadgeAlias, theme: ThemeName): BadgeVariant {
+  const aliases = themeAliases[theme];
+  return (aliases as Record<string, BadgeVariant>)[variant] ?? (variant as BadgeVariant);
 }
 
 export default function Badge({ variant, children }: BadgeProps) {
-  const resolved = resolveVariant(variant);
+  const ctx = useThemeOptional();
+  const theme: ThemeName = ctx?.theme ?? "linear";
+  const resolved = resolveVariant(variant, theme);
   const c = colorMap[resolved];
 
   return (
