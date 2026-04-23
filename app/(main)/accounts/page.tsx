@@ -56,8 +56,8 @@ const columns: TableColumn<AccountRow>[] = [
   { key: "name", label: "거래처명", sortable: true },
   { key: "representative", label: "대표자" },
   { key: "salesRep", label: "담당자" },
-  { key: "discountRate", label: "기본 할인율", align: "right" },
-  { key: "balanceKRW", label: "잔액 (KRW 환산)", align: "right", sortable: true },
+  { key: "discountRate", label: "기본 할인율", align: "right", mono: true },
+  { key: "balanceKRW", label: "잔액 (KRW 환산)", align: "right", sortable: true, mono: true },
   { key: "relatedCount", label: "관계 거래처", align: "center" },
   { key: "addressCount", label: "배송지 수", align: "center" },
 ];

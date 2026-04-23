@@ -184,7 +184,7 @@ function ProductDrawer({
               style={{
                 fontSize: 11,
                 fontWeight: 500,
-                textTransform: "uppercase",
+                textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
                 letterSpacing: "0.05em",
                 color: "var(--k-text-muted)",
               }}
@@ -252,7 +252,7 @@ function ProductDrawer({
               style={{
                 fontSize: 11,
                 fontWeight: 500,
-                textTransform: "uppercase",
+                textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
                 letterSpacing: "0.05em",
                 color: "var(--k-text-muted)",
               }}

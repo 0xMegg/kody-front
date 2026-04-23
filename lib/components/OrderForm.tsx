@@ -433,6 +433,8 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                             fontSize: "var(--k-font-size-md)",
                             color: "var(--k-text)",
                             textAlign: "right",
+                            fontFamily: "var(--k-font-mono)",
+                            fontVariantNumeric: "tabular-nums",
                           }}
                         >
                           {formatNumber(item.unitPrice)}
@@ -445,6 +447,8 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                             fontSize: "var(--k-font-size-md)",
                             color: "var(--k-text)",
                             textAlign: "right",
+                            fontFamily: "var(--k-font-mono)",
+                            fontVariantNumeric: "tabular-nums",
                           }}
                         >
                           {formatNumber(item.quantity)}
@@ -457,6 +461,8 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                             fontSize: "var(--k-font-size-md)",
                             color: "var(--k-text)",
                             textAlign: "right",
+                            fontFamily: "var(--k-font-mono)",
+                            fontVariantNumeric: "tabular-nums",
                           }}
                         >
                           {(item.discountRate * 100).toFixed(0)}%
@@ -470,6 +476,8 @@ export default function OrderForm({ order, account }: OrderFormProps) {
                             color: "var(--k-text)",
                             textAlign: "right",
                             fontWeight: 500,
+                            fontFamily: "var(--k-font-mono)",
+                            fontVariantNumeric: "tabular-nums",
                           }}
                         >
                           {formatNumber(item.subtotal)}

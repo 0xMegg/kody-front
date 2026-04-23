@@ -206,7 +206,7 @@ export default function ShipmentsPage() {
                         borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
-                        textTransform: "uppercase",
+                        textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
                         letterSpacing: "0.05em",
                         color: "var(--k-text-muted)",
                         textAlign: col.align,
@@ -279,6 +279,8 @@ export default function ShipmentsPage() {
                           fontSize: 13,
                           color: "var(--k-text)",
                           textAlign: cell.align,
+                          fontFamily: ci === 4 ? "var(--k-font-mono)" : undefined,
+                          fontVariantNumeric: ci === 4 ? "tabular-nums" : undefined,
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -413,7 +415,7 @@ export default function ShipmentsPage() {
                         borderBottom: "1px solid var(--k-border)",
                         fontSize: 11,
                         fontWeight: 500,
-                        textTransform: "uppercase",
+                        textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
                         letterSpacing: "0.05em",
                         color: "var(--k-text-muted)",
                         textAlign: col.align,
@@ -519,6 +521,8 @@ export default function ShipmentsPage() {
                           fontSize: 13,
                           color: "var(--k-text)",
                           textAlign: "right",
+                          fontFamily: "var(--k-font-mono)",
+                          fontVariantNumeric: "tabular-nums",
                         }}
                       >
                         {shipment.items.length}
@@ -531,6 +535,8 @@ export default function ShipmentsPage() {
                           fontSize: 13,
                           color: "var(--k-text)",
                           textAlign: "right",
+                          fontFamily: "var(--k-font-mono)",
+                          fontVariantNumeric: "tabular-nums",
                         }}
                       >
                         {fmt(Math.round(totalAmount))}

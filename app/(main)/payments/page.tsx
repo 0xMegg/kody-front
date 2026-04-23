@@ -144,13 +144,14 @@ export default function PaymentsPage() {
     { key: "accountName", label: "거래처", sortable: true },
     { key: "depositSource", label: "입금처", width: 100 },
     { key: "currency", label: "통화", width: 60, align: "center" },
-    { key: "amount", label: "수금액", align: "right", sortable: true, width: 120 },
+    { key: "amount", label: "수금액", align: "right", sortable: true, width: 120, mono: true },
     {
       key: "krwEquivalent",
       label: "원화 환산",
       align: "right",
       sortable: true,
       width: 130,
+      mono: true,
     },
     { key: "memo", label: "비고", width: 140 },
   ];

@@ -101,24 +101,24 @@ function shipmentBadgeVariant(s: string) {
 // Column definitions
 // ---------------------------------------------------------------------------
 const orderColumns: TableColumn<OrderRow>[] = [
-  { key: "id", label: "주문번호", sortable: true },
+  { key: "id", label: "주문번호", sortable: true, mono: true },
   { key: "orderDate", label: "주문일", sortable: true },
   { key: "accountName", label: "거래처", sortable: true },
   { key: "salesRep", label: "담당자" },
-  { key: "currency", label: "통화" },
-  { key: "total", label: "주문합계액", align: "right", sortable: true },
+  { key: "currency", label: "통화", mono: true },
+  { key: "total", label: "주문합계액", align: "right", sortable: true, mono: true },
   { key: "status", label: "주문상태" },
   { key: "shipmentSummary", label: "출고상태 요약" },
 ];
 
 const itemColumns: TableColumn<OrderItemRow>[] = [
-  { key: "id", label: "주문품목번호", sortable: true },
-  { key: "orderId", label: "주문번호", sortable: true },
+  { key: "id", label: "주문품목번호", sortable: true, mono: true },
+  { key: "orderId", label: "주문번호", sortable: true, mono: true },
   { key: "productName", label: "품목명", sortable: true },
-  { key: "quantity", label: "수량", align: "right", sortable: true },
-  { key: "unitPrice", label: "단가", align: "right", sortable: true },
+  { key: "quantity", label: "수량", align: "right", sortable: true, mono: true },
+  { key: "unitPrice", label: "단가", align: "right", sortable: true, mono: true },
   { key: "discountRate", label: "할인율", align: "right" },
-  { key: "subtotal", label: "소계", align: "right", sortable: true },
+  { key: "subtotal", label: "소계", align: "right", sortable: true, mono: true },
   { key: "shipmentStatus", label: "출고상태" },
 ];
 
