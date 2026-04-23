@@ -59,7 +59,7 @@ export default function Sidebar({
             padding: "16px 16px 4px",
             fontSize: 10,
             fontWeight: 500,
-            textTransform: "uppercase",
+            textTransform: "var(--k-sidebar-section-label-transform)" as React.CSSProperties["textTransform"],
             letterSpacing: "0.1em",
             color: "var(--k-text-subtle)",
           }}
