@@ -124,7 +124,7 @@ export default function TopBar() {
                   backgroundColor: "var(--k-surface)",
                   border: "1px solid var(--k-border)",
                   borderRadius: "var(--k-radius-md)",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  boxShadow: "var(--k-dropdown-shadow)",
                   zIndex: 100,
                   overflow: "hidden",
                 }}
