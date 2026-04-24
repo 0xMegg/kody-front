@@ -7,6 +7,7 @@ import StatCard from "@/lib/components/StatCard";
 import Button from "@/lib/components/Button";
 import Card from "@/lib/components/Card";
 import Table, { type TableColumn } from "@/lib/components/Table";
+import StockCell from "@/lib/components/StockCell";
 import {
   products,
   artists,
@@ -314,34 +315,6 @@ function InfoRow({ label, value }: { label: string; value: string }) {
       </span>
       <span style={{ fontSize: 13, color: "var(--k-text)", fontWeight: 500 }}>
         {value}
-      </span>
-    </div>
-  );
-}
-
-function StockCell({
-  label,
-  value,
-  color,
-}: {
-  label: string;
-  value: number;
-  color: string;
-}) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-      <span style={{ fontSize: 11, color: "var(--k-text-muted)" }}>
-        {label}
-      </span>
-      <span
-        style={{
-          fontSize: 18,
-          fontWeight: 600,
-          fontVariantNumeric: "tabular-nums",
-          color,
-        }}
-      >
-        {value.toLocaleString()}
       </span>
     </div>
   );
