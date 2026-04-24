@@ -124,7 +124,7 @@ export default function ShipmentDetailClient({
           <span>합계 (수출신고액)</span>
           <span
             style={{
-              fontFamily: "var(--k-font-mono)",
+              fontFamily: "var(--k-summary-row-value-font)",
               fontVariantNumeric: "tabular-nums",
             }}
           >
