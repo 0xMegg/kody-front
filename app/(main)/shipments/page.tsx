@@ -12,15 +12,30 @@ import Badge from "@/lib/components/Badge";
 import Button from "@/lib/components/Button";
 import Toast from "@/lib/components/Toast";
 import PageHeader from "@/lib/components/PageHeader";
+import Table, { type TableColumn } from "@/lib/components/Table";
+import { formatNumber } from "@/lib/utils";
+import type { Incoterm, ShipmentStatus } from "@/lib/types";
 
-interface PickingItem {
+type PickingRow = Record<string, unknown> & {
+  _select: "";
   orderItemId: string;
   orderId: string;
   accountName: string;
   productName: string;
   quantity: number;
   shippingAddress: string;
-}
+};
+
+type ShipmentRow = Record<string, unknown> & {
+  id: string;
+  accountName: string;
+  shippingAddress: string;
+  shipDate: string;
+  itemCount: number;
+  totalAmount: number;
+  incoterm: Incoterm;
+  status: ShipmentStatus;
+};
 
 export default function ShipmentsPage() {
   const router = useRouter();
@@ -34,8 +49,8 @@ export default function ShipmentsPage() {
   const [activeTab, setActiveTab] = useState<"출고대기" | "출고완료">("출고대기");
 
   // Derive picking queue: order items with 미출고 status from 주문완료 orders
-  const pickingItems = useMemo<PickingItem[]>(() => {
-    const result: PickingItem[] = [];
+  const pickingItems = useMemo<PickingRow[]>(() => {
+    const result: PickingRow[] = [];
     for (const order of orders) {
       if (order.status !== "주문완료") continue;
       const account = getAccountById(order.accountId);
@@ -44,6 +59,7 @@ export default function ShipmentsPage() {
         if (item.shipmentStatus !== "미출고") continue;
         const product = getProductById(item.productId);
         result.push({
+          _select: "",
           orderItemId: item.id,
           orderId: order.id,
           accountName: account?.name ?? "-",
@@ -63,7 +79,7 @@ export default function ShipmentsPage() {
     if (!accountFilter.trim()) return pickingItems;
     const q = accountFilter.trim().toLowerCase();
     return pickingItems.filter((item) =>
-      item.accountName.toLowerCase().includes(q)
+      (item.accountName as string).toLowerCase().includes(q)
     );
   }, [pickingItems, accountFilter]);
 
@@ -71,6 +87,29 @@ export default function ShipmentsPage() {
   const filteredShipments = useMemo(() => {
     return shipments.filter((s) => s.status === activeTab);
   }, [activeTab]);
+
+  const shipmentRows = useMemo<ShipmentRow[]>(() => {
+    return filteredShipments.map((shipment) => {
+      const account = getAccountById(shipment.accountId);
+      const addr = account?.shippingAddresses.find(
+        (a) => a.id === shipment.shippingAddressId
+      );
+      const totalAmount = shipment.items.reduce(
+        (sum, item) => sum + item.subtotal,
+        0
+      );
+      return {
+        id: shipment.id,
+        accountName: account?.name ?? "-",
+        shippingAddress: addr ? `${addr.label} (${addr.country})` : "-",
+        shipDate: shipment.shipDate ?? "-",
+        itemCount: shipment.items.length,
+        totalAmount,
+        incoterm: shipment.incoterm,
+        status: shipment.status,
+      };
+    });
+  }, [filteredShipments]);
 
   const pendingCount = shipments.filter((s) => s.status === "출고대기").length;
   const completedCount = shipments.filter(
@@ -89,7 +128,7 @@ export default function ShipmentsPage() {
   const toggleAll = useCallback(() => {
     setSelectedItems((prev) => {
       if (prev.size === filteredPickingItems.length) return new Set();
-      return new Set(filteredPickingItems.map((i) => i.orderItemId));
+      return new Set(filteredPickingItems.map((i) => i.orderItemId as string));
     });
   }, [filteredPickingItems]);
 
@@ -97,7 +136,45 @@ export default function ShipmentsPage() {
     setToastVisible(true);
   }, []);
 
-  const fmt = (n: number) => n.toLocaleString("ko-KR");
+  const pickingColumns: TableColumn<PickingRow>[] = useMemo(
+    () => [
+      {
+        key: "_select",
+        label: "",
+        width: 36,
+        align: "center",
+        iconLeft: (
+          <input
+            type="checkbox"
+            checked={
+              filteredPickingItems.length > 0 &&
+              selectedItems.size === filteredPickingItems.length
+            }
+            onChange={toggleAll}
+            style={{ cursor: "pointer" }}
+          />
+        ),
+      },
+      { key: "orderItemId", label: "주문품목번호" },
+      { key: "orderId", label: "주문번호" },
+      { key: "accountName", label: "거래처" },
+      { key: "productName", label: "품목명" },
+      { key: "quantity", label: "수량", align: "right", mono: true, width: 60 },
+      { key: "shippingAddress", label: "배송지" },
+    ],
+    [filteredPickingItems, selectedItems, toggleAll]
+  );
+
+  const shipmentColumns: TableColumn<ShipmentRow>[] = [
+    { key: "id", label: "출고번호" },
+    { key: "accountName", label: "거래처" },
+    { key: "shippingAddress", label: "배송지" },
+    { key: "shipDate", label: "출고일" },
+    { key: "itemCount", label: "품목 수", align: "right", mono: true },
+    { key: "totalAmount", label: "합계액", align: "right", mono: true },
+    { key: "incoterm", label: "인코템즈", align: "center" },
+    { key: "status", label: "상태", align: "center" },
+  ];
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
@@ -179,121 +256,33 @@ export default function ShipmentsPage() {
 
           {/* Table */}
           <div style={{ flex: 1, overflowY: "auto" }}>
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontVariantNumeric: "tabular-nums",
+            <Table<PickingRow>
+              columns={pickingColumns}
+              data={filteredPickingItems}
+              renderCell={(key, value, row) => {
+                if (key === "_select") {
+                  return (
+                    <input
+                      type="checkbox"
+                      checked={selectedItems.has(row.orderItemId as string)}
+                      onChange={() => toggleItem(row.orderItemId as string)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  );
+                }
+                if (key === "quantity") return formatNumber(value as number, 0);
+                if (
+                  key === "accountName" ||
+                  key === "productName" ||
+                  key === "shippingAddress"
+                ) {
+                  return (
+                    <Ellipsis maxWidth={200}>{String(value ?? "")}</Ellipsis>
+                  );
+                }
+                return String(value ?? "");
               }}
-            >
-              <thead>
-                <tr>
-                  {[
-                    { label: "☐", width: 36, align: "center" as const },
-                    { label: "주문품목번호", width: undefined, align: "left" as const },
-                    { label: "주문번호", width: undefined, align: "left" as const },
-                    { label: "거래처", width: undefined, align: "left" as const },
-                    { label: "품목명", width: undefined, align: "left" as const },
-                    { label: "수량", width: 60, align: "right" as const },
-                    { label: "배송지", width: undefined, align: "left" as const },
-                  ].map((col, i) => (
-                    <th
-                      key={i}
-                      style={{
-                        height: 32,
-                        padding: "0 12px",
-                        backgroundColor: "var(--k-bg-sub)",
-                        borderBottom: "1px solid var(--k-border)",
-                        fontSize: 11,
-                        fontWeight: 500,
-                        textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
-                        letterSpacing: "0.05em",
-                        color: "var(--k-text-muted)",
-                        textAlign: col.align,
-                        whiteSpace: "nowrap",
-                        width: col.width,
-                        position: "sticky",
-                        top: 0,
-                        zIndex: 1,
-                      }}
-                    >
-                      {i === 0 ? (
-                        <input
-                          type="checkbox"
-                          checked={
-                            filteredPickingItems.length > 0 &&
-                            selectedItems.size === filteredPickingItems.length
-                          }
-                          onChange={toggleAll}
-                          style={{ cursor: "pointer" }}
-                        />
-                      ) : (
-                        col.label
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredPickingItems.map((item) => (
-                  <tr
-                    key={item.orderItemId}
-                    style={{ transition: "background-color 100ms ease-out" }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor =
-                        "var(--k-bg-hover)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "transparent";
-                    }}
-                  >
-                    <td
-                      style={{
-                        height: 36,
-                        padding: "0 12px",
-                        borderBottom: "1px solid var(--k-border)",
-                        textAlign: "center",
-                      }}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedItems.has(item.orderItemId)}
-                        onChange={() => toggleItem(item.orderItemId)}
-                        style={{ cursor: "pointer" }}
-                      />
-                    </td>
-                    {[
-                      { value: item.orderItemId, align: "left" as const },
-                      { value: item.orderId, align: "left" as const },
-                      { value: item.accountName, align: "left" as const },
-                      { value: item.productName, align: "left" as const },
-                      { value: fmt(item.quantity), align: "right" as const },
-                      { value: item.shippingAddress, align: "left" as const },
-                    ].map((cell, ci) => (
-                      <td
-                        key={ci}
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          color: "var(--k-text)",
-                          textAlign: cell.align,
-                          fontFamily: ci === 4 ? "var(--k-font-mono)" : undefined,
-                          fontVariantNumeric: ci === 4 ? "tabular-nums" : undefined,
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          maxWidth: 200,
-                        }}
-                      >
-                        {cell.value}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            />
           </div>
 
           {/* Footer */}
@@ -387,194 +376,42 @@ export default function ShipmentsPage() {
 
           {/* Table */}
           <div style={{ flex: 1, overflowY: "auto" }}>
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontVariantNumeric: "tabular-nums",
-              }}
-            >
-              <thead>
-                <tr>
-                  {[
-                    { label: "출고번호", align: "left" as const },
-                    { label: "거래처", align: "left" as const },
-                    { label: "배송지", align: "left" as const },
-                    { label: "출고일", align: "left" as const },
-                    { label: "품목 수", align: "right" as const },
-                    { label: "합계액", align: "right" as const },
-                    { label: "인코템즈", align: "center" as const },
-                    { label: "상태", align: "center" as const },
-                  ].map((col, i) => (
-                    <th
-                      key={i}
-                      style={{
-                        height: 32,
-                        padding: "0 12px",
-                        backgroundColor: "var(--k-bg-sub)",
-                        borderBottom: "1px solid var(--k-border)",
-                        fontSize: 11,
-                        fontWeight: 500,
-                        textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
-                        letterSpacing: "0.05em",
-                        color: "var(--k-text-muted)",
-                        textAlign: col.align,
-                        whiteSpace: "nowrap",
-                        position: "sticky",
-                        top: 0,
-                        zIndex: 1,
-                      }}
-                    >
-                      {col.label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredShipments.map((shipment) => {
-                  const account = getAccountById(shipment.accountId);
-                  const addr = account?.shippingAddresses.find(
-                    (a) => a.id === shipment.shippingAddressId
-                  );
-                  const totalAmount = shipment.items.reduce(
-                    (sum, item) => sum + item.subtotal,
-                    0
-                  );
+            <Table<ShipmentRow>
+              columns={shipmentColumns}
+              data={shipmentRows}
+              onRowClick={(row) => router.push(`/shipments/${row.id}`)}
+              renderCell={(key, value, row) => {
+                if (key === "id")
                   return (
-                    <tr
-                      key={shipment.id}
-                      onClick={() =>
-                        router.push(`/shipments/${shipment.id}`)
-                      }
-                      style={{
-                        cursor: "pointer",
-                        transition: "background-color 100ms ease-out",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor =
-                          "var(--k-bg-hover)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "transparent";
-                      }}
-                    >
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          color: "var(--k-brand)",
-                          fontWeight: 500,
-                        }}
-                      >
-                        {shipment.id}
-                      </td>
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          color: "var(--k-text)",
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          maxWidth: 140,
-                        }}
-                      >
-                        {account?.name ?? "-"}
-                      </td>
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          color: "var(--k-text)",
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          maxWidth: 120,
-                        }}
-                      >
-                        {addr
-                          ? `${addr.label} (${addr.country})`
-                          : "-"}
-                      </td>
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          color: "var(--k-text)",
-                        }}
-                      >
-                        {shipment.shipDate ?? "-"}
-                      </td>
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          color: "var(--k-text)",
-                          textAlign: "right",
-                          fontFamily: "var(--k-font-mono)",
-                          fontVariantNumeric: "tabular-nums",
-                        }}
-                      >
-                        {shipment.items.length}
-                      </td>
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          color: "var(--k-text)",
-                          textAlign: "right",
-                          fontFamily: "var(--k-font-mono)",
-                          fontVariantNumeric: "tabular-nums",
-                        }}
-                      >
-                        {fmt(Math.round(totalAmount))}
-                      </td>
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          fontSize: 13,
-                          textAlign: "center",
-                        }}
-                      >
-                        <Badge variant="shipped">{shipment.incoterm}</Badge>
-                      </td>
-                      <td
-                        style={{
-                          height: 36,
-                          padding: "0 12px",
-                          borderBottom: "1px solid var(--k-border)",
-                          textAlign: "center",
-                        }}
-                      >
-                        <Badge
-                          variant={
-                            shipment.status === "출고대기"
-                              ? "pending"
-                              : "confirmed"
-                          }
-                        >
-                          {shipment.status}
-                        </Badge>
-                      </td>
-                    </tr>
+                    <span style={{ color: "var(--k-brand)", fontWeight: 500 }}>
+                      {row.id}
+                    </span>
                   );
-                })}
-              </tbody>
-            </table>
+                if (key === "totalAmount")
+                  return formatNumber(Math.round(value as number), 0);
+                if (key === "itemCount")
+                  return formatNumber(value as number, 0);
+                if (key === "incoterm")
+                  return <Badge variant="shipped">{value as string}</Badge>;
+                if (key === "status")
+                  return (
+                    <Badge
+                      variant={value === "출고대기" ? "pending" : "confirmed"}
+                    >
+                      {value as string}
+                    </Badge>
+                  );
+                if (key === "accountName")
+                  return (
+                    <Ellipsis maxWidth={140}>{String(value ?? "")}</Ellipsis>
+                  );
+                if (key === "shippingAddress")
+                  return (
+                    <Ellipsis maxWidth={120}>{String(value ?? "")}</Ellipsis>
+                  );
+                return String(value ?? "");
+              }}
+            />
           </div>
         </div>
       </div>
@@ -585,5 +422,28 @@ export default function ShipmentsPage() {
         onClose={() => setToastVisible(false)}
       />
     </div>
+  );
+}
+
+function Ellipsis({
+  maxWidth,
+  children,
+}: {
+  maxWidth: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        maxWidth,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+        verticalAlign: "middle",
+      }}
+    >
+      {children}
+    </span>
   );
 }
