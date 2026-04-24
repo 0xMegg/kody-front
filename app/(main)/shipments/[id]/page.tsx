@@ -8,10 +8,28 @@ import {
 import PageHeader from "@/lib/components/PageHeader";
 import Card from "@/lib/components/Card";
 import Badge from "@/lib/components/Badge";
+import Table, { type TableColumn } from "@/lib/components/Table";
+import { formatNumber } from "@/lib/utils";
 
-function fmt(n: number): string {
-  return n.toLocaleString("ko-KR");
-}
+type ItemRow = Record<string, unknown> & {
+  orderItemId: string;
+  productName: string;
+  quantity: number;
+  unitPrice: number;
+  subtotal: number;
+  hsCode: string;
+  htsCode: string;
+};
+
+const itemColumns: TableColumn<ItemRow>[] = [
+  { key: "orderItemId", label: "주문품목번호" },
+  { key: "productName", label: "품목명" },
+  { key: "quantity", label: "수량", align: "right", mono: true },
+  { key: "unitPrice", label: "단가", align: "right", mono: true },
+  { key: "subtotal", label: "소계", align: "right", mono: true },
+  { key: "hsCode", label: "HS코드" },
+  { key: "htsCode", label: "HTS코드" },
+];
 
 export default async function ShipmentDetailPage({
   params,
@@ -40,6 +58,20 @@ export default async function ShipmentDetailPage({
     (sum, item) => sum + item.subtotal,
     0
   );
+
+  const itemRows: ItemRow[] = shipment.items.map((item) => {
+    const product = getProductById(item.productId);
+    const unitPrice = item.quantity > 0 ? item.subtotal / item.quantity : 0;
+    return {
+      orderItemId: item.orderItemId,
+      productName: product?.name ?? item.productId,
+      quantity: item.quantity,
+      unitPrice,
+      subtotal: item.subtotal,
+      hsCode: item.hsCode,
+      htsCode: item.htsCode,
+    };
+  });
 
   return (
     <div>
@@ -106,131 +138,35 @@ export default async function ShipmentDetailPage({
 
         {/* Section 2: 품목 목록 */}
         <Card title="품목 목록">
-          <div style={{ overflowX: "auto" }}>
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontVariantNumeric: "tabular-nums",
-              }}
-            >
-              <thead>
-                <tr>
-                  {[
-                    { label: "주문품목번호", align: "left" as const },
-                    { label: "품목명", align: "left" as const },
-                    { label: "수량", align: "right" as const },
-                    { label: "단가", align: "right" as const },
-                    { label: "소계", align: "right" as const },
-                    { label: "HS코드", align: "left" as const },
-                    { label: "HTS코드", align: "left" as const },
-                  ].map((col, i) => (
-                    <th
-                      key={i}
-                      style={{
-                        height: 32,
-                        padding: "0 12px",
-                        backgroundColor: "var(--k-bg-sub)",
-                        borderBottom: "1px solid var(--k-border)",
-                        fontSize: 11,
-                        fontWeight: 500,
-                        textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
-                        letterSpacing: "0.05em",
-                        color: "var(--k-text-muted)",
-                        textAlign: col.align,
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {col.label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {shipment.items.map((item) => {
-                  const product = getProductById(item.productId);
-                  const unitPrice =
-                    item.quantity > 0
-                      ? item.subtotal / item.quantity
-                      : 0;
-                  return (
-                    <tr key={item.orderItemId}>
-                      {[
-                        {
-                          value: item.orderItemId,
-                          align: "left" as const,
-                        },
-                        {
-                          value: product?.name ?? item.productId,
-                          align: "left" as const,
-                        },
-                        {
-                          value: fmt(item.quantity),
-                          align: "right" as const,
-                        },
-                        {
-                          value: fmt(Math.round(unitPrice * 100) / 100),
-                          align: "right" as const,
-                        },
-                        {
-                          value: fmt(Math.round(item.subtotal * 100) / 100),
-                          align: "right" as const,
-                        },
-                        { value: item.hsCode, align: "left" as const },
-                        { value: item.htsCode, align: "left" as const },
-                      ].map((cell, ci) => (
-                        <td
-                          key={ci}
-                          style={{
-                            height: 36,
-                            padding: "0 12px",
-                            borderBottom: "1px solid var(--k-border)",
-                            fontSize: 13,
-                            color: "var(--k-text)",
-                            textAlign: cell.align,
-                            fontFamily: cell.align === "right" ? "var(--k-font-mono)" : undefined,
-                            fontVariantNumeric: cell.align === "right" ? "tabular-nums" : undefined,
-                          }}
-                        >
-                          {cell.value}
-                        </td>
-                      ))}
-                    </tr>
-                  );
-                })}
-                {/* Footer row: total */}
-                <tr>
-                  <td
-                    colSpan={4}
-                    style={{
-                      height: 36,
-                      padding: "0 12px",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "var(--k-text)",
-                      textAlign: "right",
-                    }}
-                  >
-                    합계 (수출신고액)
-                  </td>
-                  <td
-                    style={{
-                      height: 36,
-                      padding: "0 12px",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "var(--k-text)",
-                      textAlign: "right",
-                      fontFamily: "var(--k-font-mono)",
-                      fontVariantNumeric: "tabular-nums",
-                    }}
-                  >
-                    {fmt(Math.round(totalAmount * 100) / 100)}
-                  </td>
-                  <td colSpan={2} />
-                </tr>
-              </tbody>
-            </table>
+          <Table<ItemRow>
+            columns={itemColumns}
+            data={itemRows}
+            renderCell={(key, value) => {
+              if (key === "quantity")
+                return formatNumber(value as number, 0);
+              if (key === "unitPrice" || key === "subtotal")
+                return formatNumber(Math.round((value as number) * 100) / 100);
+              return String(value ?? "");
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              gap: 16,
+              padding: "0 var(--k-table-head-padding)",
+              height: "var(--k-height-row)",
+              borderTop: "1px solid var(--k-border)",
+              fontSize: "var(--k-font-size-md)",
+              fontWeight: 600,
+              color: "var(--k-text)",
+            }}
+          >
+            <span>합계 (수출신고액)</span>
+            <span style={{ fontFamily: "var(--k-font-mono)", fontVariantNumeric: "tabular-nums" }}>
+              {formatNumber(Math.round(totalAmount * 100) / 100)}
+            </span>
           </div>
         </Card>
 
