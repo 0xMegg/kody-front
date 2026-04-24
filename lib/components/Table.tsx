@@ -17,6 +17,7 @@ interface TableProps<T extends Record<string, unknown>> {
   data: T[];
   onRowClick?: (row: T) => void;
   renderCell?: (key: keyof T & string, value: unknown, row: T) => React.ReactNode;
+  stickyHeader?: boolean;
 }
 
 export default function Table<T extends Record<string, unknown>>({
@@ -24,6 +25,7 @@ export default function Table<T extends Record<string, unknown>>({
   data,
   onRowClick,
   renderCell,
+  stickyHeader = false,
 }: TableProps<T>) {
   const [sortKey, setSortKey] = useState<string | null>(null);
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
@@ -48,7 +50,7 @@ export default function Table<T extends Record<string, unknown>>({
     : data;
 
   return (
-    <div style={{ overflowX: "auto" }}>
+    <div style={stickyHeader ? { overflow: "visible" } : { overflowX: "auto" }}>
       <table
         style={{
           width: "100%",
@@ -77,6 +79,7 @@ export default function Table<T extends Record<string, unknown>>({
                   userSelect: "none",
                   whiteSpace: "nowrap",
                   width: col.width,
+                  ...(stickyHeader ? { position: "sticky" as const, top: 0, zIndex: 1 } : null),
                 }}
               >
                 {col.iconLeft ? (

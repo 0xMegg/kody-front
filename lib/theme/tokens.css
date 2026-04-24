@@ -126,6 +126,7 @@
   --k-stat-label-tracking: 0.05em;
   --k-stat-value-size: 28px;
   --k-stat-value-font: var(--k-font-body);
+  --k-summary-row-value-font: var(--k-font-mono);
   --k-statcard-hover-shadow: none;
 
   /* KPI */
@@ -323,6 +324,7 @@
   --k-stat-label-tracking: 0.05em;
   --k-stat-value-size: 28px;
   --k-stat-value-font: var(--k-font-body);
+  --k-summary-row-value-font: var(--k-font-mono);
   --k-statcard-hover-shadow: none;
 
   /* KPI */
@@ -526,6 +528,7 @@
   --k-stat-label-tracking: normal;
   --k-stat-value-size: 26px;
   --k-stat-value-font: var(--k-font-body);
+  --k-summary-row-value-font: var(--k-font-mono);
   --k-statcard-hover-shadow: none;
 
   /* KPI */
@@ -684,6 +687,7 @@
   --k-stat-label-tracking: 0.05em;
   --k-stat-value-size: 30px;
   --k-stat-value-font: var(--k-font-mono);
+  --k-summary-row-value-font: var(--k-font-mono);
   --k-statcard-hover-shadow: 0 0 0 1px var(--k-brand-glow);
 
   /* KPI */

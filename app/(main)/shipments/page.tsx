@@ -259,6 +259,7 @@ export default function ShipmentsPage() {
             <Table<PickingRow>
               columns={pickingColumns}
               data={filteredPickingItems}
+              stickyHeader
               renderCell={(key, value, row) => {
                 if (key === "_select") {
                   return (
@@ -379,6 +380,7 @@ export default function ShipmentsPage() {
             <Table<ShipmentRow>
               columns={shipmentColumns}
               data={shipmentRows}
+              stickyHeader
               onRowClick={(row) => router.push(`/shipments/${row.id}`)}
               renderCell={(key, value, row) => {
                 if (key === "id")
