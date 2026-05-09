@@ -6,7 +6,7 @@ export type Currency = 'KRW' | 'USD' | 'EUR' | 'RUB';
 
 export type OrderStatus = '주문대기' | '주문완료' | '주문중지';
 
-export type ShipmentStatus = '출고대기' | '출고완료';
+export type ShipmentStatus = '피킹대기' | '피킹완료' | '패킹완료' | '출고완료';
 
 export type ProductCategory = '앨범' | '포토카드' | '굿즈';
 
@@ -100,6 +100,9 @@ export interface Shipment {
   incoterm: Incoterm;
   undervalueFile?: string;
   trackingNumber?: string;
+  boxCount?: number;
+  totalWeightKg?: number;
+  note?: string;
   status: ShipmentStatus;
 }
 

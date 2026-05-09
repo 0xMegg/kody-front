@@ -132,6 +132,7 @@
   /* KPI */
   --k-kpi-grid-gap: 12px;
   --k-kpi-accent-height: 0px;
+  --k-chart-track-bg: var(--k-bg-sub);
 
   /* Toast */
   --k-toast-bg: var(--k-surface);
@@ -139,6 +140,23 @@
 
   /* View Toggle */
   --k-view-toggle-style: buttons;
+  --k-view-toggle-gap: 0px;
+  --k-view-toggle-padding: 0px;
+  --k-view-toggle-bg: transparent;
+  --k-view-toggle-border: none;
+  --k-view-toggle-border-bottom: none;
+  --k-view-toggle-radius: 0px;
+  --k-view-toggle-button-height: 28px;
+  --k-view-toggle-button-padding: 0 12px;
+  --k-view-toggle-button-border: 1px solid var(--k-border);
+  --k-view-toggle-button-radius: var(--k-radius-sm);
+  --k-view-toggle-active-bg: var(--k-brand-subtle);
+  --k-view-toggle-inactive-bg: transparent;
+  --k-view-toggle-active-color: var(--k-brand);
+  --k-view-toggle-inactive-color: var(--k-text-muted);
+  --k-view-toggle-active-border-bottom: none;
+  --k-view-toggle-inactive-border-bottom: none;
+  --k-view-toggle-button-margin-bottom: 0px;
 
   /* Badge */
   --k-badge-height: 20px;
@@ -541,6 +559,23 @@
 
   /* View Toggle */
   --k-view-toggle-style: inline-tab;
+  --k-view-toggle-gap: var(--k-space-md);
+  --k-view-toggle-padding: 0px;
+  --k-view-toggle-bg: transparent;
+  --k-view-toggle-border: none;
+  --k-view-toggle-border-bottom: 1px solid var(--k-border);
+  --k-view-toggle-radius: 0px;
+  --k-view-toggle-button-height: 32px;
+  --k-view-toggle-button-padding: 0;
+  --k-view-toggle-button-border: none;
+  --k-view-toggle-button-radius: 0px;
+  --k-view-toggle-active-bg: transparent;
+  --k-view-toggle-inactive-bg: transparent;
+  --k-view-toggle-active-color: var(--k-text);
+  --k-view-toggle-inactive-color: var(--k-text-muted);
+  --k-view-toggle-active-border-bottom: 2px solid var(--k-brand);
+  --k-view-toggle-inactive-border-bottom: 2px solid transparent;
+  --k-view-toggle-button-margin-bottom: -1px;
 
   /* Badge */
   --k-badge-height: 22px;
@@ -693,6 +728,7 @@
   /* KPI */
   --k-kpi-grid-gap: 12px;
   --k-kpi-accent-height: 2px;
+  --k-chart-track-bg: var(--k-bg-overlay);
 
   /* Toast */
   --k-toast-bg: var(--k-bg-raise);
@@ -700,6 +736,23 @@
 
   /* View Toggle */
   --k-view-toggle-style: segmented;
+  --k-view-toggle-gap: 2px;
+  --k-view-toggle-padding: 2px;
+  --k-view-toggle-bg: var(--k-bg-raise);
+  --k-view-toggle-border: 1px solid var(--k-border);
+  --k-view-toggle-border-bottom: 1px solid var(--k-border);
+  --k-view-toggle-radius: 6px;
+  --k-view-toggle-button-height: 24px;
+  --k-view-toggle-button-padding: 0 10px;
+  --k-view-toggle-button-border: none;
+  --k-view-toggle-button-radius: 4px;
+  --k-view-toggle-active-bg: var(--k-brand-dim);
+  --k-view-toggle-inactive-bg: transparent;
+  --k-view-toggle-active-color: var(--k-brand);
+  --k-view-toggle-inactive-color: var(--k-text-muted);
+  --k-view-toggle-active-border-bottom: none;
+  --k-view-toggle-inactive-border-bottom: none;
+  --k-view-toggle-button-margin-bottom: 0px;
 
   /* Radius */
   --k-radius-sm: 6px;

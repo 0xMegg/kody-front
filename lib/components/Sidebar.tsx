@@ -26,6 +26,7 @@ export default function Sidebar({
 
   return (
     <aside
+      className="kody-sidebar"
       style={{
         width: "var(--k-sidebar-width)",
         minWidth: "var(--k-sidebar-width)",
@@ -40,6 +41,7 @@ export default function Sidebar({
     >
       {/* Logo area */}
       <div
+        className="kody-sidebar__logo"
         style={{
           height: "var(--k-sidebar-logo-height)",
           display: "flex",
@@ -55,6 +57,7 @@ export default function Sidebar({
       {/* Optional section label */}
       {sectionLabel && (
         <div
+          className="kody-sidebar__section-label"
           style={{
             padding: "16px 16px 4px",
             fontSize: 10,
@@ -69,7 +72,10 @@ export default function Sidebar({
       )}
 
       {/* Navigation */}
-      <nav style={{ flex: 1, padding: "var(--k-sidebar-nav-padding)" }}>
+      <nav
+        className="kody-sidebar__nav"
+        style={{ flex: 1, padding: "var(--k-sidebar-nav-padding)" }}
+      >
         {navItems.map((item) => {
           const dashboardHref = basePath ?? "/";
           const isActive =
@@ -80,6 +86,7 @@ export default function Sidebar({
             <Link
               key={item.href}
               href={item.href}
+              className="kody-sidebar__nav-item"
               style={{
                 display: "flex",
                 alignItems: "center",

@@ -1,24 +1,19 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import type { ThemeName, ThemeConfig } from "./types";
 import { getThemeConfig } from "./themes";
-
-const STORAGE_KEY = "kody-theme";
-const DEFAULT_THEME: ThemeName = "linear";
-const VALID_THEMES: ThemeName[] = ["linear", "notion", "supabase"];
-
-function readStoredTheme(): ThemeName {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && VALID_THEMES.includes(stored as ThemeName)) {
-      return stored as ThemeName;
-    }
-  } catch {
-    // localStorage unavailable (SSR or privacy mode)
-  }
-  return DEFAULT_THEME;
-}
+import {
+  DEFAULT_THEME,
+  THEME_STORAGE_KEY,
+  buildThemeCookie,
+} from "./cookie";
 
 interface ThemeContextValue {
   theme: ThemeName;
@@ -28,22 +23,47 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeName>(readStoredTheme);
+interface ThemeProviderProps {
+  initialTheme?: ThemeName;
+  children: React.ReactNode;
+}
 
-  // Sync data-theme attribute and localStorage on change
+export function ThemeProvider({
+  initialTheme = DEFAULT_THEME,
+  children,
+}: ThemeProviderProps) {
+  // Cookie is the SSR source of truth. The Server Component layout reads it
+  // and passes the resolved theme as `initialTheme`, so server and client
+  // render the same value on first paint and hydration is clean.
+  const [theme, setThemeState] = useState<ThemeName>(initialTheme);
+
+  // Post-hydration: localStorage is a client-side mirror only. If it diverged
+  // from the cookie-derived theme, overwrite it without changing state.
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
     try {
-      localStorage.setItem(STORAGE_KEY, theme);
+      const stored = localStorage.getItem(THEME_STORAGE_KEY);
+      if (stored !== theme) {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+      }
     } catch {
       // localStorage unavailable
     }
-  }, [theme]);
+    // Mount-only reconciliation; theme intentionally omitted.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const setTheme = (t: ThemeName) => {
-    setThemeState(t);
-  };
+  const setTheme = useCallback((next: ThemeName) => {
+    setThemeState(next);
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", next);
+      document.cookie = buildThemeCookie(next);
+    }
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, next);
+    } catch {
+      // localStorage unavailable
+    }
+  }, []);
 
   const config = getThemeConfig(theme);
 

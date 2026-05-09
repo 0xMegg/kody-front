@@ -7,7 +7,6 @@ import Button from "@/lib/components/Button";
 import Table, { type TableColumn } from "@/lib/components/Table";
 import Badge from "@/lib/components/Badge";
 import ViewToggle, { type ViewToggleOption } from "@/lib/components/ViewToggle";
-import { useThemeOptional } from "@/lib/theme/ThemeContext";
 import {
   orders,
   getAccountById,
@@ -286,11 +285,7 @@ function Pagination({
 // ---------------------------------------------------------------------------
 export default function OrdersPage() {
   const router = useRouter();
-  const theme = useThemeOptional()?.theme ?? "linear";
-  const helperText =
-    theme === "notion"
-      ? "주문서 뷰로 결제를 관리하고, 품목 뷰로 출고를 준비합니다."
-      : undefined;
+  const helperText = "주문서 뷰로 결제를 관리하고, 품목 뷰로 출고를 준비합니다.";
 
   // Filter state
   const [view, setView] = useState<ViewMode>("order");

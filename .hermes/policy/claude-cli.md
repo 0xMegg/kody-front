@@ -24,6 +24,31 @@ This policy applies when Hermes asks Claude Code to review, plan, inspect files,
 
 It does not require bypassing Claude permissions, changing global Claude settings, or weakening project isolation.
 
+## KODY Frontend Develop Permission Profile
+
+User-approved on 2026-05-07:
+
+- Opus/Claude remains the primary model for frontend `plan` and `develop`.
+- Codex invokes Claude, records blockers, checks results, and owns `closeout`; Codex does not become the frontend developer unless the user explicitly approves fallback after a known blocker.
+- Frontend `.claude/settings.json` should allow ordinary `Read`, `Glob`, `Grep`, `Write`, `Edit`, and `MultiEdit` tools so source/test/docs edits do not repeatedly stop on Claude tool permission prompts.
+
+Allowed ordinary frontend surfaces:
+
+- `app/`
+- `components/` or `src/` when present
+- `tests/` or e2e test files when present
+- frontend docs
+- `.hermes/logs/` and `.hermes/NEXT.md` for handoff and verification records
+
+Still gated:
+
+- `.env` and secrets
+- `package.json`, lockfiles, dependency changes
+- Next.js config, TypeScript config, and UI-library/config changes unless the plan explicitly gates them
+- generated output such as `node_modules/`, `.next/`, `dist/`, and `build/`
+- destructive commands
+- backend contract binding changes not covered by the approved plan
+
 ## Diagnostic Order
 
 First check whether Claude started:
@@ -47,3 +72,5 @@ Then check whether Claude can access the files:
 ## Recording
 
 If a Claude review is skipped or delayed because of PATH, authentication, or workspace access, record which layer failed and how it was resolved in the project log.
+
+If Claude develop stops on an ordinary frontend source/test/docs edit permission prompt, fix or retry the Claude permission profile first. Do not convert the slice into Codex develop unless the user explicitly approves fallback after seeing the blocker.

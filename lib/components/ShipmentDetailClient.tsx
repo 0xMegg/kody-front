@@ -4,8 +4,15 @@ import Card from "@/lib/components/Card";
 import Badge from "@/lib/components/Badge";
 import Table, { type TableColumn } from "@/lib/components/Table";
 import { salesRepNames } from "@/lib/mock-data";
-import type { Account, Shipment, ShippingAddress } from "@/lib/types";
+import type { Account, Shipment, ShipmentStatus, ShippingAddress } from "@/lib/types";
 import { formatNumber } from "@/lib/utils";
+
+const SHIPMENT_STAGES: ShipmentStatus[] = [
+  "피킹대기",
+  "피킹완료",
+  "패킹완료",
+  "출고완료",
+];
 
 export type ItemRow = Record<string, unknown> & {
   orderItemId: string;
@@ -59,8 +66,52 @@ export default function ShipmentDetailClient({
   itemRows,
   totalAmount,
 }: ShipmentDetailClientProps) {
+  const currentStageIndex = SHIPMENT_STAGES.indexOf(shipment.status);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+      <Card title="출고 단계">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 10,
+          }}
+        >
+          {SHIPMENT_STAGES.map((stage, index) => {
+            const isDone = index < currentStageIndex;
+            const isCurrent = index === currentStageIndex;
+            return (
+              <div
+                key={stage}
+                style={{
+                  border: "1px solid var(--k-border)",
+                  borderRadius: 8,
+                  padding: "12px 14px",
+                  backgroundColor: isCurrent
+                    ? "var(--k-brand-subtle)"
+                    : isDone
+                      ? "var(--k-bg-sub)"
+                      : "var(--k-bg)",
+                }}
+              >
+                <div style={{ marginBottom: 8 }}>
+                  <Badge variant={stage}>{stage}</Badge>
+                </div>
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: isCurrent ? "var(--k-brand)" : "var(--k-text-muted)",
+                  }}
+                >
+                  {isDone ? "완료" : isCurrent ? "현재 단계" : "대기"}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Card>
+
       {/* Section 1: 기본 정보 */}
       <Card title="기본 정보">
         <div
@@ -82,6 +133,10 @@ export default function ShipmentDetailClient({
           <InfoRow
             label="인코템즈"
             value={<Badge variant="shipped">{shipment.incoterm}</Badge>}
+          />
+          <InfoRow
+            label="진행상태"
+            value={<Badge variant={shipment.status}>{shipment.status}</Badge>}
           />
           <InfoRow label="출고일" value={shipment.shipDate ?? "미정"} />
           <InfoRow
@@ -277,6 +332,114 @@ export default function ShipmentDetailClient({
                 boxSizing: "border-box",
               }}
             />
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "140px 160px 1fr",
+              gap: 12,
+              alignItems: "start",
+            }}
+          >
+            <div>
+              <label
+                style={{
+                  fontSize: 12,
+                  color: "var(--k-text-muted)",
+                  display: "block",
+                  marginBottom: 6,
+                }}
+              >
+                박스수량
+              </label>
+              <input
+                type="number"
+                min={0}
+                defaultValue={shipment.boxCount ?? ""}
+                readOnly={shipment.status === "출고완료"}
+                style={{
+                  width: "100%",
+                  height: 32,
+                  padding: "0 10px",
+                  fontSize: 13,
+                  border: "1px solid var(--k-border)",
+                  borderRadius: 6,
+                  backgroundColor:
+                    shipment.status === "출고완료"
+                      ? "var(--k-bg-sub)"
+                      : "var(--k-bg)",
+                  color: "var(--k-text)",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+            </div>
+            <div>
+              <label
+                style={{
+                  fontSize: 12,
+                  color: "var(--k-text-muted)",
+                  display: "block",
+                  marginBottom: 6,
+                }}
+              >
+                총무게(kg)
+              </label>
+              <input
+                type="number"
+                min={0}
+                step="0.1"
+                defaultValue={shipment.totalWeightKg ?? ""}
+                readOnly={shipment.status === "출고완료"}
+                style={{
+                  width: "100%",
+                  height: 32,
+                  padding: "0 10px",
+                  fontSize: 13,
+                  border: "1px solid var(--k-border)",
+                  borderRadius: 6,
+                  backgroundColor:
+                    shipment.status === "출고완료"
+                      ? "var(--k-bg-sub)"
+                      : "var(--k-bg)",
+                  color: "var(--k-text)",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+            </div>
+            <div>
+              <label
+                style={{
+                  fontSize: 12,
+                  color: "var(--k-text-muted)",
+                  display: "block",
+                  marginBottom: 6,
+                }}
+              >
+                비고
+              </label>
+              <input
+                type="text"
+                defaultValue={shipment.note ?? ""}
+                readOnly={shipment.status === "출고완료"}
+                style={{
+                  width: "100%",
+                  height: 32,
+                  padding: "0 10px",
+                  fontSize: 13,
+                  border: "1px solid var(--k-border)",
+                  borderRadius: 6,
+                  backgroundColor:
+                    shipment.status === "출고완료"
+                      ? "var(--k-bg-sub)"
+                      : "var(--k-bg)",
+                  color: "var(--k-text)",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+            </div>
           </div>
           <div
             style={{

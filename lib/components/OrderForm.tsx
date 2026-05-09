@@ -50,6 +50,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
     account?.id ?? accounts[0].id
   );
   const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState("프로토타입에서는 저장되지 않습니다");
 
   const currentAccount = getAccountById(selectedAccountId) ?? accounts[0];
   const balance = getBalanceByAccount(selectedAccountId);
@@ -63,6 +64,12 @@ export default function OrderForm({ order, account }: OrderFormProps) {
     : 0;
 
   const handleSave = useCallback(() => {
+    setToastMessage("프로토타입에서는 저장되지 않습니다");
+    setToastVisible(true);
+  }, []);
+
+  const handleConfirm = useCallback((confirmationType: "후결제 확정" | "결제완료 확정") => {
+    setToastMessage(`${confirmationType}은 프로토타입 mock 동작입니다`);
     setToastVisible(true);
   }, []);
 
@@ -388,6 +395,19 @@ export default function OrderForm({ order, account }: OrderFormProps) {
         {/* Save Button */}
         <div style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
           <Button variant="secondary">취소</Button>
+          <Button
+            variant="secondary"
+            disabled={!order || order.status !== "주문대기"}
+            onClick={() => handleConfirm("후결제 확정")}
+          >
+            후결제 확정
+          </Button>
+          <Button
+            disabled={!order || order.status !== "주문대기"}
+            onClick={() => handleConfirm("결제완료 확정")}
+          >
+            결제완료 확정
+          </Button>
           <Button onClick={handleSave}>저장</Button>
         </div>
       </div>
@@ -542,7 +562,7 @@ export default function OrderForm({ order, account }: OrderFormProps) {
       </div>
 
       <Toast
-        message="프로토타입에서는 저장되지 않습니다"
+        message={toastMessage}
         visible={toastVisible}
         onClose={handleToastClose}
       />

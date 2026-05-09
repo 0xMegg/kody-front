@@ -485,103 +485,103 @@ export const orders: Order[] = [
 export const shipments: Shipment[] = [
   // --- 출고완료 (10) ---
   {
-    id: 'SHIP-260305-01', accountId: 'ACC-001', shippingAddressId: 'ADDR-001', shipDate: '2026-03-05', status: '출고완료', incoterm: 'FOB', trackingNumber: '102938475612',
+    id: 'SHIP-260305-01', accountId: 'ACC-001', shippingAddressId: 'ADDR-001', shipDate: '2026-03-05', status: '출고완료', incoterm: 'FOB', trackingNumber: '102938475612', boxCount: 4, totalWeightKg: 34.5, note: '정상 출고',
     items: [
       { orderItemId: '2602280010001', productId: 'P-ATEZ-001', quantity: 50, hsCode: '854321', htsCode: '8543210010', subtotal: 641.25 },
       { orderItemId: '2602280010002', productId: 'P-ATEZ-005', quantity: 100, hsCode: '490199', htsCode: '4901990050', subtotal: 361 },
     ],
   },
   {
-    id: 'SHIP-260306-01', accountId: 'ACC-002', shippingAddressId: 'ADDR-002', shipDate: '2026-03-06', status: '출고완료', incoterm: 'CIF', trackingNumber: '293847561023',
+    id: 'SHIP-260306-01', accountId: 'ACC-002', shippingAddressId: 'ADDR-002', shipDate: '2026-03-06', status: '출고완료', incoterm: 'CIF', trackingNumber: '293847561023', boxCount: 5, totalWeightKg: 42.8,
     items: [
       { orderItemId: '2603010020001', productId: 'P-LUVSTAR-001', quantity: 80, hsCode: '854321', htsCode: '8543210010', subtotal: 883.2 },
       { orderItemId: '2603010020002', productId: 'P-LUVSTAR-008', quantity: 30, hsCode: '950300', htsCode: '9503001500', subtotal: 538.2 },
     ],
   },
   {
-    id: 'SHIP-260307-01', accountId: 'ACC-004', shippingAddressId: 'ADDR-004', shipDate: '2026-03-07', status: '출고완료', incoterm: 'FOB', trackingNumber: '384756102938',
+    id: 'SHIP-260307-01', accountId: 'ACC-004', shippingAddressId: 'ADDR-004', shipDate: '2026-03-07', status: '출고완료', incoterm: 'FOB', trackingNumber: '384756102938', boxCount: 3, totalWeightKg: 28.2,
     items: [
       { orderItemId: '2603020030001', productId: 'P-NOVA9-001', quantity: 60, hsCode: '854321', htsCode: '8543210010', subtotal: 783 },
       { orderItemId: '2603020030002', productId: 'P-NOVA9-005', quantity: 80, hsCode: '490199', htsCode: '4901990050', subtotal: 302.4 },
     ],
   },
   {
-    id: 'SHIP-260308-01', accountId: 'ACC-005', shippingAddressId: 'ADDR-005', shipDate: '2026-03-08', status: '출고완료', incoterm: 'FOB', trackingNumber: '475610293847',
+    id: 'SHIP-260308-01', accountId: 'ACC-005', shippingAddressId: 'ADDR-005', shipDate: '2026-03-08', status: '출고완료', incoterm: 'FOB', trackingNumber: '475610293847', boxCount: 2, totalWeightKg: 19.4,
     items: [
       { orderItemId: '2603030040001', productId: 'P-HALO-001', quantity: 40, hsCode: '854321', htsCode: '8543210010', subtotal: 403.2 },
       { orderItemId: '2603030040002', productId: 'P-HALO-005', quantity: 120, hsCode: '490199', htsCode: '4901990050', subtotal: 280.8 },
     ],
   },
   {
-    id: 'SHIP-260310-01', accountId: 'ACC-006', shippingAddressId: 'ADDR-006A', shipDate: '2026-03-10', status: '출고완료', incoterm: 'FOB', trackingNumber: '561029384756',
+    id: 'SHIP-260310-01', accountId: 'ACC-006', shippingAddressId: 'ADDR-006A', shipDate: '2026-03-10', status: '출고완료', incoterm: 'FOB', trackingNumber: '561029384756', boxCount: 6, totalWeightKg: 51.0,
     items: [
       { orderItemId: '2603050050001', productId: 'P-ATEZ-002', quantity: 30, hsCode: '854321', htsCode: '8543210010', subtotal: 633.6 },
       { orderItemId: '2603050050002', productId: 'P-LUVSTAR-002', quantity: 25, hsCode: '854321', htsCode: '8543210010', subtotal: 462 },
     ],
   },
   {
-    id: 'SHIP-260312-01', accountId: 'ACC-008', shippingAddressId: 'ADDR-008A', shipDate: '2026-03-12', status: '출고완료', incoterm: 'CIF', trackingNumber: '610293847561',
+    id: 'SHIP-260312-01', accountId: 'ACC-008', shippingAddressId: 'ADDR-008A', shipDate: '2026-03-12', status: '출고완료', incoterm: 'CIF', trackingNumber: '610293847561', boxCount: 4, totalWeightKg: 38.6,
     items: [
       { orderItemId: '2603080070001', productId: 'P-LUVSTAR-003', quantity: 60, hsCode: '854321', htsCode: '8543210010', subtotal: 737.28 },
       { orderItemId: '2603080070002', productId: 'P-LUVSTAR-005', quantity: 100, hsCode: '490199', htsCode: '4901990050', subtotal: 326.4 },
     ],
   },
   {
-    id: 'SHIP-260315-01', accountId: 'ACC-009', shippingAddressId: 'ADDR-009A', shipDate: '2026-03-15', status: '출고완료', incoterm: 'CIF', trackingNumber: '748392015634',
+    id: 'SHIP-260315-01', accountId: 'ACC-009', shippingAddressId: 'ADDR-009A', shipDate: '2026-03-15', status: '출고완료', incoterm: 'CIF', trackingNumber: '748392015634', boxCount: 3, totalWeightKg: 31.7,
     items: [
       { orderItemId: '2603100080001', productId: 'P-NOVA9-003', quantity: 45, hsCode: '854321', htsCode: '8543210010', subtotal: 565.07 },
       { orderItemId: '2603100080002', productId: 'P-NOVA9-007', quantity: 80, hsCode: '490199', htsCode: '4901990050', subtotal: 446.4 },
     ],
   },
   {
-    id: 'SHIP-260318-01', accountId: 'ACC-011', shippingAddressId: 'ADDR-011', shipDate: '2026-03-18', status: '출고완료', incoterm: 'DAP', trackingNumber: '839201563478',
+    id: 'SHIP-260318-01', accountId: 'ACC-011', shippingAddressId: 'ADDR-011', shipDate: '2026-03-18', status: '출고완료', incoterm: 'DAP', trackingNumber: '839201563478', boxCount: 7, totalWeightKg: 56.1,
     items: [
       { orderItemId: '2603120100001', productId: 'P-ATEZ-001', quantity: 30, hsCode: '854321', htsCode: '8543210010', subtotal: 38220 },
       { orderItemId: '2603120100002', productId: 'P-ATEZ-006', quantity: 60, hsCode: '490199', htsCode: '4901990050', subtotal: 21756 },
     ],
   },
   {
-    id: 'SHIP-260320-01', accountId: 'ACC-012', shippingAddressId: 'ADDR-012', shipDate: '2026-03-20', status: '출고완료', incoterm: 'FOB', trackingNumber: '920156347839',
+    id: 'SHIP-260320-01', accountId: 'ACC-012', shippingAddressId: 'ADDR-012', shipDate: '2026-03-20', status: '출고완료', incoterm: 'FOB', trackingNumber: '920156347839', boxCount: 2, totalWeightKg: 24.9,
     items: [
       { orderItemId: '2603130110001', productId: 'P-LUVSTAR-004', quantity: 20, hsCode: '854321', htsCode: '8543210010', subtotal: 573.3 },
       { orderItemId: '2603130110002', productId: 'P-LUVSTAR-006', quantity: 80, hsCode: '490199', htsCode: '4901990050', subtotal: 247.52 },
     ],
   },
   {
-    id: 'SHIP-260325-01', accountId: 'ACC-016', shippingAddressId: 'ADDR-016', shipDate: '2026-03-25', status: '출고완료', incoterm: 'EXW', trackingNumber: '015634783920', undervalueFile: 'undervalue-20260325.xlsx',
+    id: 'SHIP-260325-01', accountId: 'ACC-016', shippingAddressId: 'ADDR-016', shipDate: '2026-03-25', status: '출고완료', incoterm: 'EXW', trackingNumber: '015634783920', undervalueFile: 'undervalue-20260325.xlsx', boxCount: 8, totalWeightKg: 64.3, note: '언더벨류 파일 확인 완료',
     items: [
       { orderItemId: '2603200150001', productId: 'P-LUVSTAR-001', quantity: 100, hsCode: '854321', htsCode: '8543210010', subtotal: 1360000 },
       { orderItemId: '2603200150002', productId: 'P-LUVSTAR-007', quantity: 50, hsCode: '490199', htsCode: '4901990050', subtotal: 318750 },
     ],
   },
-  // --- 출고대기 (5) ---
+  // --- 출고 진행 (5) ---
   {
-    id: 'SHIP-260401-01', accountId: 'ACC-006', shippingAddressId: 'ADDR-006B', status: '출고대기', incoterm: 'EXW',
+    id: 'SHIP-260401-01', accountId: 'ACC-006', shippingAddressId: 'ADDR-006B', status: '피킹대기', incoterm: 'EXW',
     items: [
       { orderItemId: '2603300220001', productId: 'P-HALO-003', quantity: 40, hsCode: '854321', htsCode: '8543210010', subtotal: 485.76 },
     ],
   },
   {
-    id: 'SHIP-260402-01', accountId: 'ACC-002', shippingAddressId: 'ADDR-002', status: '출고대기', incoterm: 'CIF',
+    id: 'SHIP-260402-01', accountId: 'ACC-002', shippingAddressId: 'ADDR-002', status: '피킹완료', incoterm: 'CIF',
     items: [
       { orderItemId: '2604010230001', productId: 'P-LUVSTAR-003', quantity: 70, hsCode: '854321', htsCode: '8543210010', subtotal: 824.32 },
     ],
   },
   {
-    id: 'SHIP-260403-01', accountId: 'ACC-010', shippingAddressId: 'ADDR-010', status: '출고대기', incoterm: 'CIF', undervalueFile: 'undervalue-20260403.xlsx',
+    id: 'SHIP-260403-01', accountId: 'ACC-010', shippingAddressId: 'ADDR-010', status: '패킹완료', incoterm: 'CIF', undervalueFile: 'undervalue-20260403.xlsx', boxCount: 3, totalWeightKg: 22.4,
     items: [
       { orderItemId: '2603110090001', productId: 'P-HALO-003', quantity: 35, hsCode: '854321', htsCode: '8543210010', subtotal: 458.85 },
       { orderItemId: '2603110090002', productId: 'P-HALO-007', quantity: 60, hsCode: '490199', htsCode: '4901990050', subtotal: 256.5 },
     ],
   },
   {
-    id: 'SHIP-260405-01', accountId: 'ACC-013', shippingAddressId: 'ADDR-013', status: '출고대기', incoterm: 'CIF',
+    id: 'SHIP-260405-01', accountId: 'ACC-013', shippingAddressId: 'ADDR-013', status: '피킹완료', incoterm: 'CIF',
     items: [
       { orderItemId: '2603150120002', productId: 'P-NOVA9-006', quantity: 90, hsCode: '490199', htsCode: '4901990050', subtotal: 355.32 },
     ],
   },
   {
-    id: 'SHIP-260407-01', accountId: 'ACC-017', shippingAddressId: 'ADDR-017', status: '출고대기', incoterm: 'FOB',
+    id: 'SHIP-260407-01', accountId: 'ACC-017', shippingAddressId: 'ADDR-017', status: '피킹대기', incoterm: 'FOB',
     items: [
       { orderItemId: '2603210160002', productId: 'P-NOVA9-009', quantity: 30, hsCode: '950300', htsCode: '9503001500', subtotal: 331.2 },
     ],
