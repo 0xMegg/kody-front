@@ -3,3 +3,67 @@
 @theme {
   /* Tokens will be added per-variant in later slices */
 }
+
+@media (max-width: 640px) {
+  .kody-shell {
+    flex-direction: column;
+  }
+
+  .kody-sidebar {
+    position: static !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--k-border);
+  }
+
+  .kody-sidebar__logo {
+    height: 48px !important;
+  }
+
+  .kody-sidebar__section-label {
+    display: none !important;
+  }
+
+  .kody-sidebar__nav {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 8px 12px !important;
+  }
+
+  .kody-sidebar__nav-item {
+    flex: 0 0 auto;
+    min-width: 72px;
+    justify-content: center;
+  }
+
+  .kody-shell__content {
+    min-width: 0;
+  }
+
+  .kody-shell__main {
+    padding: 20px 16px !important;
+    overflow-x: auto;
+  }
+
+  .kody-shipments-split {
+    flex-direction: column;
+    overflow: visible !important;
+  }
+
+  .kody-shipments-pane {
+    flex: none !important;
+    min-height: 360px;
+  }
+
+  .kody-shipments-pane--left {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--k-border);
+  }
+
+  .kody-table-scroll {
+    overflow-x: auto;
+  }
+}

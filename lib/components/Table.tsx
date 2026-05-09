@@ -1,0 +1,155 @@
+"use client";
+
+import { useState } from "react";
+
+export interface TableColumn<T> {
+  key: keyof T & string;
+  label: string;
+  align?: "left" | "center" | "right";
+  sortable?: boolean;
+  width?: number | string;
+  mono?: boolean;
+  iconLeft?: React.ReactNode;
+}
+
+interface TableProps<T extends Record<string, unknown>> {
+  columns: TableColumn<T>[];
+  data: T[];
+  onRowClick?: (row: T) => void;
+  renderCell?: (key: keyof T & string, value: unknown, row: T) => React.ReactNode;
+  stickyHeader?: boolean;
+}
+
+export default function Table<T extends Record<string, unknown>>({
+  columns,
+  data,
+  onRowClick,
+  renderCell,
+  stickyHeader = false,
+}: TableProps<T>) {
+  const [sortKey, setSortKey] = useState<string | null>(null);
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+
+  const handleSort = (key: string) => {
+    if (sortKey === key) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDir("asc");
+    }
+  };
+
+  const sortedData = sortKey
+    ? [...data].sort((a, b) => {
+        const aVal = a[sortKey];
+        const bVal = b[sortKey];
+        if (aVal == null || bVal == null) return 0;
+        const cmp = aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+        return sortDir === "asc" ? cmp : -cmp;
+      })
+    : data;
+
+  return (
+    <div style={stickyHeader ? { overflow: "visible" } : { overflowX: "auto" }}>
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
+        <thead>
+          <tr>
+            {columns.map((col) => (
+              <th
+                key={col.key}
+                onClick={col.sortable ? () => handleSort(col.key) : undefined}
+                style={{
+                  height: "var(--k-table-head-height)",
+                  padding: "0 var(--k-table-head-padding)",
+                  backgroundColor: "var(--k-bg-sub)",
+                  borderBottom: "1px solid var(--k-table-head-border-color)",
+                  fontSize: "var(--k-table-head-font-size)",
+                  fontWeight: 500,
+                  textTransform: "var(--k-table-head-text-transform)" as React.CSSProperties["textTransform"],
+                  letterSpacing: "var(--k-table-head-letter-spacing)",
+                  color: "var(--k-text-muted)",
+                  textAlign: col.align ?? "left",
+                  cursor: col.sortable ? "pointer" : "default",
+                  userSelect: "none",
+                  whiteSpace: "nowrap",
+                  width: col.width,
+                  ...(stickyHeader ? { position: "sticky" as const, top: 0, zIndex: 1 } : null),
+                }}
+              >
+                {col.iconLeft ? (
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                    {col.iconLeft}
+                    {col.label}
+                    {col.sortable && sortKey === col.key && (
+                      <span style={{ marginLeft: 4, fontSize: 10 }}>
+                        {sortDir === "asc" ? "▲" : "▼"}
+                      </span>
+                    )}
+                  </span>
+                ) : (
+                  <>
+                    {col.label}
+                    {col.sortable && sortKey === col.key && (
+                      <span style={{ marginLeft: 4, fontSize: 10 }}>
+                        {sortDir === "asc" ? "▲" : "▼"}
+                      </span>
+                    )}
+                  </>
+                )}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {sortedData.map((row, i) => (
+            <tr
+              key={i}
+              onClick={onRowClick ? () => onRowClick(row) : undefined}
+              style={{
+                height: "var(--k-height-row)",
+                cursor: onRowClick ? "pointer" : "default",
+                backgroundColor: i % 2 === 1 ? "var(--k-table-row-bg-alt)" : "transparent",
+                transition: "var(--k-transition-fast)",
+                transitionProperty: "background-color, box-shadow",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--k-table-hover-bg)";
+                e.currentTarget.style.boxShadow = "var(--k-table-hover-shadow)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor =
+                  i % 2 === 1 ? "var(--k-table-row-bg-alt)" : "transparent";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              {columns.map((col) => (
+                <td
+                  key={col.key}
+                  style={{
+                    padding: "0 var(--k-table-head-padding)",
+                    borderBottom: "1px solid var(--k-border)",
+                    fontSize: "var(--k-font-size-md)",
+                    color: "var(--k-text)",
+                    textAlign: col.mono ? "right" : col.align ?? "left",
+                    fontFamily: col.mono ? "var(--k-font-mono)" : undefined,
+                    fontVariantNumeric: col.mono ? "tabular-nums" : undefined,
+                  }}
+                >
+                  {renderCell
+                    ? renderCell(col.key, row[col.key], row)
+                    : String(row[col.key] ?? "")}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
