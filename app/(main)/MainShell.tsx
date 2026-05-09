@@ -58,7 +58,7 @@ export default function MainShell({ fontClasses, children }: MainShellProps) {
   return (
     <div
       data-theme={theme}
-      className={`${fontClasses} ${config.rootClassName ?? ""}`}
+      className={`kody-shell ${fontClasses} ${config.rootClassName ?? ""}`}
       style={{
         display: "flex",
         minHeight: "100vh",
@@ -71,9 +71,15 @@ export default function MainShell({ fontClasses, children }: MainShellProps) {
         header={<SidebarHeader config={config} />}
         sectionLabel={config.sectionLabel}
       />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <div
+        className="kody-shell__content"
+        style={{ flex: 1, display: "flex", flexDirection: "column" }}
+      >
         <TopBar />
-        <main style={{ flex: 1, padding: config.mainPadding }}>
+        <main
+          className="kody-shell__main"
+          style={{ flex: 1, padding: config.mainPadding }}
+        >
           {children}
         </main>
       </div>

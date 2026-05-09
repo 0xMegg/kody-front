@@ -28,5 +28,8 @@ export const statusVariantMap: Record<string, BadgeVariant> = {
   주문완료: "success",
   주문중지: "neutral",
   출고대기: "info",
+  피킹대기: "warning",
+  피킹완료: "info",
+  패킹완료: "accent",
   출고완료: "success",
 };

@@ -1,9 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useSyncExternalStore } from "react";
-
-const STORAGE_KEY = "kody-theme";
+import { useCallback, useSyncExternalStore } from "react";
+import {
+  THEME_STORAGE_KEY,
+  buildThemeCookie,
+  resolveThemeName,
+} from "@/lib/theme/cookie";
+import type { ThemeName } from "@/lib/theme/types";
 
 function subscribeToStorage(callback: () => void) {
   window.addEventListener("storage", callback);
@@ -12,7 +16,7 @@ function subscribeToStorage(callback: () => void) {
 
 function getStoredTheme() {
   try {
-    return localStorage.getItem(STORAGE_KEY);
+    return localStorage.getItem(THEME_STORAGE_KEY);
   } catch {
     return null;
   }
@@ -46,14 +50,23 @@ export default function LandingPage() {
   const router = useRouter();
   const current = useSyncExternalStore(subscribeToStorage, getStoredTheme, () => null);
 
-  function handleSelect(themeName: string) {
-    try {
-      localStorage.setItem(STORAGE_KEY, themeName);
-    } catch {
-      // localStorage unavailable
-    }
-    router.push("/");
-  }
+  const handleSelect = useCallback(
+    (themeName: ThemeName) => {
+      const next = resolveThemeName(themeName);
+      // Cookie is the SSR source of truth — write it synchronously before
+      // navigation so the next server render reads the new theme on first paint.
+      if (typeof document !== "undefined") {
+        document.cookie = buildThemeCookie(next);
+      }
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, next);
+      } catch {
+        // localStorage unavailable
+      }
+      router.push("/");
+    },
+    [router],
+  );
 
   return (
     <div

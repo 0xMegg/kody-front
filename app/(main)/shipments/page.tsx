@@ -16,6 +16,13 @@ import Table, { type TableColumn } from "@/lib/components/Table";
 import { formatNumber } from "@/lib/utils";
 import type { Incoterm, ShipmentStatus } from "@/lib/types";
 
+const SHIPMENT_STAGES: ShipmentStatus[] = [
+  "피킹대기",
+  "피킹완료",
+  "패킹완료",
+  "출고완료",
+];
+
 type PickingRow = Record<string, unknown> & {
   _select: "";
   orderItemId: string;
@@ -46,7 +53,7 @@ export default function ShipmentsPage() {
   const [toastVisible, setToastVisible] = useState(false);
 
   // Right pane state
-  const [activeTab, setActiveTab] = useState<"출고대기" | "출고완료">("출고대기");
+  const [activeTab, setActiveTab] = useState<ShipmentStatus>("피킹대기");
 
   // Derive picking queue: order items with 미출고 status from 주문완료 orders
   const pickingItems = useMemo<PickingRow[]>(() => {
@@ -111,10 +118,17 @@ export default function ShipmentsPage() {
     });
   }, [filteredShipments]);
 
-  const pendingCount = shipments.filter((s) => s.status === "출고대기").length;
-  const completedCount = shipments.filter(
-    (s) => s.status === "출고완료"
-  ).length;
+  const stageCounts = useMemo(
+    () =>
+      SHIPMENT_STAGES.reduce(
+        (acc, stage) => ({
+          ...acc,
+          [stage]: shipments.filter((s) => s.status === stage).length,
+        }),
+        {} as Record<ShipmentStatus, number>
+      ),
+    []
+  );
 
   const toggleItem = useCallback((id: string) => {
     setSelectedItems((prev) => {
@@ -185,6 +199,7 @@ export default function ShipmentsPage() {
 
       {/* Split pane */}
       <div
+        className="kody-shipments-split"
         style={{
           display: "flex",
           flex: 1,
@@ -197,6 +212,7 @@ export default function ShipmentsPage() {
       >
         {/* Left pane — 피킹 대기 품목 */}
         <div
+          className="kody-shipments-pane kody-shipments-pane--left"
           style={{
             flex: "0 0 55%",
             display: "flex",
@@ -255,7 +271,10 @@ export default function ShipmentsPage() {
           </div>
 
           {/* Table */}
-          <div style={{ flex: 1, overflowY: "auto" }}>
+          <div
+            className="kody-table-scroll"
+            style={{ flex: 1, overflowY: "auto" }}
+          >
             <Table<PickingRow>
               columns={pickingColumns}
               data={filteredPickingItems}
@@ -316,6 +335,7 @@ export default function ShipmentsPage() {
 
         {/* Right pane — 출고리스트 */}
         <div
+          className="kody-shipments-pane"
           style={{
             flex: "0 0 45%",
             display: "flex",
@@ -330,8 +350,8 @@ export default function ShipmentsPage() {
               borderBottom: "1px solid var(--k-border)",
             }}
           >
-            {(["출고대기", "출고완료"] as const).map((tab) => {
-              const count = tab === "출고대기" ? pendingCount : completedCount;
+            {SHIPMENT_STAGES.map((tab) => {
+              const count = stageCounts[tab];
               const isActive = activeTab === tab;
               return (
                 <button
@@ -376,7 +396,10 @@ export default function ShipmentsPage() {
           </div>
 
           {/* Table */}
-          <div style={{ flex: 1, overflowY: "auto" }}>
+          <div
+            className="kody-table-scroll"
+            style={{ flex: 1, overflowY: "auto" }}
+          >
             <Table<ShipmentRow>
               columns={shipmentColumns}
               data={shipmentRows}
@@ -398,7 +421,7 @@ export default function ShipmentsPage() {
                 if (key === "status")
                   return (
                     <Badge
-                      variant={value === "출고대기" ? "pending" : "confirmed"}
+                      variant={value as ShipmentStatus}
                     >
                       {value as string}
                     </Badge>

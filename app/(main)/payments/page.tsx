@@ -15,7 +15,6 @@ import {
 import type { Currency } from "@/lib/types";
 import { formatNumber, formatCurrency } from "@/lib/utils";
 import { CURRENCIES, DEPOSIT_SOURCES } from "@/lib/constants";
-import { useTheme } from "@/lib/theme";
 
 // Mock "today" — aligned with mock data
 const TODAY = "2026-04-12";
@@ -29,6 +28,7 @@ type PaymentRow = Record<string, unknown> & {
   date: string;
   accountName: string;
   depositSource: string;
+  depositors: string;
   currency: Currency;
   amount: number;
   krwEquivalent: number;
@@ -46,9 +46,6 @@ function defaultDateFrom(): string {
 // Component
 // ---------------------------------------------------------------------------
 export default function PaymentsPage() {
-  const { theme } = useTheme();
-  const isSupabase = theme === "supabase";
-
   // Filter state
   const [dateFrom, setDateFrom] = useState(defaultDateFrom);
   const [dateTo, setDateTo] = useState(TODAY);
@@ -115,6 +112,10 @@ export default function PaymentsPage() {
           date: p.date,
           accountName: account?.name ?? p.accountId,
           depositSource: p.depositSource,
+          depositors:
+            p.id === "PAY-001"
+              ? `${account?.primaryDepositor ?? "대표 입금자"} 외 1명`
+              : account?.primaryDepositor ?? "대표 입금자",
           currency: p.currency,
           amount: p.amount,
           krwEquivalent: p.krwEquivalent,
@@ -143,6 +144,7 @@ export default function PaymentsPage() {
     { key: "date", label: "입금일", sortable: true, width: 110 },
     { key: "accountName", label: "거래처", sortable: true },
     { key: "depositSource", label: "입금처", width: 100 },
+    { key: "depositors", label: "입금자", width: 130 },
     { key: "currency", label: "통화", width: 60, align: "center" },
     { key: "amount", label: "수금액", align: "right", sortable: true, width: 120, mono: true },
     {
@@ -330,8 +332,6 @@ export default function PaymentsPage() {
                     ₩{formatNumber(krw, 0)}
                   </span>
                 );
-
-                if (!isSupabase) return numberSpan;
 
                 const ratio =
                   monthMaxKrw > 0

@@ -12,14 +12,13 @@ import {
   getBalanceByAccount,
 } from '@/lib/mock-data';
 import { formatCurrencyShort } from '@/lib/utils';
-import { useTheme } from '@/lib/theme';
 
 // ---------------------------------------------------------------------------
 // KPI computation
 // ---------------------------------------------------------------------------
 
 const pendingOrderCount = orders.filter((o) => o.status === '주문대기').length;
-const pendingShipmentCount = shipments.filter((s) => s.status === '출고대기').length;
+const pendingShipmentCount = shipments.filter((s) => s.status !== '출고완료').length;
 
 // 미수금: sum negative balances across all accounts
 const receivables = (() => {
@@ -72,19 +71,11 @@ const personas = [
 // ---------------------------------------------------------------------------
 
 export default function DashboardPage() {
-  const { theme } = useTheme();
-  const isNotion = theme === 'notion';
-  const isSupabase = theme === 'supabase';
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <PageHeader
-        title={isNotion ? '오늘의 업무' : '대시보드'}
-        helperText={
-          isNotion
-            ? '이 화면에서는 오늘 처리해야 할 업무를 한눈에 봅니다.'
-            : undefined
-        }
+        title="대시보드"
+        helperText="오늘 처리해야 할 주문·출고·수금 업무를 한눈에 봅니다."
       />
 
       {/* Section 1: KPI Row */}
@@ -135,7 +126,7 @@ export default function DashboardPage() {
             }}
           />
           <StatCard
-            label="출고대기"
+            label="출고진행"
             value={String(pendingShipmentCount)}
             trend="down"
             trendLabel="전주 대비 −1"
@@ -190,7 +181,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Section 2: Weekly Trend Chart */}
-      <Card title={isNotion ? '이번 주 흐름' : '주간 주문 추이'}>
+      <Card title="주간 주문 추이">
         <div
           style={{
             display: 'flex',
@@ -224,7 +215,7 @@ export default function DashboardPage() {
                 style={{
                   width: '100%',
                   maxWidth: 40,
-                  backgroundColor: isSupabase ? 'var(--k-bg-overlay)' : 'var(--k-bg-sub)',
+                  backgroundColor: 'var(--k-chart-track-bg)',
                   borderRadius: 4,
                   position: 'relative',
                   height: 80,

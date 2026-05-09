@@ -1,7 +1,5 @@
 "use client";
 
-import { useThemeOptional } from "@/lib/theme/ThemeContext";
-
 export interface ViewToggleOption<T extends string> {
   value: T;
   label: string;
@@ -20,108 +18,22 @@ export default function ViewToggle<T extends string>({
   onChange,
   ariaLabel = "보기 전환",
 }: ViewToggleProps<T>) {
-  const theme = useThemeOptional()?.theme ?? "linear";
-
-  if (theme === "notion") {
-    return (
-      <div
-        role="tablist"
-        aria-label={ariaLabel}
-        style={{
-          display: "flex",
-          gap: "var(--k-space-md)",
-          borderBottom: "1px solid var(--k-border)",
-        }}
-      >
-        {options.map((opt) => {
-          const active = value === opt.value;
-          return (
-            <button
-              key={opt.value}
-              role="tab"
-              type="button"
-              aria-selected={active}
-              onClick={() => onChange(opt.value)}
-              style={{
-                appearance: "none",
-                background: "transparent",
-                border: "none",
-                padding: "8px 0",
-                fontSize: "var(--k-font-size-sm)",
-                fontWeight: 500,
-                cursor: "pointer",
-                transition: "color var(--k-transition-fast)",
-                color: active ? "var(--k-text)" : "var(--k-text-muted)",
-                borderBottom: active
-                  ? "2px solid var(--k-brand)"
-                  : "2px solid transparent",
-                marginBottom: -1,
-              }}
-            >
-              {opt.label}
-            </button>
-          );
-        })}
-      </div>
-    );
-  }
-
-  if (theme === "supabase") {
-    return (
-      <div
-        role="tablist"
-        aria-label={ariaLabel}
-        style={{
-          display: "inline-flex",
-          padding: 2,
-          backgroundColor: "var(--k-bg-raise)",
-          border: "1px solid var(--k-border)",
-          borderRadius: 6,
-          gap: 2,
-        }}
-      >
-        {options.map((opt) => {
-          const active = value === opt.value;
-          return (
-            <button
-              key={opt.value}
-              role="tab"
-              type="button"
-              aria-selected={active}
-              onClick={() => onChange(opt.value)}
-              style={{
-                appearance: "none",
-                height: 24,
-                padding: "0 10px",
-                border: "none",
-                borderRadius: 4,
-                fontSize: "var(--k-font-size-sm)",
-                fontWeight: 500,
-                cursor: "pointer",
-                transition: "all var(--k-transition-fast)",
-                backgroundColor: active ? "var(--k-brand-dim)" : "transparent",
-                color: active ? "var(--k-brand)" : "var(--k-text-muted)",
-              }}
-            >
-              {opt.label}
-            </button>
-          );
-        })}
-      </div>
-    );
-  }
-
-  // Linear (default) — shared border button pair
   return (
     <div
       role="tablist"
       aria-label={ariaLabel}
-      style={{ display: "flex", gap: 0 }}
+      style={{
+        display: "inline-flex",
+        gap: "var(--k-view-toggle-gap)",
+        padding: "var(--k-view-toggle-padding)",
+        backgroundColor: "var(--k-view-toggle-bg)",
+        border: "var(--k-view-toggle-border)",
+        borderBottom: "var(--k-view-toggle-border-bottom)",
+        borderRadius: "var(--k-view-toggle-radius)",
+      }}
     >
-      {options.map((opt, idx) => {
+      {options.map((opt) => {
         const active = value === opt.value;
-        const isFirst = idx === 0;
-        const isLast = idx === options.length - 1;
         return (
           <button
             key={opt.value}
@@ -130,25 +42,25 @@ export default function ViewToggle<T extends string>({
             aria-selected={active}
             onClick={() => onChange(opt.value)}
             style={{
-              height: 28,
-              padding: "0 12px",
+              appearance: "none",
+              height: "var(--k-view-toggle-button-height)",
+              padding: "var(--k-view-toggle-button-padding)",
               fontSize: "var(--k-font-size-sm)",
               fontWeight: 500,
-              border: "1px solid var(--k-border)",
-              borderRadius: "var(--k-radius-sm)",
+              border: "var(--k-view-toggle-button-border)",
+              borderRadius: "var(--k-view-toggle-button-radius)",
               cursor: "pointer",
-              backgroundColor: active ? "var(--k-brand-subtle)" : "transparent",
-              color: active ? "var(--k-brand)" : "var(--k-text-muted)",
+              backgroundColor: active
+                ? "var(--k-view-toggle-active-bg)"
+                : "var(--k-view-toggle-inactive-bg)",
+              color: active
+                ? "var(--k-view-toggle-active-color)"
+                : "var(--k-view-toggle-inactive-color)",
+              borderBottom: active
+                ? "var(--k-view-toggle-active-border-bottom)"
+                : "var(--k-view-toggle-inactive-border-bottom)",
+              marginBottom: "var(--k-view-toggle-button-margin-bottom)",
               transition: "all var(--k-transition-fast)",
-              ...(isFirst && {
-                borderTopRightRadius: 0,
-                borderBottomRightRadius: 0,
-                borderRight: "none",
-              }),
-              ...(isLast && {
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0,
-              }),
             }}
           >
             {opt.label}

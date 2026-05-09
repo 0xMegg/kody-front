@@ -1,5 +1,7 @@
+import { cookies } from "next/headers";
 import { Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme/ThemeContext";
+import { resolveThemeName, THEME_COOKIE_KEY } from "@/lib/theme/cookie";
 import "@/lib/theme/tokens.css";
 import MainShell from "./MainShell";
 
@@ -15,13 +17,18 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "600"],
 });
 
-export default function UnifiedLayout({
+export default async function UnifiedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const initialTheme = resolveThemeName(
+    cookieStore.get(THEME_COOKIE_KEY)?.value,
+  );
+
   return (
-    <ThemeProvider>
+    <ThemeProvider initialTheme={initialTheme}>
       <MainShell
         fontClasses={`${sourceSerif.variable} ${jetbrainsMono.variable}`}
       >
