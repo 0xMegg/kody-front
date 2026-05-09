@@ -107,3 +107,39 @@ Verification:
 - Route checks returned 200 for `/inventory`, `/shipments`, and `/login`.
 - Playwright verified `/inventory`, `/shipments`, `/shipments/SHIP-260403-01`, and `/login` with desktop/mobile-oriented screenshots. Visual checks confirmed nonblank rendering and no major clipping on the changed surfaces.
 - Dev console logs contained only React DevTools/HMR development messages during this verification pass.
+
+## 2026-05-09 — Phase 0 Promotion Closeout
+
+Decision:
+
+- Promoted frontend Phase 0 mock prototype from `dev` toward `main`.
+- PR #6 (`codex/phase-0-exit-to-dev` -> `dev`) was merged before promotion review.
+- Kept the promotion within mock/prototype frontend scope.
+- No dependency, lockfile, environment, Next.js config, UI library, backend binding, Prisma, or API contract expansion was introduced by `origin/main...dev`.
+
+Promotion scope:
+
+- `origin/dev` was 4 commits ahead of `origin/main` before the closeout record commit.
+- Promotion included Phase 0 auth mock routes, Product DB inventory tabs and adjustment mock, shipment 4-stage UI/detail surface, theme cookie reload handling, and frontend Hermes closeout notes.
+- `lib/api-client.ts`, `lib/backend-proxy.ts`, and `app/api/health/route.ts` already existed on `origin/main`; they remained dead infrastructure during this promotion and were not newly bound to Phase 0 mock surfaces.
+
+Verification:
+
+- `npm run lint` passed.
+- `npx tsc --noEmit` passed.
+- `npm run build` passed.
+- `git diff --check origin/main...HEAD` passed.
+- Route checks returned 200 for `/`, `/inventory`, `/shipments`, `/shipments/SHIP-260403-01`, `/login`, `/signup`, `/forgot-password`, and `/reset-password`.
+- Playwright smoke verified `/inventory` rendered, Product DB tabs switched across `상품등록`, `입고`, `재고`, and `발주`, and the inventory adjustment mock produced a local log entry.
+- Playwright smoke verified `/shipments/SHIP-260403-01` rendered the 4-stage shipment board and shipment completion form.
+- Playwright smoke verified `/login` rendered the mock auth form.
+
+Review:
+
+- Claude reviewed `origin/main...HEAD` for promotion and found no blocking issues.
+- Claude noted only P3/non-blocking items: existing dead API infrastructure already present on `origin/main`, auth mock placeholder default values, intentional `출고대기` alias coexistence for order-item shipment status, landing theme cookie navigation behavior, and a future hardening opportunity in the Claude safety adapter.
+
+Residual:
+
+- Auth mock pages contain placeholder defaults such as `admin@kody.local` and `password1`; acceptable for Phase 0 prototype scope, but replace with empty/placeholder-only values before any production-facing auth flow.
+- Decide in a later F1/M0 plan whether existing dead API client/proxy infrastructure should be removed, retained for contract-first work, or bound deliberately under an approved integration plan.
