@@ -143,3 +143,42 @@ Residual:
 
 - Auth mock pages contain placeholder defaults such as `admin@kody.local` and `password1`; acceptable for Phase 0 prototype scope, but replace with empty/placeholder-only values before any production-facing auth flow.
 - Decide in a later F1/M0 plan whether existing dead API client/proxy infrastructure should be removed, retained for contract-first work, or bound deliberately under an approved integration plan.
+
+## 2026-05-12 — F1 Frontend M0 Shell Closeout
+
+Workflow:
+
+- User requested continuing after S10; F1 plan was written at root `.hermes/plans/2026-05-12_005424-f1-frontend-m0-shell-cp2-demo.md`.
+- Opus/Claude was primary for frontend develop in `kody-frontend/`; print mode reached max turns after producing the implementation, so Hermes inspected and completed verification/closeout.
+- Standalone `codex` CLI was not installed in this environment, so Codex/Hermes closeout was performed with Hermes orchestration plus an independent delegate review.
+
+Accepted result:
+
+- F1 Frontend M0 Shell and CP#2 demo readiness is complete as a frontend-only `mock-only` shell.
+- Added `lib/auth/mock-session.ts` for frontend-local mock current-user state and role helpers.
+- Added `lib/auth/route-modes.ts` for F1 route/surface dependency-mode declarations, including auth routes, profile, admin users, TopBar user menu, and role-aware navigation.
+- Hardened `/login`, `/signup?token=...`, `/forgot-password`, and `/reset-password?token=...` with visible F1 `mock-only` messaging and no default fake credentials.
+- Added `/profile` under the main shell with mock current-user details and an S7 Profile API dependency note.
+- Added `/admin/users` under the main shell with mock user rows, mock invite action, ADMIN/FINANCE access behavior, and S6/S8/S10 dependency notes.
+- Added TopBar mock current-user menu with role badges, `/profile`, conditional `/admin/users`, and mock logout.
+- Added role-aware navigation using frontend-local mock roles.
+- Removed dead API/proxy infrastructure: `lib/api-client.ts`, `lib/backend-proxy.ts`, and `app/api/health/route.ts`.
+
+Verification:
+
+- `npm run lint` passed.
+- `npx tsc --noEmit` passed.
+- `npm run build` passed.
+- Frontend `git diff --check` passed.
+- Root `git diff --check` passed after closeout docs.
+- Search confirmed no F1 route imports `apiClient`, `proxyToBackend`, `backend-proxy`, `api-client`, `fetch(`, `process.env`, `NEXT_PUBLIC`, or `useRealApi`; only explanatory comments mention banned API/proxy terms.
+- Independent review returned PASS with no blockers or important issues.
+
+Scope held:
+
+- Product implementation stayed in `kody-frontend/`.
+- No backend edit, root product edit, env edit, dependency/lockfile edit, Next/TypeScript/ESLint config change, UI library change, real backend binding, auth cookie/localStorage/session persistence, or new API proxy route was added.
+
+Next:
+
+- Return to root orchestration and plan the next post-F1 slice. Current sequencing note says M3 Payment must precede M4 Order Confirmation.

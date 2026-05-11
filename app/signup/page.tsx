@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import Button from "@/lib/components/Button";
 import Toast from "@/lib/components/Toast";
+import { getF1RouteMode } from "@/lib/auth/route-modes";
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -18,10 +19,25 @@ const inputStyle: React.CSSProperties = {
   boxSizing: "border-box",
 };
 
+const modeBadgeStyle: React.CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 6,
+  padding: "2px 8px",
+  borderRadius: 999,
+  fontSize: 11,
+  fontWeight: 500,
+  color: "var(--k-text-muted, #6e7781)",
+  backgroundColor: "var(--k-bg-sub, #f6f8fa)",
+  border: "1px solid var(--k-border, #d8dee4)",
+  letterSpacing: "0.04em",
+};
+
 function SignupContent() {
   const searchParams = useSearchParams();
   const [toastVisible, setToastVisible] = useState(false);
   const token = searchParams.get("token") ?? "";
+  const routeMode = getF1RouteMode("/signup");
   const showMockToast = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setToastVisible(true);
@@ -51,29 +67,49 @@ function SignupContent() {
           padding: 24,
         }}
       >
-        <div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <span style={modeBadgeStyle}>F1 mode: mock-only</span>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>
             초대 가입
           </h1>
-          <p style={{ margin: "6px 0 0", fontSize: 13, color: "var(--k-text-muted, #6e7781)" }}>
-            초대 토큰으로 Employee와 User를 연결하는 M0 mock 화면
+          <p style={{ margin: 0, fontSize: 13, color: "var(--k-text-muted, #6e7781)" }}>
+            초대 토큰으로 Employee와 User를 연결하는 데모 화면
+          </p>
+          <p style={{ margin: 0, fontSize: 11, color: "var(--k-text-muted, #6e7781)" }}>
+            {routeMode?.backendDependency
+              ? `이후 ${routeMode.backendDependency} 와 연동될 예정 · 현재는 백엔드 호출 없음`
+              : "백엔드 호출 없음"}
           </p>
         </div>
 
         <form onSubmit={showMockToast} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 12 }}>
-            초대 토큰
-            <input value={token} readOnly style={{ ...inputStyle, backgroundColor: "var(--k-bg-sub, #f6f8fa)" }} />
+            초대 토큰 (데모 표시 전용)
+            <input
+              value={token}
+              readOnly
+              placeholder="초대 토큰 없음"
+              style={{ ...inputStyle, backgroundColor: "var(--k-bg-sub, #f6f8fa)" }}
+            />
           </label>
 
           <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 12 }}>
             표시 이름
-            <input defaultValue="정민수" autoComplete="name" style={inputStyle} />
+            <input
+              placeholder="이름 입력"
+              autoComplete="name"
+              style={inputStyle}
+            />
           </label>
 
           <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 12 }}>
             비밀번호
-            <input type="password" defaultValue="password1" autoComplete="new-password" style={inputStyle} />
+            <input
+              type="password"
+              placeholder="비밀번호 입력"
+              autoComplete="new-password"
+              style={inputStyle}
+            />
           </label>
 
           <Button>계정 생성</Button>
@@ -85,7 +121,7 @@ function SignupContent() {
       </section>
 
       <Toast
-        message="가입은 M0 backend 연결 전 mock 화면입니다"
+        message="F1 mock-only 화면입니다 · 가입 처리는 아직 백엔드에 연결되지 않았습니다"
         visible={toastVisible}
         onClose={() => setToastVisible(false)}
       />
